@@ -4,16 +4,15 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: "login", component: RegisterPageComponent}
+  { path: "register", component: RegisterPageComponent}
 ]
 
 @NgModule({
   declarations: [
-    RegisterPageComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ]
 })
 export class GeneralModule { }
