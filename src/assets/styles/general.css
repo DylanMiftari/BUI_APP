@@ -1,0 +1,16 @@
+.white-box {
+    background-color: rgba(248, 248, 248, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 10px;
+}

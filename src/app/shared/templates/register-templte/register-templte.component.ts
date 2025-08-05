@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { RegisterFormComponent } from '../../organisms/register-form/register-form.component';
+import { TitleComponent } from '../../atoms/title/title.component';
+import { SimpleTextComponent } from '../../atoms/simple-text/simple-text.component';
 
 @Component({
   selector: 'app-register-templte',
   standalone: true,
-  imports: [CommonModule, RegisterFormComponent],
+  imports: [CommonModule, RegisterFormComponent, TitleComponent, SimpleTextComponent],
   templateUrl: './register-templte.component.html',
   styleUrl: './register-templte.component.css'
 })

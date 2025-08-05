@@ -1,0 +1,19 @@
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+input {
+    width: calc(100% - 2rem - 4px);
+    border-radius: 10px;
+    border: solid 2px #e5e7eb;
+    padding: 1rem;
+    font-size: 1rem;
+    transition: border 0.3s ease;
+    &:focus {
+        outline: none;
+        border: solid 2px var(--outline-color);
+    }
+}

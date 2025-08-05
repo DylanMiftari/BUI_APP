@@ -7,7 +7,10 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './input.component.html',
-  styleUrl: './input.component.css'
+  styleUrl: './input.component.css',
+  host: {
+    '[style.--outline-color]': 'outlineColor'
+  }
 })
 export class InputComponent {
   @Input() name!: string;
@@ -15,4 +18,5 @@ export class InputComponent {
   @Input() type: "text" | "password" | "number" = "text";
   @Input() placeholder: string = "";
   @Input() control!: FormControl;
+  @Input() outlineColor: string = "#22c55e";
 }
