@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ThemeColor } from '../../../core/themeColor/theme-color-type';
+import { ThemeColorService } from '../../../core/themeColor/theme-color.service';
 
 @Component({
   selector: 'app-input',
@@ -9,7 +11,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './input.component.html',
   styleUrl: './input.component.css',
   host: {
-    '[style.--outline-color]': 'outlineColor'
+    '[style.--outline-color]': 'themeColorService.simpleColor(color)'
   }
 })
 export class InputComponent {
@@ -18,5 +20,7 @@ export class InputComponent {
   @Input() type: "text" | "password" | "number" = "text";
   @Input() placeholder: string = "";
   @Input() control!: FormControl;
-  @Input() outlineColor: string = "#22c55e";
+  @Input() color: ThemeColor = "green";
+
+  constructor(public themeColorService: ThemeColorService) {}
 }
