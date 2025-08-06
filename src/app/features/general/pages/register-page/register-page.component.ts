@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { RegisterTemplteComponent } from '../../../../shared/templates/register-templte/register-templte.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { userService } from '../../services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterPageComponent {
   errorMessage: string = "";
-  constructor(private userService: userService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   register(params: any) {
     this.userService.register(params.pseudo, params.password, params.confirmPassword).subscribe({

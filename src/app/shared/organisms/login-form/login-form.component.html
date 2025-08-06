@@ -1,4 +1,7 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="form">
     <app-login-fields [form]="loginForm"></app-login-fields>
-    <app-button label="Sign in"></app-button>
+    <app-error-text [text]="errorMessage"></app-error-text>
+    <app-button label="Sign in" type="submit"></app-button>
+    <app-seperator-with-text></app-seperator-with-text>
+    <app-button label="Create a new account" [isOutlined]="true" (click)="clickOnRegister()"></app-button>
 </form>

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class userService {
+export class UserService {
   baseUri = environment.baseUri;
 
   constructor(private http: HttpClient) { }
@@ -16,6 +16,13 @@ export class userService {
       "pseudo": pseudo,
       "password": password,
       "password_confirmation": confirmPassword
+    });
+  }
+
+  public login(pseudo: string, password: string): Observable<any> {
+    return this.http.post(`${this.baseUri}/login`, {
+      "pseudo": pseudo,
+      "password": password
     });
   }
 }
