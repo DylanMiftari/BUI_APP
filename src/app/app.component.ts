@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { DataUserService } from './core/services/data-user.service';
+import { User } from './core/models/user.model';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent implements OnInit {
   };
 
   background: string = "";
+  user$ = this.userService.user$;
 
   constructor(private router: Router, private userService: DataUserService) {
     
@@ -27,8 +29,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.fetchUser().subscribe({
-      next: user => console.log("User chargé : ", user)
-    });
+    this.userService.fetchUser().subscribe();
   }
 }

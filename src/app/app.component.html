@@ -2,6 +2,11 @@
 <div class="app-wrapper" [style.background]="'var('+background+')'">
     <header>
         <h1>BUI</h1>
+
+        <div *ngIf="user$ | async as user">
+            <h3>{{ user.pseudo }}</h3>
+            <h3 class="glass-container">💰 {{ user.userMoney.toLocaleString() }}€</h3>
+        </div>
     </header>
 
     <router-outlet />
