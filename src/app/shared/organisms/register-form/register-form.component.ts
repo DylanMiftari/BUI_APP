@@ -2,11 +2,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RegisterFieldsComponent } from '../../moleculs/register-fields/register-fields.component';
 import { ButtonComponent } from '../../atoms/button/button.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SeperatorWithTextComponent } from "../../atoms/seperator-with-text/seperator-with-text.component";
 
 @Component({
   selector: 'app-register-form',
   standalone: true,
-  imports: [RegisterFieldsComponent, ButtonComponent, FormsModule, ReactiveFormsModule],
+  imports: [RegisterFieldsComponent, ButtonComponent, FormsModule, ReactiveFormsModule, SeperatorWithTextComponent],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css'
 })

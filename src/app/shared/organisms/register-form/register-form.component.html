@@ -1,4 +1,8 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="form">
     <app-register-fields [form]="registerForm"></app-register-fields>
     <app-button label="Sign up"></app-button>
+
+    <app-seperator-with-text></app-seperator-with-text>
+
+    <app-button label="Sign in to your account" [isOutlined]="true"></app-button>
 </form>
