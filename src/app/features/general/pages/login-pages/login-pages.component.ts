@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { LoginTemplateComponent } from '../../../../shared/templates/login-template/login-template.component';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { DataUserService } from '../../../../core/services/data-user.service';
 
 @Component({
   selector: 'app-login-pages',
@@ -13,13 +14,17 @@ import { Router } from '@angular/router';
 export class LoginPagesComponent {
   errorMessage: string = "";
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private dataUserService: DataUserService) {}
 
   login(params: any) {
     this.userService.login(params.pseudo, params.password).subscribe({
       next: response => {
         localStorage.setItem("token", response.token);
-        this.router.navigate(["/"])
+        this.dataUserService.fetchUser().subscribe({
+          next: () => {
+            this.router.navigate(["/"]);
+          }
+        });
       },
       error: err => {
         this.errorMessage = err.error.message;

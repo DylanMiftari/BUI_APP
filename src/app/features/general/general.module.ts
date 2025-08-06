@@ -3,10 +3,15 @@ import { CommonModule } from '@angular/common';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPagesComponent } from './pages/login-pages/login-pages.component';
+import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
+import { authGuardChild } from '../../core/guards/auth.guard';
 
 const routes: Routes = [
   { path: "register", component: RegisterPageComponent},
-  { path: "login", component: LoginPagesComponent}
+  { path: "login", component: LoginPagesComponent},
+  { path: "", canActivateChild: [authGuardChild], children: [
+    { path: "", component: DashboardPageComponent }
+  ]}
 ]
 
 @NgModule({
