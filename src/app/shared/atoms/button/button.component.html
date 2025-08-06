@@ -1,1 +1,5 @@
-<button [style.backgroundImage]="'var('+themeColorService.cssVarFromColor(color)+')'" [class]="{'outline' : isOutlined}">{{ label }}</button>
+<button [style.backgroundImage]="'var('+themeColorService.cssVarFromColor(color)+')'" [class]="{'outline' : isOutlined}"
+(click)="clickOnButton()" [type]="type"
+>
+    {{ label }}
+</button>

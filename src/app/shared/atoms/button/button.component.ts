@@ -17,6 +17,12 @@ export class ButtonComponent {
   @Input() label!: string;
   @Input() color: ThemeColor = "green";
   @Input() isOutlined: boolean = false;
+  @Input() type: "submit" | "button" = "button";
+  @Output() clicked = new EventEmitter<void>();
 
   constructor(public themeColorService: ThemeColorService) {}
+
+  clickOnButton() {
+    this.clicked.emit();
+  }
 }

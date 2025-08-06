@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RegisterFormComponent } from '../../organisms/register-form/register-form.component';
 import { TitleComponent } from '../../atoms/title/title.component';
 import { SimpleTextComponent } from '../../atoms/simple-text/simple-text.component';
@@ -12,6 +12,7 @@ import { SimpleTextComponent } from '../../atoms/simple-text/simple-text.compone
   styleUrl: './register-templte.component.css'
 })
 export class RegisterTemplteComponent {
+  @Input() errorMessage: string = "";
   @Output() sendRegisterData = new EventEmitter<{pseudo: string|undefined, password: string|undefined, confirmPassword: string|undefined}>();
 
   sendData(params: any) {

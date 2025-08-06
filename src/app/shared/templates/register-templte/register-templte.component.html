@@ -1,5 +1,5 @@
 <div class="white-box">
     <app-title text="Welcome on BUI"></app-title>
     <app-simple-text text="Sign up on BUI"></app-simple-text>
-    <app-register-form (registerSubmit)="sendData($event)"></app-register-form>
+    <app-register-form (registerSubmit)="sendData($event)" [errorMessage]="errorMessage"></app-register-form>
 </div>
