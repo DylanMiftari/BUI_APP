@@ -1,0 +1,22 @@
+<app-card [paddingPx]="30">
+    <app-subtitle-with-icon
+        [icon]="icon"
+        [fontSizeIcon]="3"
+        [subtitle]="cardTitle"
+    ></app-subtitle-with-icon>
+
+    <app-simple-text 
+        [text]="text"
+    ></app-simple-text>
+
+    <app-seperator-with-text [marginPx]="15"></app-seperator-with-text>
+
+    <app-row justifyContent="space-between">
+        @for(data of datas; track data.data) {
+            <app-data-with-text 
+                [data]="data.data" [dataIsNumber]="data.dataIsNumber" [text]="data.text" 
+                dataTextAlign="center" [unit]="data.unit"
+            ></app-data-with-text>
+        }
+    </app-row>
+</app-card>

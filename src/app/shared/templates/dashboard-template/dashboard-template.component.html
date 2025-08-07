@@ -1,1 +1,55 @@
 <app-page-title title="Dashboard"></app-page-title>
+
+<app-card-container
+    [cardBaseSizePx]="350"
+    [paddingXPx]="50"
+>
+    <app-dashboard-card
+        icon="🏢"
+        cardTitle="My Businesses"
+        text="Manage your companies, view profits, and expand your business empire across different cities."
+        [datas]="[
+                {data: 3, text: 'Active', unit: '', dataIsNumber: true},
+                {data: 2450, text: 'Weekly Income', unit: '€', dataIsNumber: true}
+            ]"
+    ></app-dashboard-card>
+
+    <app-dashboard-card
+        icon="⛏️"
+        cardTitle="My Mines"
+        text="Control your mining operations, harvest resources, and upgrade your mining equipment."
+        [datas]="[
+                {data: 2, text: 'Active Mines', unit: '', dataIsNumber: true},
+                {data: 8.5, text: 'Resources', unit: 'kg', dataIsNumber: true}
+            ]"
+    ></app-dashboard-card>
+
+    <app-dashboard-card
+        icon="🏙️"
+        cardTitle="My City"
+        text="Explore your current city, travel to new locations, and discover business opportunities."
+        [datas]="[
+                {data: 'Paris', text: 'Current City', unit: '', dataIsNumber: false},
+                {data: 'Tier 4', text: 'City Level', unit: '', dataIsNumber: false}
+            ]"
+    ></app-dashboard-card>
+
+    <app-dashboard-card
+        icon="🏠"
+        cardTitle="My House"
+        text="Manage your home, upgrade your living space, and access your personal storage."
+        [datas]="[
+                {data: 'Villa', text: 'House Type', unit: '', dataIsNumber: false},
+                {data: 'Level 3', text: 'Security', unit: '', dataIsNumber: false}
+            ]"
+    ></app-dashboard-card>
+
+    <app-dashboard-card
+        icon="🛒"
+        cardTitle="Market"
+        text="Trade your raw materials, buy resources, and check current market prices."
+        [datas]="[
+                {data: '12', text: 'Materials', unit: '', dataIsNumber: true},
+            ]"
+    ></app-dashboard-card>
+</app-card-container>

@@ -1,0 +1,26 @@
+div {
+    position: relative;
+    width: fit-content;
+    overflow-x: hidden;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-8px) scale(1.02);
+    }
+}
+
+div.bordered::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient);
+}

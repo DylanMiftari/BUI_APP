@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-seperator-with-text',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './seperator-with-text.component.css'
 })
 export class SeperatorWithTextComponent {
-
+  @Input() marginPx: number = 0;
 }
