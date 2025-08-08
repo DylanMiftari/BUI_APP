@@ -18,7 +18,7 @@ export class DataUserService {
   constructor(private http: HttpClient) { }
 
   fetchUser(): Observable<User | null> {
-    return this.http.get<User>(`${this.baseUri}/me?with=userMoney`).pipe(
+    return this.http.get<User>(`${this.baseUri}/me`).pipe(
       tap(user => {
         this.userSubject.next(user);
         this.loadingSubject.next(false);
