@@ -1,6 +1,8 @@
 <div
-    [class]="{'bordered': bordered}"
+    [class]="{'bordered': bordered, 'glass-container': glassCard, 'interactable': interactable}"
     [style.padding]="paddingPx+'px'"
+    [style.align-items]="alignItems"
+    (click)="clickOnCard()"
 >
     <ng-content></ng-content>
 </div>

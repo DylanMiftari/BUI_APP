@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { PageTitleComponent } from '../../atoms/page-title/page-title.component';
 import { DashboardCardComponent } from '../../organisms/dashboard-card/dashboard-card.component';
 import { CardContainerComponent } from '../../atoms/card-container/card-container.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-template',
@@ -15,4 +16,10 @@ import { CardContainerComponent } from '../../atoms/card-container/card-containe
 export class DashboardTemplateComponent {
   @Input() companiesCount: number = 0;
   @Input() minesCount: number = 1;
+
+  constructor(private router: Router) {}
+
+  public clickOnMineCard() {
+    this.router.navigate(["/mine"]);
+  }
 }

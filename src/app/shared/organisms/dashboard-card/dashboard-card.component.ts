@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CardComponent } from "../../organisms/card/card.component";
 import { SimpleTextComponent } from '../../atoms/simple-text/simple-text.component';
 import { SubtitleWithIconComponent } from '../../moleculs/subtitle-with-icon/subtitle-with-icon.component';
@@ -23,4 +23,9 @@ export class DashboardCardComponent {
   @Input() cardTitle!: string;
   @Input() text!: string;
   @Input() datas!: {data: any, dataIsNumber: boolean, unit: string, text: string}[];
+  @Output() clicked = new EventEmitter<void>();
+
+  clickOnCard() {
+    this.clicked.emit();
+  }
 }

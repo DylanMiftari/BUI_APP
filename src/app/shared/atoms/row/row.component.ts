@@ -9,4 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class RowComponent {
   @Input() justifyContent: string = "flex-start";
+  @Input() gapPx: number = 0;
+  @Input() wrap: boolean = false;
 }

@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'BUI_APP';
   defaultBackground: string = "--green-gradiant";
   routeBackground: Record<string, string> = {
+    "mine": "--black-gradient"
   };
 
   background: string = "";

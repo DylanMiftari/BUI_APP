@@ -2,3 +2,7 @@ app-card {
     display: flex;
     align-items: stretch;
 }
+
+app-row {
+    width: 100%;
+}

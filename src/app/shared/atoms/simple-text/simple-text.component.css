@@ -1,3 +1,6 @@
 p {
     color: #444444;
 }
+.light {
+    color: rgba(255, 255, 255, 0.7) !important;
+}

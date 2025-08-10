@@ -24,6 +24,8 @@ export class ThemeColorService {
 
   public simpleColor(color: ThemeColor) {
     switch(color) {
+      case "white": 
+        return "#ffffff";
       default:
         return "#22c55e";
     }

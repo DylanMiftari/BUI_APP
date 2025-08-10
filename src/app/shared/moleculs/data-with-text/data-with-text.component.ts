@@ -17,4 +17,5 @@ export class DataWithTextComponent {
   @Input() color: ThemeColor = "green";
   @Input() text!: string;
   @Input() dataTextAlign: "left" | "center" | "right" = "left";
+  @Input() lightText: boolean = false;
 }

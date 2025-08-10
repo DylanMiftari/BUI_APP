@@ -1,0 +1,7 @@
+app-row {
+    padding: 0 40px;
+    app-card {
+        flex-grow: 1;
+        flex-basis: 150px;
+    }
+}

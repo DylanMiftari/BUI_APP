@@ -1,0 +1,24 @@
+<app-page-title title="⛏️ My Mines"></app-page-title>
+<app-page-subtitle text="Manage your mining operations and extract valuable resources" [isLight]="true"></app-page-subtitle>
+
+<app-row justifyContent="space-around" [gapPx]="30" [wrap]="true">
+    <app-card [bordered]="false" [glassCard]="true" alignItems="center" [interactable]="false">
+        <app-icon icon="🏗️"></app-icon>
+        <app-data-with-text text="Total Mines" [data]="totalMines" [dataIsNumber]="true" color="white" dataTextAlign="center" [lightText]="true"></app-data-with-text>
+    </app-card>
+
+    <app-card [bordered]="false" [glassCard]="true" alignItems="center" [interactable]="false">
+        <app-icon icon="⚡"></app-icon>
+        <app-data-with-text text="Active Mines" [data]="activeMines" [dataIsNumber]="true" color="white" dataTextAlign="center" [lightText]="true"></app-data-with-text>
+    </app-card>
+
+    <app-card [bordered]="false" [glassCard]="true" alignItems="center" [interactable]="false">
+        <app-icon icon="💎"></app-icon>
+        <app-data-with-text text="Total Resources" [data]="resourceSum" [dataIsNumber]="true" color="white" dataTextAlign="center" unit="kg" [lightText]="true"></app-data-with-text>
+    </app-card>
+
+    <app-card [bordered]="false" [glassCard]="true" alignItems="center" [interactable]="false">
+        <app-icon icon="💰"></app-icon>
+        <app-data-with-text text="Hourly Income" [data]="totalHourlyIncome" [dataIsNumber]="true" color="white" dataTextAlign="center" unit="€/h" [lightText]="true"></app-data-with-text>
+    </app-card>
+</app-row>

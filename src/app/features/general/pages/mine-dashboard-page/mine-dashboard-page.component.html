@@ -1,0 +1,8 @@
+@if (mines) {
+    <app-mine-dashboard-template 
+        [totalMines]="mines.length"
+        [activeMines]="activeMinesCount"
+        [resourceSum]="user.resourceSum!"
+        [totalHourlyIncome]="sumOfHourlyIncome"
+    ></app-mine-dashboard-template>
+}

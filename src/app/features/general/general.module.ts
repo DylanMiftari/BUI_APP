@@ -5,12 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPagesComponent } from './pages/login-pages/login-pages.component';
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component';
 import { authGuardChild } from '../../core/guards/auth.guard';
+import { MineDashboardPageComponent } from './pages/mine-dashboard-page/mine-dashboard-page.component';
 
 const routes: Routes = [
   { path: "register", component: RegisterPageComponent},
   { path: "login", component: LoginPagesComponent},
   { path: "", canActivateChild: [authGuardChild], children: [
-    { path: "", component: DashboardPageComponent }
+    { path: "mine", component: MineDashboardPageComponent },
+    { path: "", component: DashboardPageComponent },
   ]}
 ]
 
