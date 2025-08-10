@@ -1,7 +1,10 @@
 <div
     [style.justifyContent]="justifyContent"
+    [style.alignItems]="alignItems"
     [style.gap]="gapPx+'px'"
     [style.flex-wrap]="wrap ? 'wrap' : 'nowrap'"
+    [style.margin-top]="marginPx+'px'"
+    [style.margin-bottom]="marginPx+'px'"
 >
     <ng-content></ng-content>
 </div>

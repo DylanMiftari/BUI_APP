@@ -1,5 +1,5 @@
 <div
-    [class]="{'bordered': bordered, 'glass-container': glassCard, 'interactable': interactable}"
+    [class]="{'bordered': bordered, 'glass-container': glassCard, 'interactable': interactable, 'dark-glass-container': (glassCard && darkGlassCard)}"
     [style.padding]="paddingPx+'px'"
     [style.align-items]="alignItems"
     (click)="clickOnCard()"

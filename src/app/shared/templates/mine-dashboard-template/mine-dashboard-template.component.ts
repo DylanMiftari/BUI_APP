@@ -5,13 +5,18 @@ import { RowComponent } from '../../atoms/row/row.component';
 import { CardComponent } from '../../organisms/card/card.component';
 import { IconComponent } from '../../atoms/icon/icon.component';
 import { DataWithTextComponent } from '../../moleculs/data-with-text/data-with-text.component';
+import { CardContainerComponent } from "../../atoms/card-container/card-container.component";
+import { MineCardComponent } from "../../organisms/mine-card/mine-card.component";
+import { Mine } from '../../../features/general/models/mine.model';
 
 @Component({
   selector: 'app-mine-dashboard-template',
   standalone: true,
   imports: [
-    PageTitleComponent, PageSubtitleComponent, RowComponent, CardComponent, IconComponent, DataWithTextComponent
-  ],
+    PageTitleComponent, PageSubtitleComponent, RowComponent, CardComponent, IconComponent, DataWithTextComponent,
+    CardContainerComponent,
+    MineCardComponent
+],
   templateUrl: './mine-dashboard-template.component.html',
   styleUrl: './mine-dashboard-template.component.css'
 })
@@ -20,4 +25,5 @@ export class MineDashboardTemplateComponent {
   @Input() activeMines: number = 0;
   @Input() resourceSum: number = 0;
   @Input() totalHourlyIncome: number = 0;
+  @Input() mines!: Mine[];
 }

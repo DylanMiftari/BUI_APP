@@ -1,0 +1,15 @@
+:host {
+    display: grid;
+
+    app-status-indicator {
+        margin: 10px 0;
+    }
+    .progress-card {
+        width: -webkit-fill-available;
+        margin: 10px 0;
+
+        app-progress-bar, .progress-text {
+            margin: 5px;
+        }
+    }
+}

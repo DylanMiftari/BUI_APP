@@ -16,6 +16,7 @@ export class CardComponent {
   @Input() paddingPx: number = 10;
   @Input() bordered: boolean = true;
   @Input() glassCard: boolean = false;
+  @Input() darkGlassCard: boolean = false;
   @Input() color: ThemeColor = "green";
   @Output() clicked = new EventEmitter<void>();
   @Input() alignItems: string = "flex-start";

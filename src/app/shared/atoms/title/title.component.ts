@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TitleComponent {
   @Input() text!: string;
+  @Input() color: string = "black";
 }

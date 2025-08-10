@@ -1,3 +1,7 @@
+:host {
+    display: grid;
+}
+
 div {
     display: flex;
     flex-direction: column;

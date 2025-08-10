@@ -1,4 +1,6 @@
 export interface Resource {
     id: number,
-    name: string
+    name: string,
+    timeToMine: number,
+    mineQuantity: number
 }

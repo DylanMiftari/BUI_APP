@@ -20,3 +20,7 @@
     padding: 10px;
     border-radius: 20px;
 }
+.dark-glass-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}

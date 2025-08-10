@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SubtitleComponent {
   @Input() text!: string;
+  @Input() color: string = "black";
 }

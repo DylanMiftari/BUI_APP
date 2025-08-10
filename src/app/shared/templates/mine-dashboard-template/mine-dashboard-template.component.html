@@ -22,3 +22,9 @@
         <app-data-with-text text="Hourly Income" [data]="totalHourlyIncome" [dataIsNumber]="true" color="white" dataTextAlign="center" unit="€/h" [lightText]="true"></app-data-with-text>
     </app-card>
 </app-row>
+
+<app-card-container>
+    @for (mine of mines; track $index) {
+        <app-mine-card [mine]="mine"></app-mine-card>
+    }
+</app-card-container>

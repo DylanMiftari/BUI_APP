@@ -1,0 +1,28 @@
+<app-card [glassCard]="true" color="black" [paddingPx]="25">
+    <app-row justifyContent="space-between" alignItems="center">
+        <app-icon icon="⛏️" [fontSize]="2.5"></app-icon>
+        <app-level-pin [level]="mine.level"></app-level-pin>
+    </app-row>
+
+    <app-subtitle [text]="'Mine '+mine.id" color="white"></app-subtitle>
+    <app-status-indicator [text]="status" [color]="statusColor" textColor="white"></app-status-indicator>
+
+    @if(mine.resource) {
+        <app-card [glassCard]="true" [darkGlassCard]="true" [bordered]="false" [interactable]="false" class="progress-card">
+            <app-row justifyContent="space-between">
+                <app-simple-text [text]="'Minning '+mine.resource.name" color="black" [bold]="true"></app-simple-text>
+                <app-simple-text [text]="leftTimeString+' left'" [isLight]="true"></app-simple-text>
+            </app-row>
+            @if(leftTimeMinute > 0) {
+                <app-progress-bar [maxValue]="mine.resource.timeToMine" [value]="mine.resource.timeToMine - leftTimeMinute"></app-progress-bar>
+            } @else {
+                <app-simple-text text="Process finished" class="progress-text" [isLight]="true"></app-simple-text>
+            }
+        </app-card>
+
+        <app-row justifyContent="space-between">
+            <app-data-with-text text="Effiency" [data]="mine.hourlyIncome" [dataIsNumber]="true" unit="€/h" color="white" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+            <app-data-with-text text="Quantity" [data]="mine.resource.mineQuantity" [dataIsNumber]="true" unit="kg" color="white" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+        </app-row>
+    }
+</app-card>

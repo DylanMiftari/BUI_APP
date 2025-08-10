@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { ThemeColor } from '../../../core/themeColor/theme-color-type';
+import { ThemeColorService } from '../../../core/themeColor/theme-color.service';
 
 @Component({
   selector: 'app-simple-text',
@@ -11,4 +13,8 @@ import { Component, Input } from '@angular/core';
 export class SimpleTextComponent {
   @Input() text!: string;
   @Input() isLight: boolean = false;
+  @Input() color: ThemeColor | null = null;
+  @Input() bold: boolean = false;
+
+  constructor(public colorService: ThemeColorService) {}
 }

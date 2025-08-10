@@ -10,6 +10,8 @@ export class ThemeColorService {
 
   public cssVarFromColor(color: ThemeColor) {
     switch(color) {
+      case "black": 
+        return "--yellow-gradient";
       default:
         return "--green-gradiant";
     }
@@ -26,6 +28,8 @@ export class ThemeColorService {
     switch(color) {
       case "white": 
         return "#ffffff";
+      case "black":
+        return "#f59e0b";
       default:
         return "#22c55e";
     }
