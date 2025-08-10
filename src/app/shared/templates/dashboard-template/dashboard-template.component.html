@@ -20,7 +20,7 @@
         text="Control your mining operations, harvest resources, and upgrade your mining equipment."
         [datas]="[
                 {data: minesCount, text: 'Active Mines', unit: '', dataIsNumber: true},
-                {data: 8.5, text: 'Resources', unit: 'kg', dataIsNumber: true}
+                {data: totalResources, text: 'Resources', unit: 'kg', dataIsNumber: true}
             ]"
         (clicked)="clickOnMineCard()"
     ></app-dashboard-card>

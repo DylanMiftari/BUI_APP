@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class DashboardTemplateComponent {
   @Input() companiesCount: number = 0;
   @Input() minesCount: number = 1;
+  @Input() totalResources: number = 0;
 
   constructor(private router: Router) {}
 
