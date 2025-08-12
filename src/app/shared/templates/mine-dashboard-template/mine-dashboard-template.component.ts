@@ -8,6 +8,7 @@ import { DataWithTextComponent } from '../../moleculs/data-with-text/data-with-t
 import { CardContainerComponent } from "../../atoms/card-container/card-container.component";
 import { MineCardComponent } from "../../organisms/mine-card/mine-card.component";
 import { Mine } from '../../../features/general/models/mine.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mine-dashboard-template',
@@ -26,4 +27,10 @@ export class MineDashboardTemplateComponent {
   @Input() resourceSum: number = 0;
   @Input() totalHourlyIncome: number = 0;
   @Input() mines!: Mine[];
+
+  constructor(private route: Router) {}
+
+  navigateToMine(mineId: number) {
+    this.route.navigate(["/mine", mineId])
+  }
 }

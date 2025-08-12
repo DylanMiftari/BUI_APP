@@ -15,6 +15,10 @@ export class MineService {
     return this.http.get<Mine[]>(`${this.baseUrl}?with=hourlyIncome`);
   }
 
+  getMine(id: number) {
+    return this.http.get<Mine>(`${this.baseUrl}/${id}?with=hourlyIncome`);
+  }
+
   getStatus(mine: Mine) {
     return mine.resource ? "Active" : "Inactive";
   }

@@ -1,7 +1,10 @@
 <div
-    [class]="{'bordered': bordered, 'glass-container': glassCard, 'interactable': interactable, 'dark-glass-container': (glassCard && darkGlassCard)}"
+    [class]="{'bordered': bordered, 'glass-container': glassCard, 'interactable': interactable, 
+    'dark-glass-container': (glassCard && darkGlassCard), 'colored-glass': coloredGlass}"
     [style.padding]="paddingPx+'px'"
     [style.align-items]="alignItems"
+    [style.margin]="marginYPx+'px '+marginXPx+'px'"
+    [style.gap]="gapPx+'px'"
     (click)="clickOnCard()"
 >
     <ng-content></ng-content>

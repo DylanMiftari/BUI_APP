@@ -25,6 +25,6 @@
 
 <app-card-container>
     @for (mine of mines; track $index) {
-        <app-mine-card [mine]="mine"></app-mine-card>
+        <app-mine-card [mine]="mine" (click)="navigateToMine(mine.id)"></app-mine-card>
     }
 </app-card-container>

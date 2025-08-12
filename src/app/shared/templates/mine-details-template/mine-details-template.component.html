@@ -1,0 +1,27 @@
+<app-card color="black" [glassCard]="true" [interactable]="false">
+    <app-row alignItems="center" [gapPx]="35">
+        <app-icon icon="⛏️" [fontSize]="3"></app-icon>
+        <div>
+            <app-title text="Mine 6" color="white"></app-title>
+            <app-level-pin [level]="3" ></app-level-pin>
+            <app-status-indicator text="Active" textColor="white"></app-status-indicator>
+            <app-row [marginPx]="15" [gapPx]="35">
+                <app-data-with-text [data]="160" text="Efficiency" [dataIsNumber]="true" unit="€/h" color="black" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+                <app-data-with-text [data]="4" text="Quantity" [dataIsNumber]="true" unit="kg" color="black" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+            </app-row>
+        </div>
+    </app-row>
+</app-card>
+
+<app-card [bordered]="false" [interactable]="false" [glassCard]="true" [paddingPx]="25">
+    <app-subtitle text="Mining Iron" color="white"></app-subtitle>
+    <app-simple-text text="1h 30m remaining" [isLight]="true"></app-simple-text>
+    <app-progress-bar></app-progress-bar>
+</app-card>
+
+<app-card [bordered]="false" [interactable]="false" [glassCard]="true" [paddingPx]="25" alignItems="center" [gapPx]="10">
+    <app-icon icon="⬆️" [fontSize]="3"></app-icon>
+    <app-subtitle text="Upgrade Mine" color="white"></app-subtitle>
+    <app-simple-text text="Unlock new resources" [isLight]="true"></app-simple-text>
+    <app-button label="Upgrade to Level 4 for 50 000€" color="black"></app-button>
+</app-card>
