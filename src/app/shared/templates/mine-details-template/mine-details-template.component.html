@@ -14,7 +14,7 @@
 </app-card>
 
 <app-card [bordered]="false" [interactable]="false" [glassCard]="true" [paddingPx]="25">
-    <app-subtitle [text]="'Mining '+mine.resource!.name" color="white"></app-subtitle>
+    <app-subtitle-with-icon [subtitle]="'Mining '+mine.resource!.name" [icon]="emojiResource(mine.resource!.id)" color="white" [inRow]="true"></app-subtitle-with-icon>
     <app-simple-text [text]="getLeftTimeText()+' remaining'" [isLight]="true"></app-simple-text>
     <app-progress-bar [value]="mine.resource!.timeToMine - mineService.getMinuteLeft(mine)" [maxValue]="mine.resource!.timeToMine"></app-progress-bar>
     @if (mineService.getMinuteLeft(mine) <= 0) {

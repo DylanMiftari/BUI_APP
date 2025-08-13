@@ -3,7 +3,8 @@ app-level-pin {
     margin: 15px 0;
 }
 app-progress-bar {
-    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-top: 5px;
 }
 app-button {
     width: -webkit-fill-available;
