@@ -1,3 +1,6 @@
+:host {
+    width: -webkit-fill-available;
+}
 div {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(var(--card-base-size), 1fr));

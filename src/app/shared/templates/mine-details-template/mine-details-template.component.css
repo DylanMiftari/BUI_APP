@@ -5,3 +5,10 @@ app-level-pin {
 app-progress-bar {
     margin-top: 15px;
 }
+app-button {
+    width: -webkit-fill-available;
+    margin: 10px 30px;
+}
+.collect-button {
+    margin: 20px 50px;
+}

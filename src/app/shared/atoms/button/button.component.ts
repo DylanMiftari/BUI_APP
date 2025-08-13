@@ -18,6 +18,8 @@ export class ButtonComponent {
   @Input() color: ThemeColor = "green";
   @Input() isOutlined: boolean = false;
   @Input() type: "submit" | "button" = "button";
+  @Input() paddingXPx: number = 32;
+  @Input() paddingYPx: number = 16;
   @Output() clicked = new EventEmitter<void>();
 
   constructor(public themeColorService: ThemeColorService) {}

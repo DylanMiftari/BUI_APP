@@ -1,3 +1,4 @@
+import { MineLevel } from "./mineLevel.model";
 import { Resource } from "./resource.model";
 
 export interface Mine {
@@ -5,5 +6,6 @@ export interface Mine {
     level: number,
     startedAt: Date | null,
     resource: Resource | null,
-    hourlyIncome: number | null
+    hourlyIncome: number | null,
+    mineLevel: MineLevel | null,
 }
