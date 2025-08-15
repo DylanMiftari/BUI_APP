@@ -1,5 +1,6 @@
 @if (errorMessage) {
     <app-page-error-template [text]="errorMessage"></app-page-error-template>
 } @else if(mine) {
-    <app-mine-details-template [mine]="mine"></app-mine-details-template>
+    <app-mine-details-template [mine]="mine" [collectError]="collectError" [upgradeError]="upgradeError"
+    (collectResources)="collectMine()" (upgradeMine)="upgradeMine()" (startMining)="startMine($event)"></app-mine-details-template>
 }

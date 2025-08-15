@@ -9,4 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ErrorTextComponent {
   @Input() text!: string;
+  @Input() fontSizePx: number = 16
+  @Input() textAlign: string = "left";
 }

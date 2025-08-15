@@ -1,4 +1,8 @@
-p {
-    text-align: center;
-    color: rgb(165, 21, 21);
+:host {
+    display: block;
+    width: 100%;
+    p {
+        text-align: center;
+        color: rgb(165, 21, 21);
+    }
 }

@@ -37,4 +37,18 @@ export class MineService {
     let spendMinutes = Math.round(spentMs / (1000 * 60));
     return mine.resource!.timeToMine - spendMinutes;
   }
+
+  collectMine(mineId: number) {
+    return this.http.patch(`${this.baseUrl}/${mineId}/collect`, {});
+  }
+
+  upgradeMine(mineId: number) {
+    return this.http.patch(`${this.baseUrl}/${mineId}/upgrade`, {});
+  }
+
+  startMine(mineId: number, resourceId: number) {
+    return this.http.patch(`${this.baseUrl}/${mineId}/process`, {
+      resource_id: resourceId
+    });
+  }
 }

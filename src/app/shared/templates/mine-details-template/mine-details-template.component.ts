@@ -18,16 +18,19 @@ import { resourceConfig } from '../../../core/config/resource.config';
 import { Mine } from '../../../features/general/models/mine.model';
 import { MineService } from '../../../features/general/services/mine.service';
 import { mineConfig } from '../../../core/config/mine.config';
+import { ErrorTextComponent } from "../../atoms/error-text/error-text.component";
 
 @Component({
   selector: 'app-mine-details-template',
   standalone: true,
-  imports: [CardComponent, RowComponent, IconComponent, TitleComponent, LevelPinComponent, StatusIndicatorComponent, DataWithTextComponent, SubtitleComponent, SimpleTextComponent, ProgressBarComponent, ButtonComponent, CardContainerComponent, SubtitleWithIconComponent],
+  imports: [CardComponent, RowComponent, IconComponent, TitleComponent, LevelPinComponent, StatusIndicatorComponent, DataWithTextComponent, SubtitleComponent, SimpleTextComponent, ProgressBarComponent, ButtonComponent, CardContainerComponent, SubtitleWithIconComponent, ErrorTextComponent],
   templateUrl: './mine-details-template.component.html',
   styleUrl: './mine-details-template.component.css'
 })
 export class MineDetailsTemplateComponent implements OnInit {
   @Input() mine!: Mine;
+  @Input() collectError: string = "";
+  @Input() upgradeError: string = "";
   resources: Resource[] | null = null;
   mineConfig = mineConfig;
 

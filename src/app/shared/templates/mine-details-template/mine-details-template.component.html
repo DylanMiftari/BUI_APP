@@ -5,22 +5,27 @@
             <app-title [text]="'Mine '+mine.id" color="white"></app-title>
             <app-level-pin [level]="mine.level" ></app-level-pin>
             <app-status-indicator [text]="mineService.getStatus(mine)" textColor="white" [color]="mineService.getStatusColor(mine)"></app-status-indicator>
-            <app-row [marginPx]="15" [gapPx]="35">
-                <app-data-with-text [data]="mine.hourlyIncome" text="Efficiency" [dataIsNumber]="true" unit="€/h" color="black" [lightText]="true" dataTextAlign="center"></app-data-with-text>
-                <app-data-with-text [data]="mine.resource?.mineQuantity" text="Quantity" [dataIsNumber]="true" unit="kg" color="black" [lightText]="true" dataTextAlign="center"></app-data-with-text>
-            </app-row>
+            @if (mine.resource) {
+                <app-row [marginPx]="15" [gapPx]="35">
+                    <app-data-with-text [data]="mine.hourlyIncome" text="Efficiency" [dataIsNumber]="true" unit="€/h" color="black" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+                    <app-data-with-text [data]="mine.resource!.mineQuantity" text="Quantity" [dataIsNumber]="true" unit="kg" color="black" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+                </app-row>
+            }
         </div>
     </app-row>
 </app-card>
 
-<app-card [bordered]="false" [interactable]="false" [glassCard]="true" [paddingPx]="25">
-    <app-subtitle-with-icon [subtitle]="'Mining '+mine.resource!.name" [icon]="emojiResource(mine.resource!.id)" color="white" [inRow]="true"></app-subtitle-with-icon>
-    <app-simple-text [text]="getLeftTimeText()+' remaining'" [isLight]="true"></app-simple-text>
-    <app-progress-bar [value]="mine.resource!.timeToMine - mineService.getMinuteLeft(mine)" [maxValue]="mine.resource!.timeToMine"></app-progress-bar>
-    @if (mineService.getMinuteLeft(mine) <= 0) {
-        <app-button label="Collect Resources" class="collect-button" (clicked)="sendCollectResource()"></app-button>
-    }
-</app-card>
+@if (mine.resource) {
+    <app-card [bordered]="false" [interactable]="false" [glassCard]="true" [paddingPx]="25">
+        <app-subtitle-with-icon [subtitle]="'Mining '+mine.resource!.name" [icon]="emojiResource(mine.resource!.id)" color="white" [inRow]="true"></app-subtitle-with-icon>
+        <app-simple-text [text]="getLeftTimeText()+' remaining'" [isLight]="true"></app-simple-text>
+        <app-progress-bar [value]="mine.resource!.timeToMine - mineService.getMinuteLeft(mine)" [maxValue]="mine.resource!.timeToMine"></app-progress-bar>
+        @if (mineService.getMinuteLeft(mine) <= 0) {
+            <app-button label="Collect Resources" class="collect-button" (clicked)="sendCollectResource()"></app-button>
+        }
+        <app-error-text [text]="collectError" textAlign="center" [fontSizePx]="22"></app-error-text>
+    </app-card>
+}
 
 @if (mine.level !== mineConfig.maxMineLevel) {
     <app-card [bordered]="false" [interactable]="false" [glassCard]="true" [paddingPx]="25" alignItems="center" [gapPx]="10">
@@ -28,6 +33,7 @@
         <app-subtitle text="Upgrade Mine" color="white"></app-subtitle>
         <app-simple-text text="Unlock new resources" [isLight]="true"></app-simple-text>
         <app-button [label]="'Upgrade to Level '+(mine.mineLevel!.level+1)+' for '+mine.mineLevel!.priceForNextLevel.toLocaleString()+'€'" color="black" (clicked)="sendUpgradeMine()"></app-button>
+        <app-error-text [text]="upgradeError" textAlign="center" [fontSizePx]="22"></app-error-text>
     </app-card>
 }
 
