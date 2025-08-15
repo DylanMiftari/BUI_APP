@@ -10,7 +10,7 @@ import { ThemeColor } from '../../../core/themeColor/theme-color-type';
   styleUrl: './card.component.css',
   host: {
     '[style.--gradient]': '"var("+[this.colorService.cssVarFromColor(color)]+")"',
-    '[style.--glass-color]': 'this.colorService.glassColor(color)'
+    '[style.--glass-color]': 'this.colorService.glassColor(glassColor)'
   }
 })
 export class CardComponent {
@@ -25,9 +25,10 @@ export class CardComponent {
   @Output() clicked = new EventEmitter<void>();
   @Input() alignItems: string = "flex-start";
   @Input() interactable: boolean = true;
-  @Input() coloredGlass: boolean = false
+  @Input() glassColor: string | null = null;
 
-  constructor(protected colorService: ThemeColorService) {}
+  constructor(protected colorService: ThemeColorService) {
+  }
 
   clickOnCard() {
     this.clicked.emit();

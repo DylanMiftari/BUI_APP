@@ -15,6 +15,7 @@ import { DataUserService } from '../../../../core/services/data-user.service';
 export class MineDashboardPageComponent implements OnInit {
   mines: Mine[] | undefined;
   user!: User;
+  buyError: string = "";
 
   constructor(private mineService: MineService, private userService: DataUserService) {}
   
@@ -37,6 +38,17 @@ export class MineDashboardPageComponent implements OnInit {
     this.mineService.getMines().subscribe({
       next: (mines) => {
         this.mines = mines;
+      }
+    });
+  }
+
+  buyNewMine() {
+    this.mineService.buyNewMine().subscribe({
+      next: () => {
+        window.location.reload();
+      },
+      error: err => {
+        this.buyError = err.error.message;
       }
     });
   }

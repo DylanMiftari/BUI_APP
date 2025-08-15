@@ -1,6 +1,6 @@
 <div
     [class]="{'bordered': bordered, 'glass-container': glassCard, 'interactable': interactable, 
-    'dark-glass-container': (glassCard && darkGlassCard), 'colored-glass': coloredGlass}"
+    'dark-glass-container': (glassCard && darkGlassCard), 'colored-glass': glassColor !== null}"
     [style.padding]="paddingPx+'px'"
     [style.align-items]="alignItems"
     [style.margin]="marginYPx+'px '+marginXPx+'px'"

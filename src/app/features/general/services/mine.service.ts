@@ -51,4 +51,8 @@ export class MineService {
       resource_id: resourceId
     });
   }
+
+  buyNewMine() {
+    return this.http.post(`${this.baseUrl}/buy`, {});
+  }
 }

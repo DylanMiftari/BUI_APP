@@ -27,4 +27,13 @@
     @for (mine of mines; track $index) {
         <app-mine-card [mine]="mine" (click)="navigateToMine(mine.id)"></app-mine-card>
     }
+    @if (mines.length < mineConfig.maxNbMine) {
+        <app-card [glassCard]="true" color="black" glassColor="green" alignItems="center" [paddingPx]="25" [gapPx]="10" (clicked)="buyNewMine()">
+            <app-icon icon="➕" [fontSize]="5"></app-icon>
+            <app-subtitle text="Buy New Mine" color="white"></app-subtitle>
+            <app-subtitle [text]="mineConfig.priceForNewMine[mines.length+1].toLocaleString()+'€'" color="green"></app-subtitle>
+            <app-simple-text text="Expand your mining operations with a new extraction site" [isLight]="true" textAlign="center"></app-simple-text>
+            <app-error-text [text]="buyError" textAlign="center" [fontSizePx]="20"></app-error-text>
+        </app-card>
+    }
 </app-card-container>

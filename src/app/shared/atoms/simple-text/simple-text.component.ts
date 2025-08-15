@@ -15,6 +15,7 @@ export class SimpleTextComponent {
   @Input() isLight: boolean = false;
   @Input() color: ThemeColor | null = null;
   @Input() bold: boolean = false;
+  @Input() textAlign: string = "left";
 
   constructor(public colorService: ThemeColorService) {}
 }
