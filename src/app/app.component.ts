@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { DataUserService } from './core/services/data-user.service';
 import { User } from './core/models/user.model';
+import { HeaderReturnButtonService } from './core/services/header-return-button.service';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,10 @@ export class AppComponent implements OnInit {
 
   background: string = "";
   user$ = this.userService.user$;
+  text$ = this.returnButtonService.text$;
+  link$ = this.returnButtonService.link$;
 
-  constructor(private router: Router, private userService: DataUserService) {
+  constructor(private router: Router, private userService: DataUserService, private returnButtonService: HeaderReturnButtonService) {
     
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

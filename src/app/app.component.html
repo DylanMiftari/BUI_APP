@@ -3,6 +3,12 @@
     <header>
         <h1>🌳 BUI</h1>
 
+        @if(text$ | async; as text) {
+            @if (link$ | async; as link) {
+                <button [routerLink]="[link]" class="glass-container">{{ text }}</button>
+            }
+        }
+
         <div *ngIf="user$ | async as user">
             <h3>{{ user.pseudo }}</h3>
             <h3 class="glass-container">💰 {{ user.userMoney.toLocaleString() }}€</h3>

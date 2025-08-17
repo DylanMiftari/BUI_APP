@@ -4,6 +4,7 @@ import { DataUserService } from '../../../../core/services/data-user.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { DashboardTemplateComponent } from '../../../../shared/templates/dashboard-template/dashboard-template.component';
+import { HeaderReturnButtonService } from '../../../../core/services/header-return-button.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -15,8 +16,9 @@ import { DashboardTemplateComponent } from '../../../../shared/templates/dashboa
 export class DashboardPageComponent {
   user!: User;
 
-  constructor(private dataUserService: DataUserService) {
+  constructor(private dataUserService: DataUserService, private returnButtonService: HeaderReturnButtonService) {
     this.user = this.dataUserService.getUser();
+    returnButtonService.deleteButton();
   }
 
 }

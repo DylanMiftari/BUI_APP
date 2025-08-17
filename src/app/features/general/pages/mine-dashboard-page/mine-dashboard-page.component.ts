@@ -4,6 +4,7 @@ import { MineService } from '../../services/mine.service';
 import { Mine } from '../../models/mine.model';
 import { User } from '../../../../core/models/user.model';
 import { DataUserService } from '../../../../core/services/data-user.service';
+import { HeaderReturnButtonService } from '../../../../core/services/header-return-button.service';
 
 @Component({
   selector: 'app-mine-dashboard-page',
@@ -17,7 +18,9 @@ export class MineDashboardPageComponent implements OnInit {
   user!: User;
   buyError: string = "";
 
-  constructor(private mineService: MineService, private userService: DataUserService) {}
+  constructor(private mineService: MineService, private userService: DataUserService, private returnButtonService: HeaderReturnButtonService) {
+    returnButtonService.updateButton("🏠 Back to Dashboard", "/");
+  }
   
   get activeMinesCount(): number {
     if(this.mines) {

@@ -5,6 +5,7 @@ import { Mine } from '../../models/mine.model';
 import { PageErrorTemplateComponent } from '../../../../shared/templates/page-error-template/page-error-template.component';
 import { MineDetailsTemplateComponent } from '../../../../shared/templates/mine-details-template/mine-details-template.component';
 import { DataUserService } from '../../../../core/services/data-user.service';
+import { HeaderReturnButtonService } from '../../../../core/services/header-return-button.service';
 
 @Component({
   selector: 'app-mine-details-page',
@@ -20,8 +21,10 @@ export class MineDetailsPageComponent implements OnInit {
   collectError: string = "";
   upgradeError: string = "";
 
-  constructor(private route: ActivatedRoute, protected mineSerivce: MineService, protected userService: DataUserService) {
-    
+  constructor(private route: ActivatedRoute, protected mineSerivce: MineService, protected userService: DataUserService, 
+    private returnButtonService: HeaderReturnButtonService
+  ) {
+    returnButtonService.updateButton("⛏️ Back to Mines", "/mine");
   }
 
   ngOnInit(): void {
