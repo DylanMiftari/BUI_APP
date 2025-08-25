@@ -17,10 +17,15 @@ export class DashboardTemplateComponent {
   @Input() companiesCount: number = 0;
   @Input() minesCount: number = 1;
   @Input() totalResources: number = 0;
+  @Input() cityName: string = "";
 
   constructor(private router: Router) {}
 
   public clickOnMineCard() {
     this.router.navigate(["/mine"]);
+  }
+
+  public clickOnCityCard() {
+    this.router.navigate(["/city"]);
   }
 }

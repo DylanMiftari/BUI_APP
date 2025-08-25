@@ -4,5 +4,6 @@ export interface User {
   userMoney: number;
   companiesCount: number | null;
   minesCount: number | null;
-  resourceSum: number | null
+  resourceSum: number | null;
+  cityName: string | null;
 }

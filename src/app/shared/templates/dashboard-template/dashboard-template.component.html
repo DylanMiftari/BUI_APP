@@ -30,9 +30,9 @@
         cardTitle="My City"
         text="Explore your current city, travel to new locations, and discover business opportunities."
         [datas]="[
-                {data: 'Paris', text: 'Current City', unit: '', dataIsNumber: false},
-                {data: 'Tier 4', text: 'City Level', unit: '', dataIsNumber: false}
+                {data: cityName, text: 'Current City', unit: '', dataIsNumber: false},
             ]"
+        (clicked)="clickOnCityCard()"
     ></app-dashboard-card>
 
     <app-dashboard-card

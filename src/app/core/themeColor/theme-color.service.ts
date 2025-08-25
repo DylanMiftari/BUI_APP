@@ -12,6 +12,8 @@ export class ThemeColorService {
     switch(color) {
       case "black": 
         return "--yellow-gradient";
+      case "purple":
+        return "--purple-gradient";
       default:
         return "--green-gradiant";
     }
@@ -21,6 +23,8 @@ export class ThemeColorService {
     switch(color) {
       case "black":
         return "rgba(245, 158, 11, 0.3)";
+      case "purple":
+        return "rgba(147, 51, 234, 0.4)";
       default:
         return "rgba(34, 197, 94, 0.3)";
     }
@@ -32,6 +36,8 @@ export class ThemeColorService {
         return "#ffffff";
       case "black":
         return "#f59e0b";
+      case "purple":
+        return "#9333ea";
       default:
         return "#22c55e";
     }
@@ -43,6 +49,24 @@ export class ThemeColorService {
         return "rgba(245, 158, 11, 0.2)"
       default:
         return "rgba(34, 197, 94, 0.15)";
+    }
+  }
+
+  public simpleCardBGColor(color: ThemeColor) {
+    switch(color) {
+      case "purple":
+        return "rgba(147, 51, 234, 0.1)";
+      default:
+        return "white";
+    }
+  }
+
+  public simpleCardBorderColor(color: ThemeColor) {
+    switch(color) {
+      case "purple":
+        return "rgba(147, 51, 234, 0.2)";
+      default:
+        return "white";
     }
   }
 }

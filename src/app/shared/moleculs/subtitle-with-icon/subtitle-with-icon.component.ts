@@ -17,4 +17,5 @@ export class SubtitleWithIconComponent {
   @Input() subtitle!: string;
   @Input() color: string = "black";
   @Input() inRow: boolean = false; 
+  @Input() fontSizeTextPx: number = 24;
 }

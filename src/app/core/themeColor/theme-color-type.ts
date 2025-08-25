@@ -1,1 +1,1 @@
-export type ThemeColor = "green" | "white" | "black";
+export type ThemeColor = "green" | "white" | "black" | "purple";

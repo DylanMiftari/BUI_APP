@@ -7,6 +7,7 @@ import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.co
 import { authGuardChild } from '../../core/guards/auth.guard';
 import { MineDashboardPageComponent } from './pages/mine-dashboard-page/mine-dashboard-page.component';
 import { MineDetailsPageComponent } from './pages/mine-details-page/mine-details-page.component';
+import { CityDashboardPageComponent } from './pages/city-dashboard-page/city-dashboard-page.component';
 
 const routes: Routes = [
   { path: "register", component: RegisterPageComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: "", canActivateChild: [authGuardChild], children: [
     { path: "mine", component: MineDashboardPageComponent },
     { path: "mine/:id", component: MineDetailsPageComponent },
+    { path: "city", component: CityDashboardPageComponent },
     
     { path: "", component: DashboardPageComponent },
   ]}

@@ -1,0 +1,26 @@
+<app-page-title title="My City"></app-page-title>
+
+<app-card color="purple" [interactable]="false" [paddingPx]="20">
+    <app-row justifyContent="space-between" alignItems="center" [gapPx]="10">
+        <app-subtitle-with-icon icon="🏙️" [subtitle]="city.name" [inRow]="true" [fontSizeTextPx]="32"></app-subtitle-with-icon>
+        <app-button color="purple" label="✈️ Travel to Another City"></app-button>
+    </app-row>
+
+    <app-card-container>
+        <app-simple-card color="purple" [paddingPx]="30" align="center">
+            <app-data-with-text [data]="city.country" text="Country" color="purple" [textIsBig]="true" dataTextAlign="center"></app-data-with-text>
+        </app-simple-card>
+        <app-simple-card color="purple" [paddingPx]="30" align="center">
+            <app-data-with-text [data]="'Tier '+city.rank" text="City Tier" color="purple" [textIsBig]="true" dataTextAlign="center"></app-data-with-text>
+        </app-simple-card>
+        <app-simple-card color="purple" [paddingPx]="30" align="center">
+            <app-data-with-text [data]="'Level '+city.maxLevelOfCorp" text="Max Buisness Level" color="purple" [textIsBig]="true" dataTextAlign="center"></app-data-with-text>
+        </app-simple-card>
+        <app-simple-card color="purple" [paddingPx]="30" align="center">
+            <app-data-with-text [data]="city.weeklyTaxes" text="Weekly Taxes" color="purple" [textIsBig]="true" [dataIsNumber]="true" dataTextAlign="center"></app-data-with-text>
+        </app-simple-card>
+        <app-simple-card color="purple" [paddingPx]="30" align="center">
+            <app-data-with-text [data]="city.weeklyCompanyTaxes" text="Weekly Buisness Taxes" color="purple" [textIsBig]="true" [dataIsNumber]="true" dataTextAlign="center"></app-data-with-text>
+        </app-simple-card>
+    </app-card-container>
+</app-card>
