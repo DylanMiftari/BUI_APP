@@ -5,7 +5,7 @@ label {
     margin-bottom: 10px;
 }
 
-input {
+input, select {
     width: calc(100% - 2rem - 4px);
     border-radius: 10px;
     border: solid 2px #e5e7eb;
@@ -16,4 +16,7 @@ input {
         outline: none;
         border: solid 2px var(--outline-color);
     }
+}
+select {
+  width: fit-content;
 }

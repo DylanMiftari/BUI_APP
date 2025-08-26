@@ -1,0 +1,16 @@
+<app-card-container [paddingXPx]="5">
+  @for (company of companies; track $index) {
+    <app-simple-card [color]="color" [interactable]="true">
+      <app-row justifyContent="space-between">
+        <div>
+          <app-simple-text [text]="company.name" [bold]="true" [fontSizePx]="20"></app-simple-text>
+          <app-simple-text [text]="getCompanyEmoji(company) + ' ' + getCompanyTypeLabel(company)" [bold]="true" color="purple"></app-simple-text>
+        </div>
+        <div>
+          <app-level-pin [level]="company.level" color="purple"></app-level-pin>
+          <app-simple-text [text]="'👤 ' + company.owner_name" [bold]="true"></app-simple-text>
+        </div>
+      </app-row>
+    </app-simple-card>
+  }
+</app-card-container>

@@ -1,2 +1,10 @@
 <label [for]="name">{{ label }}</label>
-<input [id]="name" [type]="type" [placeholder]="placeholder" [formControl]="control" [name]="name">
+@if (isSelect) {
+  <select [id]="name" [formControl]="control" [name]="name">
+    @for (option of options; track $index) {
+      <option [value]="option['value']">{{ option["label"] }}</option>
+    }
+  </select>
+} @else {
+  <input [id]="name" [type]="type" [placeholder]="placeholder" [formControl]="control" [name]="name">
+}

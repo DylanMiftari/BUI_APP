@@ -1,0 +1,19 @@
+<form [formGroup]="companyFilterForm" (ngSubmit)="onSubmit()">
+  <app-row [gapPx]="25" alignItems="flex-end" [wrap]="true">
+    <app-input [color]="color" [control]="companyNameControl" label="Filter by Name" placeholder="Search buisness name..."></app-input>
+    <app-input
+      [isSelect]="true" [options]="companyTypes"
+      [color]="color"
+      [control]="companyTypeControl"
+      label="Filter by Type"
+    ></app-input>
+    <app-input
+      [isSelect]="true" [options]="companyLevels"
+      [color]="color"
+      [control]="companyLevelControl"
+      label="Filter by Level"
+    ></app-input>
+
+    <app-button [color]="color" label="🔎 Search" type="submit"></app-button>
+  </app-row>
+</form>

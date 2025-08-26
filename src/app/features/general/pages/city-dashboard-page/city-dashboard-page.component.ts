@@ -3,6 +3,7 @@ import { HeaderReturnButtonService } from '../../../../core/services/header-retu
 import { CityDashboardTemplateComponent } from "../../../../shared/templates/city-dashboard-template/city-dashboard-template.component";
 import { CityService } from '../../services/city.service';
 import { City } from '../../models/city.model';
+import {Company} from "../../models/company.model";
 
 @Component({
   selector: 'app-city-dashboard-page',
@@ -13,6 +14,7 @@ import { City } from '../../models/city.model';
 })
 export class CityDashboardPageComponent implements OnInit {
   city: City | null = null;
+  companies: Company[] = [];
 
   constructor(private returnButtonService: HeaderReturnButtonService, private cityService: CityService) {
     returnButtonService.updateButton("🏠 Back to Dashboard", "/");
@@ -21,6 +23,20 @@ export class CityDashboardPageComponent implements OnInit {
   ngOnInit(): void {
     this.cityService.getCityOfUser().subscribe({
       next: city => this.city = city
+    });
+
+    this.cityService.getCompaniesOfCityOfUser().subscribe({
+      next: data => {
+        this.companies = data.data
+      }
+    });
+  }
+
+  onReceiveCompanyFilter(data: any) {
+    this.cityService.getCompaniesOfCityOfUser(data.companyName, data.companyLevel, data.companyType).subscribe({
+      next: data => {
+        this.companies = data.data
+      }
     });
   }
 

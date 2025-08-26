@@ -1,3 +1,6 @@
 @if (city) {
-    <app-city-dashboard-template [city]="city"></app-city-dashboard-template>
+    <app-city-dashboard-template
+      [city]="city" (sendCompanyFilter)="onReceiveCompanyFilter($event)"
+      [companies]="companies"
+    ></app-city-dashboard-template>
 }

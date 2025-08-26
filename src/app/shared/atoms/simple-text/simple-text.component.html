@@ -1,6 +1,7 @@
-<p 
+<p
 [ngClass]="{'light': isLight}"
 [style.color]="color ? colorService.simpleColor(color) : '#444444'"
 [style.font-weight]="bold ? 'bold' : 'normal'"
-[style.textAlign]="textAlign"
+[style.text-align]="textAlign"
+[style.font-size]="fontSizePx+'px'"
 >{{ text }}</p>
