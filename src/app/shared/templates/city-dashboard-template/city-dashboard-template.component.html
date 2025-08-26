@@ -32,5 +32,8 @@
     <app-company-filter-form color="purple" (submitFilter)="onFilterCompanies($event)"></app-company-filter-form>
   </app-row>
 
-  <app-company-list [companies]="companies" color="purple"></app-company-list>
+  @if(companies) {
+    <app-company-list [companies]="companies.data" color="purple"></app-company-list>
+    <app-page-button [lastPage]="companies.meta.last_page" [currentPage]="companies.meta.current_page" color="purple" (pageUpdated)="onPageChange($event)"></app-page-button>
+  }
 </app-card>

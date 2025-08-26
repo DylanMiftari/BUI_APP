@@ -17,7 +17,7 @@ export class CityService {
     return this.http.get<City>(`${this.baseUrl}/my`);
   }
 
-  getCompaniesOfCityOfUser(companyName: string|null = null, companyLevel: number|null = null, companyType: string|null = null) {
+  getCompaniesOfCityOfUser(companyName: string|null = null, companyLevel: number|null = null, companyType: string|null = null, page: number = 1) {
     let params: HttpParams = new HttpParams();
     if (companyName && companyName != '') {
       params = params.set("name", companyName);
@@ -28,6 +28,7 @@ export class CityService {
     if(companyType && companyType != '') {
       params = params.set("type", companyType);
     }
+    params = params.set("page", page);
     return this.http.get<PaginateData<Company>>(`${this.baseUrl}/my/company`, {
       params: params
     });

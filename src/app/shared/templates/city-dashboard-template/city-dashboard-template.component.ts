@@ -12,22 +12,25 @@ import {InputComponent} from "../../atoms/input/input.component";
 import {CompanyFilterFormComponent} from "../../organisms/company-filter-form/company-filter-form.component";
 import {Company} from "../../../features/general/models/company.model";
 import {CompanyListComponent} from "../../organisms/company-list/company-list.component";
+import {PageButtonComponent} from "../../moleculs/page-button/page-button.component";
+import {PaginateData} from "../../../core/models/paginate-data.model";
 
 @Component({
   selector: 'app-city-dashboard-template',
   standalone: true,
-  imports: [PageTitleComponent, CardComponent, RowComponent, SubtitleWithIconComponent, ButtonComponent, CardContainerComponent, SimpleCardComponent, DataWithTextComponent, InputComponent, CompanyFilterFormComponent, CompanyListComponent],
+  imports: [PageTitleComponent, CardComponent, RowComponent, SubtitleWithIconComponent, ButtonComponent, CardContainerComponent, SimpleCardComponent, DataWithTextComponent, InputComponent, CompanyFilterFormComponent, CompanyListComponent, PageButtonComponent],
   templateUrl: './city-dashboard-template.component.html',
   styleUrl: './city-dashboard-template.component.css'
 })
 export class CityDashboardTemplateComponent {
   @Input() city!: City;
-  @Input() companies: Company[] = [];
+  @Input() companies: PaginateData<Company> | null = null;
   @Output() sendCompanyFilter = new EventEmitter<{
     companyName: string|null,
     companyType: string|null,
     companyLevel: number|null,
   }>();
+  @Output() sendCompanyPage = new EventEmitter<number>();
 
   onFilterCompanies(data: any) {
     this.sendCompanyFilter.emit({
@@ -35,5 +38,9 @@ export class CityDashboardTemplateComponent {
       companyType: data.companyType,
       companyLevel: data.companyLevel,
     });
+  }
+
+  onPageChange(pageNumber: number) {
+    this.sendCompanyPage.emit(pageNumber)
   }
 }

@@ -1,0 +1,12 @@
+:host {
+  width: 100%;
+  div {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    app-simple-text {
+      grid-column-start: 2;
+      align-self: center;
+      justify-self: center;
+    }
+  }
+}

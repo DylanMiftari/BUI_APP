@@ -2,5 +2,6 @@
     <app-city-dashboard-template
       [city]="city" (sendCompanyFilter)="onReceiveCompanyFilter($event)"
       [companies]="companies"
+      (sendCompanyPage)="onReceiveCompanyPage($event)"
     ></app-city-dashboard-template>
 }

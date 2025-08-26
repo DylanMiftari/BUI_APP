@@ -1,0 +1,9 @@
+<div>
+  @if (currentPage != 1) {
+    <app-button label="← Previous" [color]="color" (clicked)="onClickPrev()"></app-button>
+  }
+  <app-simple-text [text]="currentPage + '/' + lastPage"></app-simple-text>
+  @if (currentPage != lastPage) {
+    <app-button label="Next →" [color]="color" (clicked)="onClickNext()"></app-button>
+  }
+</div>
