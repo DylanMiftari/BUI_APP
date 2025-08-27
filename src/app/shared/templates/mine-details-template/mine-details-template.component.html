@@ -7,8 +7,8 @@
             <app-status-indicator [text]="mineService.getStatus(mine)" textColor="white" [color]="mineService.getStatusColor(mine)"></app-status-indicator>
             @if (mine.resource) {
                 <app-row [marginPx]="15" [gapPx]="35">
-                    <app-data-with-text [data]="mine.hourlyIncome" text="Efficiency" [dataIsNumber]="true" unit="€/h" color="black" [lightText]="true" dataTextAlign="center"></app-data-with-text>
-                    <app-data-with-text [data]="mine.resource!.mineQuantity" text="Quantity" [dataIsNumber]="true" unit="kg" color="black" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+                    <app-data-with-text [data]="mine.hourlyIncome" text="Efficiency" [dataIsNumber]="true" unit="€/h" color="yellow" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+                    <app-data-with-text [data]="mine.resource!.mineQuantity" text="Quantity" [dataIsNumber]="true" unit="kg" color="yellow" [lightText]="true" dataTextAlign="center"></app-data-with-text>
                 </app-row>
             }
         </div>
@@ -45,8 +45,8 @@
                 <app-card [interactable]="false" [bordered]="false" [glassCard]="true" [darkGlassCard]="true">
                     <app-subtitle-with-icon [subtitle]="resource.name" [icon]="emojiResource(resource.id)" color="white" [inRow]="true"></app-subtitle-with-icon>
                     <app-row justifyContent="space-around">
-                        <app-data-with-text [data]="resource.timeToMine / 60" unit="h" [dataIsNumber]="true" color="black" text="Mining Time" [lightText]="true" dataTextAlign="center"></app-data-with-text>
-                        <app-data-with-text [data]="resource.mineQuantity" unit="kg" [dataIsNumber]="true" color="black" text="Quantity" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+                        <app-data-with-text [data]="resource.timeToMine / 60" unit="h" [dataIsNumber]="true" color="yellow" text="Mining Time" [lightText]="true" dataTextAlign="center"></app-data-with-text>
+                        <app-data-with-text [data]="resource.mineQuantity" unit="kg" [dataIsNumber]="true" color="yellow" text="Quantity" [lightText]="true" dataTextAlign="center"></app-data-with-text>
                     </app-row>
                     @if (!mine.resource) {
                         <app-button label="Start Mining" [paddingYPx]="5" [paddingXPx]="10" (clicked)="sendStartMining(resource.id)"></app-button>

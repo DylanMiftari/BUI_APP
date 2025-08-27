@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
   defaultBackground: string = "--green-gradiant";
   routeBackground: Record<string, string> = {
     "mine": "--black-gradient",
-    "city": "--purple-gradient"
+    "city": "--purple-gradient",
+    "market": "--brown-gradient",
   };
 
   background: string = "";
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
   link$ = this.returnButtonService.link$;
 
   constructor(private router: Router, private userService: DataUserService, private returnButtonService: HeaderReturnButtonService) {
-    
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const route = this.router.url.split('?')[0];

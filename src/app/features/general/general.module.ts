@@ -8,6 +8,7 @@ import { authGuardChild } from '../../core/guards/auth.guard';
 import { MineDashboardPageComponent } from './pages/mine-dashboard-page/mine-dashboard-page.component';
 import { MineDetailsPageComponent } from './pages/mine-details-page/mine-details-page.component';
 import { CityDashboardPageComponent } from './pages/city-dashboard-page/city-dashboard-page.component';
+import {MarketPageComponent} from "./pages/market-page/market-page.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterPageComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
     { path: "mine", component: MineDashboardPageComponent },
     { path: "mine/:id", component: MineDetailsPageComponent },
     { path: "city", component: CityDashboardPageComponent },
-    
+    { path: "market", component: MarketPageComponent },
+
     { path: "", component: DashboardPageComponent },
   ]}
 ]

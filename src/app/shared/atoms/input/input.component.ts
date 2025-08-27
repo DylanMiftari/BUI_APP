@@ -24,6 +24,8 @@ export class InputComponent {
   @Input() color: ThemeColor = "green";
   @Input() isSelect: boolean = false;
   @Input() options: OptionList | null = null;
+  @Input() min: number | null = null;
+  @Input() max: number | null = null;
 
   constructor(public themeColorService: ThemeColorService) {}
 }

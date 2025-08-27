@@ -10,10 +10,12 @@ export class ThemeColorService {
 
   public cssVarFromColor(color: ThemeColor) {
     switch(color) {
-      case "black": 
+      case "black":
         return "--yellow-gradient";
       case "purple":
         return "--purple-gradient";
+      case "brown":
+        return "--brown-gradient";
       default:
         return "--green-gradiant";
     }
@@ -32,12 +34,16 @@ export class ThemeColorService {
 
   public simpleColor(color: ThemeColor) {
     switch(color) {
-      case "white": 
+      case "white":
         return "#ffffff";
-      case "black":
+      case "yellow":
         return "#f59e0b";
       case "purple":
         return "#9333ea";
+      case "brown":
+        return "#8B4513";
+      case "black":
+        return "#000000";
       default:
         return "#22c55e";
     }
@@ -56,6 +62,8 @@ export class ThemeColorService {
     switch(color) {
       case "purple":
         return "rgba(147, 51, 234, 0.1)";
+      case "brown":
+        return "rgba(139, 69, 19, 0.1)";
       default:
         return "white";
     }
@@ -65,6 +73,8 @@ export class ThemeColorService {
     switch(color) {
       case "purple":
         return "rgba(147, 51, 234, 0.2)";
+      case "brown":
+        return "rgba(139, 69, 19, 0.2)";
       default:
         return "white";
     }

@@ -6,5 +6,8 @@
     }
   </select>
 } @else {
-  <input [id]="name" [type]="type" [placeholder]="placeholder" [formControl]="control" [name]="name">
+  <input
+    [id]="name" [type]="type" [placeholder]="placeholder" [formControl]="control" [name]="name"
+    [attr.max]="max" [attr.min]="min"
+  >
 }

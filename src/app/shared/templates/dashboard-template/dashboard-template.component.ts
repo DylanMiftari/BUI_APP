@@ -28,4 +28,8 @@ export class DashboardTemplateComponent {
   public clickOnCityCard() {
     this.router.navigate(["/city"]);
   }
+
+  public clickOnMarketCard() {
+    this.router.navigate(["/market"]);
+  }
 }

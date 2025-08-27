@@ -50,7 +50,8 @@
         cardTitle="Market"
         text="Trade your raw materials, buy resources, and check current market prices."
         [datas]="[
-                {data: '12', text: 'Materials', unit: '', dataIsNumber: true},
+                {data: totalResources, text: 'Resources', unit: 'kg', dataIsNumber: true},
             ]"
+        (clicked)="clickOnMarketCard()"
     ></app-dashboard-card>
 </app-card-container>

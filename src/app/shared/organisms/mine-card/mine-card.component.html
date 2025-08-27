@@ -10,7 +10,7 @@
     @if(mine.resource) {
         <app-card [glassCard]="true" [darkGlassCard]="true" [bordered]="false" [interactable]="false" class="progress-card">
             <app-row justifyContent="space-between">
-                <app-simple-text [text]="'Minning '+mine.resource.name" color="black" [bold]="true"></app-simple-text>
+                <app-simple-text [text]="'Minning '+mine.resource.name" color="yellow" [bold]="true"></app-simple-text>
                 <app-simple-text [text]="leftTimeString+' left'" [isLight]="true"></app-simple-text>
             </app-row>
             @if(leftTimeMinute > 0) {

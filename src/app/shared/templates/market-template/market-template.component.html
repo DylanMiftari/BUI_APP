@@ -1,0 +1,26 @@
+<app-page-title title="Market"></app-page-title>
+
+<app-row justifyContent="space-evenly" [wrap]="true">
+  <app-card color="brown" [interactable]="false" [paddingPx]="20">
+    <app-subtitle text="📦 My Resources" color="brown"></app-subtitle>
+    <form [formGroup]="resourceForm">
+      <app-card-container>
+        @for (userResource of userResources; track $index) {
+          <app-simple-card color="brown">
+            <app-row alignItems="center" [gapPx]="10">
+              <app-icon [icon]="getEmojiOfResource(userResource.resource)"></app-icon>
+              <app-data-with-text [data]="userResource.resource.name" [text]="userResource.quantity + 'kg available'" color="brown"></app-data-with-text>
+              <app-input [control]="getResourceControl(userResource.resource)" color="brown" type="number" [min]="0" [max]="userResource.quantity"></app-input>
+              <app-simple-text text="kg"></app-simple-text>
+              <app-simple-text [text]="getCurrentSellValue(userResource.resource).toString()" color="brown" [bold]="true"></app-simple-text>
+            </app-row>
+          </app-simple-card>
+        }
+      </app-card-container>
+    </form>
+  </app-card>
+
+  <app-card color="brown" [interactable]="false" [paddingPx]="20">
+    <app-subtitle text="📊 Market Prices" color="brown"></app-subtitle>
+  </app-card>
+</app-row>
