@@ -2,9 +2,15 @@ form, app-card-container {
   overflow-y: scroll;
   max-height: 70vh;
 }
+form {
+  width: -webkit-fill-available;
+}
 .summary-card {
   width: fit-content;
   margin: 0 auto;
+}
+.summary-simple-card {
+  width: -webkit-fill-available;
 }
 
 app-button {

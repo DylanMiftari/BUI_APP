@@ -1,6 +1,6 @@
 <app-page-title title="Market"></app-page-title>
 
-<app-row justifyContent="space-evenly" [wrap]="true">
+<app-card-container>
   <app-card color="brown" [interactable]="false" [paddingPx]="20">
     <app-subtitle text="📦 My Resources" color="brown" textAlign="center"></app-subtitle>
     <form [formGroup]="resourceForm">
@@ -35,14 +35,14 @@
       }
     </app-card-container>
   </app-card>
-</app-row>
+</app-card-container>
 
 
 <app-card color="brown" [interactable]="false" alignItems="center" class="summary-card" [paddingPx]="30">
   <app-subtitle color="brown" text="💰 Sale Summary"></app-subtitle>
   <app-error-text [text]="sellError" textAlign="center" [fontSizePx]="20"></app-error-text>
   <app-button color="brown" [label]="'Sell Selected Resources For : '+getTotalSellValue().toLocaleString()+'€'" (clicked)="clickOnSellResources()"></app-button>
-  <app-simple-card color="brown">
+  <app-simple-card color="brown" class="summary-simple-card">
     <app-subtitle text="Sell Details :" color="brown" [fontSizePx]="16"></app-subtitle>
     @for (userResource of userResources; track $index) {
       @if(resourceForm.value[userResource.resource.id] != 0) {
