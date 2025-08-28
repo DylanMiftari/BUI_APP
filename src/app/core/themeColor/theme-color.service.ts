@@ -27,6 +27,8 @@ export class ThemeColorService {
         return "rgba(245, 158, 11, 0.3)";
       case "purple":
         return "rgba(147, 51, 234, 0.4)";
+      case "brown":
+        return "rgba(139, 69, 19, 0.3)";
       default:
         return "rgba(34, 197, 94, 0.3)";
     }

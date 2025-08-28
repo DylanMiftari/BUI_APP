@@ -1,5 +1,7 @@
 @if (userResources) {
   <app-market-template
     [userResources]="userResources"
+    [sellError]="sellError"
+    (sellResources)="onSellResources($event)"
   ></app-market-template>
 }

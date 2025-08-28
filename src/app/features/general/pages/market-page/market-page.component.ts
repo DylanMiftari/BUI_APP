@@ -15,6 +15,7 @@ import {ResourceService} from "../../services/resource.service";
 })
 export class MarketPageComponent implements OnInit {
   userResources: UserResource[] | null = null;
+  sellError: string = "";
 
   constructor(private returnButtonService: HeaderReturnButtonService, private resourceService: ResourceService) {
     returnButtonService.updateButton("🏠 Back to Dashboard", "/");
@@ -24,6 +25,12 @@ export class MarketPageComponent implements OnInit {
     this.resourceService.getUserResources().subscribe({
       next: resource => this.userResources = resource,
     });
+  }
+  onSellResources(sellData: {resource_id: number, quantity: number}[]) {
+    this.resourceService.sellResources(sellData).subscribe({
+      next: _ => window.location.reload(),
+      error: error => this.sellError = error.error.message,
+    })
   }
 
 }

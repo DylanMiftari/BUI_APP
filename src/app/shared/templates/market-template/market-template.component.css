@@ -1,0 +1,12 @@
+form, app-card-container {
+  overflow-y: scroll;
+  max-height: 70vh;
+}
+.summary-card {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+app-button {
+  margin: 20px;
+}

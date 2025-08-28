@@ -2,17 +2,17 @@
 
 <app-row justifyContent="space-evenly" [wrap]="true">
   <app-card color="brown" [interactable]="false" [paddingPx]="20">
-    <app-subtitle text="📦 My Resources" color="brown"></app-subtitle>
+    <app-subtitle text="📦 My Resources" color="brown" textAlign="center"></app-subtitle>
     <form [formGroup]="resourceForm">
       <app-card-container>
         @for (userResource of userResources; track $index) {
           <app-simple-card color="brown">
-            <app-row alignItems="center" [gapPx]="10">
+            <app-row alignItems="center" [gapPx]="10" justifyContent="space-around">
               <app-icon [icon]="getEmojiOfResource(userResource.resource)"></app-icon>
               <app-data-with-text [data]="userResource.resource.name" [text]="userResource.quantity + 'kg available'" color="brown"></app-data-with-text>
               <app-input [control]="getResourceControl(userResource.resource)" color="brown" type="number" [min]="0" [max]="userResource.quantity"></app-input>
               <app-simple-text text="kg"></app-simple-text>
-              <app-simple-text [text]="getCurrentSellValue(userResource.resource).toString()" color="brown" [bold]="true"></app-simple-text>
+              <app-simple-text [text]="getCurrentSellValue(userResource.resource).toLocaleString() + '€'" color="brown" [bold]="true"></app-simple-text>
             </app-row>
           </app-simple-card>
         }
@@ -21,6 +21,33 @@
   </app-card>
 
   <app-card color="brown" [interactable]="false" [paddingPx]="20">
-    <app-subtitle text="📊 Market Prices" color="brown"></app-subtitle>
+    <app-subtitle text="📊 Market Prices" color="brown" textAlign="center"></app-subtitle>
+
+    <app-card-container>
+      @for (resource of allResources; track resource.id) {
+        <app-simple-card color="brown">
+          <app-row alignItems="center" [gapPx]="10" justifyContent="space-around">
+            <app-icon [icon]="getEmojiOfResource(resource)"></app-icon>
+            <app-simple-text [text]="resource.name" color="brown" [bold]="true" [fontSizePx]="20"></app-simple-text>
+            <app-simple-text [text]="resource.price?.toLocaleString() + '€/0.1kg'" color="brown" [bold]="true"></app-simple-text>
+          </app-row>
+        </app-simple-card>
+      }
+    </app-card-container>
   </app-card>
 </app-row>
+
+
+<app-card color="brown" [interactable]="false" alignItems="center" class="summary-card" [paddingPx]="30">
+  <app-subtitle color="brown" text="💰 Sale Summary"></app-subtitle>
+  <app-error-text [text]="sellError" textAlign="center" [fontSizePx]="20"></app-error-text>
+  <app-button color="brown" [label]="'Sell Selected Resources For : '+getTotalSellValue().toLocaleString()+'€'" (clicked)="clickOnSellResources()"></app-button>
+  <app-simple-card color="brown">
+    <app-subtitle text="Sell Details :" color="brown" [fontSizePx]="16"></app-subtitle>
+    @for (userResource of userResources; track $index) {
+      @if(resourceForm.value[userResource.resource.id] != 0) {
+        <app-simple-text [text]="'- '+resourceForm.value[userResource.resource.id]+'kg of '+userResource.resource.name"></app-simple-text>
+      }
+    }
+  </app-simple-card>
+</app-card>
