@@ -32,4 +32,8 @@ export class DashboardTemplateComponent {
   public clickOnMarketCard() {
     this.router.navigate(["/market"]);
   }
+
+  public clickOnCompanyCard() {
+    this.router.navigate(["/company"]);
+  }
 }

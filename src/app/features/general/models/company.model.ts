@@ -5,4 +5,5 @@ export interface Company {
   activated: boolean;
   level: number;
   owner_name: string | null;
+  moneyInSafe: number | null;
 }

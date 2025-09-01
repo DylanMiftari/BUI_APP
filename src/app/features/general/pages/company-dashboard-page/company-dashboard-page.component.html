@@ -1,0 +1,7 @@
+@if (companies) {
+  <app-company-dashboard-template
+    [companies]="companies"
+    [upgradeError]="upgradeError"
+    (upgradeCompany)="onUpgradeCompany($event)"
+  ></app-company-dashboard-template>
+}

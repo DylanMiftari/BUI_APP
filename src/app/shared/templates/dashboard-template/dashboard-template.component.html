@@ -10,8 +10,8 @@
         text="Manage your companies, view profits, and expand your business empire across different cities."
         [datas]="[
                 {data: companiesCount, text: 'Active', unit: '', dataIsNumber: true},
-                {data: 2450, text: 'Weekly Income', unit: '€', dataIsNumber: true}
             ]"
+        (clicked)="clickOnCompanyCard()"
     ></app-dashboard-card>
 
     <app-dashboard-card

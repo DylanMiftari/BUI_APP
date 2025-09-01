@@ -1,0 +1,41 @@
+
+<app-page-title title="My Businesses"></app-page-title>
+
+<app-row [marginPx]="25" justifyContent="space-between" alignItems="center" [style.padding]="'0 10px'">
+  <app-simple-text [text]="companies.length+'/'+companyConfig['maxCompanies']+' Businesses'" [isLight]="true" [fontSizePx]="20"></app-simple-text>
+  @if (companies.length !== companyConfig.maxCompanies) {
+    <app-button label="➕ Create New Buisness"></app-button>
+  }
+</app-row>
+
+<app-card-container>
+  @for (company of companies; track $index) {
+    <app-card color="blue" [interactable]="false" [gapPx]="10" [paddingPx]="20">
+      <app-company-type-icon [companyType]="company.type" [iconSzie]="3"></app-company-type-icon>
+
+      <app-subtitle [text]="company.name" [fontSizePx]="24"></app-subtitle>
+      <app-simple-text [text]="companyConfig['type'][company.type]['label']"></app-simple-text>
+      <app-level-pin [level]="company.level" color="blue"></app-level-pin>
+
+      @if (upgradeError[company.id]) {
+        <app-error-text [text]="upgradeError[company.id]" textAlign="center"></app-error-text>
+      }
+
+      <app-seperator-with-text></app-seperator-with-text>
+
+      <app-row justifyContent="center">
+        <app-data-with-text [data]="company.moneyInSafe!.toLocaleString()" unit="€" text="Money in Safe" color="blue" dataTextAlign="center"></app-data-with-text>
+      </app-row>
+
+      <app-row justifyContent="space-around">
+        <app-button label="Manage" color="blue"></app-button>
+        @if (company.level !== companyConfig.maxCompanyLevel) {
+          <app-button
+            [label]="'Upgrade for '+companyConfig.costToUpgrade[company.level+1].toLocaleString()" color="purple"
+            (clicked)="onClickOnUpgrade(company)"
+          ></app-button>
+        }
+      </app-row>
+    </app-card>
+  }
+</app-card-container>

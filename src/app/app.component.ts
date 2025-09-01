@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     "mine": "--black-gradient",
     "city": "--purple-gradient",
     "market": "--brown-gradient",
+    "company": "--blue-gradient",
   };
 
   background: string = "";

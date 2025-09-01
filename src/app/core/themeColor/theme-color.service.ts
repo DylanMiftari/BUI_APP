@@ -16,6 +16,8 @@ export class ThemeColorService {
         return "--purple-gradient";
       case "brown":
         return "--brown-gradient";
+      case "blue":
+        return "--blue-gradient";
       default:
         return "--green-gradiant";
     }
@@ -29,6 +31,8 @@ export class ThemeColorService {
         return "rgba(147, 51, 234, 0.4)";
       case "brown":
         return "rgba(139, 69, 19, 0.3)";
+      case "blue":
+        return "rgba(59, 130, 246, 0.4)";
       default:
         return "rgba(34, 197, 94, 0.3)";
     }
@@ -46,6 +50,8 @@ export class ThemeColorService {
         return "#8B4513";
       case "black":
         return "#000000";
+      case "blue":
+        return "#1e3a8a";
       default:
         return "#22c55e";
     }
