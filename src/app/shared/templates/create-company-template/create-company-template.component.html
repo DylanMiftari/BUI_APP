@@ -1,0 +1,14 @@
+
+<app-page-title title="Create Company"></app-page-title>
+
+<div class="white-box">
+  <app-create-company-form color="blue" (createCompany)="receiveCompany($event)"></app-create-company-form>
+
+  <app-error-text [text]="createCompanyError"></app-error-text>
+
+  <app-simple-text text="* By default, after creating your company, it will
+  be disabled. This means no one will be able to use your company’s services. You will
+  have time to configure your company as you wish. Once you’re done, you can activate
+  your company to start receiving your first clients."
+  [paddingXPx]="25" textAlign="justify" [opacity]="0.7" [marginYPx]="16"></app-simple-text>
+</div>

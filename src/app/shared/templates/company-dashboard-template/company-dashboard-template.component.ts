@@ -13,6 +13,7 @@ import {LevelPinComponent} from "../../atoms/level-pin/level-pin.component";
 import {SeperatorWithTextComponent} from "../../atoms/seperator-with-text/seperator-with-text.component";
 import {DataWithTextComponent} from "../../moleculs/data-with-text/data-with-text.component";
 import {ErrorTextComponent} from "../../atoms/error-text/error-text.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-company-dashboard-template',
@@ -29,7 +30,8 @@ import {ErrorTextComponent} from "../../atoms/error-text/error-text.component";
     LevelPinComponent,
     SeperatorWithTextComponent,
     DataWithTextComponent,
-    ErrorTextComponent
+    ErrorTextComponent,
+    RouterLink
   ],
   templateUrl: './company-dashboard-template.component.html',
   styleUrl: './company-dashboard-template.component.css'

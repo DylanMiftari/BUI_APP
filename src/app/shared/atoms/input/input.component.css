@@ -17,6 +17,9 @@ input, select {
         border: solid 2px var(--outline-color);
     }
 }
-select {
+select.fit-content {
   width: fit-content;
+}
+select:not(.fit-content) {
+  width: 100%;
 }

@@ -10,6 +10,7 @@ import { MineDetailsPageComponent } from './pages/mine-details-page/mine-details
 import { CityDashboardPageComponent } from './pages/city-dashboard-page/city-dashboard-page.component';
 import {MarketPageComponent} from "./pages/market-page/market-page.component";
 import {CompanyDashboardPageComponent} from "./pages/company-dashboard-page/company-dashboard-page.component";
+import {CreateCompanyPageComponent} from "./pages/create-company-page/create-company-page.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterPageComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: "city", component: CityDashboardPageComponent },
     { path: "market", component: MarketPageComponent },
     { path: "company", component: CompanyDashboardPageComponent },
+    { path: "company/create", component: CreateCompanyPageComponent },
 
     { path: "", component: DashboardPageComponent },
   ]}

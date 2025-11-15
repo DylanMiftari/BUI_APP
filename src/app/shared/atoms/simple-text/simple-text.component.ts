@@ -17,6 +17,9 @@ export class SimpleTextComponent {
   @Input() bold: boolean = false;
   @Input() textAlign: string = "left";
   @Input() fontSizePx: number = 16;
+  @Input() paddingXPx: number = 0;
+  @Input() marginYPx: number = 0;
+  @Input() opacity: number = 1;
 
   constructor(public colorService: ThemeColorService) {}
 }

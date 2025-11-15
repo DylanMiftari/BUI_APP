@@ -2,6 +2,7 @@
 export const companyConfig = {
   "maxCompanies": 3,
   "maxCompanyLevel": 6,
+  "creationCost": 2500,
   "costToUpgrade": {
     2: 20_000,
     3: 50_000,

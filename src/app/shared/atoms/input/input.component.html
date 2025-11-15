@@ -1,6 +1,6 @@
 <label [for]="name">{{ label }}</label>
 @if (isSelect) {
-  <select [id]="name" [formControl]="control" [name]="name">
+  <select [id]="name" [formControl]="control" [name]="name" [ngClass]="{'fit-content': fitContentSelect}">
     @for (option of options; track $index) {
       <option [value]="option['value']">{{ option["label"] }}</option>
     }

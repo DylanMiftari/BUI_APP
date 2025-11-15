@@ -18,4 +18,11 @@ export class CompanyService {
   upgradeCompany(companyId: number) {
     return this.http.patch(`${this.baseUri}/${companyId}/upgrade`, {});
   }
+
+  createCompany(companyName: string, companyType: string) {
+    return this.http.post(`${this.baseUri}`, {
+      "name": companyName,
+      "type": companyType,
+    });
+  }
 }

@@ -26,6 +26,7 @@ export class InputComponent {
   @Input() options: OptionList | null = null;
   @Input() min: number | null = null;
   @Input() max: number | null = null;
+  @Input() fitContentSelect: boolean = true;
 
   constructor(public themeColorService: ThemeColorService) {}
 }
