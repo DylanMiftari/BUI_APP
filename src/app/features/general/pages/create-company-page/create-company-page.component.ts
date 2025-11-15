@@ -18,7 +18,7 @@ export class CreateCompanyPageComponent {
   errorOnCreate: string = "";
 
   constructor(private headerButton: HeaderReturnButtonService, private companyService: CompanyService) {
-    this.headerButton.updateButton("🏢 Back to company", "/company");
+    this.headerButton.updateButton("🏢 Back to Businesses", "/company");
   }
 
   createCompany(data: any) {

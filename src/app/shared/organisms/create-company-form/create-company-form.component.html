@@ -1,7 +1,7 @@
 <form (ngSubmit)="companySubmit()">
   <app-create-company-fields [form]="createCompanyForm" [color]="color"></app-create-company-fields>
   <app-button
-    [label]="'Create company for '+companyConfig.creationCost.toLocaleString()+' 💰'"
+    [label]="'Create business for '+companyConfig.creationCost.toLocaleString()+' 💰'"
     type="submit"
   ></app-button>
 </form>
