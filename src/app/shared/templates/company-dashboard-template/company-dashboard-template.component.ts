@@ -13,7 +13,9 @@ import {LevelPinComponent} from "../../atoms/level-pin/level-pin.component";
 import {SeperatorWithTextComponent} from "../../atoms/seperator-with-text/seperator-with-text.component";
 import {DataWithTextComponent} from "../../moleculs/data-with-text/data-with-text.component";
 import {ErrorTextComponent} from "../../atoms/error-text/error-text.component";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
+import {StatusIndicatorComponent} from "../../moleculs/status-indicator/status-indicator.component";
+import {CompanyService} from "../../../features/general/services/company.service";
 
 @Component({
   selector: 'app-company-dashboard-template',
@@ -31,7 +33,8 @@ import {RouterLink} from "@angular/router";
     SeperatorWithTextComponent,
     DataWithTextComponent,
     ErrorTextComponent,
-    RouterLink
+    RouterLink,
+    StatusIndicatorComponent
   ],
   templateUrl: './company-dashboard-template.component.html',
   styleUrl: './company-dashboard-template.component.css'
@@ -42,7 +45,16 @@ export class CompanyDashboardTemplateComponent {
   @Output() upgradeCompany = new EventEmitter<number>();
   protected readonly companyConfig = companyConfig;
 
+  constructor(private companyService: CompanyService) {}
+
   onClickOnUpgrade(company: Company) {
     this.upgradeCompany.emit(company.id);
+  }
+
+  status(company: Company): string {
+    return this.companyService.getStatus(company);
+  }
+  statusColor(company: Company): string {
+    return this.companyService.getStatusColor(company);
   }
 }

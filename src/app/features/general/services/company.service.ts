@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Company} from "../models/company.model";
+import {Mine} from "../models/mine.model";
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,13 @@ export class CompanyService {
       "name": companyName,
       "type": companyType,
     });
+  }
+
+  getStatus(company: Company) {
+    return company.activated ? "Active" : "Inactive";
+  }
+
+  getStatusColor(company: Company) {
+    return company.activated ? "#22c55e" : "#cf1e1e"
   }
 }

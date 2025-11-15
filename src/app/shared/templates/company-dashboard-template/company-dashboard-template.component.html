@@ -15,7 +15,10 @@
 
       <app-subtitle [text]="company.name" [fontSizePx]="24"></app-subtitle>
       <app-simple-text [text]="companyConfig['type'][company.type]['label']"></app-simple-text>
-      <app-level-pin [level]="company.level" color="blue"></app-level-pin>
+      <app-row justifyContent="space-between" alignItems="center">
+        <app-level-pin [level]="company.level" color="blue"></app-level-pin>
+        <app-status-indicator [text]="status(company)" [color]="statusColor(company)" textColor="black"></app-status-indicator>
+      </app-row>
 
       @if (upgradeError[company.id]) {
         <app-error-text [text]="upgradeError[company.id]" textAlign="center"></app-error-text>
