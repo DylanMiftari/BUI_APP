@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { GeneralModule } from './features/general/general.module';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
+import {CasinoModule} from "./features/casino/casino.module";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { authInterceptor } from './core/interceptors/auth.interceptor';
     BrowserModule,
     AppRoutingModule,
     GeneralModule,
+    CasinoModule,
     HttpClientModule
   ],
   providers: [

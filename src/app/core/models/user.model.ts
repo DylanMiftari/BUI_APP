@@ -6,4 +6,5 @@ export interface User {
   minesCount: number | null;
   resourceSum: number | null;
   cityName: string | null;
+  casinoTicketsCount: number | null;
 }

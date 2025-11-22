@@ -18,6 +18,7 @@ export class DashboardTemplateComponent {
   @Input() minesCount: number = 1;
   @Input() totalResources: number = 0;
   @Input() cityName: string = "";
+  @Input() casinoTicketsCount: number = 0;
 
   constructor(private router: Router) {}
 
@@ -35,5 +36,9 @@ export class DashboardTemplateComponent {
 
   public clickOnCompanyCard() {
     this.router.navigate(["/company"]);
+  }
+
+  public clickOnCasinoTickets() {
+    this.router.navigate(["/casino/tickets"]);
   }
 }

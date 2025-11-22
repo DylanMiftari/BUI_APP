@@ -54,4 +54,14 @@
             ]"
         (clicked)="clickOnMarketCard()"
     ></app-dashboard-card>
+
+    <app-dashboard-card
+      icon="🎰"
+      cardTitle="Your Casino Tickets"
+      text="See all your casino tickets and play at casino"
+      [datas]="[
+                  {data: casinoTicketsCount, text: 'Tickets Count', unit: '', dataIsNumber: true},
+              ]"
+      (clicked)="clickOnCasinoTickets()"
+    ></app-dashboard-card>
 </app-card-container>
