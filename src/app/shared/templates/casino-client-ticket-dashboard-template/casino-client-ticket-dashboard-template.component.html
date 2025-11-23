@@ -1,0 +1,39 @@
+<app-casino-title
+  title="My Casino Tickets"
+  icon="🎫"
+  text="Access your active casino memberships"
+></app-casino-title>
+
+<app-simple-card color="casino" [marginPx]="10">
+  <app-card-container>
+    @for (ticket of ticketList; track ticket.id) {
+      <app-simple-card [color]="getColorTheme(ticket)" direction="column" [minWidth]="250">
+        <app-row alignItems="center" justifyContent="space-between">
+          <app-pin [color]="getColorTheme(ticket)" [text]="getTicketStatus(ticket)"></app-pin>
+          <app-icon [icon]="getTicketEmoji(ticket)"></app-icon>
+        </app-row>
+        <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+
+        <app-simple-text [text]="ticket.casino.company.name" [color]="getColorTheme(ticket)"
+                         [bold]="true" [fontSizePx]="24" textAlign="center"
+        ></app-simple-text>
+
+        <app-card
+          [interactable]="false" [bordered]="false" [glassCard]="true"
+          [darkGlassCard]="true" [borderRadiusPx]="10" border="solid 0px black"
+        >
+          <app-simple-text text="VALID UNTIL" [isLight]="true"></app-simple-text>
+          <app-row alignItems="center">
+            <app-icon icon="📅"></app-icon>
+            <app-simple-text
+              [text]="(ticket.expireAt | date:'MMMM d, y \'at\' HH:mm')!"
+              color="yellow" [bold]="true" [fontSizePx]="18"
+            ></app-simple-text>
+          </app-row>
+        </app-card>
+
+        <app-button [color]="getColorTheme(ticket)" label="Access Casino" (clicked)="clickOnTicket(ticket)"></app-button>
+      </app-simple-card>
+    }
+  </app-card-container>
+</app-simple-card>

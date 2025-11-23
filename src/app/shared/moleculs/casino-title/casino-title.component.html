@@ -1,0 +1,14 @@
+<app-card glassColor="casino" [bordered]="false" [interactable]="false" color="casino"
+alignItems="center"
+>
+  <app-row justifyContent="center" [gapPx]="20">
+    <app-icon [icon]="icon"></app-icon>
+    <app-title [text]="title"
+               [color]="themeColorService.simpleColor('casino')"
+    ></app-title>
+  </app-row>
+  <app-simple-text
+    textAlign="center" [text]="text"
+    color="white"
+  ></app-simple-text>
+</app-card>

@@ -10,7 +10,8 @@ import { ThemeColor } from '../../../core/themeColor/theme-color-type';
   styleUrl: './button.component.css',
   host: {
     '[style.--shadow-color]': 'themeColorService.shadowColor(color)',
-    '[style.--simple-color]': 'themeColorService.simpleColor(color)'
+    '[style.--simple-color]': 'themeColorService.simpleColor(color)',
+    '[style.--text-color]': 'themeColorService.onPrimaryTextColor(color)',
   }
 })
 export class ButtonComponent {

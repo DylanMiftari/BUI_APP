@@ -4,6 +4,10 @@
     border: solid 1px var(--borderColor);
     padding: var(--padding);
     text-align: var(--align);
+    display: flex;
+    flex-direction: var(--direction);
+    min-width: var(--min-width);
+    margin: var(--margin);
 }
 
 :host.interactable {

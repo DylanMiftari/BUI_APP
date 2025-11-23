@@ -5,7 +5,9 @@
     --purple-gradient: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
     --brown-gradient: linear-gradient(135deg, #8B4513 0%, #A0522D 50%, #D2691E 100%);
     --blue-gradient: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3730a3 100%);
-    --casino-gradient: linear-gradient(135deg, #cf1e1e 0%, #aa1717 50%, #7f1111 100%);
+    --casino-gradient: linear-gradient(135deg, #6B0000 0%, #A0001C 50%, #C23B22 100%);
+  --casino-regular-gradient: linear-gradient(135deg, #FFD700, #FFA500);
+  --casino-vip-gradient: linear-gradient(135deg, #9370DB, #8B008B);
 }
 
 * {

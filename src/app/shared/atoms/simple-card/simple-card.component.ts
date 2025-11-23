@@ -15,6 +15,9 @@ import {CommonModule} from "@angular/common";
     '[style.--padding]': 'this.paddingPx+"px"',
     '[style.--align]': 'this.align',
     "[class.interactable]": "this.interactable",
+    "[style.--direction]": "this.direction",
+    "[style.--min-width]": "this.minWidth+'px'",
+    "[style.--margin]": "this.marginPx+'px'",
   }
 })
 export class SimpleCardComponent {
@@ -22,6 +25,9 @@ export class SimpleCardComponent {
   @Input() paddingPx: number = 20;
   @Input() align: string = "left";
   @Input() interactable: boolean = false;
+  @Input() direction: string = "row";
+  @Input() minWidth: number = 0;
+  @Input() marginPx: number = 0;
 
   constructor(public colorService: ThemeColorService) {
   }

@@ -10,7 +10,8 @@ import { ThemeColor } from '../../../core/themeColor/theme-color-type';
   styleUrl: './card.component.css',
   host: {
     '[style.--gradient]': '"var("+[this.colorService.cssVarFromColor(color)]+")"',
-    '[style.--glass-color]': 'this.colorService.glassColor(glassColor ?? "green")'
+    '[style.--glass-color]': 'this.colorService.glassColor(glassColor ?? "green")',
+    '[style.--border]': 'border'
   }
 })
 export class CardComponent {
@@ -26,8 +27,10 @@ export class CardComponent {
   @Input() alignItems: string = "flex-start";
   @Input() interactable: boolean = true;
   @Input() glassColor: ThemeColor | null = null;
+  @Input() borderRadiusPx: number = 20;
+  @Input() border: string | null = null;
 
-  constructor(protected colorService: ThemeColorService) {
+  constructor(public colorService: ThemeColorService) {
   }
 
   clickOnCard() {
