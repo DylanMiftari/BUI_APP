@@ -14,9 +14,12 @@
         </app-row>
         <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
 
-        <app-simple-text [text]="ticket.casino.company.name" [color]="getColorTheme(ticket)"
-                         [bold]="true" [fontSizePx]="24" textAlign="center"
-        ></app-simple-text>
+        <app-row justifyContent="space-between" alignItems="center">
+          <app-simple-text [text]="ticket.casino.company.name" [color]="getColorTheme(ticket)"
+                           [bold]="true" [fontSizePx]="24" textAlign="center"
+          ></app-simple-text>
+          <app-level-pin [level]="ticket.casino.company.level" [color]="getColorTheme(ticket)"></app-level-pin>
+        </app-row>
 
         <app-card
           [interactable]="false" [bordered]="false" [glassCard]="true"

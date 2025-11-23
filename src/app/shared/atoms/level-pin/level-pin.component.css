@@ -1,6 +1,5 @@
 span {
     background: var(--gradient);
-    color: white;
     font-weight: bold;
     border-radius: 15px;
     padding: 0.25rem 0.75rem;

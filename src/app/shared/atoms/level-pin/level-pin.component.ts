@@ -16,5 +16,5 @@ export class LevelPinComponent {
   @Input() level: number = 1;
   @Input() color: ThemeColor = "black";
 
-  constructor(private colorService: ThemeColorService) {}
+  constructor(public colorService: ThemeColorService) {}
 }

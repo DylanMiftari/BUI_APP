@@ -12,6 +12,7 @@ import {CardContainerComponent} from "../../atoms/card-container/card-container.
 import {CardComponent} from "../../organisms/card/card.component";
 import {DatePipe} from "@angular/common";
 import {ButtonComponent} from "../../atoms/button/button.component";
+import {LevelPinComponent} from "../../atoms/level-pin/level-pin.component";
 
 @Component({
   selector: 'app-casino-client-ticket-dashboard-template',
@@ -27,7 +28,8 @@ import {ButtonComponent} from "../../atoms/button/button.component";
     CardContainerComponent,
     CardComponent,
     DatePipe,
-    ButtonComponent
+    ButtonComponent,
+    LevelPinComponent
   ],
   templateUrl: './casino-client-ticket-dashboard-template.component.html',
   styleUrl: './casino-client-ticket-dashboard-template.component.css'
