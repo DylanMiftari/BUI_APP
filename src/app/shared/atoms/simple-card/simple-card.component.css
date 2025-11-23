@@ -8,6 +8,10 @@
     flex-direction: var(--direction);
     min-width: var(--min-width);
     margin: var(--margin);
+    margin-left: var(--marginX);
+    margin-right: var(--marginX);
+    justify-content: var(--justify-content);
+    align-items: var(--align-items);
 }
 
 :host.interactable {

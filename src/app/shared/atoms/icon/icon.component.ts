@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 export class IconComponent {
   @Input() icon!: string;
   @Input() fontSize: number = 2;
+  @Input() textAlign: string = "left";
 }

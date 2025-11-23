@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CasinoTitleComponent} from "../../moleculs/casino-title/casino-title.component";
 import {SimpleCardComponent} from "../../atoms/simple-card/simple-card.component";
 import {CasinoTicket} from "../../../features/casino/models/casino-ticket.model";
@@ -13,6 +13,8 @@ import {CardComponent} from "../../organisms/card/card.component";
 import {DatePipe} from "@angular/common";
 import {ButtonComponent} from "../../atoms/button/button.component";
 import {LevelPinComponent} from "../../atoms/level-pin/level-pin.component";
+import {RouterLink} from "@angular/router";
+import {ThemeColorService} from "../../../core/themeColor/theme-color.service";
 
 @Component({
   selector: 'app-casino-client-ticket-dashboard-template',
@@ -29,13 +31,19 @@ import {LevelPinComponent} from "../../atoms/level-pin/level-pin.component";
     CardComponent,
     DatePipe,
     ButtonComponent,
-    LevelPinComponent
+    LevelPinComponent,
+    RouterLink
   ],
   templateUrl: './casino-client-ticket-dashboard-template.component.html',
   styleUrl: './casino-client-ticket-dashboard-template.component.css'
 })
 export class CasinoClientTicketDashboardTemplateComponent {
   @Input() public ticketList!: CasinoTicket[];
+
+  @Output() public accessToCasino = new EventEmitter<number>();
+
+  constructor(public themeService: ThemeColorService) {
+  }
 
   getTicketStatus(ticket: CasinoTicket): string {
     return ticket.isVIP ? "VIP" : "Regular";
@@ -48,6 +56,6 @@ export class CasinoClientTicketDashboardTemplateComponent {
   }
 
   clickOnTicket(ticket: CasinoTicket): void {
-    console.log("clicked on id: "+ticket.id);
+    this.accessToCasino.emit(ticket.casino.id);
   }
 }

@@ -4,7 +4,12 @@
   text="Access your active casino memberships"
 ></app-casino-title>
 
-<app-simple-card color="casino" [marginPx]="10">
+<app-simple-card color="casino" [marginPx]="10" [marginXPx]="10" direction="column">
+  @if (ticketList.length == 0) {
+    <app-simple-text [routerLink]="['/city']" text="You don't have any ticket, click here to see the casinos in
+    your city where you can buy one!" color="casino" textAlign="center" [fontSizePx]="20" [bold]="true"
+    [style.cursor]="'pointer'" [style.text-decoration]="'underline'" [style.text-decoration-color]="themeService.simpleColor('casino')"></app-simple-text>
+  }
   <app-card-container>
     @for (ticket of ticketList; track ticket.id) {
       <app-simple-card [color]="getColorTheme(ticket)" direction="column" [minWidth]="250">

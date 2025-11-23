@@ -1,0 +1,5 @@
+@if (casino) {
+  <app-casino-buy-ticket-template [casino]="casino" [buyError]="buyError"
+    (buyRegularTicket)="buyTicket(false)" (buyVIPTicket)="buyTicket(true)"
+  ></app-casino-buy-ticket-template>
+}

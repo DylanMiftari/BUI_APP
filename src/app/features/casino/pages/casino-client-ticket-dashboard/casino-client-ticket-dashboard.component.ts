@@ -4,7 +4,7 @@ import {
   CasinoClientTicketDashboardTemplateComponent
 } from "../../../../shared/templates/casino-client-ticket-dashboard-template/casino-client-ticket-dashboard-template.component";
 import {CasinoTicket} from "../../models/casino-ticket.model";
-import {CasinoClientService} from "../../services/casino-client-service.service";
+import {CasinoClientService} from "../../services/casino-client-service";
 
 @Component({
   selector: 'app-casino-client-ticket-dashboard',
@@ -33,5 +33,7 @@ export class CasinoClientTicketDashboardComponent implements OnInit {
     });
   }
 
-
+  goToCasino(id: number) {
+    window.location.href = `/casino/${id}/dashboard`;
+  }
 }

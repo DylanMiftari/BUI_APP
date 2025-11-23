@@ -1,0 +1,105 @@
+<app-simple-card color="casino" [marginXPx]="30" direction="column">
+  <app-themed-title [title]="casino.company.name" color="casino"></app-themed-title>
+  <app-simple-text
+    [text]="'👑 Level '+casino.company.level+' casino'"
+    color="yellow" textAlign="center" [fontSizePx]="20"
+  ></app-simple-text>
+</app-simple-card>
+
+<app-simple-card color="casino" [marginPx]="40" [marginXPx]="20" direction="column">
+  <app-themed-title title="🎟️ Buy Casino Tickets" color="casino"></app-themed-title>
+  <app-simple-text text="You need a ticket to access to the casino. Tickets expire after 7 days" [isLight]="true"
+  textAlign="center"></app-simple-text>
+
+  <app-error-text [text]="buyError" textAlign="center" [fontSizePx]="24"></app-error-text>
+
+  <app-card-container>
+    <app-simple-card color="casino-regular" direction="column" [paddingPx]="10" alignItems="stretch">
+      <app-icon icon="🎫" textAlign="center"></app-icon>
+      <app-simple-text color="casino-regular" text="Regular Ticket" textAlign="center"
+                       [bold]="true"></app-simple-text>
+      <app-simple-text [text]="casino.ticketPrice?.toLocaleString()!+'€'" color="green"
+                       [bold]="true" textAlign="center" [fontSizePx]="20"></app-simple-text>
+
+      <app-card [bordered]="false" [glassCard]="true" [darkGlassCard]="true" border="none"
+      [interactable]="false">
+        <app-row justifyContent="space-between">
+          <app-data-with-text
+            color="yellow"
+            [data]="casino.maxTicketCount! - casino.activeTicketsCount!"
+            [dataIsNumber]="true"
+            [lightText]="true"
+            dataTextAlign="center"
+            text="Available"
+          ></app-data-with-text>
+
+          <app-data-with-text
+            color="yellow"
+            [data]="casino.maxTicketCount"
+            [dataIsNumber]="true"
+            [lightText]="true"
+            dataTextAlign="center"
+            text="Total Slots"
+          ></app-data-with-text>
+        </app-row>
+      </app-card>
+
+      <app-button color="casino-regular" label="Buy Regular Ticket" (clicked)="buyRegularTicketMethod()"></app-button>
+    </app-simple-card>
+
+    <app-simple-card color="casino-vip" direction="column" [paddingPx]="5" alignItems="stretch">
+      <app-icon icon="🎭" textAlign="center"></app-icon>
+      <app-simple-text color="casino-vip" text="VIP Ticket" textAlign="center"
+                         [bold]="true"></app-simple-text>
+      <app-simple-text [text]="casino.VIPTicketPrice?.toLocaleString()!+'€'" color="green"
+                         [bold]="true" textAlign="center" [fontSizePx]="20"></app-simple-text>
+
+      <app-card [bordered]="false" [glassCard]="true" [darkGlassCard]="true" border="none"
+                  [interactable]="false">
+        <app-row justifyContent="space-between">
+          <app-data-with-text
+              color="yellow"
+              [data]="casino.maxVIPTicketCount! - casino.activeVIPTicketsCount!"
+              [dataIsNumber]="true"
+              [lightText]="true"
+              dataTextAlign="center"
+              text="Available"
+          ></app-data-with-text>
+
+          <app-data-with-text
+              color="yellow"
+              [data]="casino.maxVIPTicketCount"
+              [dataIsNumber]="true"
+              [lightText]="true"
+              dataTextAlign="center"
+              text="Total Slots"
+          ></app-data-with-text>
+        </app-row>
+      </app-card>
+
+      <app-button color="casino-vip" label="Buy VIP Ticket" (clicked)="buyVIPTicketMethod()"></app-button>
+    </app-simple-card>
+  </app-card-container>
+</app-simple-card>
+
+
+<app-simple-card color="casino" [marginPx]="40" [marginXPx]="20" direction="column">
+  <app-themed-title color="casino" title="🎮 Available Games"></app-themed-title>
+  <app-card-container [cardBaseSizePx]="200">
+    <app-casino-game-card game="roulette"></app-casino-game-card>
+    @if (casino.company.level >= 2) {
+      <app-casino-game-card game="dice"></app-casino-game-card>
+    }
+    @if (casino.company.level >= 3) {
+      <app-casino-game-card game="poker"></app-casino-game-card>
+    }
+    @if (casino.company.level >= 4) {
+      <app-casino-game-card game="blackjack"></app-casino-game-card>
+    }
+    @if (casino.company.level >= 5) {
+      <app-casino-game-card game="roulette2"></app-casino-game-card>
+    }
+  </app-card-container>
+</app-simple-card>
+
+<app-simple-text text="e" [style.opacity]="0"></app-simple-text>

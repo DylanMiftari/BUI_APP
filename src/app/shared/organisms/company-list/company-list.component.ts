@@ -7,6 +7,7 @@ import {RowComponent} from "../../atoms/row/row.component";
 import {SimpleTextComponent} from "../../atoms/simple-text/simple-text.component";
 import {companyConfig} from "../../../core/config/company.config";
 import {LevelPinComponent} from "../../atoms/level-pin/level-pin.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-company-list',
@@ -16,7 +17,8 @@ import {LevelPinComponent} from "../../atoms/level-pin/level-pin.component";
     SimpleCardComponent,
     RowComponent,
     SimpleTextComponent,
-    LevelPinComponent
+    LevelPinComponent,
+    RouterLink
   ],
   templateUrl: './company-list.component.html',
   styleUrl: './company-list.component.css'
@@ -32,5 +34,8 @@ export class CompanyListComponent {
   }
   getCompanyTypeLabel(company: Company) {
     return this.companyConfig["type"][company.type]["label"];
+  }
+  getCompanyDashBoardLink(company: Company) {
+    return "/" + company.type + "/" + company.id;
   }
 }

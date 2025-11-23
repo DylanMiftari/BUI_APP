@@ -1,6 +1,6 @@
 <app-card-container [paddingXPx]="5">
   @for (company of companies; track $index) {
-    <app-simple-card [color]="color" [interactable]="true">
+    <app-simple-card [color]="color" [interactable]="true" [routerLink]="getCompanyDashBoardLink(company)">
       <app-row justifyContent="space-between">
         <div>
           <app-simple-text [text]="company.name" [bold]="true" [fontSizePx]="20"></app-simple-text>

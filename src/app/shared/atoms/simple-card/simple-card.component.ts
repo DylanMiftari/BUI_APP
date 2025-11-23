@@ -18,6 +18,9 @@ import {CommonModule} from "@angular/common";
     "[style.--direction]": "this.direction",
     "[style.--min-width]": "this.minWidth+'px'",
     "[style.--margin]": "this.marginPx+'px'",
+    "[style.--marginX]": "this.marginXPx+'px'",
+    "[style.--justify-content]": "this.justifyContent",
+    "[style.--align-items]": "this.alignItems",
   }
 })
 export class SimpleCardComponent {
@@ -28,6 +31,9 @@ export class SimpleCardComponent {
   @Input() direction: string = "row";
   @Input() minWidth: number = 0;
   @Input() marginPx: number = 0;
+  @Input() marginXPx: number = 0;
+  @Input() justifyContent: string = "normal";
+  @Input() alignItems: string = "normal";
 
   constructor(public colorService: ThemeColorService) {
   }
