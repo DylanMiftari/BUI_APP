@@ -1,4 +1,12 @@
-<app-simple-card color="casino" direction="column" alignItems="center">
-  <app-icon [icon]="emoji"></app-icon>
-  <app-simple-text [text]="name" color="casino" [fontSizePx]="20" [bold]="true"></app-simple-text>
+<app-simple-card [color]="theme" direction="column" alignItems="stretch">
+  <app-icon [icon]="emoji" textAlign="center"></app-icon>
+  <app-simple-text [text]="name" [color]="theme" [fontSizePx]="20" [bold]="true" textAlign="center"></app-simple-text>
+  @if (maxBet) {
+    <app-card [interactable]="false" [bordered]="false" [glassCard]="true" [darkGlassCard]="true" border="none" alignItems="stretch">
+      <app-simple-text text="Max Bet:" [isLight]="true" textAlign="center"></app-simple-text>
+      <app-simple-text [text]="maxBet.toLocaleString()+'€'" color="green" [bold]="true" [fontSizePx]="20" textAlign="center"></app-simple-text>
+    </app-card>
+
+    <app-button label="Play Game" [color]="theme" (clicked)="playGame()"></app-button>
+  }
 </app-simple-card>

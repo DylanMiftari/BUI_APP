@@ -1,8 +1,12 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CasinoGame} from "../../../core/types/casino-game.type";
 import {SimpleCardComponent} from "../../atoms/simple-card/simple-card.component";
 import {IconComponent} from "../../atoms/icon/icon.component";
 import {SimpleTextComponent} from "../../atoms/simple-text/simple-text.component";
+import {ThemeColor} from "../../../core/themeColor/theme-color-type";
+import {CardComponent} from "../../organisms/card/card.component";
+import {DataWithTextComponent} from "../data-with-text/data-with-text.component";
+import {ButtonComponent} from "../../atoms/button/button.component";
 
 @Component({
   selector: 'app-casino-game-card',
@@ -10,13 +14,20 @@ import {SimpleTextComponent} from "../../atoms/simple-text/simple-text.component
   imports: [
     SimpleCardComponent,
     IconComponent,
-    SimpleTextComponent
+    SimpleTextComponent,
+    CardComponent,
+    DataWithTextComponent,
+    ButtonComponent
   ],
   templateUrl: './casino-game-card.component.html',
   styleUrl: './casino-game-card.component.css'
 })
 export class CasinoGameCardComponent {
   @Input() game!: CasinoGame;
+  @Input() theme: ThemeColor = "casino";
+  @Input() maxBet: number | null = null;
+
+  @Output() playGameEmitter = new EventEmitter<string>();
 
   private gameToEmoji = {
     "roulette": "🎰",
@@ -38,5 +49,9 @@ export class CasinoGameCardComponent {
   }
   get name() {
     return this.gameToName[this.game];
+  }
+
+  playGame() {
+    this.playGameEmitter.emit(this.game);
   }
 }

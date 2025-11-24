@@ -1,0 +1,45 @@
+<app-simple-card color="casino" [marginXPx]="25" direction="column">
+  <app-themed-title [title]="casinoTicket.casino.company.name"
+    color="casino" [fontSizePx]="20"
+  ></app-themed-title>
+
+  <app-simple-text [text]="'👑 Level '+casinoTicket.casino.company.level+' Casino'"
+    color="yellow" textAlign="center" [fontSizePx]="20" [bold]="true" [marginYPx]="10"
+  ></app-simple-text>
+
+  <app-row justifyContent="center" [gapPx]="10">
+    <app-simple-text text="Your status : " [color]="theme" textAlign="center"
+    [fontSizePx]="20" [bold]="true"></app-simple-text>
+    <app-pin [color]="theme" [text]="status"></app-pin>
+  </app-row>
+</app-simple-card>
+
+
+<app-simple-card color="casino" [marginXPx]="25" [marginPx]="40" direction="column">
+  <app-themed-title title="🎮 Available Games" color="casino"></app-themed-title>
+  <app-card-container>
+    <app-casino-game-card game="roulette" [theme]="theme" [maxBet]="casinoTicket.maxBetRoulette"
+                          (playGameEmitter)="clickOnPlayCard($event)"></app-casino-game-card>
+    @if (casinoTicket.casino.company.level >= 2) {
+      <app-casino-game-card game="dice" [theme]="theme" [maxBet]="casinoTicket.maxBetDice"
+                            (playGameEmitter)="clickOnPlayCard($event)"></app-casino-game-card>
+    }
+    @if (casinoTicket.casino.company.level >= 3) {
+      <app-casino-game-card game="poker" [theme]="theme" [maxBet]="casinoTicket.maxBetPoker"
+                            (playGameEmitter)="clickOnPlayCard($event)"></app-casino-game-card>
+    }
+    @if (casinoTicket.casino.company.level >= 4) {
+      <app-casino-game-card game="blackjack" [theme]="theme" [maxBet]="casinoTicket.maxBetBlackjack"
+                            (playGameEmitter)="clickOnPlayCard($event)"></app-casino-game-card>
+    }
+    @if (casinoTicket.casino.company.level >= 5) {
+      <app-casino-game-card game="roulette2" [theme]="theme" [maxBet]="casinoTicket.maxBetRoulette2"
+                            (playGameEmitter)="clickOnPlayCard($event)"></app-casino-game-card>
+    }
+  </app-card-container>
+</app-simple-card>
+
+
+
+
+<app-simple-text text="e" [style.opacity]="0"></app-simple-text>

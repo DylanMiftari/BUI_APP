@@ -28,4 +28,8 @@ export class CasinoClientService {
   hasTicket(casinoId: number) {
     return this.http.get(`${this.baseUrl}/${casinoId}/have-ticket`);
   }
+
+  getUserTicket(casinoId: number) {
+    return this.http.get<CasinoTicket>(`${this.baseUrl}/${casinoId}/ticket`);
+  }
 }
