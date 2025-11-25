@@ -27,6 +27,9 @@ export class InputComponent {
   @Input() min: number | null = null;
   @Input() max: number | null = null;
   @Input() fitContentSelect: boolean = true;
+  @Input() textAlign: string = "left";
+  @Input() fontSizePx: number = 16;
+  @Input() isBold: boolean = false;
 
   constructor(public themeColorService: ThemeColorService) {}
 }

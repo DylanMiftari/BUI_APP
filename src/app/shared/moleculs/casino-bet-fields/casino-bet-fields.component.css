@@ -1,0 +1,12 @@
+app-input {
+  max-width: 300px;
+  margin: 5px auto;
+}
+
+div.button-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 10px;
+}

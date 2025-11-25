@@ -8,6 +8,7 @@ import {
 import {CasinoBuyTicketPagesComponent} from "./pages/casino-buy-ticket-pages/casino-buy-ticket-pages.component";
 import {CasinoClientDashboardComponent} from "./pages/casino-client-dashboard/casino-client-dashboard.component";
 import {casinoTicketGuard} from "../../core/guards/casino-ticket.guard";
+import {RouletteGamePagesComponent} from "./pages/roulette-game-pages/roulette-game-pages.component";
 
 const routes: Routes = [
   { path: "casino", canActivateChild: [authGuardChild], children:
@@ -17,6 +18,7 @@ const routes: Routes = [
         {path: ":casinoId", canActivateChild: [casinoTicketGuard],children:
             [
               {path: "dashboard", component: CasinoClientDashboardComponent},
+              {path: "roulette", component: RouletteGamePagesComponent},
             ]},
       ]}
 ];

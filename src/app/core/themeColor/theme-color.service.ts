@@ -48,6 +48,25 @@ export class ThemeColorService {
     }
   }
 
+  public textShadowColor(color: ThemeColor) {
+    switch(color) {
+      case "black":
+        return "rgba(245, 158, 11, 1)";
+      case "purple":
+        return "rgba(147, 51, 234, 1)";
+      case "brown":
+        return "rgba(139, 69, 19, 1)";
+      case "blue":
+        return "rgba(59, 130, 246, 1)";
+      case "casino-regular":
+        return "rgba(255, 215, 0, 1)";
+      case "casino-vip":
+        return "rgba(147, 112, 219, 1)";
+      default:
+        return "rgba(34, 197, 94, 1)";
+    }
+  }
+
   public simpleColor(color: ThemeColor) {
     switch(color) {
       case "white":
@@ -95,6 +114,8 @@ export class ThemeColorService {
         return "rgba(138, 43, 226, 0.2)";
       case "casino-regular":
         return "rgba(255, 215, 0, 0.1)";
+      case "green":
+        return "rgba(0, 255, 0, 0.1)"
       default:
         return "white";
     }
@@ -112,6 +133,8 @@ export class ThemeColorService {
         return "#9370DB";
       case "casino-regular":
         return "#FFD700";
+      case "green":
+        return "#00FF00";
       default:
         return "white";
     }
@@ -123,6 +146,27 @@ export class ThemeColorService {
         return "black";
       default:
         return "white";
+    }
+  }
+
+  public inputBGColor(color: ThemeColor) {
+    switch(color) {
+      case "casino-regular":
+      case "casino-vip":
+        return "black";
+      default:
+        return "white";
+    }
+  }
+
+  public inputTextColor(color: ThemeColor) {
+    switch(color) {
+      case "casino-regular":
+        return "#FFD700"
+      case "casino-vip":
+        return "#9370DB";
+      default:
+        return "black";
     }
   }
 }

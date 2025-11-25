@@ -8,6 +8,8 @@
 } @else {
   <input
     [id]="name" [type]="type" [placeholder]="placeholder" [formControl]="control" [name]="name"
-    [attr.max]="max" [attr.min]="min"
+    [attr.max]="max" [attr.min]="min" [style.background-color]="themeColorService.inputBGColor(color)"
+    [style.color]="themeColorService.inputTextColor(color)" [style.text-align]="textAlign" [style.font-size]="fontSizePx+'px'"
+    [style.font-weight]="isBold ? 'bold' : 'normal'"
   >
 }

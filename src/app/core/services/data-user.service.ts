@@ -33,4 +33,30 @@ export class DataUserService {
   getUser(): User {
     return this.userSubject.value!;
   }
+
+  removePlayerMoney(money: number): void {
+    const currentUser = this.userSubject.value;
+
+    if (currentUser) {
+      const updatedUser: User = {
+        ...currentUser,
+        userMoney: currentUser.userMoney - money
+      };
+
+      this.userSubject.next(updatedUser);
+    }
+  }
+
+  addPlayerMoney(money: number): void {
+    const currentUser = this.userSubject.value;
+
+    if (currentUser) {
+      const updatedUser: User = {
+        ...currentUser,
+        userMoney: currentUser.userMoney + money
+      };
+
+      this.userSubject.next(updatedUser);
+    }
+  }
 }

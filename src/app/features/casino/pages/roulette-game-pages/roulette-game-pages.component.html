@@ -1,0 +1,12 @@
+@if (casinoTicket && rouletteData) {
+  <app-roulette-game-template
+    [rouletteData]="rouletteData"
+    [casinoTicket]="casinoTicket"
+    (launchRoulette)="playRoulette($event)"
+    [rouletteState]="rouletteState"
+    [playError]="rouletteError"
+    [goodNumbers]="goodNumbers"
+    (playerStopAllSpins)="playerStopAllSpin()"
+    [winMessage]="winMessage"
+  ></app-roulette-game-template>
+}

@@ -37,4 +37,8 @@ export class CasinoClientDashboardComponent implements OnInit {
       });
     })
   }
+
+  goToGame(game: string) {
+    window.location.href = `/casino/${this.casinoTicket?.casino.id}/${game}`;
+  }
 }

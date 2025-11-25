@@ -1,7 +1,6 @@
 button {
     color: var(--text-color);
     font-weight: bold;
-    font-size: 1rem;
     cursor: pointer;
     border: none;
     border-radius: 12px;

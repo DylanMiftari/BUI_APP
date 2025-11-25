@@ -1,0 +1,41 @@
+<app-simple-card direction="column" [marginXPx]="20" color="casino">
+  <app-themed-title title="🎰 Roulette" color="casino"></app-themed-title>
+  <app-simple-text text="Three numbers, endless possibilities"
+                   color="yellow" textAlign="center"></app-simple-text>
+</app-simple-card>
+
+<app-simple-card direction="column" [marginXPx]="20" color="casino" [marginPx]="40">
+  <app-themed-title title="📋 Game Rules & Payouts" color="casino"></app-themed-title>
+
+  <app-card-container>
+    <app-casino-payout-card
+      [theme]="theme" icon="🔢" title="Sequence" text="Three consecutive numbers (e.g., 123, 456, 789, 765)"
+      [multiplicator]="sequenceMultiplicator"
+    ></app-casino-payout-card>
+    <app-casino-payout-card
+      [theme]="theme" icon="🎯" title="Triplet" text="Three identical numbers (e.g., 333, 666, 999)"
+      [multiplicator]="tripletMultiplicator"
+    ></app-casino-payout-card>
+    <app-casino-payout-card
+      [theme]="theme" icon="🏆" title="Triple 7" text="The ultimate jackpot - three sevens (777)"
+      [multiplicator]="triple7Multiplicator"
+    ></app-casino-payout-card>
+  </app-card-container>
+</app-simple-card>
+
+<app-simple-card color="casino" direction="column" [marginXPx]="20">
+  <app-themed-title title="🎮 Place Your Bet" [color]="theme"></app-themed-title>
+
+  <app-casino-roulette-wheel [color]="theme" [state]="rouletteState" [goodNumbers]="goodNumbers"
+    (playerStopAllSpins)="playHasStopAll()"
+  ></app-casino-roulette-wheel>
+
+  <app-error-text [text]="playError" textAlign="center" [fontSizePx]="24"></app-error-text>
+  <app-simple-text [text]="winMessage" color="green" textAlign="center" [fontSizePx]="24"></app-simple-text>
+
+  <app-casino-bet-form [theme]="theme" [maxBet]="4000" buttonLabel="🎰 Spin the Roulette!"
+    (playerPlayGame)="playerPlayGame($event)"
+  ></app-casino-bet-form>
+</app-simple-card>
+
+<app-simple-text text="fe" [style.opacity]="0"></app-simple-text>

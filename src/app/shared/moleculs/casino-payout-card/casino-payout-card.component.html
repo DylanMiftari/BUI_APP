@@ -1,0 +1,11 @@
+<app-simple-card [color]="theme" direction="column" alignItems="center" class="main">
+  <app-icon [icon]="icon"></app-icon>
+  <app-simple-text [text]="title" [color]="theme" [bold]="true" [fontSizePx]="20"></app-simple-text>
+  <app-simple-text [text]="text"
+                   [isLight]="true" textAlign="center"
+  ></app-simple-text>
+
+  <app-simple-card color="green" [paddingPx]="10" [marginPx]="10">
+    <app-simple-text color="green" [text]="'Payout: '+multiplicator+' times your bet'" [bold]="true"></app-simple-text>
+  </app-simple-card>
+</app-simple-card>

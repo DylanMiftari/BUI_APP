@@ -1,0 +1,5 @@
+app-button {
+  display: block;
+  max-width: 450px !important;
+  margin: 20px auto !important;
+}

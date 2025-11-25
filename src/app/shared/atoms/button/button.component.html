@@ -1,6 +1,6 @@
 <button [style.backgroundImage]="'var('+themeColorService.cssVarFromColor(color)+')'" [class]="{'outline' : isOutlined}"
 (click)="clickOnButton()" [type]="type"
-[style.padding]="paddingYPx+'px '+paddingXPx+'px'"
+[style.padding]="paddingYPx+'px '+paddingXPx+'px'" [style.font-size]="fontSizePx+'px'"
 >
     {{ label }}
 </button>

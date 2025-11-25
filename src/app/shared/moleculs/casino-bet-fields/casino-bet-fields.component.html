@@ -1,0 +1,18 @@
+<app-simple-card [color]="theme" direction="column">
+  <app-simple-text text="Your Bet Amount" [color]="theme"
+    [bold]="true" textAlign="center" [fontSizePx]="20"
+  ></app-simple-text>
+
+  <app-input [color]="theme" type="number" [control]="betFormControl" [min]="1"
+    [max]="maxBet" textAlign="center" [fontSizePx]="24" [isBold]="true"
+  ></app-input>
+
+  <div class="button-box">
+    @for (buttonBet of buttonBets; track $index) {
+      @if (maxBet >= buttonBet) {
+        <app-button [label]="buttonBet+'€'" [color]="theme" (clicked)="addBet(buttonBet)"></app-button>
+      }
+    }
+    <app-button label="MAX" [color]="theme" (clicked)="addBet(maxBet)"></app-button>
+  </div>
+</app-simple-card>

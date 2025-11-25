@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {CasinoTicket} from "../models/casino-ticket.model";
 import {Casino} from "../models/casino.model";
+import {RouletteData} from "../models/roulette-data.model";
+import {RouletteResult} from "../models/roulette-result.model";
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +33,15 @@ export class CasinoClientService {
 
   getUserTicket(casinoId: number) {
     return this.http.get<CasinoTicket>(`${this.baseUrl}/${casinoId}/ticket`);
+  }
+
+  getRouletteData(casinoId: number) {
+    return this.http.get<RouletteData>(`${this.baseUrl}/${casinoId}/game-data/roulette`);
+  }
+
+  playRoulette(casinoId: number, bet: number) {
+    return this.http.post<RouletteResult>(`${this.baseUrl}/${casinoId}/game/roulette`, {
+      bet: bet
+    });
   }
 }

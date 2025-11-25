@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CasinoTicket} from "../../../features/casino/models/casino-ticket.model";
 import {SimpleCardComponent} from "../../atoms/simple-card/simple-card.component";
 import {TitleComponent} from "../../atoms/title/title.component";
@@ -27,6 +27,7 @@ import {CasinoGameCardComponent} from "../../moleculs/casino-game-card/casino-ga
 })
 export class CasinoClientDashboardTemplateComponent {
   @Input() casinoTicket!: CasinoTicket;
+  @Output() playGameCard = new EventEmitter<string>();
 
   get theme() {
     return this.casinoTicket.isVIP ? "casino-vip" : "casino-regular";
@@ -36,6 +37,6 @@ export class CasinoClientDashboardTemplateComponent {
   }
 
   clickOnPlayCard(game: string) {
-    console.log(game);
+    this.playGameCard.emit(game);
   }
 }

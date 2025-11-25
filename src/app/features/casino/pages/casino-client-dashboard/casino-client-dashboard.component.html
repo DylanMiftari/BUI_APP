@@ -1,3 +1,3 @@
 @if (casinoTicket) {
-  <app-casino-client-dashboard-template [casinoTicket]="casinoTicket"></app-casino-client-dashboard-template>
+  <app-casino-client-dashboard-template [casinoTicket]="casinoTicket" (playGameCard)="goToGame($event)"></app-casino-client-dashboard-template>
 }

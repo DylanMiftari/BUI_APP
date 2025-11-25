@@ -1,0 +1,11 @@
+<div>
+  <app-casino-roulette-spin numberPosition="First" [color]="color" [number]="numbers[0]"
+    (clickOnStop)="stopWheel(0)"
+  ></app-casino-roulette-spin>
+  <app-casino-roulette-spin numberPosition="Second" [color]="color" [number]="numbers[1]"
+                            (clickOnStop)="stopWheel(1)"
+  ></app-casino-roulette-spin>
+  <app-casino-roulette-spin numberPosition="Third" [color]="color" [number]="numbers[2]"
+                            (clickOnStop)="stopWheel(2)"
+  ></app-casino-roulette-spin>
+</div>
