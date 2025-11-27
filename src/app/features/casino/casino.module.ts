@@ -11,6 +11,7 @@ import { casinoTicketGuard } from "../../core/guards/casino-ticket.guard";
 import { RouletteGamePagesComponent } from "./pages/roulette-game-pages/roulette-game-pages.component";
 import { DiceGamePagesComponent } from "./pages/dice-game-pages/dice-game-pages.component";
 import { PokerGamePagesComponent } from "./pages/poker-game-pages/poker-game-pages.component";
+import { BlackjackGamePagesComponent } from "./pages/blackjack-game-pages/blackjack-game-pages.component";
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
               { path: "roulette", component: RouletteGamePagesComponent },
               { path: "dice", component: DiceGamePagesComponent },
               { path: "poker", component: PokerGamePagesComponent },
+              { path: "blackjack", component: BlackjackGamePagesComponent },
             ]
         },
       ]

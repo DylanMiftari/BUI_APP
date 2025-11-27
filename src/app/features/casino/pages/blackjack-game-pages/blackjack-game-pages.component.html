@@ -1,0 +1,4 @@
+<app-blackjack-game-template *ngIf="casinoTicket && blackjackData" [casinoTicket]="casinoTicket"
+    [blackjackData]="blackjackData" [playError]="playError" [userHand]="userHand" [bankHand]="bankHand"
+    [winMessage]="winMessage" [gameState]="gameState" [lastBet]="lastBet" (launchBlackjack)="playBlackjack($event)"
+    (hit)="hit()" (stand)="stand()" (playAgain)="resetGame()"></app-blackjack-game-template>

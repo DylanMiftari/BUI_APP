@@ -1,0 +1,59 @@
+<app-simple-card direction="column" [marginXPx]="20" color="casino">
+    <app-themed-title title="🃏 Blackjack" color="casino"></app-themed-title>
+    <app-simple-text text="Beat the Dealer to Win!" color="yellow" textAlign="center"></app-simple-text>
+</app-simple-card>
+
+<app-simple-card direction="column" [marginXPx]="20" color="casino" [marginPx]="40">
+    <app-themed-title title="📋 Game Rules & Payouts" color="casino"></app-themed-title>
+
+    <app-card-container>
+        <app-casino-payout-card [theme]="theme" icon="🃏" title="Blackjack" text="Ace + 10-value card."
+            [multiplicator]="getMultiplicator('blackjack')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="💰" title="Win" text="Beat the dealer's hand without busting."
+            [multiplicator]="getMultiplicator('win')"></app-casino-payout-card>
+    </app-card-container>
+</app-simple-card>
+
+<app-simple-card color="casino" direction="column" [marginXPx]="20">
+    <app-themed-title title="🎮 Place Your Bet" [color]="theme"></app-themed-title>
+
+    <div class="game-area">
+        <div class="hand-section">
+            <app-simple-text text="Dealer's Hand" color="white" textAlign="center" [fontSizePx]="20"></app-simple-text>
+            <app-simple-text *ngIf="gameState === 'finished'" [text]="'Total: ' + calculateHandValue(bankHand)"
+                color="white" textAlign="center" [fontSizePx]="16"></app-simple-text>
+            <div class="cards-display">
+                <app-casino-card *ngFor="let card of bankHand" [color]="card.color" [value]="card.value">
+                </app-casino-card>
+                <div *ngIf="gameState !== 'finished' && bankHand.length === 1" class="card-back">
+                    <app-casino-card [hidden]="true" [color]="1" [value]="1"></app-casino-card>
+                </div>
+            </div>
+        </div>
+
+        <div class="hand-section">
+            <app-simple-text text="Your Hand" color="white" textAlign="center" [fontSizePx]="20"></app-simple-text>
+            <app-simple-text *ngIf="userHand.length > 0" [text]="'Total: ' + calculateHandValue(userHand)" color="white"
+                textAlign="center" [fontSizePx]="16"></app-simple-text>
+            <div class="cards-display">
+                <app-casino-card *ngFor="let card of userHand" [color]="card.color" [value]="card.value">
+                </app-casino-card>
+            </div>
+        </div>
+    </div>
+
+    <app-error-text [text]="playError" textAlign="center" [fontSizePx]="24"></app-error-text>
+    <app-simple-text [text]="winMessage" color="green" textAlign="center" [fontSizePx]="24"></app-simple-text>
+
+    <app-casino-bet-form *ngIf="gameState === 'betting'" [theme]="theme" [maxBet]="maxBet" buttonLabel="🃏 Deal Cards!"
+        [initialBet]="lastBet" (playerPlayGame)="playerPlayGame($event)"></app-casino-bet-form>
+
+    <div *ngIf="gameState === 'playing'" class="action-buttons">
+        <app-button [color]="theme" label="Hit" [fontSizePx]="24" (clicked)="onHit()"></app-button>
+        <app-button [color]="theme" label="Stand" [fontSizePx]="24" (clicked)="onStand()"></app-button>
+    </div>
+
+    <div *ngIf="gameState === 'finished'" class="action-buttons">
+        <app-button [color]="theme" label="Play Again" [fontSizePx]="24" (clicked)="resetGame()"></app-button>
+    </div>
+</app-simple-card>

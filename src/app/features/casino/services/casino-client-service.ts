@@ -9,6 +9,8 @@ import { DiceData } from "../models/dice-data.model";
 import { DiceResult } from "../models/dice-result.model";
 import { PokerData } from "../models/poker-data.model";
 import { PokerResult } from "../models/poker-result.model";
+import { BlackjackData } from '../models/blackjack-data.model';
+import { BlackjackInitResponse, BlackjackPlayResponse } from '../models/blackjack-result.model';
 
 @Injectable({
   providedIn: 'root'
@@ -67,5 +69,23 @@ export class CasinoClientService {
     return this.http.post<PokerResult>(`${this.baseUrl}/${casinoId}/game/poker`, {
       bet: bet
     });
+  }
+
+  getBlackjackData(casinoId: number) {
+    return this.http.get<BlackjackData>(`${this.baseUrl}/${casinoId}/game-data/blackjack`);
+  }
+
+  initBlackjack(casinoId: number, bet: number) {
+    return this.http.post<BlackjackInitResponse>(`${this.baseUrl}/${casinoId}/game/blackjack/init`, {
+      bet: bet
+    });
+  }
+
+  hitBlackjack(casinoId: number, gameId: number) {
+    return this.http.patch<BlackjackPlayResponse>(`${this.baseUrl}/${casinoId}/game/blackjack/${gameId}/hit`, {});
+  }
+
+  finishBlackjack(casinoId: number, gameId: number) {
+    return this.http.patch<BlackjackPlayResponse>(`${this.baseUrl}/${casinoId}/game/blackjack/${gameId}/finish`, {});
   }
 }
