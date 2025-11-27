@@ -7,6 +7,8 @@ import { RouletteData } from "../models/roulette-data.model";
 import { RouletteResult } from "../models/roulette-result.model";
 import { DiceData } from "../models/dice-data.model";
 import { DiceResult } from "../models/dice-result.model";
+import { PokerData } from "../models/poker-data.model";
+import { PokerResult } from "../models/poker-result.model";
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +55,16 @@ export class CasinoClientService {
 
   playDice(casinoId: number, bet: number) {
     return this.http.post<DiceResult>(`${this.baseUrl}/${casinoId}/game/dice`, {
+      bet: bet
+    });
+  }
+
+  getPokerData(casinoId: number) {
+    return this.http.get<PokerData>(`${this.baseUrl}/${casinoId}/game-data/poker`);
+  }
+
+  playPoker(casinoId: number, bet: number) {
+    return this.http.post<PokerResult>(`${this.baseUrl}/${casinoId}/game/poker`, {
       bet: bet
     });
   }

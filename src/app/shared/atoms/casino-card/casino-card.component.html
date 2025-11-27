@@ -1,0 +1,10 @@
+<div class="card" [class.hidden]="hidden" [class.red]="isRed" (click)="onClick()">
+    <div class="card-inner" *ngIf="!hidden">
+        <div class="card-value top-left">{{ displayValue }}</div>
+        <div class="card-suit center">{{ displaySuit }}</div>
+        <div class="card-value bottom-right">{{ displayValue }}</div>
+    </div>
+    <div class="card-back" *ngIf="hidden">
+        <div class="pattern"></div>
+    </div>
+</div>

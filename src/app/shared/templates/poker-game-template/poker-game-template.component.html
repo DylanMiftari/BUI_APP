@@ -1,0 +1,61 @@
+<app-simple-card direction="column" [marginXPx]="20" color="casino">
+    <app-themed-title title="🃏 Poker" color="casino"></app-themed-title>
+    <app-simple-text text="Bet, Deal, Reveal, Win!" color="yellow" textAlign="center"></app-simple-text>
+</app-simple-card>
+
+<app-simple-card direction="column" [marginXPx]="20" color="casino" [marginPx]="40">
+    <app-themed-title title="📋 Game Rules & Payouts" color="casino"></app-themed-title>
+
+    <app-card-container>
+        <app-casino-payout-card [theme]="theme" icon="👑" title="Royal Flush" text="A, K, Q, J, 10, all the same suit."
+            [multiplicator]="getMultiplicator('royalFlush')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="🌈" title="Straight Flush"
+            text="Five cards in a sequence, all in the same suit."
+            [multiplicator]="getMultiplicator('straightFlush')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="4️⃣" title="Four of a Kind"
+            text="All four cards of the same rank."
+            [multiplicator]="getMultiplicator('fourOfAKind')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="🏠" title="Full House" text="Three of a kind with a pair."
+            [multiplicator]="getMultiplicator('fullHouse')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="💧" title="Flush"
+            text="Any five cards of the same suit, but not in a sequence."
+            [multiplicator]="getMultiplicator('flush')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="📏" title="Straight"
+            text="Five cards in a sequence, but not of the same suit."
+            [multiplicator]="getMultiplicator('straight')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="3️⃣" title="Three of a Kind" text="Three cards of the same rank."
+            [multiplicator]="getMultiplicator('threeOfAKind')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="2️⃣" title="Two Pair" text="Two different pairs."
+            [multiplicator]="getMultiplicator('twoPair')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="1️⃣" title="One Pair" text="Two cards of the same rank."
+            [multiplicator]="getMultiplicator('onePair')"></app-casino-payout-card>
+        <app-casino-payout-card [theme]="theme" icon="❌" title="Nothing" text="No matching cards."
+            [multiplicator]="getMultiplicator('nothing')"></app-casino-payout-card>
+    </app-card-container>
+</app-simple-card>
+
+<app-simple-card color="casino" direction="column" [marginXPx]="20">
+    <app-themed-title title="🎮 Place Your Bet" [color]="theme"></app-themed-title>
+
+    <div class="cards-display">
+        <app-casino-card *ngFor="let card of cards; let i = index" [color]="card.color" [value]="card.value"
+            [hidden]="hiddenCards[i]" (cardClick)="onCardClick(i)">
+        </app-casino-card>
+    </div>
+
+    <app-error-text [text]="playError" textAlign="center" [fontSizePx]="24"></app-error-text>
+    <app-simple-text [text]="winMessage" color="green" textAlign="center" [fontSizePx]="24"></app-simple-text>
+
+    <app-casino-bet-form *ngIf="gameState === 'betting'" [theme]="theme" [maxBet]="maxBet" buttonLabel="🃏 Deal Cards!"
+        (playerPlayGame)="playerPlayGame($event)"></app-casino-bet-form>
+
+    <app-simple-text *ngIf="gameState === 'revealing'" text="Click on cards to reveal them" color="white"
+        textAlign="center" [fontSizePx]="18"></app-simple-text>
+
+    <div *ngIf="gameState === 'revealing' || gameState === 'finished'" class="action-buttons">
+        <app-button *ngIf="gameState === 'revealing'" [color]="theme" label="Reveal All" [fontSizePx]="24"
+            (clicked)="revealAll()"></app-button>
+        <app-button *ngIf="gameState === 'finished'" [color]="theme" label="Play Again" [fontSizePx]="24"
+            (clicked)="resetGame()"></app-button>
+    </div>
+</app-simple-card>

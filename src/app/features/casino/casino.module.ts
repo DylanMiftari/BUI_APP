@@ -10,6 +10,7 @@ import { CasinoClientDashboardComponent } from "./pages/casino-client-dashboard/
 import { casinoTicketGuard } from "../../core/guards/casino-ticket.guard";
 import { RouletteGamePagesComponent } from "./pages/roulette-game-pages/roulette-game-pages.component";
 import { DiceGamePagesComponent } from "./pages/dice-game-pages/dice-game-pages.component";
+import { PokerGamePagesComponent } from "./pages/poker-game-pages/poker-game-pages.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
               { path: "dashboard", component: CasinoClientDashboardComponent },
               { path: "roulette", component: RouletteGamePagesComponent },
               { path: "dice", component: DiceGamePagesComponent },
+              { path: "poker", component: PokerGamePagesComponent },
             ]
         },
       ]
