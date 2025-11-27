@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
-import {CasinoBetFieldsComponent} from "../../moleculs/casino-bet-fields/casino-bet-fields.component";
-import {ThemeColor} from "../../../core/themeColor/theme-color-type";
-import {ButtonComponent} from "../../atoms/button/button.component";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from "@angular/forms";
+import { CasinoBetFieldsComponent } from "../../moleculs/casino-bet-fields/casino-bet-fields.component";
+import { ThemeColor } from "../../../core/themeColor/theme-color-type";
+import { ButtonComponent } from "../../atoms/button/button.component";
 
 @Component({
   selector: 'app-casino-bet-form',
@@ -14,18 +14,25 @@ import {ButtonComponent} from "../../atoms/button/button.component";
   templateUrl: './casino-bet-form.component.html',
   styleUrl: './casino-bet-form.component.css'
 })
-export class CasinoBetFormComponent {
+export class CasinoBetFormComponent implements OnInit {
   @Input() public theme: ThemeColor = "casino-regular";
   @Input() public maxBet!: number;
   @Input() public buttonLabel!: string;
+  @Input() public initialBet: number = 0;
 
-  @Output() public playerPlayGame = new EventEmitter<{bet: number, other: object|null}>();
+  @Output() public playerPlayGame = new EventEmitter<{ bet: number, other: object | null }>();
   public formGroup: FormGroup;
 
   constructor() {
     this.formGroup = new FormGroup({
       bet: new FormControl(0)
     });
+  }
+
+  ngOnInit() {
+    if (this.initialBet) {
+      this.betFormControl.setValue(this.initialBet);
+    }
   }
 
   get betFormControl() {

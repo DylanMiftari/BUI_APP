@@ -39,6 +39,7 @@ export class PokerGameTemplateComponent {
     @Input() public hiddenCards: boolean[] = [true, true, true, true, true];
     @Input() public winMessage: string = "";
     @Input() public gameState: 'betting' | 'revealing' | 'finished' = 'betting';
+    @Input() public lastBet: number = 0;
 
     @Output() public launchPoker = new EventEmitter<number>();
     @Output() public revealCard = new EventEmitter<number>();

@@ -30,6 +30,7 @@ export class PokerGamePagesComponent implements OnInit {
     public winMessage: string = "";
     public gameState: 'betting' | 'revealing' | 'finished' = 'betting';
     public handName: string = "";
+    public lastBet: number = 0;
 
     constructor(
         private headerButtonSerivce: HeaderReturnButtonService,
@@ -56,6 +57,7 @@ export class PokerGamePagesComponent implements OnInit {
     }
 
     playPoker(bet: number) {
+        this.lastBet = bet;
         this.casinoService.playPoker(this.casinoTicket.casino.id, bet).subscribe({
             next: results => {
                 this.dataUserService.removePlayerMoney(bet);

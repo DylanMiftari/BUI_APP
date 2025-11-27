@@ -47,7 +47,7 @@
     <app-simple-text [text]="winMessage" color="green" textAlign="center" [fontSizePx]="24"></app-simple-text>
 
     <app-casino-bet-form *ngIf="gameState === 'betting'" [theme]="theme" [maxBet]="maxBet" buttonLabel="🃏 Deal Cards!"
-        (playerPlayGame)="playerPlayGame($event)"></app-casino-bet-form>
+        [initialBet]="lastBet" (playerPlayGame)="playerPlayGame($event)"></app-casino-bet-form>
 
     <app-simple-text *ngIf="gameState === 'revealing'" text="Click on cards to reveal them" color="white"
         textAlign="center" [fontSizePx]="18"></app-simple-text>

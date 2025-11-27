@@ -1,4 +1,4 @@
 <app-poker-game-template *ngIf="casinoTicket && pokerData" [casinoTicket]="casinoTicket" [pokerData]="pokerData"
     [playError]="playError" [cards]="cards" [hiddenCards]="hiddenCards" [winMessage]="winMessage"
-    [gameState]="gameState" (launchPoker)="playPoker($event)" (revealCard)="revealCard($event)"
+    [gameState]="gameState" [lastBet]="lastBet" (launchPoker)="playPoker($event)" (revealCard)="revealCard($event)"
     (revealAllCards)="revealAll()" (playAgain)="resetGame()"></app-poker-game-template>
