@@ -1,0 +1,29 @@
+<app-simple-card direction="column" [marginXPx]="20" color="casino">
+    <app-themed-title title="🎲 Dice Game" color="casino"></app-themed-title>
+    <app-simple-text text="Roll the dice, hit the goal!" color="yellow" textAlign="center"></app-simple-text>
+</app-simple-card>
+
+<app-simple-card direction="column" [marginXPx]="20" color="casino" [marginPx]="40">
+    <app-themed-title title="📋 Game Rules & Payouts" color="casino"></app-themed-title>
+
+    <app-card-container>
+        <app-casino-payout-card [theme]="theme" icon="🎯" [title]="'Goal: ' + goal"
+            text="Roll the dice and get the sum equal to the goal."
+            [multiplicator]="winMultiplicator"></app-casino-payout-card>
+    </app-card-container>
+</app-simple-card>
+
+<app-simple-card color="casino" direction="column" [marginXPx]="20">
+    <app-themed-title title="🎮 Place Your Bet" [color]="theme"></app-themed-title>
+
+    <div class="dice-display">
+        <app-casino-dice [value]="dice1 || 1"></app-casino-dice>
+        <app-casino-dice [value]="dice2 || 1"></app-casino-dice>
+    </div>
+
+    <app-error-text [text]="playError" textAlign="center" [fontSizePx]="24"></app-error-text>
+    <app-simple-text [text]="winMessage" color="green" textAlign="center" [fontSizePx]="24"></app-simple-text>
+
+    <app-casino-bet-form [theme]="theme" [maxBet]="maxBet" buttonLabel="🎲 Roll the Dice!"
+        (playerPlayGame)="playerPlayGame($event)"></app-casino-bet-form>
+</app-simple-card>
