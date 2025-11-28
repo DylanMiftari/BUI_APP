@@ -1,0 +1,8 @@
+<span
+  [style.background-color]="themeColor.simpleColor(theme)"
+  [style.color]="themeColor.onPrimaryTextColor(theme)"
+  [style.width]="size+'px'"
+  [style.height]="size+'px'"
+  [style.border]="'dashed '+size/6+'px white'"
+  [style.box-shadow]="isSelected ? '0 0 10px 10px '+themeColor.shadowColor(theme) : ''"
+>{{ value }}</span>

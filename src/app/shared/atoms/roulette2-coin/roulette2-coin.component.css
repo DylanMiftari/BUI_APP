@@ -1,0 +1,10 @@
+span {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1rem;
+  box-sizing: border-box;
+  user-select: none;
+}

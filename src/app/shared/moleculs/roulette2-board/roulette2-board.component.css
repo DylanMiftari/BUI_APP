@@ -1,0 +1,120 @@
+:host {
+  display: inline-grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  app-roulette2-number {
+    border: solid 1px #f0f0f0;
+    position: relative;
+    &.doz, &.other {
+      height: -webkit-fill-available !important;
+    }
+    &.doz-1 {
+      grid-row: 2 / 6;
+    }
+    &.doz-2 {
+      grid-row: 6 / 10;
+    }
+    &.doz-3 {
+      grid-row: 10 / 14;
+    }
+
+    &.other:nth-child(1) {
+      grid-row: 2 / 4;
+    }
+    &.other:nth-child(2) {
+      grid-row: 4 / 6;
+    }
+    &.other:nth-child(3) {
+      grid-row: 6 / 8;
+    }
+    &.other:nth-child(4) {
+      grid-row: 8 / 10;
+    }
+    &.other:nth-child(5) {
+      grid-row: 10 / 12;
+    }
+    &.other:nth-child(6) {
+      grid-row: 12 / 14;
+    }
+  }
+  app-roulette2-number.zero {
+    grid-column: 3 / 6;
+    width: 100% !important;
+  }
+  app-roulette2-number.black {
+    background-color: #1C1C1C !important;
+  }
+  app-roulette2-number.red {
+    background-color: #A52A2A !important;
+  }
+}
+
+app-roulette2-coin {
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+app-roulette2-number div {
+  cursor: pointer;
+
+  app-roulette2-coin {
+    z-index: 3;
+  }
+}
+app-roulette2-number .number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+}
+app-roulette2-number .split-before {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+app-roulette2-number .split-after {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
+
+app-roulette2-number .split-bottom {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+app-roulette2-number .street {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
+
+app-roulette2-number .sixline {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+}
+
+app-roulette2-number .corner {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,253 @@
+<app-roulette2-number
+  [number]="'1 to 18'"
+  [rotation]="-90"
+  [style.width]="caseSize+'px'"
+  [style.height]="caseSize+'px'"
+  [style.background-color]="'#006400'"
+  (mouseover)="setSelectedNumbers(getNumbersRange(1, 18))"
+  (mouseout)="setSelectedNumbers([])"
+  (mousedown)="addOnMiddle(0)"
+  class="other"
+>
+  @if(betArray['middle'][0] != 0) {
+    <app-roulette2-coin [theme]="theme" [value]="betArray['middle'][0]" [size]="caseSize/2"
+    ></app-roulette2-coin>
+  }
+</app-roulette2-number>
+<app-roulette2-number
+  [number]="'EVEN'"
+  [rotation]="-90"
+  [style.width]="caseSize+'px'"
+  [style.height]="caseSize+'px'"
+  [style.background-color]="'#006400'"
+  class="other"
+  (mouseover)="setSelectedNumbers(EVEN_NUMBERS)"
+  (mouseout)="setSelectedNumbers([])"
+  (mousedown)="addOddOrEven('even')"
+>
+  @if(betArray['odd_even']["even"] != 0) {
+    <app-roulette2-coin [theme]="theme" [value]="betArray['odd_even']['even']" [size]="caseSize/2"
+    ></app-roulette2-coin>
+  }
+</app-roulette2-number>
+<app-roulette2-number
+  [number]="'RED'"
+  [rotation]="-90"
+  [style.width]="caseSize+'px'"
+  [style.height]="caseSize+'px'"
+  [style.background-color]="'#006400'"
+  class="other red"
+  (mouseover)="setSelectedNumbers(RED_NUMBERS)"
+  (mouseout)="setSelectedNumbers([])"
+  (mousedown)="addRedOrBlack('red')"
+>
+  @if(betArray['red_black']["red"] != 0) {
+    <app-roulette2-coin [theme]="theme" [value]="betArray['red_black']['red']" [size]="caseSize/2"
+    ></app-roulette2-coin>
+  }
+</app-roulette2-number>
+<app-roulette2-number
+  [number]="'BLACK'"
+  [rotation]="-90"
+  [style.width]="caseSize+'px'"
+  [style.height]="caseSize+'px'"
+  [style.background-color]="'#006400'"
+  class="other black"
+  (mouseover)="setSelectedNumbers(BLACK_NUMBERS)"
+  (mouseout)="setSelectedNumbers([])"
+  (mousedown)="addRedOrBlack('black')"
+>
+  @if(betArray['red_black']["black"] != 0) {
+    <app-roulette2-coin [theme]="theme" [value]="betArray['red_black']['black']" [size]="caseSize/2"
+    ></app-roulette2-coin>
+  }
+</app-roulette2-number>
+<app-roulette2-number
+  [number]="'ODD'"
+  [rotation]="-90"
+  [style.width]="caseSize+'px'"
+  [style.height]="caseSize+'px'"
+  [style.background-color]="'#006400'"
+  class="other"
+  (mouseover)="setSelectedNumbers(ODD_NUMBERS)"
+  (mouseout)="setSelectedNumbers([])"
+  (mousedown)="addOddOrEven('odd')"
+>
+  @if(betArray['odd_even']["odd"] != 0) {
+    <app-roulette2-coin [theme]="theme" [value]="betArray['odd_even']['odd']" [size]="caseSize/2"
+    ></app-roulette2-coin>
+  }
+</app-roulette2-number>
+<app-roulette2-number
+  [number]="'19 to 36'"
+  [rotation]="-90"
+  [style.width]="caseSize+'px'"
+  [style.height]="caseSize+'px'"
+  [style.background-color]="'#006400'"
+  class="other"
+  (mouseover)="setSelectedNumbers(getNumbersRange(19, 36))"
+  (mouseout)="setSelectedNumbers([])"
+  (mousedown)="addOnMiddle(1)"
+>
+  @if(betArray['middle'][1] != 0) {
+    <app-roulette2-coin [theme]="theme" [value]="betArray['middle'][1]" [size]="caseSize/2"
+    ></app-roulette2-coin>
+  }
+</app-roulette2-number>
+
+
+<app-roulette2-number
+  [number]="'1 to 12'"
+  [rotation]="-90"
+  [style.width]="caseSize+'px'"
+  [style.height]="caseSize+'px'"
+  [style.background-color]="'#006400'"
+  class="doz doz-1"
+  (mouseover)="setSelectedNumbers(getNumbersRange(1, 12))"
+  (mouseout)="setSelectedNumbers([])"
+  (mousedown)="addDozen(0)"
+>
+  @if(betArray['dozen'][0] != 0) {
+    <app-roulette2-coin [theme]="theme" [value]="betArray['dozen'][0]" [size]="caseSize/2"
+    ></app-roulette2-coin>
+  }
+</app-roulette2-number>
+<app-roulette2-number
+  [number]="'13 to 24'"
+  [rotation]="-90"
+  [style.width]="caseSize+'px'"
+  [style.height]="caseSize+'px'"
+  [style.background-color]="'#006400'"
+  class="doz doz-2"
+  (mouseover)="setSelectedNumbers(getNumbersRange(13, 24))"
+  (mouseout)="setSelectedNumbers([])"
+  (mousedown)="addDozen(1)"
+>
+  @if(betArray['dozen'][1] != 0) {
+    <app-roulette2-coin [theme]="theme" [value]="betArray['dozen'][1]" [size]="caseSize/2"
+    ></app-roulette2-coin>
+  }
+</app-roulette2-number>
+<app-roulette2-number
+  [number]="'25 to 36'"
+  [rotation]="-90"
+  [style.width]="caseSize+'px'"
+  [style.height]="caseSize+'px'"
+  [style.background-color]="'#006400'"
+  class="doz doz-3"
+  (mouseover)="setSelectedNumbers(getNumbersRange(25, 36))"
+  (mouseout)="setSelectedNumbers([])"
+  (mousedown)="addDozen(2)"
+>
+  @if(betArray['dozen'][2] != 0) {
+    <app-roulette2-coin [theme]="theme" [value]="betArray['dozen'][2]" [size]="caseSize/2"
+    ></app-roulette2-coin>
+  }
+</app-roulette2-number>
+
+@for (number of NUMBERS; track $index) {
+  <app-roulette2-number [number]="number.toString()"
+                        [isSelected]="selectedNumbers.indexOf(number) != -1"
+  [ngClass]="{
+    'zero': number == 0
+  }"
+                        [style.width]="caseSize+'px'"
+                        [style.height]="caseSize+'px'"
+  >
+    <div class="number" [style.width]="2*caseSize/3+'px'" [style.height]="2*caseSize/3+'px'"
+         (mouseover)="setSelectedNumbers([number])" (mouseout)="setSelectedNumbers([])"
+         (mousedown)="addOnStraightUp(number)"
+    ></div>
+    @if (number % 3 == 2) {
+      <div class="split-before" [style.width]="caseSize/3+'px'" [style.height]="caseSize/3+'px'"
+        (mouseover)="setSelectedNumbers([number-1, number])" (mouseout)="setSelectedNumbers([])"
+           (mousedown)="addSplit((number-1)+'-'+number)"
+      >
+        @if(betArray['split'].hasOwnProperty((number-1)+'-'+number) && betArray['split'][(number-1)+'-'+number] != 0) {
+          <app-roulette2-coin [theme]="theme" [value]="betArray['split'][(number-1)+'-'+number]" [size]="caseSize/2"
+          ></app-roulette2-coin>
+        }
+      </div>
+      <div class="split-after" [style.width]="caseSize/3+'px'" [style.height]="caseSize/3+'px'"
+           (mouseover)="setSelectedNumbers([number+1, number])" (mouseout)="setSelectedNumbers([])"
+           (mousedown)="addSplit((number+1)+'-'+number)"
+      >
+        @if(betArray['split'].hasOwnProperty((number+1)+'-'+number) && betArray['split'][(number+1)+'-'+number] != 0) {
+          <app-roulette2-coin [theme]="theme" [value]="betArray['split'][(number+1)+'-'+number]" [size]="caseSize/2"
+          ></app-roulette2-coin>
+        }
+      </div>
+    }
+    @if(number > 1 && number < 34) {
+      <div class="split-bottom" [style.width]="caseSize/3+'px'" [style.height]="caseSize/3+'px'"
+           (mouseover)="setSelectedNumbers([number+3, number])" (mouseout)="setSelectedNumbers([])"
+           (mousedown)="addSplit((number+3)+'-'+number)"
+      >
+        @if(betArray['split'].hasOwnProperty((number+3)+'-'+number) && betArray['split'][(number+3)+'-'+number] != 0) {
+          <app-roulette2-coin [theme]="theme" [value]="betArray['split'][(number+3)+'-'+number]" [size]="caseSize/2"
+          ></app-roulette2-coin>
+        }
+      </div>
+    }
+    @if(number % 3 == 0 && number != 0) {
+      <div class="street" [style.width]="caseSize/3+'px'" [style.height]="caseSize/3+'px'"
+           (mouseover)="setSelectedNumbers([number-2, number, number-1])" (mouseout)="setSelectedNumbers([])"
+           (mousedown)="addStreet([number-2, number, number-1].join('-'))"
+      >
+        @if(betArray['street'].hasOwnProperty([number-2, number, number-1].join('-')) && betArray['street'][[number-2, number, number-1].join('-')] != 0) {
+          <app-roulette2-coin [theme]="theme" [value]="betArray['street'][[number-2, number, number-1].join('-')]" [size]="caseSize/2"
+          ></app-roulette2-coin>
+        }
+      </div>
+    }
+    @if(number % 3 == 0 && number != 0 && number < 34) {
+      <div class="sixline" [style.width]="caseSize/3+'px'" [style.height]="caseSize/3+'px'"
+           (mouseover)="setSelectedNumbers([number-2, number, number-1, number+1, number+2, number+3])" (mouseout)="setSelectedNumbers([])"
+           (mousedown)="addSixLine([number-2, number, number-1, number+1, number+2, number+3].join('-'))"
+      >
+        @if(betArray['sixline'].hasOwnProperty([number-2, number, number-1, number+1, number+2, number+3].join('-')) &&
+        betArray['sixline'][[number-2, number, number-1, number+1, number+2, number+3].join('-')] != 0) {
+          <app-roulette2-coin [theme]="theme" [value]="betArray['sixline'][[number-2, number, number-1, number+1, number+2, number+3].join('-')]" [size]="caseSize/2"
+          ></app-roulette2-coin>
+        }
+      </div>
+    }
+    @if(number < 34 && (number%3 == 1 || number%3 == 2)) {
+      <div class="corner" [style.width]="caseSize/3+'px'" [style.height]="caseSize/3+'px'"
+           (mouseover)="setSelectedNumbers([number, number+1, number+3, number+4])" (mouseout)="setSelectedNumbers([])"
+           (mousedown)="addCorner([number, number+1, number+3, number+4].join('-'))"
+      >
+        @if(betArray['corner'].hasOwnProperty([number, number+1, number+3, number+4].join('-')) &&
+        betArray['corner'][[number, number+1, number+3, number+4].join('-')] != 0) {
+          <app-roulette2-coin [theme]="theme" [value]="betArray['corner'][[number, number+1, number+3, number+4].join('-')]" [size]="caseSize/2"
+          ></app-roulette2-coin>
+        }
+      </div>
+    }
+
+    @if(betArray["straight_up"].hasOwnProperty(number) && betArray['straight_up'][number] != 0) {
+      <app-roulette2-coin [theme]="theme" [value]="betArray['straight_up'][number]" [size]="caseSize/2"
+                          (mouseover)="setSelectedNumbers([number])" (mouseout)="setSelectedNumbers([])"
+                          (mousedown)="addOnStraightUp(number)"
+      ></app-roulette2-coin>
+    }
+  </app-roulette2-number>
+}
+
+@for (number of [1, 2, 3]; track $index) {
+  <app-roulette2-number
+    [number]="'Col '+number"
+    [style.width]="caseSize+'px'"
+    [style.height]="caseSize+'px'"
+    [style.background-color]="'#006400'"
+    [style.grid-column]="number+2"
+    (mouseover)="setSelectedNumbers([FIRST_COL, SECOND_COL, THIRD_COL][number-1])"
+    (mouseout)="setSelectedNumbers([])"
+    (mousedown)="addColumn(number-1)"
+  >
+    @if(betArray['column'][number-1] != 0) {
+      <app-roulette2-coin [theme]="theme" [value]="betArray['column'][number-1]" [size]="caseSize/2"
+      ></app-roulette2-coin>
+    }
+  </app-roulette2-number>
+}

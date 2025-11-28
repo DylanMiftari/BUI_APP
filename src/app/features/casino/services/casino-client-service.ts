@@ -11,6 +11,7 @@ import { PokerData } from "../models/poker-data.model";
 import { PokerResult } from "../models/poker-result.model";
 import { BlackjackData } from '../models/blackjack-data.model';
 import { BlackjackInitResponse, BlackjackPlayResponse } from '../models/blackjack-result.model';
+import {Roulette2Data} from "../models/roulette2-data.model";
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +74,10 @@ export class CasinoClientService {
 
   getBlackjackData(casinoId: number) {
     return this.http.get<BlackjackData>(`${this.baseUrl}/${casinoId}/game-data/blackjack`);
+  }
+
+  getRoulette2Data(casinoId: number) {
+    return this.http.get<Roulette2Data>(`${this.baseUrl}/${casinoId}/game-data/roulette2`);
   }
 
   initBlackjack(casinoId: number, bet: number) {

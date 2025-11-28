@@ -1,0 +1,63 @@
+<app-simple-card direction="column" [marginXPx]="20" color="casino">
+  <app-themed-title title="🎯 Roulette2" color="casino"></app-themed-title>
+  <app-simple-text text="The classic wheel game"
+                   color="yellow" textAlign="center"></app-simple-text>
+</app-simple-card>
+
+<app-simple-card direction="column" [marginXPx]="20" color="casino" [marginPx]="40">
+  <app-themed-title title="📋 Game Rules & Payouts" color="casino"></app-themed-title>
+
+  <app-card-container>
+    <app-casino-payout-card
+      [theme]="theme" icon="🎯" title="Straight Up" text="Betting on a single number."
+      [multiplicator]="straightUpMultiplicator"
+    ></app-casino-payout-card>
+
+    <app-casino-payout-card
+      [theme]="theme" icon="2️⃣" title="Split" text="A chip placed on the line between two numbers."
+      [multiplicator]="splitMultiplicator"
+    ></app-casino-payout-card>
+
+    <app-casino-payout-card
+      [theme]="theme" icon="3️⃣" title="Street" text="Covering a row of three numbers."
+      [multiplicator]="streetMultiplicator"
+    ></app-casino-payout-card>
+
+    <app-casino-payout-card
+      [theme]="theme" icon="4️⃣" title="Corner" text="Betting on four numbers that meet at a corner."
+      [multiplicator]="cornerMultiplicator"
+    ></app-casino-payout-card>
+
+    <app-casino-payout-card
+      [theme]="theme" icon="6️⃣" title="Six Line" text="Covering two adjacent rows of three numbers."
+      [multiplicator]="sixLineMultiplicator"
+    ></app-casino-payout-card>
+
+    <app-casino-payout-card
+      [theme]="theme" icon="📦" title="Dozen" text="Wagering on the first, second, or third group of twelve numbers."
+      [multiplicator]="dozenMultiplicator"
+    ></app-casino-payout-card>
+
+    <app-casino-payout-card
+      [theme]="theme" icon="🗼" title="Column" text="A bet on all numbers in one vertical column."
+      [multiplicator]="columnMultiplicator"
+    ></app-casino-payout-card>
+
+    <app-casino-payout-card
+      [theme]="theme" icon="🔴⚫" title="Red or Black" text="Betting on the color of the winning number."
+      [multiplicator]="redOrBlackMultiplicator"
+    ></app-casino-payout-card>
+
+    <app-casino-payout-card
+      [theme]="theme" icon="⚖️" title="Odd or Even" text="Wagering on whether the number is odd or even."
+      [multiplicator]="oddOrEvenMultiplicator"
+    ></app-casino-payout-card>
+
+    <app-casino-payout-card
+      [theme]="theme" icon="↕️️" title="Middle" text="A bet on numbers 1-18 or 19-36."
+      [multiplicator]="middleMultiplicator"
+    ></app-casino-payout-card>
+  </app-card-container>
+</app-simple-card>
+
+<app-simple-text text="e" [style.opacity]="0"></app-simple-text>

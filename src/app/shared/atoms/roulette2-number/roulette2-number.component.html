@@ -1,0 +1,9 @@
+<span [ngClass]="{
+'red': RED_NUMBERS.indexOf(number) != -1,
+'black': BLACK_NUMBERS.indexOf(number) != -1,
+'green': number == '0',
+'selected': isSelected
+}"
+      [style.transform]="'rotate('+rotation+'deg)'"
+>{{ number }}</span>
+<ng-content></ng-content>
