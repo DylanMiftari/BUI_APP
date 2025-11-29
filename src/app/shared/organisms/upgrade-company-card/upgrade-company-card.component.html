@@ -1,0 +1,26 @@
+<app-simple-card [marginXPx]="10" [color]="theme" direction="column">
+  <app-simple-text
+    [text]="'🏆 '+companyType+' Upgrade'" [color]="theme" textAlign="center"
+    [fontSizePx]="24" [bold]="true"
+  ></app-simple-text>
+
+  <app-row justifyContent="space-between" [marginPx]="10">
+    <app-pin [color]="theme" [text]="'Current : Level '+currentLevel" [upperText]="false"></app-pin>
+    @if (currentLevel != companyConfig.maxCompanyLevel) {
+      <app-pin [color]="'green'" [text]="'Next : Level '+(currentLevel+1)" [upperText]="false"></app-pin>
+    }
+  </app-row>
+  @if (currentLevel == companyConfig.maxCompanyLevel) {
+    <app-simple-text
+      text="You are already at the max level" [color]="theme" textAlign="center"
+      [fontSizePx]="20" [bold]="true"
+    ></app-simple-text>
+  } @else {
+    <app-simple-text
+      [text]="'Upgrade cost : '+companyConfig.costToUpgrade[currentLevel+1].toLocaleString()+'€'" [color]="theme" textAlign="center"
+      [fontSizePx]="20" [bold]="true" [marginYPx]="10"
+    ></app-simple-text>
+    <app-error-text [text]="upgradeError" textAlign="center" [fontSizePx]="18" [style.margin-bottom]="'10px'"></app-error-text>
+    <app-button label="Upgrade Company" [color]="theme" (clicked)="upgradeCompany()"></app-button>
+  }
+</app-simple-card>

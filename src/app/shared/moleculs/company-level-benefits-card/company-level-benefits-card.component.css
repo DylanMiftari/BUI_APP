@@ -1,0 +1,11 @@
+app-simple-card {
+  height: -webkit-fill-available;
+}
+
+app-level-pin, app-pin {
+  margin: 0 10px;
+}
+
+app-card {
+  width: 90%;
+}

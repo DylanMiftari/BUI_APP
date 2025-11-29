@@ -1,0 +1,53 @@
+<app-company-dashboard-header
+  companyType="Casino"
+  [buttonLinks]="buttonLinks"
+></app-company-dashboard-header>
+
+
+<app-simple-card [marginXPx]="20" color="casino" [marginPx]="20" direction="column">
+  <app-simple-card [marginXPx]="10" color="casino-regular" [gapPx]="10">
+    <app-icon icon="🎰" [fontSize]="3"></app-icon>
+    <div>
+      <app-simple-text [text]="casinoDashboardData.info.name" color="casino" [fontSizePx]="24" [marginYPx]="10" [bold]="true"></app-simple-text>
+      <app-level-pin color="casino-regular" [level]="casinoDashboardData.info.level"></app-level-pin>
+    </div>
+  </app-simple-card>
+
+  <app-simple-card [marginXPx]="10" color="casino-regular" direction="column" [marginPx]="20">
+    <app-row justifyContent="space-between">
+      <app-simple-text text="Money in company safe" [isLight]="true"></app-simple-text>
+      <app-simple-text [text]="casinoDashboardData.info.moneyInSafe.toLocaleString() + '€'" color="casino" [bold]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+    <app-row justifyContent="space-between">
+      <app-simple-text text="Sold tickets" [isLight]="true"></app-simple-text>
+      <app-simple-text [text]="casinoDashboardData.info.ticketsSold.toLocaleString() + '/' + casinoDashboardData.info.maxTickets.toLocaleString()" color="casino" [bold]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+    <app-row justifyContent="space-between">
+      <app-simple-text text="Sold VIP tickets" [isLight]="true"></app-simple-text>
+      <app-simple-text [text]="casinoDashboardData.info.vipTicketsSold.toLocaleString() + '/' + casinoDashboardData.info.maxVipTickets.toLocaleString()" color="casino" [bold]="true"></app-simple-text>
+    </app-row>
+  </app-simple-card>
+
+  <app-upgrade-company-card
+    companyType="Casino"
+    [currentLevel]="casinoDashboardData.info.level"
+    [companyId]="casinoDashboardData.info.companyId"
+  ></app-upgrade-company-card>
+
+  <app-simple-card [marginXPx]="10" color="casino-regular" direction="column" [marginPx]="20" [paddingPx]="5">
+    <app-simple-text text="Level Benefits Overview" color="casino" [fontSizePx]="20" textAlign="center" [bold]="true"></app-simple-text>
+    <app-card-container [paddingXPx]="0" [paddingYPx]="5" [cardBaseSizePx]="250">
+      @for (companyLevel of companyLevels; track $index) {
+        <app-company-level-benefits-card [level]="companyLevel"
+                                         [levelBenefits]="levelBenefits[companyLevel-1]"
+                                         [isCurrent]="companyLevel == casinoDashboardData.info.level"
+        ></app-company-level-benefits-card>
+      }
+    </app-card-container>
+  </app-simple-card>
+</app-simple-card>
+
+
+<app-simple-text text="e" [style.opacity]="0"></app-simple-text>

@@ -34,4 +34,8 @@ export class CompanyService {
   getStatusColor(company: Company) {
     return company.activated ? "#22c55e" : "#cf1e1e"
   }
+
+  getSubCompanyWithCompanyId(companyId: number) {
+    return this.http.get<{id: number}>(`${this.baseUri}/${companyId}/sub-company`);
+  }
 }

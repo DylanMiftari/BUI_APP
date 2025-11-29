@@ -12,6 +12,7 @@ import {ThemeColorService} from "../../../core/themeColor/theme-color.service";
 export class PinComponent {
   @Input() color: ThemeColor = "green";
   @Input() text: string = "";
+  @Input() upperText: boolean = true;
 
   constructor(
     public themeService: ThemeColorService

@@ -2,4 +2,5 @@
   [style.background]="'var('+themeService.cssVarFromColor(color)+')'"
   [style.color]="themeService.onPrimaryTextColor(color)"
   [style.box-shadow]="'0 2px 10px '+themeService.shadowColor(color)"
+  [style.text-transform]="upperText ? 'uppercase' : ''"
 >{{ text }}</p>

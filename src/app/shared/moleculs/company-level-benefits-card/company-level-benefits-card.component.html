@@ -1,0 +1,19 @@
+<app-simple-card direction="column" [color]="theme" [marginXPx]="5" [paddingPx]="5" [paddingYPx]="20">
+  <app-row justifyContent="space-between" alignItems="center">
+    <app-level-pin [level]="level" [color]="theme == 'casino' ? 'casino-regular' : theme"></app-level-pin>
+    @if (isCurrent) {
+      <app-pin text="Current" color="green" [upperText]="false"></app-pin>
+    }
+  </app-row>
+
+  <app-card-container [gapPx]="5" [paddingXPx]="0">
+    @for (levelBenefit of levelBenefits; track $index) {
+      <app-card [interactable]="false" [bordered]="false" [color]="theme == 'casino' ? 'casino-regular' : theme"
+                [glassCard]="true" [glassColor]="theme == 'casino' ? 'casino-regular' : theme" [border]="'none'"
+                [borderRadiusPx]="5" [marginYPx]="0"
+      >
+        <app-simple-text [text]="levelBenefit" [color]="theme"></app-simple-text>
+      </app-card>
+    }
+  </app-card-container>
+</app-simple-card>

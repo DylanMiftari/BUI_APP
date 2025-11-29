@@ -31,7 +31,7 @@
       </app-row>
 
       <app-row justifyContent="space-around">
-        <app-button label="Manage" color="blue"></app-button>
+        <app-button label="Manage" color="blue" (clicked)="goToManagePage(company)"></app-button>
         @if (company.level !== companyConfig.maxCompanyLevel) {
           <app-button
             [label]="'Upgrade for '+companyConfig.costToUpgrade[company.level+1].toLocaleString()" color="purple"

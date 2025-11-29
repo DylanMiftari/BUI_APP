@@ -13,6 +13,7 @@ import { BlackjackData } from '../models/blackjack-data.model';
 import { BlackjackInitResponse, BlackjackPlayResponse } from '../models/blackjack-result.model';
 import {Roulette2Data} from "../models/roulette2-data.model";
 import {Roulette2Result} from "../models/roulette2-result.model";
+import {CasinoDashboard} from "../models/casino-dashboard.model";
 
 @Injectable({
   providedIn: 'root'

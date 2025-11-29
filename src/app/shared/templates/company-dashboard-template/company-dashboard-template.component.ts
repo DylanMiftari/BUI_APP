@@ -57,4 +57,12 @@ export class CompanyDashboardTemplateComponent {
   statusColor(company: Company): string {
     return this.companyService.getStatusColor(company);
   }
+
+  goToManagePage(company: Company) {
+    this.companyService.getSubCompanyWithCompanyId(company.id).subscribe({
+      next: data => {
+        window.location.href = `/${company.type}/${data.id}/owner-dashboard`;
+      }
+    });
+  }
 }

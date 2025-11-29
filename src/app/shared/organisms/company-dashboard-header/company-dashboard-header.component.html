@@ -1,0 +1,10 @@
+<app-simple-card [color]="theme" [marginXPx]="20" direction="column">
+  <app-themed-title [title]="companyType + ' Management'" [color]="theme"></app-themed-title>
+  <app-simple-text text="Dashboard of your company" [color]="theme" [fontSizePx]="16" textAlign="center"></app-simple-text>
+
+  <app-row [marginPx]="15">
+    @for(buttonLink of buttonLinks; track $index) {
+      <app-button [label]="buttonLink.label" [color]="theme == 'casino' ? 'casino-regular' : theme" [routerLink]="[buttonLink.link]"></app-button>
+    }
+  </app-row>
+</app-simple-card>
