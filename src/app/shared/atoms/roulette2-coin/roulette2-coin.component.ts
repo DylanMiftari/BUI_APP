@@ -16,4 +16,11 @@ export class Roulette2CoinComponent {
   @Input() isSelected: boolean = false;
 
   constructor(public themeColor: ThemeColorService) {}
+
+  get printedValue() {
+    if(Math.abs(this.value) >= 1000) {
+      return Math.round(this.value / 1000) + "k";
+    }
+    return this.value;
+  }
 }

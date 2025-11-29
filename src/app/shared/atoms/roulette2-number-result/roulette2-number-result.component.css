@@ -1,0 +1,19 @@
+span {
+  display: inline-block;
+  color: #f0f0f0;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 20px;
+  margin: 5px;
+  border: solid 1px #f0f0f0;
+}
+
+span.black {
+  background-color: #1C1C1C;
+}
+span.red {
+  background-color: #A52A2A;
+}
+span.green {
+  background-color: #006400;
+}

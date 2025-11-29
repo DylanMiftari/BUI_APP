@@ -10,6 +10,7 @@ import {CasinoClientService} from "../../services/casino-client-service";
 import {ActivatedRoute} from "@angular/router";
 import {DataUserService} from "../../../../core/services/data-user.service";
 import {forkJoin} from "rxjs";
+import {Roulette2Result} from "../../models/roulette2-result.model";
 
 @Component({
   selector: 'app-roulette2-game-pages',
@@ -23,6 +24,10 @@ import {forkJoin} from "rxjs";
 export class Roulette2GamePagesComponent implements OnInit {
   public casinoTicket!: CasinoTicket;
   public roulette2Data!: Roulette2Data;
+  public roulette2Result: Roulette2Result | null = null;
+
+  public winText: string = "";
+  public errorText: string = "";
 
   constructor(
     private headerButtonSerivce: HeaderReturnButtonService,
@@ -45,6 +50,26 @@ export class Roulette2GamePagesComponent implements OnInit {
           this.headerButtonSerivce.updateButton("🎰 Back to the casino", `/casino/${this.casinoTicket.casino.id}/dashboard`);
         }
       });
+    });
+  }
+
+  spinTheWheel(betArray: any) {
+    this.casinoService.playRoulette2(this.casinoTicket.casino.id, betArray).subscribe({
+      next: data => {
+        this.roulette2Result = data;
+        this.dataUserService.removePlayerMoney(this.roulette2Result!.bet);
+        this.dataUserService.addPlayerMoney(this.roulette2Result!.winnings);
+        if(this.roulette2Result.winnings > 0){
+          this.winText = "Congratulations! You win "+this.roulette2Result!.winnings.toLocaleString()+"€";
+        } else {
+          this.winText = "You win anything, maybe for the next spin ?";
+        }
+        this.errorText = "";
+      },
+      error: err => {
+        this.winText = "";
+        this.errorText = err.error.message;
+      }
     });
   }
 }

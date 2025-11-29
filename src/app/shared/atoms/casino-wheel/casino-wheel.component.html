@@ -1,0 +1,9 @@
+<div class="wheel"
+     [style.width]="size+'px'"
+     [style.height]="size+'px'"
+>
+  @for(number of NUMBERS; track $index) {
+    <div class="segment {{ getColorClass(number.toString()) }}" [style.--i]="number">{{ number }}</div>
+  }
+  <div class="center-pin"></div>
+</div>

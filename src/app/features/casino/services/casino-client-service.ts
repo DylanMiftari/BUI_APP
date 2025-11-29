@@ -12,6 +12,7 @@ import { PokerResult } from "../models/poker-result.model";
 import { BlackjackData } from '../models/blackjack-data.model';
 import { BlackjackInitResponse, BlackjackPlayResponse } from '../models/blackjack-result.model';
 import {Roulette2Data} from "../models/roulette2-data.model";
+import {Roulette2Result} from "../models/roulette2-result.model";
 
 @Injectable({
   providedIn: 'root'
@@ -92,5 +93,9 @@ export class CasinoClientService {
 
   finishBlackjack(casinoId: number, gameId: number) {
     return this.http.patch<BlackjackPlayResponse>(`${this.baseUrl}/${casinoId}/game/blackjack/${gameId}/finish`, {});
+  }
+
+  playRoulette2(casinoId: number, betArray: any) {
+    return this.http.post<Roulette2Result>(`${this.baseUrl}/${casinoId}/game/roulette2`, betArray);
   }
 }

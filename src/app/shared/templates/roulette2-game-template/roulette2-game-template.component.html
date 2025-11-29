@@ -60,4 +60,37 @@
   </app-card-container>
 </app-simple-card>
 
+<app-simple-card direction="column" [marginXPx]="20" color="casino" [marginPx]="40">
+  <app-themed-title [color]="theme" title="🎮 Place Your Bet"></app-themed-title>
+
+  <app-row [marginPx]="10" justifyContent="space-around" [wrap]="true" [gapPx]="15">
+    <app-roulette2-board [selectedCoinValue]="selectedValue" [theme]="theme" (onBetArrayChange)="updateBetArray($event)"></app-roulette2-board>
+    <div [style.max-width]="'280px'">
+      <app-simple-text [text]="'Total bet : '+totalOfBet.toLocaleString()+'€'" [color]="theme"
+        [fontSizePx]="20" [bold]="true"
+      ></app-simple-text>
+      <app-simple-text [text]="'Maximum bet : '+maxBet.toLocaleString()+'€'" [color]="theme"
+                       [fontSizePx]="20" [bold]="true" [marginYPx]="5"
+      ></app-simple-text>
+      <app-roulette2-coin-selector [coinValues]="coinValues" [theme]="theme" [selectedValue]="selectedValue"
+                                   (onSelectValue)="selectCoinValue($event)"
+      ></app-roulette2-coin-selector>
+
+      <app-error-text [text]="errorText" [style.margin]="'10px 0'" [fontSizePx]="20" [style.max-width]="270+'px'"
+      [style.display]="'block'"></app-error-text>
+      <app-simple-text [text]="winText" color="green" [fontSizePx]="20" [style.max-width]="270+'px'"
+                       [style.display]="'block'"></app-simple-text>
+
+      <app-row [marginPx]="10" alignItems="center">
+        <app-simple-text [text]="'Result :'" [color]="theme"
+                         [fontSizePx]="20" [bold]="true" [marginYPx]="5"
+        ></app-simple-text>
+        <app-roulette2-number-result [number]="rolledNumber?.toString() ?? '0'"></app-roulette2-number-result>
+      </app-row>
+
+      <app-button label="🎯 Spin the wheel" [color]="theme" (clicked)="sendBetArray()"></app-button>
+    </div>
+  </app-row>
+</app-simple-card>
+
 <app-simple-text text="e" [style.opacity]="0"></app-simple-text>

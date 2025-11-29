@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Roulette2NumberComponent} from "../../atoms/roulette2-number/roulette2-number.component";
 import {NgClass} from "@angular/common";
 import {Roulette2CoinComponent} from "../../atoms/roulette2-coin/roulette2-coin.component";
@@ -19,6 +19,7 @@ export class Roulette2BoardComponent {
   @Input() caseSize: number = 60;
   @Input() selectedCoinValue: number = 1;
   @Input() theme: ThemeColor = "casino-regular";
+  @Output() onBetArrayChange = new EventEmitter<any>();
   public NUMBERS: number[] = Array.from({ length: 37 }, (_, i) => i);
   public RED_NUMBERS: number[] = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
   public BLACK_NUMBERS: number[] = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35];
@@ -77,21 +78,45 @@ export class Roulette2BoardComponent {
     } else {
       this.betArray["straight_up"][number] = this.selectedCoinValue;
     }
+    if(this.betArray["straight_up"][number] < 0) {
+      this.betArray["straight_up"][number] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
   addOnMiddle(part: number): void {
     this.betArray["middle"][part] += this.selectedCoinValue;
+    if(this.betArray["middle"][part] < 0) {
+      this.betArray["middle"][part] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
   addOddOrEven(betName: string): void {
     this.betArray["odd_even"][betName] += this.selectedCoinValue;
+    if(this.betArray["odd_even"][betName] < 0) {
+      this.betArray["odd_even"][betName] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
   addRedOrBlack(betName: string): void {
     this.betArray["red_black"][betName] += this.selectedCoinValue;
+    if(this.betArray["red_black"][betName] < 0) {
+      this.betArray["red_black"][betName] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
   addDozen(dozenNumber: number): void {
     this.betArray["dozen"][dozenNumber] += this.selectedCoinValue;
+    if(this.betArray["dozen"][dozenNumber] < 0) {
+      this.betArray["dozen"][dozenNumber] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
   addColumn(columnNumber: number): void {
     this.betArray["column"][columnNumber] += this.selectedCoinValue;
+    if(this.betArray["column"][columnNumber] < 0) {
+      this.betArray["column"][columnNumber] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
   addSplit(key: string): void {
     if(this.betArray["split"].hasOwnProperty(key)) {
@@ -99,6 +124,10 @@ export class Roulette2BoardComponent {
     } else {
       this.betArray["split"][key] = this.selectedCoinValue;
     }
+    if(this.betArray["split"][key] < 0) {
+      this.betArray["split"][key] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
   addStreet(key: string): void {
     if(this.betArray["street"].hasOwnProperty(key)) {
@@ -106,6 +135,10 @@ export class Roulette2BoardComponent {
     } else {
       this.betArray["street"][key] = this.selectedCoinValue;
     }
+    if(this.betArray["street"][key] < 0) {
+      this.betArray["street"][key] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
   addSixLine(key: string): void {
     if(this.betArray["sixline"].hasOwnProperty(key)) {
@@ -113,6 +146,10 @@ export class Roulette2BoardComponent {
     } else {
       this.betArray["sixline"][key] = this.selectedCoinValue;
     }
+    if(this.betArray["sixline"][key] < 0) {
+      this.betArray["sixline"][key] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
   addCorner(key: string): void {
     if(this.betArray["corner"].hasOwnProperty(key)) {
@@ -120,5 +157,9 @@ export class Roulette2BoardComponent {
     } else {
       this.betArray["corner"][key] = this.selectedCoinValue;
     }
+    if(this.betArray["corner"][key] < 0) {
+      this.betArray["corner"][key] = 0;
+    }
+    this.onBetArrayChange.emit(this.betArray);
   }
 }

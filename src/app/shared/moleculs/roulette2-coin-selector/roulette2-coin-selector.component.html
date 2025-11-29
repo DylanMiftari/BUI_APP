@@ -1,0 +1,7 @@
+<app-row [gapPx]="10" [wrap]="true">
+  @for(coinValue of coinValues; track $index) {
+    <app-roulette2-coin [theme]="theme" [value]="coinValue" [size]="40" (click)="selectValue(coinValue)"
+      [isSelected]="coinValue == selectedValue"
+    ></app-roulette2-coin>
+  }
+</app-row>

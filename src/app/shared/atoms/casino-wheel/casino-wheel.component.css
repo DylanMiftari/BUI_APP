@@ -1,0 +1,33 @@
+div.wheel {
+  all: unset;
+  aspect-ratio: 1 / 1;
+  container-type: inline-size;
+  direction: ltr;
+  display: grid;
+  place-content: center start;
+  clip-path: inset(0 0 0 0 round 50%);
+}
+.segment {
+  color: #f0f0f0;
+  align-content: center;
+  display: grid;
+  font-size: 5cqi;
+  grid-area: 1 / -1;
+  list-style: none;
+  padding-left: 1ch;
+  transform-origin: center right;
+  width: 45cqi;
+  height: calc((2 * pi * 50cqi) / 37);
+  rotate: calc(99deg + 360deg / 37 * calc(var(--i) - 1));
+  clip-path: polygon(0% -2%, 100% 50%, 0% 102%);
+}
+
+div.black {
+  background-color: #1C1C1C;
+}
+div.red {
+  background-color: #A52A2A;
+}
+div.green {
+  background-color: #006400;
+}

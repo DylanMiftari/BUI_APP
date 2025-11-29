@@ -2,6 +2,10 @@
   <app-roulette2-game-template
     [casinoTicket]="casinoTicket"
     [roulette2Data]="roulette2Data"
+    [rolledNumber]="roulette2Result?.roll ?? 0"
+    (onClickOnSpin)="spinTheWheel($event)"
+    [winText]="winText"
+    [errorText]="errorText"
   >
   </app-roulette2-game-template>
 }
