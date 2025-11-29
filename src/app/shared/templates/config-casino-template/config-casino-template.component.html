@@ -1,0 +1,29 @@
+<app-company-dashboard-header
+  companyType="Casino"
+  [buttonLinks]="buttonLinks"
+></app-company-dashboard-header>
+
+<app-simple-card direction="column" color="casino" [marginXPx]="20" [marginPx]="10">
+  <app-themed-title title="⚙️ Configuration" color="casino"></app-themed-title>
+
+  <form>
+    <div>
+      <app-input label="Ticket Price" type="number" color="casino" [control]="getFormControl('ticketPrice')"></app-input>
+      <app-simple-text [text]="'Max price : '+casinoLevel.maxTicketPrice.toLocaleString()+'€'" [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
+      <app-input label="VIP Ticket Price" type="number" color="casino" [control]="getFormControl('VIPTicketPrice')"></app-input>
+      <app-simple-text [text]="'Max price : '+casinoLevel.maxVIPTicketPrice!.toLocaleString()+'€'" [isLight]="true"></app-simple-text>
+    </div>
+
+    <app-error-text [text]="configurationError" *ngIf="configurationError != ''"></app-error-text>
+    <app-simple-text [text]="configurationUpdate" color="green" *ngIf="configurationUpdate != ''"></app-simple-text>
+
+    <app-button label="Update Casino Configuration" color="casino-regular" (clicked)="updateConfiguration()"></app-button>
+  </form>
+
+</app-simple-card>
+
+
+<app-simple-text text="e" [style.opacity]="1"></app-simple-text>

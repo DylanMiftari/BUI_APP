@@ -1,0 +1,9 @@
+@if(casinoDashboardData) {
+  <app-config-casino-template
+    [casinoDashboardData]="casinoDashboardData"
+
+    [configurationUpdate]="casinoConfigUpdate"
+    [configurationError]="casinoConfigError"
+    (onSaveConfiguration)="saveConfiguration($event)"
+  ></app-config-casino-template>
+}

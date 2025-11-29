@@ -2,6 +2,7 @@ import {CasinoLevel} from "./casino-level.model";
 
 export interface CasinoDashboard {
   info: {
+    id: number,
     name: string,
     level: number,
     moneyInSafe: number,
@@ -11,5 +12,9 @@ export interface CasinoDashboard {
     maxVipTickets: number,
     companyId: number,
   },
-  levels: CasinoLevel[]
+  levels: CasinoLevel[],
+  config: {
+    ticketPrice: number,
+    vipTicketPrice: number,
+  }
 }

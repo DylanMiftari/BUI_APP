@@ -24,14 +24,15 @@ import {
 })
 export class CasinoDashboardTemplateComponent implements OnInit {
   @Input() casinoDashboardData!: CasinoDashboard;
-  buttonLinks: {label: string, link: string}[] = [
-    {'label': 'Casino Settings', 'link': '/company'}
-  ];
+  buttonLinks: {label: string, link: string}[] = [];
 
   public levelBenefits: string[][] = [];
   public companyLevels: number[] = [1, 2, 3, 4, 5, 6]
 
   ngOnInit() {
+    this.buttonLinks = [
+      {'label': 'Casino Settings', 'link': '/casino/'+this.casinoDashboardData.info.id+'/config'}
+    ]
     this.levelBenefits = [
       // Level 1
       [

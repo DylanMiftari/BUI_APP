@@ -14,6 +14,7 @@ import { PokerGamePagesComponent } from "./pages/poker-game-pages/poker-game-pag
 import { BlackjackGamePagesComponent } from "./pages/blackjack-game-pages/blackjack-game-pages.component";
 import {Roulette2GamePagesComponent} from "./pages/roulette2-game-pages/roulette2-game-pages.component";
 import {CasinoDashboardPagesComponent} from "./pages/casino-dashboard-pages/casino-dashboard-pages.component";
+import {ConfigCasinoPagesComponent} from "./pages/config-casino-pages/config-casino-pages.component";
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
               { path: "roulette2", component: Roulette2GamePagesComponent }
             ]
         },
-        { path: ":casinoId/owner-dashboard", component: CasinoDashboardPagesComponent}
+        { path: ":casinoId/owner-dashboard", component: CasinoDashboardPagesComponent},
+        { path: ":casinoId/config", component: ConfigCasinoPagesComponent}
       ]
   }
 ];

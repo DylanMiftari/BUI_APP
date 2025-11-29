@@ -153,6 +153,7 @@ export class ThemeColorService {
     switch(color) {
       case "casino-regular":
       case "casino-vip":
+      case "casino":
         return "black";
       default:
         return "white";
@@ -162,6 +163,7 @@ export class ThemeColorService {
   public inputTextColor(color: ThemeColor) {
     switch(color) {
       case "casino-regular":
+      case "casino":
         return "#FFD700"
       case "casino-vip":
         return "#9370DB";

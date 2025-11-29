@@ -11,7 +11,11 @@ export class CasinoOwnerService {
   baseUrl: string = environment.baseUri + "/casino";
   constructor(private http: HttpClient) { }
 
-  getDashboardData(casinoId: number) {
-    return this.http.get<CasinoDashboard>(`${this.baseUrl}/${casinoId}/dashboard`);
+  getDashboardData(casinoId: number, withParam: string = "") {
+    return this.http.get<CasinoDashboard>(`${this.baseUrl}/${casinoId}/dashboard?with=${withParam}`);
+  }
+
+  updateCasinoConfiguration(casinoId: number, payload: any) {
+    return this.http.patch(`${this.baseUrl}/${casinoId}/config/ticket-price`, payload);
   }
 }
