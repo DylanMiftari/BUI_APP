@@ -16,5 +16,13 @@ export interface CasinoDashboard {
   config: {
     ticketPrice: number,
     vipTicketPrice: number,
+    rouletteSequenceMultiplicator: number,
+    rouletteTripletMultiplcator: number,
+    rouletteTripleSeventMultiplicator: number,
+    rouletteMaxBet: number,
+    rouletteVIPSequenceMultiplicator: number,
+    rouletteVIPTripletMultiplcator: number,
+    rouletteVIPTripleSeventMultiplicator: number,
+    rouletteMaxVIPBet: number,
   }
 }

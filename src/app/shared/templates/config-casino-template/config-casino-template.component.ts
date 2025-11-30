@@ -12,6 +12,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {ButtonComponent} from "../../atoms/button/button.component";
 import {ErrorTextComponent} from "../../atoms/error-text/error-text.component";
 import {NgIf} from "@angular/common";
+import {SeperatorWithTextComponent} from "../../atoms/seperator-with-text/seperator-with-text.component";
 
 @Component({
   selector: 'app-config-casino-template',
@@ -24,7 +25,8 @@ import {NgIf} from "@angular/common";
     SimpleTextComponent,
     ButtonComponent,
     ErrorTextComponent,
-    NgIf
+    NgIf,
+    SeperatorWithTextComponent
   ],
   templateUrl: './config-casino-template.component.html',
   styleUrl: './config-casino-template.component.css'
@@ -35,12 +37,16 @@ export class ConfigCasinoTemplateComponent implements OnInit {
 
   @Input() configurationUpdate: string = "";
   @Input() configurationError: string = "";
+  @Input() rouletteConfigUpdate: string = "";
+  @Input() rouletteConfigError: string = "";
   @Output() onSaveConfiguration = new EventEmitter<any>();
+  @Output() onSaveRouletteConfiguration = new EventEmitter<any>();
 
   public casinoConfigFormGroup!: FormGroup;
+  public rouletteConfigFormGroup!: FormGroup;
 
   get casinoLevel(): CasinoLevel {
-    return this.casinoDashboardData.levels[this.casinoDashboardData.info.level];
+    return this.casinoDashboardData.levels[this.casinoDashboardData.info.level - 1];
   }
 
   ngOnInit(): void {
@@ -52,15 +58,33 @@ export class ConfigCasinoTemplateComponent implements OnInit {
       ticketPrice: new FormControl(this.casinoDashboardData.config.ticketPrice),
       VIPTicketPrice: new FormControl(this.casinoDashboardData.config.vipTicketPrice),
     });
+    this.rouletteConfigFormGroup = new FormGroup({
+      rouletteSequenceMultiplicator: new FormControl(this.casinoDashboardData.config.rouletteSequenceMultiplicator),
+      rouletteTripletMultiplcator: new FormControl(this.casinoDashboardData.config.rouletteTripletMultiplcator),
+      rouletteTripleSeventMultiplicator: new FormControl(this.casinoDashboardData.config.rouletteTripleSeventMultiplicator),
+      rouletteMaxBet: new FormControl(this.casinoDashboardData.config.rouletteMaxBet),
+      rouletteVIPSequenceMultiplicator: new FormControl(this.casinoDashboardData.config.rouletteVIPSequenceMultiplicator),
+      rouletteVIPTripletMultiplcator: new FormControl(this.casinoDashboardData.config.rouletteVIPTripletMultiplcator),
+      rouletteVIPTripleSeventMultiplicator: new FormControl(this.casinoDashboardData.config.rouletteVIPTripleSeventMultiplicator),
+      rouletteMaxVIPBet: new FormControl(this.casinoDashboardData.config.rouletteMaxVIPBet),
+    });
   }
 
   getFormControl(name: string): FormControl {
     return this.casinoConfigFormGroup.get(name) as FormControl;
+  }
+  getRouletteFormControl(name: string): FormControl {
+    return this.rouletteConfigFormGroup.get(name) as FormControl;
   }
 
   updateConfiguration() {
     this.onSaveConfiguration.emit({
       ...this.casinoConfigFormGroup.value,
     });
+  }
+  updateRouletteConfiguration() {
+    this.onSaveRouletteConfiguration.emit({
+      ...this.rouletteConfigFormGroup.value,
+    })
   }
 }

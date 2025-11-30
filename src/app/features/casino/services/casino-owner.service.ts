@@ -18,4 +18,8 @@ export class CasinoOwnerService {
   updateCasinoConfiguration(casinoId: number, payload: any) {
     return this.http.patch(`${this.baseUrl}/${casinoId}/config/ticket-price`, payload);
   }
+
+  updateRouletteConfiguration(casinoId: number, payload: any) {
+    return this.http.patch(`${this.baseUrl}/${casinoId}/config/roulette`, payload);
+  }
 }

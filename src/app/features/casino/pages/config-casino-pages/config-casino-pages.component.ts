@@ -21,6 +21,8 @@ export class ConfigCasinoPagesComponent implements OnInit {
 
   public casinoConfigUpdate: string = "";
   public casinoConfigError: string = "";
+  public rouletteConfigUpdate: string = "";
+  public rouletteConfigError: string = "";
 
   constructor(
     private headerButton: HeaderReturnButtonService,
@@ -50,6 +52,18 @@ export class ConfigCasinoPagesComponent implements OnInit {
       error: err => {
         this.casinoConfigUpdate = "";
         this.casinoConfigError = err.error.message;
+      }
+    })
+  }
+  saveRoulette(data: any) {
+    this.casinoService.updateRouletteConfiguration(this.casinoDashboardData!.info.id, data).subscribe({
+      next: () => {
+        this.rouletteConfigUpdate = "Roulette Configuration Updated";
+        this.rouletteConfigError = "";
+      },
+      error: err => {
+        this.rouletteConfigUpdate = "";
+        this.rouletteConfigError = err.error.message;
       }
     })
   }
