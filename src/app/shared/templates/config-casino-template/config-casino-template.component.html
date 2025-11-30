@@ -141,130 +141,179 @@
   <app-seperator-with-text [marginPx]="20"></app-seperator-with-text>
   <!-- Poker Config -->
   @if(casinoDashboardData.info.level >= 3) {
-    <app-themed-title title="🃏 Poker Configuration" color="casino"></app-themed-title>
-    <form>
-      <div>
-        <app-input label="Nothing Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('nothingMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for nothing (high card)" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="One Pair Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('onePairMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for one pair" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Two Pair Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('twoPairMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for two pair" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Three of a Kind Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('threeOfAKindMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for three of a kind" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Straight Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('straightMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for straight" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Flush Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('flushMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for flush" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Full House Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('fullHouseMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for full house" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Four of a Kind Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('fourOfAKindMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for four of a kind" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Straight Flush Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('straightFlushMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for straight flush" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Royal Flush Multiplicator" type="number" color="casino"
-                   [control]="getPokerFormControl('royalFlushMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for royal flush" [isLight]="true"></app-simple-text>
-      </div>
+  <app-themed-title title="🃏 Poker Configuration" color="casino"></app-themed-title>
+  <form>
+    <div>
+      <app-input label="Nothing Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('nothingMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for nothing (high card)" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="One Pair Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('onePairMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for one pair" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Two Pair Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('twoPairMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for two pair" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Three of a Kind Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('threeOfAKindMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for three of a kind" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Straight Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('straightMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for straight" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Flush Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('flushMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for flush" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Full House Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('fullHouseMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for full house" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Four of a Kind Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('fourOfAKindMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for four of a kind" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Straight Flush Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('straightFlushMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for straight flush" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Royal Flush Multiplicator" type="number" color="casino"
+        [control]="getPokerFormControl('royalFlushMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for royal flush" [isLight]="true"></app-simple-text>
+    </div>
 
-      <div>
-        <app-input label="Maximum bet for poker" type="number" color="casino"
-                   [control]="getPokerFormControl('pokerMaxBet')"></app-input>
-        <app-simple-text [text]="'Max you can set is : '+casinoLevel.pokerMaxBet.toLocaleString()+'€'"
-                         [isLight]="true"></app-simple-text>
-      </div>
+    <div>
+      <app-input label="Maximum bet for poker" type="number" color="casino"
+        [control]="getPokerFormControl('pokerMaxBet')"></app-input>
+      <app-simple-text [text]="'Max you can set is : '+casinoLevel.pokerMaxBet.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
+    </div>
 
-      <div>
-        <app-input label="Nothing VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('nothingVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for nothing (high card) for VIP" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="One Pair VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('onePairVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for one pair for VIP" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Two Pair VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('twoPairVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for two pair for VIP" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Three of a Kind VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('threeOfAKindVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for three of a kind for VIP" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Straight VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('straightVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for straight for VIP" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Flush VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('flushVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for flush for VIP" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Full House VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('fullHouseVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for full house for VIP" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Four of a Kind VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('fourOfAKindVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for four of a kind for VIP" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Straight Flush VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('straightFlushVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for straight flush for VIP" [isLight]="true"></app-simple-text>
-      </div>
-      <div>
-        <app-input label="Royal Flush VIP Multiplicator" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('royalFlushVIPMultiplicator')"></app-input>
-        <app-simple-text text="Win multiplicator for royal flush for VIP" [isLight]="true"></app-simple-text>
-      </div>
+    <div>
+      <app-input label="Nothing VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('nothingVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for nothing (high card) for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="One Pair VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('onePairVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for one pair for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Two Pair VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('twoPairVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for two pair for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Three of a Kind VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('threeOfAKindVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for three of a kind for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Straight VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('straightVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for straight for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Flush VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('flushVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for flush for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Full House VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('fullHouseVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for full house for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Four of a Kind VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('fourOfAKindVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for four of a kind for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Straight Flush VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('straightFlushVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for straight flush for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Royal Flush VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getPokerFormControl('royalFlushVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for royal flush for VIP" [isLight]="true"></app-simple-text>
+    </div>
 
-      <div>
-        <app-input label="Maximum bet for poker for VIP" type="number" color="casino-vip"
-                   [control]="getPokerFormControl('pokerMaxVIPBet')"></app-input>
-        <app-simple-text [text]="'Max you can set is : '+casinoLevel.pokerMaxVIPBet.toLocaleString()+'€'"
-                         [isLight]="true"></app-simple-text>
-      </div>
+    <div>
+      <app-input label="Maximum bet for poker for VIP" type="number" color="casino-vip"
+        [control]="getPokerFormControl('pokerMaxVIPBet')"></app-input>
+      <app-simple-text [text]="'Max you can set is : '+casinoLevel.pokerMaxVIPBet.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
+    </div>
 
-      <app-error-text [text]="pokerConfigError" *ngIf="pokerConfigError != ''"></app-error-text>
-      <app-simple-text [text]="pokerConfigUpdate" color="green" *ngIf="pokerConfigUpdate != ''"></app-simple-text>
+    <app-error-text [text]="pokerConfigError" *ngIf="pokerConfigError != ''"></app-error-text>
+    <app-simple-text [text]="pokerConfigUpdate" color="green" *ngIf="pokerConfigUpdate != ''"></app-simple-text>
 
-      <app-button label="Update Poker Configuration" color="casino-regular"
-                  (clicked)="updatePokerConfiguration()"></app-button>
-    </form>
+    <app-button label="Update Poker Configuration" color="casino-regular"
+      (clicked)="updatePokerConfiguration()"></app-button>
+  </form>
+  }
+
+  @if(casinoDashboardData.info.level >= 4) {
+  <app-seperator-with-text [marginPx]="20"></app-seperator-with-text>
+  <!-- Blackjack Config -->
+  <app-themed-title title="🃏 Blackjack Configuration" color="casino"></app-themed-title>
+  <form>
+    <div>
+      <app-input label="Blackjack Win Multiplicator" type="number" color="casino"
+        [control]="getBlackjackFormControl('blackJackWinMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for blackjack" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Blackjack Multiplicator" type="number" color="casino"
+        [control]="getBlackjackFormControl('blackJackMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for normal win" [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
+      <app-input label="Maximum bet for blackjack" type="number" color="casino"
+        [control]="getBlackjackFormControl('blackJackMaxBet')"></app-input>
+      <app-simple-text [text]="'Max you can set is : '+casinoLevel.blackJackMaxBet.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
+      <app-input label="Blackjack VIP Win Multiplicator" type="number" color="casino-vip"
+        [control]="getBlackjackFormControl('blackJackVIPWinMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for blackjack for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Blackjack VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getBlackjackFormControl('blackJackVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for normal win for VIP" [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
+      <app-input label="Maximum bet for blackjack for VIP" type="number" color="casino-vip"
+        [control]="getBlackjackFormControl('blackJackVIPMaxBet')"></app-input>
+      <app-simple-text [text]="'Max you can set is : '+casinoLevel.blackJackMaxVIPBet.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
+    </div>
+
+    <app-error-text [text]="blackjackConfigError" *ngIf="blackjackConfigError != ''"></app-error-text>
+    <app-simple-text [text]="blackjackConfigUpdate" color="green" *ngIf="blackjackConfigUpdate != ''"></app-simple-text>
+
+    <app-button label="Update Blackjack Configuration" color="casino-regular"
+      (clicked)="updateBlackjackConfiguration()"></app-button>
+  </form>
   }
 
 </app-simple-card>

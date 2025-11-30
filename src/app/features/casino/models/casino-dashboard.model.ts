@@ -52,5 +52,11 @@ export interface CasinoDashboard {
     straightFlushVIPMultiplicator: number,
     royalFlushVIPMultiplicator: number,
     pokerMaxVIPBet: number,
+    blackJackWinMultiplicator: number,
+    blackJackMultiplicator: number,
+    blackJackMaxBet: number,
+    blackJackVIPWinMultiplicator: number,
+    blackJackVIPMultiplicator: number,
+    blackJackVIPMaxBet: number,
   }
 }

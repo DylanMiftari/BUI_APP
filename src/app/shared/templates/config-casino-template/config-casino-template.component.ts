@@ -43,15 +43,19 @@ export class ConfigCasinoTemplateComponent implements OnInit {
   @Input() diceConfigError: string = "";
   @Input() pokerConfigUpdate: string = "";
   @Input() pokerConfigError: string = "";
+  @Input() blackjackConfigUpdate: string = "";
+  @Input() blackjackConfigError: string = "";
   @Output() onSaveConfiguration = new EventEmitter<any>();
   @Output() onSaveRouletteConfiguration = new EventEmitter<any>();
   @Output() onSaveDiceConfiguration = new EventEmitter<any>();
   @Output() onSavePokerConfiguration = new EventEmitter<any>();
+  @Output() onSaveBlackjackConfiguration = new EventEmitter<any>();
 
   public casinoConfigFormGroup!: FormGroup;
   public rouletteConfigFormGroup!: FormGroup;
   public diceConfigFormGroup!: FormGroup;
   public pokerConfigFormGroup!: FormGroup;
+  public blackjackConfigFormGroup!: FormGroup;
 
   get casinoLevel(): CasinoLevel {
     return this.casinoDashboardData.levels[this.casinoDashboardData.info.level - 1];
@@ -108,6 +112,14 @@ export class ConfigCasinoTemplateComponent implements OnInit {
       royalFlushVIPMultiplicator: new FormControl(this.casinoDashboardData.config.royalFlushVIPMultiplicator),
       pokerMaxVIPBet: new FormControl(this.casinoDashboardData.config.pokerMaxVIPBet),
     });
+    this.blackjackConfigFormGroup = new FormGroup({
+      blackJackWinMultiplicator: new FormControl(this.casinoDashboardData.config.blackJackWinMultiplicator),
+      blackJackMultiplicator: new FormControl(this.casinoDashboardData.config.blackJackMultiplicator),
+      blackJackMaxBet: new FormControl(this.casinoDashboardData.config.blackJackMaxBet),
+      blackJackVIPWinMultiplicator: new FormControl(this.casinoDashboardData.config.blackJackVIPWinMultiplicator),
+      blackJackVIPMultiplicator: new FormControl(this.casinoDashboardData.config.blackJackVIPMultiplicator),
+      blackJackVIPMaxBet: new FormControl(this.casinoDashboardData.config.blackJackVIPMaxBet),
+    });
   }
 
   getFormControl(name: string): FormControl {
@@ -145,5 +157,15 @@ export class ConfigCasinoTemplateComponent implements OnInit {
 
   getPokerFormControl(name: string): FormControl {
     return this.pokerConfigFormGroup.get(name) as FormControl;
+  }
+
+  updateBlackjackConfiguration() {
+    this.onSaveBlackjackConfiguration.emit({
+      ...this.blackjackConfigFormGroup.value,
+    })
+  }
+
+  getBlackjackFormControl(name: string): FormControl {
+    return this.blackjackConfigFormGroup.get(name) as FormControl;
   }
 }

@@ -30,4 +30,8 @@ export class CasinoOwnerService {
   updatePokerConfiguration(casinoId: number, payload: any) {
     return this.http.patch(`${this.baseUrl}/${casinoId}/config/poker`, payload);
   }
+
+  updateBlackjackConfiguration(casinoId: number, payload: any) {
+    return this.http.patch(`${this.baseUrl}/${casinoId}/config/blackjack`, payload);
+  }
 }
