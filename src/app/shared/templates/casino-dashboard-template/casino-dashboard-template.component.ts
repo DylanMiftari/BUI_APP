@@ -36,36 +36,36 @@ export class CasinoDashboardTemplateComponent implements OnInit {
     this.levelBenefits = [
       // Level 1
       [
-        "🎫 Max tickets: "+this.casinoDashboardData.levels[0].nbMaxTicket+" ("+this.casinoDashboardData.levels[0].maxTicketPrice+"€ max)",
+        "🎫 Max tickets: "+this.casinoDashboardData.levels[0].nbMaxTicket+" ("+this.casinoDashboardData.levels[0]?.maxTicketPrice+"€ max)",
         "🎰 Game: Roulette unlocked"
       ],
       // Level 2
       [
-        "🎫 Max tickets: "+this.casinoDashboardData.levels[1].nbMaxTicket+" ("+this.casinoDashboardData.levels[1].maxTicketPrice+"€ max)",
+        "🎫 Max tickets: "+this.casinoDashboardData.levels[1]?.nbMaxTicket+" ("+this.casinoDashboardData.levels[1]?.maxTicketPrice+"€ max)",
         "🎲 Game: Dice Roll unlocked"
       ],
       // Level 3
       [
-        "🎫 Max tickets: "+this.casinoDashboardData.levels[2].nbMaxTicket+" ("+this.casinoDashboardData.levels[2].maxTicketPrice+"€ max)",
+        "🎫 Max tickets: "+this.casinoDashboardData.levels[2]?.nbMaxTicket+" ("+this.casinoDashboardData.levels[2]?.maxTicketPrice+"€ max)",
         "🃏 Game: Poker",
-        "🎭 VIP tickets: "+this.casinoDashboardData.levels[2].nbMaxVIPTicket+" ("+this.casinoDashboardData.levels[2].maxVIPTicketPrice?.toLocaleString()+"€ max)"
+        "🎭 VIP tickets: "+this.casinoDashboardData.levels[2]?.nbMaxVIPTicket+" ("+this.casinoDashboardData.levels[2]?.maxVIPTicketPrice?.toLocaleString()+"€ max)"
       ],
       // Level 4
       [
-        "🎫 Max tickets: "+this.casinoDashboardData.levels[3].nbMaxTicket.toLocaleString()+" ("+this.casinoDashboardData.levels[3].maxTicketPrice.toLocaleString()+"€ max)",
+        "🎫 Max tickets: "+this.casinoDashboardData.levels[3]?.nbMaxTicket?.toLocaleString()+" ("+this.casinoDashboardData.levels[3]?.maxTicketPrice?.toLocaleString()+"€ max)",
         "🂡 Game: Blackjack",
-        "🎭 VIP tickets: "+this.casinoDashboardData.levels[3].nbMaxVIPTicket+" ("+this.casinoDashboardData.levels[3].maxVIPTicketPrice?.toLocaleString()+"€ max)"
+        "🎭 VIP tickets: "+this.casinoDashboardData.levels[3]?.nbMaxVIPTicket+" ("+this.casinoDashboardData.levels[3]?.maxVIPTicketPrice?.toLocaleString()+"€ max)"
       ],
       // Level 5
       [
-        "🎫 Max tickets: "+this.casinoDashboardData.levels[4].nbMaxTicket.toLocaleString()+" ("+this.casinoDashboardData.levels[4].maxTicketPrice.toLocaleString()+"€ max)",
+        "🎫 Max tickets: "+this.casinoDashboardData.levels[4]?.nbMaxTicket?.toLocaleString()+" ("+this.casinoDashboardData.levels[4]?.maxTicketPrice?.toLocaleString()+"€ max)",
         "🎯 Game: Classic Roulette",
-        "🎭 VIP tickets: "+this.casinoDashboardData.levels[4].nbMaxVIPTicket.toLocaleString()+" ("+this.casinoDashboardData.levels[4].maxVIPTicketPrice?.toLocaleString()+"€ max)"
+        "🎭 VIP tickets: "+this.casinoDashboardData.levels[4]?.nbMaxVIPTicket?.toLocaleString()+" ("+this.casinoDashboardData.levels[4]?.maxVIPTicketPrice?.toLocaleString()+"€ max)"
       ],
       // Level 4
       [
-        "🎫 Max tickets: "+this.casinoDashboardData.levels[5].nbMaxTicket.toLocaleString()+" ("+this.casinoDashboardData.levels[5].maxTicketPrice.toLocaleString()+"€ max)",
-        "🎭 VIP tickets: "+this.casinoDashboardData.levels[5].nbMaxVIPTicket.toLocaleString()+" ("+this.casinoDashboardData.levels[5].maxVIPTicketPrice?.toLocaleString()+"€ max)"
+        "🎫 Max tickets: "+this.casinoDashboardData.levels[5]?.nbMaxTicket?.toLocaleString()+" ("+this.casinoDashboardData.levels[5]?.maxTicketPrice?.toLocaleString()+"€ max)",
+        "🎭 VIP tickets: "+this.casinoDashboardData.levels[5]?.nbMaxVIPTicket?.toLocaleString()+" ("+this.casinoDashboardData.levels[5]?.maxVIPTicketPrice?.toLocaleString()+"€ max)"
       ],
     ]
   }
