@@ -1,12 +1,7 @@
 @if(casinoDashboardData) {
-  <app-config-casino-template
-    [casinoDashboardData]="casinoDashboardData"
-
-    [configurationUpdate]="casinoConfigUpdate"
-    [configurationError]="casinoConfigError"
-    (onSaveConfiguration)="saveConfiguration($event)"
-    [rouletteConfigUpdate]="rouletteConfigUpdate"
-    [rouletteConfigError]="rouletteConfigError"
-    (onSaveRouletteConfiguration)="saveRoulette($event)"
-  ></app-config-casino-template>
+<app-config-casino-template [casinoDashboardData]="casinoDashboardData" [configurationUpdate]="casinoConfigUpdate"
+  [configurationError]="casinoConfigError" (onSaveConfiguration)="saveConfiguration($event)"
+  [rouletteConfigUpdate]="rouletteConfigUpdate" [rouletteConfigError]="rouletteConfigError"
+  (onSaveRouletteConfiguration)="saveRoulette($event)" [diceConfigUpdate]="diceConfigUpdate"
+  [diceConfigError]="diceConfigError" (onSaveDiceConfiguration)="saveDice($event)"></app-config-casino-template>
 }

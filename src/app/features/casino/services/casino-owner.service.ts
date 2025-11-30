@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {environment} from "../../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {CasinoDashboard} from "../models/casino-dashboard.model";
+import { environment } from "../../../../environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { CasinoDashboard } from "../models/casino-dashboard.model";
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,9 @@ export class CasinoOwnerService {
 
   updateRouletteConfiguration(casinoId: number, payload: any) {
     return this.http.patch(`${this.baseUrl}/${casinoId}/config/roulette`, payload);
+  }
+
+  updateDiceConfiguration(casinoId: number, payload: any) {
+    return this.http.patch(`${this.baseUrl}/${casinoId}/config/dice`, payload);
   }
 }

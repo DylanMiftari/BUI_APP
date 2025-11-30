@@ -1,4 +1,4 @@
-import {CasinoLevel} from "./casino-level.model";
+import { CasinoLevel } from "./casino-level.model";
 
 export interface CasinoDashboard {
   info: {
@@ -24,5 +24,11 @@ export interface CasinoDashboard {
     rouletteVIPTripletMultiplcator: number,
     rouletteVIPTripleSeventMultiplicator: number,
     rouletteMaxVIPBet: number,
+    diceGoal: number,
+    diceWinMultiplicator: number,
+    diceMaxBet: number,
+    diceVIPGoal: number,
+    diceVIPWinMultiplicator: number,
+    diceVIPMaxBet: number,
   }
 }

@@ -6,4 +6,6 @@ export interface CasinoLevel {
   maxVIPTicketPrice: number | null;
   rouletteMaxBet: number;
   rouletteMaxVIPBet: number;
+  diceMaxBet: number;
+  diceMaxVIPBet: number;
 }

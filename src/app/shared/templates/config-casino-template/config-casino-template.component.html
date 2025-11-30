@@ -1,26 +1,28 @@
-<app-company-dashboard-header
-  companyType="Casino"
-  [buttonLinks]="buttonLinks"
-></app-company-dashboard-header>
+<app-company-dashboard-header companyType="Casino" [buttonLinks]="buttonLinks"></app-company-dashboard-header>
 
 <app-simple-card direction="column" color="casino" [marginXPx]="20" [marginPx]="10">
   <app-themed-title title="⚙️ Configuration" color="casino"></app-themed-title>
   <!-- Ticket Price -->
   <form>
     <div>
-      <app-input label="Ticket Price" type="number" color="casino" [control]="getFormControl('ticketPrice')"></app-input>
-      <app-simple-text [text]="'Max price : '+casinoLevel.maxTicketPrice.toLocaleString()+'€'" [isLight]="true"></app-simple-text>
+      <app-input label="Ticket Price" type="number" color="casino"
+        [control]="getFormControl('ticketPrice')"></app-input>
+      <app-simple-text [text]="'Max price : '+casinoLevel.maxTicketPrice.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
     </div>
 
     <div>
-      <app-input label="VIP Ticket Price" type="number" color="casino-vip" [control]="getFormControl('VIPTicketPrice')"></app-input>
-      <app-simple-text [text]="'Max price : '+casinoLevel.maxVIPTicketPrice!.toLocaleString()+'€'" [isLight]="true"></app-simple-text>
+      <app-input label="VIP Ticket Price" type="number" color="casino-vip"
+        [control]="getFormControl('VIPTicketPrice')"></app-input>
+      <app-simple-text [text]="'Max price : '+casinoLevel.maxVIPTicketPrice!.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
     </div>
 
     <app-error-text [text]="configurationError" *ngIf="configurationError != ''"></app-error-text>
     <app-simple-text [text]="configurationUpdate" color="green" *ngIf="configurationUpdate != ''"></app-simple-text>
 
-    <app-button label="Update Casino Configuration" color="casino-regular" (clicked)="updateConfiguration()"></app-button>
+    <app-button label="Update Casino Configuration" color="casino-regular"
+      (clicked)="updateConfiguration()"></app-button>
   </form>
 
   <app-seperator-with-text [marginPx]="20"></app-seperator-with-text>
@@ -28,50 +30,113 @@
   <app-themed-title title="🎰 Roulette Configuration" color="casino"></app-themed-title>
   <form>
     <div>
-      <app-input label="Roulette Sequence Multiplicator" type="number" color="casino" [control]="getRouletteFormControl('rouletteSequenceMultiplicator')"></app-input>
+      <app-input label="Roulette Sequence Multiplicator" type="number" color="casino"
+        [control]="getRouletteFormControl('rouletteSequenceMultiplicator')"></app-input>
       <app-simple-text text="Win multiplicator for sequence (e.g. 123, 567, 987...)" [isLight]="true"></app-simple-text>
     </div>
 
     <div>
-      <app-input label="Roulette Triplet Multiplicator" type="number" color="casino" [control]="getRouletteFormControl('rouletteTripletMultiplcator')"></app-input>
+      <app-input label="Roulette Triplet Multiplicator" type="number" color="casino"
+        [control]="getRouletteFormControl('rouletteTripletMultiplcator')"></app-input>
       <app-simple-text text="Win multiplicator for triplet (e.g. 111, 222, 999...)" [isLight]="true"></app-simple-text>
     </div>
 
     <div>
-      <app-input label="Roulette Triple 7 Multiplicator" type="number" color="casino" [control]="getRouletteFormControl('rouletteTripleSeventMultiplicator')"></app-input>
+      <app-input label="Roulette Triple 7 Multiplicator" type="number" color="casino"
+        [control]="getRouletteFormControl('rouletteTripleSeventMultiplicator')"></app-input>
       <app-simple-text text="Win multiplicator for triple 7 (777)" [isLight]="true"></app-simple-text>
     </div>
 
     <div>
-      <app-input label="Maximum bet for roulette" type="number" color="casino" [control]="getRouletteFormControl('rouletteMaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+casinoLevel.rouletteMaxBet.toLocaleString()+'€'" [isLight]="true"></app-simple-text>
+      <app-input label="Maximum bet for roulette" type="number" color="casino"
+        [control]="getRouletteFormControl('rouletteMaxBet')"></app-input>
+      <app-simple-text [text]="'Max you can set is : '+casinoLevel.rouletteMaxBet.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
     </div>
 
     <div>
-      <app-input label="Roulette VIP Sequence Multiplicator" type="number" color="casino-vip" [control]="getRouletteFormControl('rouletteVIPSequenceMultiplicator')"></app-input>
-      <app-simple-text text="Win multiplicator for sequence (e.g. 123, 567, 987...) for VIP players" [isLight]="true"></app-simple-text>
+      <app-input label="Roulette VIP Sequence Multiplicator" type="number" color="casino-vip"
+        [control]="getRouletteFormControl('rouletteVIPSequenceMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for sequence (e.g. 123, 567, 987...) for VIP players"
+        [isLight]="true"></app-simple-text>
     </div>
 
     <div>
-      <app-input label="Roulette VIP Triplet Multiplicator" type="number" color="casino-vip" [control]="getRouletteFormControl('rouletteVIPTripletMultiplcator')"></app-input>
-      <app-simple-text text="Win multiplicator for triplet (e.g. 111, 222, 999...) for VIP players" [isLight]="true"></app-simple-text>
+      <app-input label="Roulette VIP Triplet Multiplicator" type="number" color="casino-vip"
+        [control]="getRouletteFormControl('rouletteVIPTripletMultiplcator')"></app-input>
+      <app-simple-text text="Win multiplicator for triplet (e.g. 111, 222, 999...) for VIP players"
+        [isLight]="true"></app-simple-text>
     </div>
 
     <div>
-      <app-input label="Roulette VIP Triple 7 Multiplicator" type="number" color="casino-vip" [control]="getRouletteFormControl('rouletteVIPTripleSeventMultiplicator')"></app-input>
+      <app-input label="Roulette VIP Triple 7 Multiplicator" type="number" color="casino-vip"
+        [control]="getRouletteFormControl('rouletteVIPTripleSeventMultiplicator')"></app-input>
       <app-simple-text text="Win multiplicator for triple 7 (777) for VIP players" [isLight]="true"></app-simple-text>
     </div>
 
     <div>
-      <app-input label="Maximum bet for roulette for VIP" type="number" color="casino-vip" [control]="getRouletteFormControl('rouletteMaxVIPBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+casinoLevel.rouletteMaxVIPBet.toLocaleString()+'€'" [isLight]="true"></app-simple-text>
+      <app-input label="Maximum bet for roulette for VIP" type="number" color="casino-vip"
+        [control]="getRouletteFormControl('rouletteMaxVIPBet')"></app-input>
+      <app-simple-text [text]="'Max you can set is : '+casinoLevel.rouletteMaxVIPBet.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
     </div>
 
     <app-error-text [text]="rouletteConfigError" *ngIf="rouletteConfigError != ''"></app-error-text>
     <app-simple-text [text]="rouletteConfigUpdate" color="green" *ngIf="rouletteConfigUpdate != ''"></app-simple-text>
 
-    <app-button label="Update Roulette Configuration" color="casino-regular" (clicked)="updateRouletteConfiguration()"></app-button>
+    <app-button label="Update Roulette Configuration" color="casino-regular"
+      (clicked)="updateRouletteConfiguration()"></app-button>
   </form>
+
+  <app-seperator-with-text [marginPx]="20"></app-seperator-with-text>
+  <!-- Dice Config -->
+  @if (casinoDashboardData.info.level >= 2) {
+    <app-themed-title title="🎲 Dice Configuration" color="casino"></app-themed-title>
+    <form>
+      <div>
+        <app-input label="Dice Goal" type="number" color="casino" [control]="getDiceFormControl('diceGoal')"></app-input>
+        <app-simple-text text="Goal to reach for dice game" [isLight]="true"></app-simple-text>
+      </div>
+
+      <div>
+        <app-input label="Dice Win Multiplicator" type="number" color="casino"
+                   [control]="getDiceFormControl('diceWinMultiplicator')"></app-input>
+        <app-simple-text text="Win multiplicator for dice game" [isLight]="true"></app-simple-text>
+      </div>
+
+      <div>
+        <app-input label="Maximum bet for dice" type="number" color="casino"
+                   [control]="getDiceFormControl('diceMaxBet')"></app-input>
+        <app-simple-text [text]="'Max you can set is : '+casinoLevel.diceMaxBet.toLocaleString()+'€'"
+                         [isLight]="true"></app-simple-text>
+      </div>
+
+      <div>
+        <app-input label="Dice VIP Goal" type="number" color="casino-vip"
+                   [control]="getDiceFormControl('diceVIPGoal')"></app-input>
+        <app-simple-text text="Goal to reach for dice game for VIP players" [isLight]="true"></app-simple-text>
+      </div>
+
+      <div>
+        <app-input label="Dice VIP Win Multiplicator" type="number" color="casino-vip"
+                   [control]="getDiceFormControl('diceVIPWinMultiplicator')"></app-input>
+        <app-simple-text text="Win multiplicator for dice game for VIP players" [isLight]="true"></app-simple-text>
+      </div>
+
+      <div>
+        <app-input label="Maximum bet for dice for VIP" type="number" color="casino-vip"
+                   [control]="getDiceFormControl('diceVIPMaxBet')"></app-input>
+        <app-simple-text [text]="'Max you can set is : '+casinoLevel.diceMaxVIPBet.toLocaleString()+'€'"
+                         [isLight]="true"></app-simple-text>
+      </div>
+
+      <app-error-text [text]="diceConfigError" *ngIf="diceConfigError != ''"></app-error-text>
+      <app-simple-text [text]="diceConfigUpdate" color="green" *ngIf="diceConfigUpdate != ''"></app-simple-text>
+
+      <app-button label="Update Dice Configuration" color="casino-regular"
+                  (clicked)="updateDiceConfiguration()"></app-button>
+    </form>
+  }
 
 </app-simple-card>
 

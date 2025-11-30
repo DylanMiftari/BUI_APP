@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   ConfigCasinoTemplateComponent
 } from "../../../../shared/templates/config-casino-template/config-casino-template.component";
-import {CasinoDashboard} from "../../models/casino-dashboard.model";
-import {HeaderReturnButtonService} from "../../../../core/services/header-return-button.service";
-import {CasinoOwnerService} from "../../services/casino-owner.service";
-import {ActivatedRoute} from "@angular/router";
+import { CasinoDashboard } from "../../models/casino-dashboard.model";
+import { HeaderReturnButtonService } from "../../../../core/services/header-return-button.service";
+import { CasinoOwnerService } from "../../services/casino-owner.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-config-casino-pages',
@@ -23,6 +23,8 @@ export class ConfigCasinoPagesComponent implements OnInit {
   public casinoConfigError: string = "";
   public rouletteConfigUpdate: string = "";
   public rouletteConfigError: string = "";
+  public diceConfigUpdate: string = "";
+  public diceConfigError: string = "";
 
   constructor(
     private headerButton: HeaderReturnButtonService,
@@ -64,6 +66,18 @@ export class ConfigCasinoPagesComponent implements OnInit {
       error: err => {
         this.rouletteConfigUpdate = "";
         this.rouletteConfigError = err.error.message;
+      }
+    })
+  }
+  saveDice(data: any) {
+    this.casinoService.updateDiceConfiguration(this.casinoDashboardData!.info.id, data).subscribe({
+      next: () => {
+        this.diceConfigUpdate = "Dice Configuration Updated";
+        this.diceConfigError = "";
+      },
+      error: err => {
+        this.diceConfigUpdate = "";
+        this.diceConfigError = err.error.message;
       }
     })
   }
