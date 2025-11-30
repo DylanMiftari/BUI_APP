@@ -25,6 +25,8 @@ export class ConfigCasinoPagesComponent implements OnInit {
   public rouletteConfigError: string = "";
   public diceConfigUpdate: string = "";
   public diceConfigError: string = "";
+  public pokerConfigUpdate: string = "";
+  public pokerConfigError: string = "";
 
   constructor(
     private headerButton: HeaderReturnButtonService,
@@ -78,6 +80,18 @@ export class ConfigCasinoPagesComponent implements OnInit {
       error: err => {
         this.diceConfigUpdate = "";
         this.diceConfigError = err.error.message;
+      }
+    })
+  }
+  savePoker(data: any) {
+    this.casinoService.updatePokerConfiguration(this.casinoDashboardData!.info.id, data).subscribe({
+      next: () => {
+        this.pokerConfigUpdate = "Poker Configuration Updated";
+        this.pokerConfigError = "";
+      },
+      error: err => {
+        this.pokerConfigUpdate = "";
+        this.pokerConfigError = err.error.message;
       }
     })
   }

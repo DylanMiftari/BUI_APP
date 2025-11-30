@@ -41,13 +41,17 @@ export class ConfigCasinoTemplateComponent implements OnInit {
   @Input() rouletteConfigError: string = "";
   @Input() diceConfigUpdate: string = "";
   @Input() diceConfigError: string = "";
+  @Input() pokerConfigUpdate: string = "";
+  @Input() pokerConfigError: string = "";
   @Output() onSaveConfiguration = new EventEmitter<any>();
   @Output() onSaveRouletteConfiguration = new EventEmitter<any>();
   @Output() onSaveDiceConfiguration = new EventEmitter<any>();
+  @Output() onSavePokerConfiguration = new EventEmitter<any>();
 
   public casinoConfigFormGroup!: FormGroup;
   public rouletteConfigFormGroup!: FormGroup;
   public diceConfigFormGroup!: FormGroup;
+  public pokerConfigFormGroup!: FormGroup;
 
   get casinoLevel(): CasinoLevel {
     return this.casinoDashboardData.levels[this.casinoDashboardData.info.level - 1];
@@ -80,6 +84,30 @@ export class ConfigCasinoTemplateComponent implements OnInit {
       diceVIPWinMultiplicator: new FormControl(this.casinoDashboardData.config.diceVIPWinMultiplicator),
       diceVIPMaxBet: new FormControl(this.casinoDashboardData.config.diceVIPMaxBet),
     });
+    this.pokerConfigFormGroup = new FormGroup({
+      nothingMultiplicator: new FormControl(this.casinoDashboardData.config.nothingMultiplicator),
+      onePairMultiplicator: new FormControl(this.casinoDashboardData.config.onePairMultiplicator),
+      twoPairMultiplicator: new FormControl(this.casinoDashboardData.config.twoPairMultiplicator),
+      threeOfAKindMultiplicator: new FormControl(this.casinoDashboardData.config.threeOfAKindMultiplicator),
+      straightMultiplicator: new FormControl(this.casinoDashboardData.config.straightMultiplicator),
+      flushMultiplicator: new FormControl(this.casinoDashboardData.config.flushMultiplicator),
+      fullHouseMultiplicator: new FormControl(this.casinoDashboardData.config.fullHouseMultiplicator),
+      fourOfAKindMultiplicator: new FormControl(this.casinoDashboardData.config.fourOfAKindMultiplicator),
+      straightFlushMultiplicator: new FormControl(this.casinoDashboardData.config.straightFlushMultiplicator),
+      royalFlushMultiplicator: new FormControl(this.casinoDashboardData.config.royalFlushMultiplicator),
+      pokerMaxBet: new FormControl(this.casinoDashboardData.config.pokerMaxBet),
+      nothingVIPMultiplicator: new FormControl(this.casinoDashboardData.config.nothingVIPMultiplicator),
+      onePairVIPMultiplicator: new FormControl(this.casinoDashboardData.config.onePairVIPMultiplicator),
+      twoPairVIPMultiplicator: new FormControl(this.casinoDashboardData.config.twoPairVIPMultiplicator),
+      threeOfAKindVIPMultiplicator: new FormControl(this.casinoDashboardData.config.threeOfAKindVIPMultiplicator),
+      straightVIPMultiplicator: new FormControl(this.casinoDashboardData.config.straightVIPMultiplicator),
+      flushVIPMultiplicator: new FormControl(this.casinoDashboardData.config.flushVIPMultiplicator),
+      fullHouseVIPMultiplicator: new FormControl(this.casinoDashboardData.config.fullHouseVIPMultiplicator),
+      fourOfAKindVIPMultiplicator: new FormControl(this.casinoDashboardData.config.fourOfAKindVIPMultiplicator),
+      straightFlushVIPMultiplicator: new FormControl(this.casinoDashboardData.config.straightFlushVIPMultiplicator),
+      royalFlushVIPMultiplicator: new FormControl(this.casinoDashboardData.config.royalFlushVIPMultiplicator),
+      pokerMaxVIPBet: new FormControl(this.casinoDashboardData.config.pokerMaxVIPBet),
+    });
   }
 
   getFormControl(name: string): FormControl {
@@ -107,5 +135,15 @@ export class ConfigCasinoTemplateComponent implements OnInit {
 
   getDiceFormControl(name: string): FormControl {
     return this.diceConfigFormGroup.get(name) as FormControl;
+  }
+
+  updatePokerConfiguration() {
+    this.onSavePokerConfiguration.emit({
+      ...this.pokerConfigFormGroup.value,
+    })
+  }
+
+  getPokerFormControl(name: string): FormControl {
+    return this.pokerConfigFormGroup.get(name) as FormControl;
   }
 }
