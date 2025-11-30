@@ -29,6 +29,8 @@ export class ConfigCasinoPagesComponent implements OnInit {
   public pokerConfigError: string = "";
   public blackjackConfigUpdate: string = "";
   public blackjackConfigError: string = "";
+  public roulette2ConfigUpdate: string = "";
+  public roulette2ConfigError: string = "";
 
   constructor(
     private headerButton: HeaderReturnButtonService,
@@ -106,6 +108,18 @@ export class ConfigCasinoPagesComponent implements OnInit {
       error: err => {
         this.blackjackConfigUpdate = "";
         this.blackjackConfigError = err.error.message;
+      }
+    })
+  }
+  saveRoulette2(data: any) {
+    this.casinoService.updateRoulette2Configuration(this.casinoDashboardData!.info.id, data).subscribe({
+      next: () => {
+        this.roulette2ConfigUpdate = "European Roulette Configuration Updated";
+        this.roulette2ConfigError = "";
+      },
+      error: err => {
+        this.roulette2ConfigUpdate = "";
+        this.roulette2ConfigError = err.error.message;
       }
     })
   }

@@ -302,6 +302,35 @@
     </div>
 
     <div>
+      <app-input label="Blackjack Win Multiplicator" type="number" color="casino"
+        [control]="getBlackjackFormControl('blackJackWinMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for blackjack" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Blackjack Multiplicator" type="number" color="casino"
+        [control]="getBlackjackFormControl('blackJackMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for normal win" [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
+      <app-input label="Maximum bet for blackjack" type="number" color="casino"
+        [control]="getBlackjackFormControl('blackJackMaxBet')"></app-input>
+      <app-simple-text [text]="'Max you can set is : '+casinoLevel.blackJackMaxBet.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
+      <app-input label="Blackjack VIP Win Multiplicator" type="number" color="casino-vip"
+        [control]="getBlackjackFormControl('blackJackVIPWinMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for blackjack for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Blackjack VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getBlackjackFormControl('blackJackVIPMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for normal win for VIP" [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
       <app-input label="Maximum bet for blackjack for VIP" type="number" color="casino-vip"
         [control]="getBlackjackFormControl('blackJackVIPMaxBet')"></app-input>
       <app-simple-text [text]="'Max you can set is : '+casinoLevel.blackJackMaxVIPBet.toLocaleString()+'€'"
@@ -313,6 +342,135 @@
 
     <app-button label="Update Blackjack Configuration" color="casino-regular"
       (clicked)="updateBlackjackConfiguration()"></app-button>
+  </form>
+  }
+
+  @if(casinoDashboardData.info.level >= 5) {
+  <app-seperator-with-text [marginPx]="20"></app-seperator-with-text>
+  <!-- Roulette2 Config -->
+  <app-themed-title title="🎯 Classic Roulette Configuration" color="casino"></app-themed-title>
+  <form>
+    <div>
+      <app-input label="Straight Up Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2StraigthUpMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for straight up" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Split Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2SplitMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for split" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Street Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2treetMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for street" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Corner Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2CornerMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for corner" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Six Line Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2SixLineMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for six line" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Column Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2ColumnMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for column" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Dozen Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2DozenMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for dozen" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Odd/Even Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2OddEvenMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for odd/even" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Red/Black Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2RedBlackMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for red/black" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Middle Multiplicator" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2MiddleMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for middle (1-18/19-36)" [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
+      <app-input label="Maximum bet for roulette" type="number" color="casino"
+        [control]="getRoulette2FormControl('roulette2MaxBet')"></app-input>
+      <app-simple-text [text]="'Max you can set is : '+casinoLevel.roulette2MaxBet.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
+      <app-input label="Straight Up VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPStraigthUpMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for straight up for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Split VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPSplitMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for split for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Street VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPtreetMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for street for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Corner VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPCornerMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for corner for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Six Line VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPSixLineMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for six line for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Column VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPColumnMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for column for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Dozen VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPDozenMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for dozen for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Odd/Even VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPOddEvenMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for odd/even for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Red/Black VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPRedBlackMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for red/black for VIP" [isLight]="true"></app-simple-text>
+    </div>
+    <div>
+      <app-input label="Middle VIP Multiplicator" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPMiddleMultiplicator')"></app-input>
+      <app-simple-text text="Win multiplicator for middle (1-18/19-36) for VIP" [isLight]="true"></app-simple-text>
+    </div>
+
+    <div>
+      <app-input label="Maximum bet for roulette for VIP" type="number" color="casino-vip"
+        [control]="getRoulette2FormControl('roulette2VIPMaxBet')"></app-input>
+      <app-simple-text [text]="'Max you can set is : '+casinoLevel.roulette2MaxVIPBet.toLocaleString()+'€'"
+        [isLight]="true"></app-simple-text>
+    </div>
+
+    <app-error-text [text]="roulette2ConfigError" *ngIf="roulette2ConfigError != ''"></app-error-text>
+    <app-simple-text [text]="roulette2ConfigUpdate" color="green" *ngIf="roulette2ConfigUpdate != ''"></app-simple-text>
+
+    <app-button label="Update European Roulette Configuration" color="casino-regular"
+      (clicked)="updateRoulette2Configuration()"></app-button>
   </form>
   }
 

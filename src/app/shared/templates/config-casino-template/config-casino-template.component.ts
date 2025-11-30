@@ -45,17 +45,21 @@ export class ConfigCasinoTemplateComponent implements OnInit {
   @Input() pokerConfigError: string = "";
   @Input() blackjackConfigUpdate: string = "";
   @Input() blackjackConfigError: string = "";
+  @Input() roulette2ConfigUpdate: string = "";
+  @Input() roulette2ConfigError: string = "";
   @Output() onSaveConfiguration = new EventEmitter<any>();
   @Output() onSaveRouletteConfiguration = new EventEmitter<any>();
   @Output() onSaveDiceConfiguration = new EventEmitter<any>();
   @Output() onSavePokerConfiguration = new EventEmitter<any>();
   @Output() onSaveBlackjackConfiguration = new EventEmitter<any>();
+  @Output() onSaveRoulette2Configuration = new EventEmitter<any>();
 
   public casinoConfigFormGroup!: FormGroup;
   public rouletteConfigFormGroup!: FormGroup;
   public diceConfigFormGroup!: FormGroup;
   public pokerConfigFormGroup!: FormGroup;
   public blackjackConfigFormGroup!: FormGroup;
+  public roulette2ConfigFormGroup!: FormGroup;
 
   get casinoLevel(): CasinoLevel {
     return this.casinoDashboardData.levels[this.casinoDashboardData.info.level - 1];
@@ -120,6 +124,30 @@ export class ConfigCasinoTemplateComponent implements OnInit {
       blackJackVIPMultiplicator: new FormControl(this.casinoDashboardData.config.blackJackVIPMultiplicator),
       blackJackVIPMaxBet: new FormControl(this.casinoDashboardData.config.blackJackVIPMaxBet),
     });
+    this.roulette2ConfigFormGroup = new FormGroup({
+      roulette2StraigthUpMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2StraigthUpMultiplicator),
+      roulette2SplitMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2SplitMultiplicator),
+      roulette2treetMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2treetMultiplicator),
+      roulette2CornerMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2CornerMultiplicator),
+      roulette2SixLineMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2SixLineMultiplicator),
+      roulette2ColumnMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2ColumnMultiplicator),
+      roulette2DozenMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2DozenMultiplicator),
+      roulette2OddEvenMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2OddEvenMultiplicator),
+      roulette2RedBlackMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2RedBlackMultiplicator),
+      roulette2MiddleMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2MiddleMultiplicator),
+      roulette2MaxBet: new FormControl(this.casinoDashboardData.config.roulette2MaxBet),
+      roulette2VIPStraigthUpMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPStraigthUpMultiplicator),
+      roulette2VIPSplitMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPSplitMultiplicator),
+      roulette2VIPtreetMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPtreetMultiplicator),
+      roulette2VIPCornerMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPCornerMultiplicator),
+      roulette2VIPSixLineMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPSixLineMultiplicator),
+      roulette2VIPColumnMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPColumnMultiplicator),
+      roulette2VIPDozenMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPDozenMultiplicator),
+      roulette2VIPOddEvenMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPOddEvenMultiplicator),
+      roulette2VIPRedBlackMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPRedBlackMultiplicator),
+      roulette2VIPMiddleMultiplicator: new FormControl(this.casinoDashboardData.config.roulette2VIPMiddleMultiplicator),
+      roulette2VIPMaxBet: new FormControl(this.casinoDashboardData.config.roulette2VIPMaxBet),
+    });
   }
 
   getFormControl(name: string): FormControl {
@@ -167,5 +195,15 @@ export class ConfigCasinoTemplateComponent implements OnInit {
 
   getBlackjackFormControl(name: string): FormControl {
     return this.blackjackConfigFormGroup.get(name) as FormControl;
+  }
+
+  updateRoulette2Configuration() {
+    this.onSaveRoulette2Configuration.emit({
+      ...this.roulette2ConfigFormGroup.value,
+    })
+  }
+
+  getRoulette2FormControl(name: string): FormControl {
+    return this.roulette2ConfigFormGroup.get(name) as FormControl;
   }
 }
