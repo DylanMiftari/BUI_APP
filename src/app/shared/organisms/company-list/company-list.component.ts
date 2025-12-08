@@ -36,6 +36,6 @@ export class CompanyListComponent {
     return this.companyConfig["type"][company.type]["label"];
   }
   getCompanyDashBoardLink(company: Company) {
-    return "/" + company.type + "/" + company.id;
+    return "/" + company.type + "/" + company.sub_company_id;
   }
 }

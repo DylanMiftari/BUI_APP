@@ -1,0 +1,76 @@
+<app-page-title title="Bank Details"></app-page-title>
+
+
+<app-card color="bank" [interactable]="false">
+  <app-row alignItems="center" justifyContent="center" [gapPx]="10">
+    <app-icon icon="🏛️" [fontSize]="3"></app-icon>
+    <div>
+      <app-themed-title [title]="bank.company.name" color="bank"></app-themed-title>
+      <app-level-pin [level]="bank.level" color="bank"></app-level-pin>
+    </div>
+  </app-row>
+
+  <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+
+  <app-card-container>
+    <app-simple-card color="bank">
+      <app-data-with-text
+        color="bank"
+        [data]="bank.maxAccountMoney"
+        unit="€"
+        [dataIsNumber]="true"
+        text="Max Money On Account"
+        dataTextAlign="left"
+      ></app-data-with-text>
+    </app-simple-card>
+
+    <app-simple-card color="bank">
+      <app-data-with-text
+        color="bank"
+        [data]="bank.maxAccountResource"
+        unit="kg"
+        [dataIsNumber]="true"
+        text="Max Resource On Account"
+        dataTextAlign="left"
+      ></app-data-with-text>
+    </app-simple-card>
+
+    <app-simple-card color="bank">
+      <app-data-with-text
+        color="bank"
+        [data]="bank.accountMaintenanceCost"
+        unit="€"
+        [dataIsNumber]="true"
+        text="Weekly Fees"
+        dataTextAlign="left"
+      ></app-data-with-text>
+    </app-simple-card>
+
+    <app-simple-card color="bank">
+      <app-data-with-text
+        color="bank"
+        [data]="bank.transferCost"
+        unit="%"
+        [dataIsNumber]="true"
+        text="Transfer Cost"
+        dataTextAlign="left"
+      ></app-data-with-text>
+    </app-simple-card>
+  </app-card-container>
+
+  <app-simple-card color="bank" [marginPx]="20" [marginXPx]="20"
+  [style.width]="'-webkit-fill-available'" alignItems="center" justifyContent="center">
+    <app-data-with-text
+      color="bank"
+      [data]="bank.nbAccount.toLocaleString() + ' / ' + bank.maxNbAccount.toLocaleString()"
+      unit=""
+      [dataIsNumber]="false"
+      text="Number of Accounts"
+      dataTextAlign="center"
+    ></app-data-with-text>
+  </app-simple-card>
+
+  @if (bank.nbAccount < bank.maxNbAccount) {
+    <app-button label="Create Account" color="bank" (clicked)="clickOnCreateAccount()"></app-button>
+  }
+</app-card>

@@ -18,12 +18,18 @@ import {Roulette2GamePagesComponent} from "../casino/pages/roulette2-game-pages/
 import {CasinoDashboardPagesComponent} from "../casino/pages/casino-dashboard-pages/casino-dashboard-pages.component";
 import {ConfigCasinoPagesComponent} from "../casino/pages/config-casino-pages/config-casino-pages.component";
 import {MyAccountsPagesComponent} from "./pages/my-accounts-pages/my-accounts-pages.component";
+import {OpenAccountPagesComponent} from "./pages/open-account-pages/open-account-pages.component";
 
 const routes: Routes = [
   {
     path: "bank", canActivateChild: [authGuardChild], children:
       [
-        {path: "my-accounts", component: MyAccountsPagesComponent}
+        {path: "my-accounts", component: MyAccountsPagesComponent},
+        {
+          path: ":bank", children: [
+            {path: "", component: OpenAccountPagesComponent}
+          ]
+        }
       ]
   }
 ];

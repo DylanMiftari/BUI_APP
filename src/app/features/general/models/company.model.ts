@@ -6,4 +6,5 @@ export interface Company {
   level: number;
   owner_name: string | null;
   moneyInSafe: number | null;
+  sub_company_id: number;
 }
