@@ -1,0 +1,10 @@
+<app-title text="My Bank Accounts" color="white"></app-title>
+<app-simple-text text="Manage your financial accounts and monitor your banking activities"
+  textAlign="center" [isLight]="true"
+></app-simple-text>
+
+<app-card-container>
+  @for (bankAccount of bankAccounts; track bankAccount.id) {
+    <app-bank-account-card [bankAccount]="bankAccount"></app-bank-account-card>
+  }
+</app-card-container>

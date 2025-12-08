@@ -1,0 +1,71 @@
+<app-card color="bank" (clicked)="clickOnAccount()">
+  <app-row [gapPx]="20" alignItems="flex-start">
+    <app-icon icon="🏛️" [fontSize]="3"></app-icon>
+    <div>
+      <app-simple-text color="bank" [text]="bankAccount.company.name" [bold]="true" [marginYPx]="10"></app-simple-text>
+      <app-level-pin [level]="bankAccount.company.level" color="bank"></app-level-pin>
+    </div>
+  </app-row>
+  <app-status-indicator [textColor]="getStatusColor()" [color]="getStatusColor()" [text]="getStatusText()"></app-status-indicator>
+
+  <app-row [gapPx]="10" justifyContent="space-around" [marginPx]="5" [wrap]="true">
+    <app-simple-card color="bank" direction="column">
+      <app-simple-text text="Money Balance"></app-simple-text>
+      <app-data-with-text
+        color="bank"
+        [data]="bankAccount.money"
+        unit="€"
+        [dataIsNumber]="true"
+        [text]="'/ '+bankAccount.maxMoney.toLocaleString()+'€'"
+        dataTextAlign="left"
+      ></app-data-with-text>
+      <app-progress-bar
+        color="bank"
+        [maxValue]="bankAccount.maxMoney"
+        [value]="bankAccount.money"
+        [minWidthPx]="250"
+        [darkBackGroundColor]="true"
+      ></app-progress-bar>
+    </app-simple-card>
+
+    <app-simple-card color="bank" direction="column">
+      <app-simple-text text="Resources"></app-simple-text>
+      <app-data-with-text
+        color="bank"
+        [data]="bankAccount.resource"
+        unit="kg"
+        [dataIsNumber]="true"
+        [text]="'/ '+bankAccount.maxResource.toLocaleString()+'kg'"
+        dataTextAlign="left"
+      ></app-data-with-text>
+      <app-progress-bar
+        color="bank"
+        [maxValue]="bankAccount.maxResource"
+        [value]="bankAccount.resource"
+        [minWidthPx]="250"
+        [darkBackGroundColor]="true"
+      ></app-progress-bar>
+    </app-simple-card>
+  </app-row>
+
+  <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+
+  <app-row [gapPx]="10" justifyContent="space-around">
+    <app-data-with-text
+      color="bank"
+      [data]="bankAccount.accountMaintenanceCost"
+      unit="€"
+      [dataIsNumber]="true"
+      text="Weekly Fees"
+      dataTextAlign="center"
+    ></app-data-with-text>
+    <app-data-with-text
+      color="bank"
+      [data]="bankAccount.transferCost"
+      unit="%"
+      [dataIsNumber]="true"
+      text="Transfer Rate"
+      dataTextAlign="center"
+    ></app-data-with-text>
+  </app-row>
+</app-card>

@@ -23,7 +23,9 @@ export class ThemeColorService {
       case "casino-regular":
         return "--casino-regular-gradient";
       case "casino-vip":
-        return "--casino-vip-gradient"
+        return "--casino-vip-gradient";
+      case "bank":
+        return "--bank-gradient";
       default:
         return "--green-gradiant";
     }
@@ -43,6 +45,8 @@ export class ThemeColorService {
         return "rgba(255, 215, 0, 0.3)";
       case "casino-vip":
         return "rgba(147, 112, 219, 0.3)";
+      case "bank":
+        return "rgba(30, 58, 138, 0.3)";
       default:
         return "rgba(34, 197, 94, 0.3)";
     }
@@ -85,7 +89,9 @@ export class ThemeColorService {
       case "casino-regular":
         return "#FFD700";
       case "casino-vip":
-        return "#E0B0FF"
+        return "#E0B0FF";
+      case "bank":
+        return "#1e3a8a";
       default:
         return "#22c55e";
     }
@@ -115,7 +121,9 @@ export class ThemeColorService {
       case "casino-regular":
         return "rgba(255, 215, 0, 0.1)";
       case "green":
-        return "rgba(0, 255, 0, 0.1)"
+        return "rgba(0, 255, 0, 0.1)";
+      case "bank":
+        return "rgba(30, 58, 138, 0.1)";
       default:
         return "white";
     }
@@ -135,6 +143,8 @@ export class ThemeColorService {
         return "#FFD700";
       case "green":
         return "#00FF00";
+      case "bank":
+        return "rgba(30, 58, 138, 0.2)";
       default:
         return "white";
     }

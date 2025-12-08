@@ -9,15 +9,19 @@ import { ThemeColor } from '../../../core/themeColor/theme-color-type';
   templateUrl: './progress-bar.component.html',
   styleUrl: './progress-bar.component.css',
   host: {
-    '[style.--color]': 'this.colorService.simpleColor(color)'
+    '[style.--color]': 'this.colorService.simpleColor(color)',
+    '[style.min-width]': 'this.minWidthPx+"px"',
+    '[style.background-color]': 'this.darkBackGroundColor ? "rgba(30, 58, 138, 0.2)" : "rgba(255, 255, 255, 0.1)"'
   }
 })
 export class ProgressBarComponent {
   @Input() maxValue: number = 100;
   @Input() value: number = 45;
   @Input() color: ThemeColor = "green";
+  @Input() minWidthPx: number | null = null;
+  @Input() darkBackGroundColor: boolean = false;
 
-  constructor(private colorService: ThemeColorService) {}
+  constructor(public colorService: ThemeColorService) {}
 
   get valuePercent(): number {
     return this.value * 100 / this.maxValue;
