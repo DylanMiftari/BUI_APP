@@ -70,6 +70,8 @@
     ></app-data-with-text>
   </app-simple-card>
 
+  <app-error-text [text]="errorOnCreateAccount" textAlign="center"></app-error-text>
+
   @if (bank.nbAccount < bank.maxNbAccount) {
     <app-button label="Create Account" color="bank" (clicked)="clickOnCreateAccount()"></app-button>
   }

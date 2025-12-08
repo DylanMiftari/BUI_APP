@@ -1,6 +1,7 @@
 @if (bank) {
   <app-open-account-template
     [bank]="bank"
+    [errorOnCreateAccount]="errorOnCreateAccount"
     (onCreateAccount)="createAccount()"
   ></app-open-account-template>
 }

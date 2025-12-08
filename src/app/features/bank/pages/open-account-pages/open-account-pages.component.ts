@@ -18,6 +18,7 @@ import {
 })
 export class OpenAccountPagesComponent implements OnInit {
   public bank: Bank | null = null;
+  public errorOnCreateAccount: string = "";
 
   constructor(
     private headerButton: HeaderReturnButtonService,
@@ -42,6 +43,9 @@ export class OpenAccountPagesComponent implements OnInit {
     this.bankService.createBankAccount(this.bank!.id).subscribe({
       next: response => {
         window.location.href = "/bank/my-accounts";
+      },
+      error: error => {
+        this.errorOnCreateAccount = error.error.message;
       }
     })
   }

@@ -13,6 +13,7 @@ import {SimpleCardComponent} from "../../../atoms/simple-card/simple-card.compon
 import {DataWithTextComponent} from "../../../moleculs/data-with-text/data-with-text.component";
 import {SimpleTextComponent} from "../../../atoms/simple-text/simple-text.component";
 import {ButtonComponent} from "../../../atoms/button/button.component";
+import {ErrorTextComponent} from "../../../atoms/error-text/error-text.component";
 
 @Component({
   selector: 'app-open-account-template',
@@ -30,13 +31,15 @@ import {ButtonComponent} from "../../../atoms/button/button.component";
     SimpleCardComponent,
     DataWithTextComponent,
     SimpleTextComponent,
-    ButtonComponent
+    ButtonComponent,
+    ErrorTextComponent
   ],
   templateUrl: './open-account-template.component.html',
   styleUrl: './open-account-template.component.css'
 })
 export class OpenAccountTemplateComponent {
   @Input() bank!: Bank;
+  @Input() errorOnCreateAccount: string = "";
   @Output() onCreateAccount = new EventEmitter();
 
   clickOnCreateAccount() {
