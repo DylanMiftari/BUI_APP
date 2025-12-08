@@ -66,4 +66,16 @@ trophies."
               ]"
       (clicked)="clickOnCasinoTickets()"
     ></app-dashboard-card>
+
+    <app-dashboard-card
+      icon="💵"
+      cardTitle="Your Bank Accounts"
+      text="See all your bank accounts and manage them. You can see your money or resources on all your bank accounts."
+      [datas]="[
+                    {data: activeBankAccount, text: 'Active Bank Account', unit: '', dataIsNumber: true},
+                ]"
+      (clicked)="clickOnBankAccounts()"
+    ></app-dashboard-card>
+
+
 </app-card-container>

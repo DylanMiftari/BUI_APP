@@ -7,6 +7,7 @@ import { GeneralModule } from './features/general/general.module';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import {CasinoModule} from "./features/casino/casino.module";
+import {BankModule} from "./features/bank/bank.module";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {CasinoModule} from "./features/casino/casino.module";
     AppRoutingModule,
     GeneralModule,
     CasinoModule,
-    HttpClientModule
+    HttpClientModule,
+    BankModule
   ],
   providers: [
     provideHttpClient(withInterceptors([authInterceptor]))

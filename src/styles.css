@@ -8,6 +8,7 @@
     --casino-gradient: linear-gradient(135deg, #6B0000 0%, #A0001C 50%, #C23B22 100%);
   --casino-regular-gradient: linear-gradient(135deg, #FFD700, #FFA500);
   --casino-vip-gradient: linear-gradient(135deg, #9370DB, #8B008B);
+  --bank-gradient: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
 }
 
 * {

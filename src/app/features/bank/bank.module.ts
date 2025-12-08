@@ -1,0 +1,38 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {RouterModule, Routes} from "@angular/router";
+import {authGuardChild} from "../../core/guards/auth.guard";
+import {
+  CasinoClientTicketDashboardComponent
+} from "../casino/pages/casino-client-ticket-dashboard/casino-client-ticket-dashboard.component";
+import {CasinoBuyTicketPagesComponent} from "../casino/pages/casino-buy-ticket-pages/casino-buy-ticket-pages.component";
+import {casinoTicketGuard} from "../../core/guards/casino-ticket.guard";
+import {
+  CasinoClientDashboardComponent
+} from "../casino/pages/casino-client-dashboard/casino-client-dashboard.component";
+import {RouletteGamePagesComponent} from "../casino/pages/roulette-game-pages/roulette-game-pages.component";
+import {DiceGamePagesComponent} from "../casino/pages/dice-game-pages/dice-game-pages.component";
+import {PokerGamePagesComponent} from "../casino/pages/poker-game-pages/poker-game-pages.component";
+import {BlackjackGamePagesComponent} from "../casino/pages/blackjack-game-pages/blackjack-game-pages.component";
+import {Roulette2GamePagesComponent} from "../casino/pages/roulette2-game-pages/roulette2-game-pages.component";
+import {CasinoDashboardPagesComponent} from "../casino/pages/casino-dashboard-pages/casino-dashboard-pages.component";
+import {ConfigCasinoPagesComponent} from "../casino/pages/config-casino-pages/config-casino-pages.component";
+import {MyAccountsPagesComponent} from "./pages/my-accounts-pages/my-accounts-pages.component";
+
+const routes: Routes = [
+  {
+    path: "bank", canActivateChild: [authGuardChild], children:
+      [
+        {path: "my-accounts", component: MyAccountsPagesComponent}
+      ]
+  }
+];
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes)
+  ]
+})
+export class BankModule { }

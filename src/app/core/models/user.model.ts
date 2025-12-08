@@ -7,4 +7,5 @@ export interface User {
   resourceSum: number | null;
   cityName: string | null;
   casinoTicketsCount: number | null;
+  activeAccount: number | null;
 }

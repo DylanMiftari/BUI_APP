@@ -19,6 +19,7 @@ export class DashboardTemplateComponent {
   @Input() totalResources: number = 0;
   @Input() cityName: string = "";
   @Input() casinoTicketsCount: number = 0;
+  @Input() activeBankAccount: number = 0;
 
   constructor(private router: Router) {}
 
@@ -40,5 +41,9 @@ export class DashboardTemplateComponent {
 
   public clickOnCasinoTickets() {
     this.router.navigate(["/casino/tickets"]);
+  }
+
+  public clickOnBankAccounts() {
+    this.router.navigate(["/bank/my-accounts"]);
   }
 }
