@@ -1,0 +1,32 @@
+<app-card color="bank" [interactable]="false">
+  <app-row alignItems="center">
+    <app-icon icon="💸"></app-icon>
+    <app-simple-text text="Transactions" color="bank" [fontSizePx]="20" [bold]="true"></app-simple-text>
+  </app-row>
+
+  <app-row alignItems="center" justifyContent="space-between" [gapPx]="10">
+    <app-button color="bank" label="Deposit" [paddingYPx]="10" (clicked)="changeMode('deposit')"></app-button>
+    <app-button color="bank" label="Withdraw" [paddingYPx]="10" (clicked)="changeMode('withdraw')"></app-button>
+  </app-row>
+
+  <form>
+    <app-input
+      color="bank"
+      label="Amount (€)"
+      [control]="amountControl"
+      type="number"
+    ></app-input>
+  </form>
+
+  @if (mode == 'withdraw') {
+    <app-simple-card color="black" [paddingYPx]="10" [paddingPx]="10">
+      <app-simple-text color="black" [text]="'⚠️ Transfer fee ('+bankAccount.transferCost.toLocaleString()+'%) will be applied to withdrawals'"></app-simple-text>
+    </app-simple-card>
+  }
+
+  <app-button
+    color="bank"
+    [label]="mode == 'deposit' ? 'Deposit Money' : 'Withdraw Money'"
+    class="final-button"
+  ></app-button>
+</app-card>

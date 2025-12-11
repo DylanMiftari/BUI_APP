@@ -1,4 +1,4 @@
-<app-card color="bank" (clicked)="clickOnAccount()">
+<app-card color="bank" [interactable]="interactable" (clicked)="clickOnAccount()">
   <app-row [gapPx]="20" alignItems="flex-start">
     <app-icon icon="🏛️" [fontSize]="3"></app-icon>
     <div>

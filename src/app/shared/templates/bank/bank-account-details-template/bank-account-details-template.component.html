@@ -1,0 +1,38 @@
+<app-page-title title="Account Details"></app-page-title>
+
+<app-card-container>
+  <app-bank-account-card [bankAccount]="bankAccount" [interactable]="false"></app-bank-account-card>
+
+  <app-card color="bank" [interactable]="false">
+    <app-row alignItems="center">
+      <app-icon icon="💰"></app-icon>
+      <app-simple-text text="Your Wallet" color="bank" [fontSizePx]="20" [bold]="true"></app-simple-text>
+    </app-row>
+
+    <div>
+      <app-simple-card color="bank">
+        <app-data-with-text
+          color="bank"
+          text="Cash on Hand"
+          [dataIsNumber]="true"
+          [data]="bankAccount.userHand?.money ?? 0"
+          unit="€"
+        ></app-data-with-text>
+      </app-simple-card>
+
+      <app-simple-card color="bank">
+        <app-data-with-text
+          color="bank"
+          text="Resources on Hand"
+          [dataIsNumber]="true"
+          [data]="bankAccount.userHand?.resource ?? 0"
+          unit="kg"
+        ></app-data-with-text>
+      </app-simple-card>
+    </div>
+  </app-card>
+
+  <app-transactions-box
+    [bankAccount]="bankAccount"
+  ></app-transactions-box>
+</app-card-container>

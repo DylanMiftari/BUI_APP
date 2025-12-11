@@ -20,6 +20,10 @@ export class BankService {
     return this.http.get<BankAccount[]>(`${this.baseUrl}/bank-accounts`);
   }
 
+  getBankAccount(bankId: number) {
+    return this.http.get<BankAccount>(`${this.baseUrl}/${bankId}/account`);
+  }
+
   createBankAccount(bankId: number) {
     return this.http.post(`${this.baseUrl}/${bankId}/create-account`, {});
   }

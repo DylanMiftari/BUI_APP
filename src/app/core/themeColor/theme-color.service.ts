@@ -126,6 +126,8 @@ export class ThemeColorService {
         return "rgba(0, 255, 0, 0.1)";
       case "bank":
         return "rgba(30, 58, 138, 0.1)";
+      case "black":
+        return "rgba(245, 158, 11, 0.1)";
       default:
         return "white";
     }
@@ -147,6 +149,8 @@ export class ThemeColorService {
         return "#00FF00";
       case "bank":
         return "rgba(30, 58, 138, 0.2)";
+      case "black":
+        return "rgba(245, 158, 11, 0.3)";
       default:
         return "white";
     }

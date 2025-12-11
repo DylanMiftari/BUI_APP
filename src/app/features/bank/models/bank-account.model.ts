@@ -1,4 +1,5 @@
 import {Company} from "../../general/models/company.model";
+import {UserHand} from "./user-hand.model";
 
 export interface BankAccount {
   id: number;
@@ -10,4 +11,6 @@ export interface BankAccount {
   maxResource: number;
   isEnable: boolean;
   company: Company;
+  bankId: number;
+  userHand: UserHand | null;
 }

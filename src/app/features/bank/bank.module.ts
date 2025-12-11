@@ -19,6 +19,9 @@ import {CasinoDashboardPagesComponent} from "../casino/pages/casino-dashboard-pa
 import {ConfigCasinoPagesComponent} from "../casino/pages/config-casino-pages/config-casino-pages.component";
 import {MyAccountsPagesComponent} from "./pages/my-accounts-pages/my-accounts-pages.component";
 import {OpenAccountPagesComponent} from "./pages/open-account-pages/open-account-pages.component";
+import {
+  ClientAccountDetailsPagesComponent
+} from "./pages/client-account-details-pages/client-account-details-pages.component";
 
 const routes: Routes = [
   {
@@ -27,7 +30,8 @@ const routes: Routes = [
         {path: "my-accounts", component: MyAccountsPagesComponent},
         {
           path: ":bank", children: [
-            {path: "", component: OpenAccountPagesComponent}
+            {path: "", component: OpenAccountPagesComponent},
+            {path: "account", component: ClientAccountDetailsPagesComponent}
           ]
         }
       ]

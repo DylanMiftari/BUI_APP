@@ -5,6 +5,7 @@ import {SimpleTextComponent} from "../../../atoms/simple-text/simple-text.compon
 import {TitleComponent} from "../../../atoms/title/title.component";
 import {CardContainerComponent} from "../../../atoms/card-container/card-container.component";
 import {BankAccountCardComponent} from "../../../organisms/bank-account-card/bank-account-card.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-accounts-template',
@@ -21,4 +22,13 @@ import {BankAccountCardComponent} from "../../../organisms/bank-account-card/ban
 })
 export class MyAccountsTemplateComponent {
   @Input() bankAccounts: BankAccount[] = [];
+
+  constructor(
+    private router: Router,
+  ) {
+  }
+
+  clickOnAccount(bankAccount: BankAccount) {
+    this.router.navigate([`/bank/${bankAccount.bankId}/account`]);
+  }
 }

@@ -31,7 +31,8 @@ import {SeperatorWithTextComponent} from "../../atoms/seperator-with-text/sepera
 })
 export class BankAccountCardComponent {
   @Input() bankAccount!: BankAccount;
-  @Output() onClickAccount = new EventEmitter<number>();
+  @Input() interactable: boolean = true;
+  @Output() onClickAccount = new EventEmitter<BankAccount>();
 
   getStatusText() {
     return this.bankAccount.isEnable ? "Active" : "Inactive";
@@ -41,6 +42,6 @@ export class BankAccountCardComponent {
   }
 
   clickOnAccount() {
-    this.onClickAccount.emit(this.bankAccount.id);
+    this.onClickAccount.emit(this.bankAccount);
   }
 }

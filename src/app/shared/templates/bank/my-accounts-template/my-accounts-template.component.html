@@ -5,6 +5,6 @@
 
 <app-card-container>
   @for (bankAccount of bankAccounts; track bankAccount.id) {
-    <app-bank-account-card [bankAccount]="bankAccount"></app-bank-account-card>
+    <app-bank-account-card [bankAccount]="bankAccount" (onClickAccount)="clickOnAccount($event)"></app-bank-account-card>
   }
 </app-card-container>

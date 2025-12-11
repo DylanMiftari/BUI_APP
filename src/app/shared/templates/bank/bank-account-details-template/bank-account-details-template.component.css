@@ -1,0 +1,9 @@
+div {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px auto;
+}
