@@ -1,0 +1,8 @@
+app-simple-card {
+  justify-content: center;
+
+  &.card-description {
+    width: 90%;
+    margin: 10px auto;
+  }
+}

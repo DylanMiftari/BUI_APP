@@ -3,6 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {BankAccount} from "../models/bank-account.model";
 import {Bank} from "../models/bank.model";
+import {LoanRequest} from "../models/loan-request.model";
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +46,9 @@ export class BankService {
       amount: amount,
       destinationAccount: destAccountId,
     })
+  }
+
+  getLoanRequest(bankId: number) {
+    return this.http.get<LoanRequest[]>(`${this.baseUrl}/${bankId}/account/loan`);
   }
 }

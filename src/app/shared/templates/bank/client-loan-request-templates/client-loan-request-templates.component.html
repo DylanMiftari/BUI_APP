@@ -1,0 +1,10 @@
+<app-page-title title="Loan Requests"></app-page-title>
+<app-simple-text text="Manage your loan applications and track repayment progress" textAlign="center" [isLight]="true"></app-simple-text>
+
+<app-bank-account-card [bankAccount]="bankAccount" [interactable]="false"></app-bank-account-card>
+
+<app-title text="Your Loan Applications" color="white"></app-title>
+
+@for (loanRequest of loanRequests; track loanRequest.id) {
+  <app-loan-request-card [loanRequest]="loanRequest"></app-loan-request-card>
+}

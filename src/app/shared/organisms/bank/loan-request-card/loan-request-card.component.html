@@ -1,0 +1,75 @@
+<app-card color="bank" [interactable]="false" [marginYPx]="15">
+  <app-row justifyContent="space-between">
+    <app-simple-text [text]="'Loan ID : '+loanRequest.id" color="bank" [bold]="true"></app-simple-text>
+    <app-status-indicator [color]="statusColor" [text]="statusText"></app-status-indicator>
+  </app-row>
+
+  <app-seperator-with-text [marginPx]="20"></app-seperator-with-text>
+
+  <app-card-container>
+    <app-simple-card color="bank">
+      <app-data-with-text
+        color="bank"
+        text="Amount Requested"
+        [data]="loanRequest.money"
+        [dataIsNumber]="true"
+        unit="€"
+        dataTextAlign="center"
+      ></app-data-with-text>
+    </app-simple-card>
+
+    <app-simple-card color="bank">
+      <app-data-with-text
+        color="bank"
+        text="Weekly Payment"
+        [data]="loanRequest.weeklypayment"
+        [dataIsNumber]="true"
+        unit="€"
+        dataTextAlign="center"
+      ></app-data-with-text>
+    </app-simple-card>
+
+    <app-simple-card color="bank">
+      <app-data-with-text
+        color="bank"
+        text="Interest Rate"
+        [data]="loanRequest.rate"
+        [dataIsNumber]="true"
+        unit="%"
+        dataTextAlign="center"
+      ></app-data-with-text>
+    </app-simple-card>
+
+    <app-simple-card color="bank">
+      <app-data-with-text
+        color="bank"
+        text="Loan Term"
+        [data]="nbWeekToPay"
+        [dataIsNumber]="true"
+        dataTextAlign="center"
+        unit=" weeks"
+      ></app-data-with-text>
+    </app-simple-card>
+  </app-card-container>
+
+  <app-simple-card color="bank" direction="column" class="card-description">
+    <app-simple-text color="bank" text="Description" [fontSizePx]="18" [bold]="true"></app-simple-text>
+    <app-simple-text [text]="loanRequest.description"></app-simple-text>
+  </app-simple-card>
+
+  @if (loanRequest.status == "paying") {
+    <app-simple-card color="bank" direction="column" class="card-description">
+      <app-simple-text color="bank" text="Repayment Progress" [fontSizePx]="18" [bold]="true"></app-simple-text>
+      <app-row justifyContent="space-between">
+        <app-simple-text [text]="'Paid : '+loanRequest.alreadyPayed.toLocaleString()+'€'"></app-simple-text>
+        <app-simple-text [text]="'Remaining : '+((loanRequest.money - loanRequest.alreadyPayed).toLocaleString())+'€'"></app-simple-text>
+      </app-row>
+      <app-progress-bar
+        color="bank"
+        [maxValue]="loanRequest.money"
+        [value]="loanRequest.alreadyPayed"
+        [darkBackGroundColor]="true"
+      ></app-progress-bar>
+    </app-simple-card>
+  }
+</app-card>
