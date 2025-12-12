@@ -10,6 +10,10 @@ import {SimpleTextComponent} from "../../../atoms/simple-text/simple-text.compon
 import {SimpleCardComponent} from "../../../atoms/simple-card/simple-card.component";
 import {DataWithTextComponent} from "../../../moleculs/data-with-text/data-with-text.component";
 import {TransactionsBoxComponent} from "../../../organisms/bank/transactions-box/transactions-box.component";
+import {MoneyTransferBoxComponent} from "../../../organisms/bank/money-transfer-box/money-transfer-box.component";
+import {ButtonComponent} from "../../../atoms/button/button.component";
+import {bankConfig} from "../../../../core/config/bank.config";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-bank-account-details-template',
@@ -24,11 +28,23 @@ import {TransactionsBoxComponent} from "../../../organisms/bank/transactions-box
     SimpleTextComponent,
     SimpleCardComponent,
     DataWithTextComponent,
-    TransactionsBoxComponent
+    TransactionsBoxComponent,
+    MoneyTransferBoxComponent,
+    ButtonComponent
   ],
   templateUrl: './bank-account-details-template.component.html',
   styleUrl: './bank-account-details-template.component.css'
 })
 export class BankAccountDetailsTemplateComponent {
   @Input() bankAccount!: BankAccount;
+  protected readonly bankConfig = bankConfig;
+
+  constructor(
+    private router: Router
+  ) {
+  }
+
+  goToLoanRequest(): void {
+    this.router.navigate([`/bank/${this.bankAccount.bankId}/loan`]);
+  }
 }

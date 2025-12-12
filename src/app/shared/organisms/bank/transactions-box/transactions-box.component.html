@@ -24,9 +24,16 @@
     </app-simple-card>
   }
 
+  @if(mode == "deposit") {
+    <app-error-text [text]="creditError" textAlign="center"></app-error-text>
+  } @else {
+    <app-error-text [text]="debitError" textAlign="center"></app-error-text>
+  }
+
   <app-button
     color="bank"
     [label]="mode == 'deposit' ? 'Deposit Money' : 'Withdraw Money'"
+    (clicked)="doAction()"
     class="final-button"
   ></app-button>
 </app-card>

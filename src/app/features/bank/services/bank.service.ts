@@ -27,4 +27,23 @@ export class BankService {
   createBankAccount(bankId: number) {
     return this.http.post(`${this.baseUrl}/${bankId}/create-account`, {});
   }
+
+  debitAccount(bankId: number, amount: number) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/account/debit`, {
+      amount: amount,
+    });
+  }
+
+  creditAccount(bankId: number, amount: number) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/account/credit`, {
+      amount: amount,
+    });
+  }
+
+  transferMoney(bankId: number, amount: number, destAccountId: number) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/account/transfer`, {
+      amount: amount,
+      destinationAccount: destAccountId,
+    })
+  }
 }

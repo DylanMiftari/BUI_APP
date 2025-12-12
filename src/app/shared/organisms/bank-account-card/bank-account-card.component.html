@@ -1,10 +1,11 @@
 <app-card color="bank" [interactable]="interactable" (clicked)="clickOnAccount()">
-  <app-row [gapPx]="20" alignItems="flex-start">
+  <app-row [gapPx]="20" alignItems="center" justifyContent="space-between">
     <app-icon icon="🏛️" [fontSize]="3"></app-icon>
     <div>
       <app-simple-text color="bank" [text]="bankAccount.company.name" [bold]="true" [marginYPx]="10"></app-simple-text>
       <app-level-pin [level]="bankAccount.company.level" color="bank"></app-level-pin>
     </div>
+    <app-simple-text [text]="'Account ID : ' + bankAccount.id"></app-simple-text>
   </app-row>
   <app-status-indicator [textColor]="getStatusColor()" [color]="getStatusColor()" [text]="getStatusText()"></app-status-indicator>
 
