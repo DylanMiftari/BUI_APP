@@ -6,6 +6,9 @@ import {SimpleTextComponent} from "../../../atoms/simple-text/simple-text.compon
 import {BankAccountCardComponent} from "../../../organisms/bank-account-card/bank-account-card.component";
 import {TitleComponent} from "../../../atoms/title/title.component";
 import {LoanRequestCardComponent} from "../../../organisms/bank/loan-request-card/loan-request-card.component";
+import {
+  CreateLoanRequestFormComponent
+} from "../../../organisms/bank/create-loan-request-form/create-loan-request-form.component";
 
 @Component({
   selector: 'app-client-loan-request-templates',
@@ -15,7 +18,8 @@ import {LoanRequestCardComponent} from "../../../organisms/bank/loan-request-car
     SimpleTextComponent,
     BankAccountCardComponent,
     TitleComponent,
-    LoanRequestCardComponent
+    LoanRequestCardComponent,
+    CreateLoanRequestFormComponent
   ],
   templateUrl: './client-loan-request-templates.component.html',
   styleUrl: './client-loan-request-templates.component.css'

@@ -1,0 +1,12 @@
+<app-card color="bank" [interactable]="false">
+  <form>
+    <app-input label="Money to Loan" color="bank" type="number" [min]="1" [control]="moneyFormControl"></app-input>
+    <app-input label="Weekly Payment Proposition" color="bank" type="number" [min]="1" [control]="weeklyPaymentFormControl"></app-input>
+    <app-input label="Interest Rate Proposition (Optional)" type="number" [control]="rateFormControl" color="bank"></app-input>
+    <app-textarea label="Description" color="bank" [control]="descriptionFormControl"></app-textarea>
+
+    <app-error-text [text]="loanError" textAlign="center"></app-error-text>
+
+    <app-button label="Create Loan Request" color="bank" (clicked)="createLoanRequest()"></app-button>
+  </form>
+</app-card>

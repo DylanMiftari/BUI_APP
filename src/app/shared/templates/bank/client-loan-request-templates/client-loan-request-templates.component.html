@@ -3,8 +3,10 @@
 
 <app-bank-account-card [bankAccount]="bankAccount" [interactable]="false"></app-bank-account-card>
 
-<app-title text="Your Loan Applications" color="white"></app-title>
+<app-title text="Make a Loan Request" color="white"></app-title>
+<app-create-loan-request-form [bankId]="bankAccount.bankId"></app-create-loan-request-form>
 
+<app-title text="Your Loan Applications" color="white"></app-title>
 @for (loanRequest of loanRequests; track loanRequest.id) {
   <app-loan-request-card [loanRequest]="loanRequest"></app-loan-request-card>
 }

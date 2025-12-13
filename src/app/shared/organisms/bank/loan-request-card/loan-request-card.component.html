@@ -7,37 +7,55 @@
   <app-seperator-with-text [marginPx]="20"></app-seperator-with-text>
 
   <app-card-container>
-    <app-simple-card color="bank">
+    <app-simple-card color="bank" direction="column" alignItems="center">
+      @if (isWaitingForClient) {
+        <app-input color="bank" [control]="moneyControl" type="number"></app-input>
+      }
       <app-data-with-text
         color="bank"
         text="Amount Requested"
-        [data]="loanRequest.money"
+        [data]="isWaitingForClient ? '' : loanRequest.money"
         [dataIsNumber]="true"
-        unit="€"
+        [unit]="isWaitingForClient ? '' : '€'"
         dataTextAlign="center"
       ></app-data-with-text>
     </app-simple-card>
 
-    <app-simple-card color="bank">
+    <app-simple-card color="bank" direction="column" alignItems="center">
+      @if(isWaitingForClient) {
+        <app-input color="bank" [control]="weeklyPaymentControl" type="number"></app-input>
+      }
       <app-data-with-text
         color="bank"
         text="Weekly Payment"
-        [data]="loanRequest.weeklypayment"
+        [data]="isWaitingForClient ? '' :  loanRequest.weeklypayment"
         [dataIsNumber]="true"
-        unit="€"
+        [unit]="isWaitingForClient ? '' : '€'"
         dataTextAlign="center"
       ></app-data-with-text>
     </app-simple-card>
 
-    <app-simple-card color="bank">
-      <app-data-with-text
-        color="bank"
-        text="Interest Rate"
-        [data]="loanRequest.rate"
-        [dataIsNumber]="true"
-        unit="%"
-        dataTextAlign="center"
-      ></app-data-with-text>
+    <app-simple-card color="bank" direction="column" alignItems="center">
+      @if (isWaitingForClient) {
+        <app-input color="bank" type="number" [control]="rateControl"></app-input>
+      }
+      @if (loanRequest.rate) {
+        <app-data-with-text
+          color="bank"
+          text="Interest Rate"
+          [data]="isWaitingForClient ? '' : loanRequest.rate"
+          [dataIsNumber]="true"
+          [unit]="isWaitingForClient ? '' : '%'"
+          dataTextAlign="center"
+        ></app-data-with-text>
+      } @else {
+        <app-data-with-text
+          color="bank"
+          text="Interest Rate"
+          [data]="isWaitingForClient ? '' : 'Undefined'"
+          dataTextAlign="center"
+        ></app-data-with-text>
+      }
     </app-simple-card>
 
     <app-simple-card color="bank">
@@ -55,6 +73,9 @@
   <app-simple-card color="bank" direction="column" class="card-description">
     <app-simple-text color="bank" text="Description" [fontSizePx]="18" [bold]="true"></app-simple-text>
     <app-simple-text [text]="loanRequest.description"></app-simple-text>
+    @if (isWaitingForClient) {
+      <app-textarea color="bank" placeholder="Complete loan description" [control]="descriptionControl"></app-textarea>
+    }
   </app-simple-card>
 
   @if (loanRequest.status == "paying") {
@@ -72,4 +93,16 @@
       ></app-progress-bar>
     </app-simple-card>
   }
+
+  <app-error-text [text]="actionError" textAlign="center"></app-error-text>
+
+  <app-row justifyContent="space-around">
+    @if (isWaitingForClient) {
+      <app-button label="Cancel Loan" color="casino" (clicked)="cancelLoanRequest()"></app-button>
+      <app-button label="Update Loan" color="bank" (clicked)="updateLoanRequest()"></app-button>
+    }
+    @if(loanRequest.status == 'approved') {
+      <app-button label="Accept Loan" color="green" (clicked)="acceptLoanRequest()"></app-button>
+    }
+  </app-row>
 </app-card>

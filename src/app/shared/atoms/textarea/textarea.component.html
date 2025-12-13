@@ -1,0 +1,9 @@
+<label [for]="name"
+       [style.color]="themeColorService.simpleColor(color)"
+>{{ label }}</label>
+
+<textarea
+  [id]="name" [placeholder]="placeholder" [formControl]="control" [name]="name"
+  [style.background-color]="themeColorService.inputBGColor(color)"
+  [style.color]="themeColorService.inputTextColor(color)" [style.font-size]="fontSizePx+'px'"
+></textarea>

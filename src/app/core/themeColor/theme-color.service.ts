@@ -41,6 +41,8 @@ export class ThemeColorService {
         return "rgba(139, 69, 19, 0.3)";
       case "blue":
         return "rgba(59, 130, 246, 0.4)";
+      case "casino":
+        return "rgba(255,0,30,0.3)";
       case "casino-regular":
         return "rgba(255, 215, 0, 0.3)";
       case "casino-vip":

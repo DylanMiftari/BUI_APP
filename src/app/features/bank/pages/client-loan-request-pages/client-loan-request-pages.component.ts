@@ -32,6 +32,7 @@ export class ClientLoanRequestPagesComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       let bankId = params['bank'];
+      this.headerButtonService.updateButton("🏦 Back to Account", `/bank/${bankId}/account`);
       forkJoin({
         bankAccount: this.bankService.getBankAccount(bankId),
         loanRequests: this.bankService.getLoanRequest(bankId),

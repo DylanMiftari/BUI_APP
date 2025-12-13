@@ -5,5 +5,6 @@ export interface LoanRequest {
   weeklypayment: number;
   alreadyPayed: number;
   rate: number;
+  bankId: number;
   description: string;
 }

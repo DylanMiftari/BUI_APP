@@ -51,4 +51,38 @@ export class BankService {
   getLoanRequest(bankId: number) {
     return this.http.get<LoanRequest[]>(`${this.baseUrl}/${bankId}/account/loan`);
   }
+
+  createLoanRequest(bankId: number, money: number, weeklyPayment: number, description: string,
+                    rate: number | null) {
+    let data = {
+      money: money,
+      weeklyPayment: weeklyPayment,
+      description: description,
+    } as Record<string, any>
+    if(rate != null) {
+      data['rate'] = rate;
+    }
+    return this.http.post(`${this.baseUrl}/${bankId}/account/loan`, data);
+  }
+
+  cancelLoanRequest(bankId: number, loanRequestId: number) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/account/loan/${loanRequestId}/cancel`, {})
+  }
+
+  acceptLoanRequest(bankId: number, loanRequestId: number) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/account/loan/${loanRequestId}/accept`, {})
+  }
+
+  updateLoanRequest(bankId: number, loanRequestId: number, money: number, weeklyPayment: number, description: string,
+                    rate: number | null) {
+    let data = {
+      money: money,
+      weeklyPayment: weeklyPayment,
+      description: description,
+    } as Record<string, any>
+    if(rate) {
+      data['rate'] = rate;
+    }
+    return this.http.patch(`${this.baseUrl}/${bankId}/account/loan/${loanRequestId}/`, data)
+  }
 }
