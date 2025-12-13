@@ -47,4 +47,7 @@ export class BankAccountDetailsTemplateComponent {
   goToLoanRequest(): void {
     this.router.navigate([`/bank/${this.bankAccount.bankId}/loan`]);
   }
+  goToTransactions(): void {
+    this.router.navigate([`/bank/${this.bankAccount.bankId}/transactions`]);
+  }
 }

@@ -20,4 +20,5 @@ export class DataWithTextComponent {
   @Input() dataTextAlign: "left" | "center" | "right" = "left";
   @Input() lightText: boolean = false;
   @Input() textIsBig: boolean = false;
+  @Input() fontSizePx: number = 19;
 }

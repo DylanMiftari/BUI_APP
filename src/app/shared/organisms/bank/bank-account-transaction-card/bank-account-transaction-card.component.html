@@ -1,0 +1,58 @@
+<app-card color="bank" [interactable]="false">
+  <app-row justifyContent="space-between">
+    <app-simple-text color="bank" [text]="'Transaction ID : ' + transaction.id" [bold]="true"></app-simple-text>
+    <app-status-indicator [color]="typeColor" [text]="typeText"></app-status-indicator>
+  </app-row>
+
+  <app-row [gapPx]="20" [marginPx]="10">
+    <app-data-with-text
+      text="Date"
+      [data]="transaction.createdAt | date:'MMMM d, y \'at\' HH:mm'"
+      color="blue"
+      [fontSizePx]="15"
+    ></app-data-with-text>
+
+    <app-data-with-text
+      text="Amount"
+      [data]="transaction.money"
+      [dataIsNumber]="true"
+      unit="€"
+      color="blue"
+      [fontSizePx]="15"
+    ></app-data-with-text>
+
+    @if (!transaction.isCredit) {
+      <app-data-with-text
+        text="Transfer Rate"
+        [data]="transaction.transferCost"
+        [dataIsNumber]="true"
+        unit="%"
+        color="blue"
+        [fontSizePx]="15"
+      ></app-data-with-text>
+
+      <app-data-with-text
+        text="Transfer Fee"
+        [data]="transferFee"
+        [dataIsNumber]="true"
+        unit="€"
+        color="blue"
+        [fontSizePx]="15"
+      ></app-data-with-text>
+
+      <app-data-with-text
+        text="Net Amount"
+        [data]="transferFee + transaction.money"
+        [dataIsNumber]="true"
+        unit="€"
+        color="blue"
+        [fontSizePx]="15"
+      ></app-data-with-text>
+    }
+  </app-row>
+
+  <app-simple-card color="bank" direction="column">
+    <app-simple-text text="Description : " color="bank" [fontSizePx]="16" [bold]="true"></app-simple-text>
+    <app-simple-text [text]="transaction.description"></app-simple-text>
+  </app-simple-card>
+</app-card>

@@ -17,6 +17,7 @@ export class DataTextComponent {
   @Input() unit: string = "";
   @Input() dataIsNumber: boolean = false;
   @Input() color: ThemeColor = "green";
+  @Input() fontSizePx: number = 19;
 
   constructor(protected colorService: ThemeColorService) {}
 

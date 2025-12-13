@@ -44,7 +44,7 @@
     <app-simple-text text="➕ More Actions" color="bank" [marginYPx]="10" [fontSizePx]="20"
     [bold]="true"></app-simple-text>
     <div>
-      <app-button color="bank" label="See Transactions"></app-button>
+      <app-button color="bank" label="See Transactions" (clicked)="goToTransactions()"></app-button>
       @if (bankAccount.company.level >= bankConfig.levelForLoanRequest) {
         <app-button color="bank" label="Manage Loan Requests" (clicked)="goToLoanRequest()"></app-button>
       }

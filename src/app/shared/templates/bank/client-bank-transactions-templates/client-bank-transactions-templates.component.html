@@ -1,0 +1,8 @@
+<app-page-title title="Account Transactions"></app-page-title>
+<app-bank-account-card [bankAccount]="bankAccount" [interactable]="false"></app-bank-account-card>
+
+<app-title text="Transactions" color="white"></app-title>
+
+@for (transaction of transactions; track transaction.id) {
+  <app-bank-account-transaction-card [transaction]="transaction"></app-bank-account-transaction-card>
+}

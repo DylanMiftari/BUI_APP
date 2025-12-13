@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {BankAccount} from "../models/bank-account.model";
 import {Bank} from "../models/bank.model";
 import {LoanRequest} from "../models/loan-request.model";
+import {BankAccountTransaction} from "../models/bank-account-transaction.model";
 
 @Injectable({
   providedIn: 'root'
@@ -84,5 +85,9 @@ export class BankService {
       data['rate'] = rate;
     }
     return this.http.patch(`${this.baseUrl}/${bankId}/account/loan/${loanRequestId}/`, data)
+  }
+
+  getTransactions(bankId: number) {
+    return this.http.get<BankAccountTransaction[]>(`${this.baseUrl}/${bankId}/account/transactions`);
   }
 }
