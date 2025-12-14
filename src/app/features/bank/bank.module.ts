@@ -26,6 +26,7 @@ import {ClientLoanRequestPagesComponent} from "./pages/client-loan-request-pages
 import {
   ClientSeeTransactionsPagesComponent
 } from "./pages/client-see-transactions-pages/client-see-transactions-pages.component";
+import {BankDashboardPagesComponent} from "./pages/bank-dashboard-pages/bank-dashboard-pages.component";
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
             {path: "account", component: ClientAccountDetailsPagesComponent},
             {path: "loan", component: ClientLoanRequestPagesComponent},
             {path: "transactions", component: ClientSeeTransactionsPagesComponent},
+            {path: "owner-dashboard", component: BankDashboardPagesComponent}
           ]
         }
       ]

@@ -1,0 +1,58 @@
+<app-card [color]="'bank'" [interactable]="false" [bordered]="false" alignItems="center">
+  <app-themed-title [title]="'Bank Management'" color="bank"></app-themed-title>
+  <app-simple-text text="Dashboard of your company" [fontSizePx]="16" textAlign="center"></app-simple-text>
+
+  <app-row [marginPx]="15">
+    @for(buttonLink of buttonLinks; track $index) {
+      <app-button [label]="buttonLink.label" [color]="'bank'" [routerLink]="[buttonLink.link]"></app-button>
+    }
+  </app-row>
+</app-card>
+
+<app-card color="bank" [interactable]="false" [bordered]="false">
+  <app-simple-card color="bank" style="width: -webkit-fill-available" [gapPx]="10" alignItems="center">
+    <app-icon icon="🏦" [fontSize]="3"></app-icon>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <app-simple-text color="bank" [text]="bankDashboard.bank.name" [fontSizePx]="18" [bold]="true"></app-simple-text>
+      <app-level-pin color="bank" [level]="bankDashboard.bank.level"></app-level-pin>
+    </div>
+  </app-simple-card>
+
+  <app-simple-card color="bank" style="width: -webkit-fill-available" [marginPx]="10" direction="column">
+    <app-row justifyContent="space-between">
+      <app-simple-text text="Money in safe"></app-simple-text>
+      <app-simple-text color="bank" [text]="bankDashboard.bank.moneyInSafe.toLocaleString()+'€'" [bold]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+    <app-row justifyContent="space-between">
+      <app-simple-text text="Opened Accounts"></app-simple-text>
+      <app-simple-text color="bank" [text]="bankDashboard.bank.nbAccount+'/'+bankDashboard.bank.maxNbAccount" [bold]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+    <app-row justifyContent="space-between">
+      <app-simple-text text="Loans Request"></app-simple-text>
+      <app-simple-text color="bank" [text]="bankDashboard.bank.nbLoans.toLocaleString()" [bold]="true"></app-simple-text>
+    </app-row>
+  </app-simple-card>
+
+  <app-upgrade-company-card
+    theme="bank"
+    companyType="Bank"
+    [currentLevel]="bankDashboard.bank.level"
+    [companyId]="bankDashboard.bank.companyId"
+    style="width: -webkit-fill-available;"
+  ></app-upgrade-company-card>
+</app-card>
+
+<app-card [interactable]="false" [bordered]="false">
+  <app-simple-text text="Level Benefits Overview" color="bank" [fontSizePx]="20" textAlign="center" [bold]="true"></app-simple-text>
+  <app-card-container [paddingXPx]="0" [paddingYPx]="5" [cardBaseSizePx]="250">
+    @for (companyLevel of companyLevels; track $index) {
+      <app-company-level-benefits-card [level]="companyLevel"
+                                       [levelBenefits]="levelBenefits[companyLevel-1]"
+                                       [isCurrent]="companyLevel == bankDashboard.bank.level"
+                                       theme="bank"
+      ></app-company-level-benefits-card>
+    }
+  </app-card-container>
+</app-card>
