@@ -16,4 +16,22 @@ export class BankOwnerService {
   getDashboardData(bankId: number) {
     return this.http.get<BankDashboard>(`${this.baseUrl}/${bankId}/owner/dashboard`);
   }
+
+  updateConfiguration(bankId: number, accountMaintenanceCost: number|null = null, transferCost: number|null = null,
+                      maxAccountMoney: number|null = null, maxAccountResource: number|null = null) {
+    let data: any = {};
+    if(accountMaintenanceCost) {
+      data["accountMaintenanceCost"] = accountMaintenanceCost;
+    }
+    if(transferCost) {
+      data["transferCost"] = transferCost;
+    }
+    if(maxAccountMoney) {
+      data["maxAccountMoney"] = maxAccountMoney;
+    }
+    if(maxAccountResource) {
+      data["maxAccountResource"] = maxAccountResource;
+    }
+    return this.http.patch(`${this.baseUrl}/${bankId}/owner/config`, data);
+  }
 }

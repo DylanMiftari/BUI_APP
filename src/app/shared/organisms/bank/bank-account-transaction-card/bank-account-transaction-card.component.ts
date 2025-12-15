@@ -36,6 +36,6 @@ export class BankAccountTransactionCardComponent {
   }
 
   get transferFee() {
-    return Math.round(this.transaction.money * this.transaction.transferCost * 100) / 100;
+    return Math.round(this.transaction.money * this.transaction.transferCost/100 * 100) / 100;
   }
 }

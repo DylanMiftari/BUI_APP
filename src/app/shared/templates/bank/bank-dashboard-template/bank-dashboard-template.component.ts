@@ -52,6 +52,7 @@ export class BankDashboardTemplateComponent implements OnInit {
 
   ngOnInit(): void {
     this.buttonLinks = [
+      {'label': 'Bank Settings', 'link': '/bank/'+this.bankDashboard.bank.id+'/config'}
     ]
     this.levelBenefits = [
       [

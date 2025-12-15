@@ -27,6 +27,9 @@ import {
   ClientSeeTransactionsPagesComponent
 } from "./pages/client-see-transactions-pages/client-see-transactions-pages.component";
 import {BankDashboardPagesComponent} from "./pages/bank-dashboard-pages/bank-dashboard-pages.component";
+import {
+  BankConfigDashboardPagesComponent
+} from "./pages/bank-config-dashboard-pages/bank-config-dashboard-pages.component";
 
 const routes: Routes = [
   {
@@ -39,7 +42,8 @@ const routes: Routes = [
             {path: "account", component: ClientAccountDetailsPagesComponent},
             {path: "loan", component: ClientLoanRequestPagesComponent},
             {path: "transactions", component: ClientSeeTransactionsPagesComponent},
-            {path: "owner-dashboard", component: BankDashboardPagesComponent}
+            {path: "owner-dashboard", component: BankDashboardPagesComponent},
+            {path: "config", component: BankConfigDashboardPagesComponent}
           ]
         }
       ]

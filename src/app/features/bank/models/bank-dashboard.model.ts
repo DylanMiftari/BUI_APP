@@ -12,4 +12,10 @@ export interface BankDashboard {
     companyId: number,
   },
   bankLevel: BankLevel[],
+  config: {
+    accountMaintenanceCost: number,
+    transferCost: number,
+    maxAccountMoney: number,
+    maxAccountResource: number
+  }
 }

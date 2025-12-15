@@ -1,0 +1,29 @@
+<app-card [color]="'bank'" [interactable]="false" [bordered]="false" alignItems="center">
+  <app-themed-title [title]="'Bank Management'" color="bank"></app-themed-title>
+  <app-simple-text text="Configuration of your company" [fontSizePx]="16" textAlign="center"></app-simple-text>
+
+  <app-row [marginPx]="15">
+    @for(buttonLink of buttonLinks; track $index) {
+      <app-button [label]="buttonLink.label" [color]="'bank'" [routerLink]="[buttonLink.link]"></app-button>
+    }
+  </app-row>
+</app-card>
+
+<app-card color="bank" [interactable]="false" [bordered]="false" alignItems="center">
+  <app-themed-title title="⚙️ Configuration" color="bank"></app-themed-title>
+  <form>
+    <app-input color="bank" [control]="accountMaintenanceCostControl" label="Default Account Maintenance Fees (€/week)" type="number"></app-input>
+
+    <app-input color="bank" [control]="transferCostControl" label="Default Transfer Rate (%)" type="number"></app-input>
+
+    <app-input color="bank" [control]="maxAccountMoneyControl" label="Maximum Money Per Account" type="number"></app-input>
+    <app-simple-text [text]="'Max Value : '+maxMaxAccountMoney.toLocaleString()+'€'" [style.margin-left]="10+'px'"></app-simple-text>
+
+    <app-input color="bank" [control]="maxAccountResourceControl" label="Maximum Resources Per Account" type="number"></app-input>
+    <app-simple-text [text]="'Max Value : '+maxMaxAccountResource+'kg'" [style.margin-left]="10+'px'"></app-simple-text>
+
+    <app-error-text [text]="updateError" textAlign="center"></app-error-text>
+
+    <app-button color="bank" label="Update Configuration" (clicked)="updateConfig()"></app-button>
+  </form>
+</app-card>

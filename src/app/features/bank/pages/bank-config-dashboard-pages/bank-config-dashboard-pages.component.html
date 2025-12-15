@@ -1,0 +1,7 @@
+@if (bankDashboard) {
+  <app-bank-config-templates
+    [bankDashboard]="bankDashboard"
+    [updateError]="updateError"
+    (onChangeConfig)="updateConfig($event)"
+  ></app-bank-config-templates>
+}
