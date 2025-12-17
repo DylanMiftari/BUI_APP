@@ -13,4 +13,5 @@ export interface BankAccount {
   company: Company;
   bankId: number;
   userHand: UserHand | null;
+  user: {pseudo: string} | null;
 }

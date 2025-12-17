@@ -2,7 +2,7 @@
   <app-themed-title [title]="'Bank Management'" color="bank"></app-themed-title>
   <app-simple-text text="Configuration of your company" [fontSizePx]="16" textAlign="center"></app-simple-text>
 
-  <app-row [marginPx]="15">
+  <app-row [marginPx]="15" [gapPx]="10">
     @for(buttonLink of buttonLinks; track $index) {
       <app-button [label]="buttonLink.label" [color]="'bank'" [routerLink]="[buttonLink.link]"></app-button>
     }

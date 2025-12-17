@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {BankDashboard} from "../models/bank-dashboard.model";
+import {BankAccount} from "../models/bank-account.model";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,9 @@ export class BankOwnerService {
       data["maxAccountResource"] = maxAccountResource;
     }
     return this.http.patch(`${this.baseUrl}/${bankId}/owner/config`, data);
+  }
+
+  getBankAccounts(bankId: number) {
+    return this.http.get<BankAccount[]>(`${this.baseUrl}/${bankId}/owner/accounts`);
   }
 }

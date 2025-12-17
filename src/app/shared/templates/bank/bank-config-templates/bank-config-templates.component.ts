@@ -61,7 +61,8 @@ export class BankConfigTemplatesComponent implements OnInit {
 
   ngOnInit() {
     this.buttonLinks = [
-      {'label': 'Bank Dashboard', 'link': '/bank/'+this.bankDashboard.bank.id+'/owner-dashboard'}
+      {'label': 'Bank Dashboard', 'link': '/bank/'+this.bankDashboard.bank.id+'/owner-dashboard'},
+      {'label': 'Accounts List', 'link': '/bank/'+this.bankDashboard.bank.id+'/accounts'},
     ];
     this.formGroup = new FormGroup({
       accountMaintenanceCost: new FormControl(this.bankDashboard.config.accountMaintenanceCost),

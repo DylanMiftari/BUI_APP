@@ -32,6 +32,7 @@ import {SeperatorWithTextComponent} from "../../atoms/seperator-with-text/sepera
 export class BankAccountCardComponent {
   @Input() bankAccount!: BankAccount;
   @Input() interactable: boolean = true;
+  @Input() showUser: boolean = false;
   @Output() onClickAccount = new EventEmitter<BankAccount>();
 
   getStatusText() {

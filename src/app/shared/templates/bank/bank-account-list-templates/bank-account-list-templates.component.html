@@ -1,0 +1,23 @@
+<app-card [color]="'bank'" [interactable]="false" [bordered]="false" alignItems="center">
+  <app-themed-title [title]="'Bank Management'" color="bank"></app-themed-title>
+  <app-simple-text text="All accounts of your bank" [fontSizePx]="16" textAlign="center"></app-simple-text>
+
+  <app-row [marginPx]="15" [gapPx]="10">
+    @for(buttonLink of buttonLinks; track $index) {
+      <app-button [label]="buttonLink.label" [color]="'bank'" [routerLink]="[buttonLink.link]"></app-button>
+    }
+  </app-row>
+</app-card>
+
+<app-simple-text
+  [text]="bankDashboard.bank.nbAccount + '/' + bankDashboard.bank.maxNbAccount + ' Accounts'"
+  [isLight]="true"
+  [fontSizePx]="16"
+  [paddingXPx]="10"
+></app-simple-text>
+
+<app-card-container>
+  @for (bankAccount of bankAccounts; track bankAccount.id) {
+    <app-bank-account-card [bankAccount]="bankAccount" [showUser]="true"></app-bank-account-card>
+  }
+</app-card-container>
