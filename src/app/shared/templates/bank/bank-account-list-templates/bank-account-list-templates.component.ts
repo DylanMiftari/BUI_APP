@@ -5,7 +5,7 @@ import {CardComponent} from "../../../organisms/card/card.component";
 import {RowComponent} from "../../../atoms/row/row.component";
 import {SimpleTextComponent} from "../../../atoms/simple-text/simple-text.component";
 import {ThemedTitleComponent} from "../../../atoms/themed-title/themed-title.component";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {BankDashboard} from "../../../../features/bank/models/bank-dashboard.model";
 import {CardContainerComponent} from "../../../atoms/card-container/card-container.component";
 import {BankAccountCardComponent} from "../../../organisms/bank-account-card/bank-account-card.component";
@@ -32,10 +32,16 @@ export class BankAccountListTemplatesComponent implements OnInit {
 
   buttonLinks: {label: string, link: string}[] = [];
 
+  constructor(private router: Router) {}
+
   ngOnInit() {
     this.buttonLinks = [
       {'label': 'Bank Dashboard', 'link': '/bank/'+this.bankDashboard.bank.id+'/owner-dashboard'},
       {'label': 'Bank Settings', 'link': '/bank/'+this.bankDashboard.bank.id+'/config'},
     ];
+  }
+
+  clickOnBankAccount(bankAccount: BankAccount) {
+    this.router.navigate([`/bank/${bankAccount.bankId}/accounts/${bankAccount.id}`]);
   }
 }

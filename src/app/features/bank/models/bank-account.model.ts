@@ -1,5 +1,6 @@
 import {Company} from "../../general/models/company.model";
 import {UserHand} from "./user-hand.model";
+import {BankAccountTransaction} from "./bank-account-transaction.model";
 
 export interface BankAccount {
   id: number;
@@ -14,4 +15,5 @@ export interface BankAccount {
   bankId: number;
   userHand: UserHand | null;
   user: {pseudo: string} | null;
+  transactions: BankAccountTransaction[] | null;
 }

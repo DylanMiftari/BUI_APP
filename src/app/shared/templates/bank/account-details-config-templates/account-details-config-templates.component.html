@@ -1,0 +1,73 @@
+<app-page-title title="Account Details"></app-page-title>
+
+<app-card color="bank" [interactable]="false">
+  <app-row alignItems="center" justifyContent="center" [wrap]="true">
+    <app-row alignItems="center" [style.max-width]="'60%'">
+      <app-icon icon="👤" [fontSize]="3"></app-icon>
+      <div>
+        <app-themed-title [title]="bankAccount.user!.pseudo" color="bank"></app-themed-title>
+        <app-simple-text [text]="'Account ID : '+bankAccount.id"></app-simple-text>
+        <app-status-indicator [text]="getStatusText()" [color]="getStatusColor()"></app-status-indicator>
+      </div>
+    </app-row>
+
+    <app-data-with-text
+      color="bank"
+      [data]="bankAccount.money"
+      [dataIsNumber]="true"
+      unit="€"
+      text="Current Balance"
+      dataTextAlign="center"
+      [fontSizePx]="32"
+    ></app-data-with-text>
+  </app-row>
+</app-card>
+
+<app-card-container [paddingXPx]="10">
+  <app-card color="bank" [interactable]="false" [marginXPx]="0">
+    <app-themed-title color="bank" title="📊 Account Information"></app-themed-title>
+
+    <app-row justifyContent="space-between" [style.margin-top]="'10px'">
+      <app-simple-text text="Account Maintenance Fee"></app-simple-text>
+      <app-simple-text [text]="bankAccount.accountMaintenanceCost.toLocaleString()+'€/week'" color="bank" [bold]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+    <app-row justifyContent="space-between" [style.margin-top]="'10px'">
+      <app-simple-text text="Transfer Fee Rate"></app-simple-text>
+      <app-simple-text [text]="bankAccount.transferCost.toLocaleString()+'%'" color="bank" [bold]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+    <app-row justifyContent="space-between" [style.margin-top]="'10px'">
+      <app-simple-text text="Money Limit"></app-simple-text>
+      <app-simple-text [text]="bankAccount.maxMoney.toLocaleString()+'€'" color="bank" [bold]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+    <app-row justifyContent="space-between" [style.margin-top]="'10px'">
+      <app-simple-text text="Resource Limit"></app-simple-text>
+      <app-simple-text [text]="bankAccount.maxResource.toLocaleString()+'kg'" color="bank" [bold]="true"></app-simple-text>
+    </app-row>
+  </app-card>
+
+  <app-card color="bank" [interactable]="false" [marginXPx]="0">
+    <app-themed-title color="bank" title="⚙️ Account Configuration"></app-themed-title>
+    @if(formGroup) {
+      <form>
+        <app-input color="bank" [control]="accountMaintenanceCostControl" label="Account Maintenance Fee (€/week)"></app-input>
+        <app-input color="bank" [control]="transferCostControl" label="Transfer Fee Rate (%)"></app-input>
+        <app-input color="bank" [control]="maxMoneyControl" label="Money Limit (€)"></app-input>
+        <app-simple-text [text]="'Maximum Value : '+maxMaxAccountMoney.toLocaleString()+'€'"></app-simple-text>
+        <app-input color="bank" [control]="maxResourceControl" label="Resource Limit (€)"></app-input>
+        <app-simple-text [text]="'Maximum Value : '+maxMaxAccountResource.toLocaleString()+'kg'"></app-simple-text>
+
+        <app-error-text [text]="updateError" textAlign="center"></app-error-text>
+
+        <app-button color="bank" label="Update Configuration" (clicked)="updateBankAccountConfig()"></app-button>
+      </form>
+    }
+  </app-card>
+</app-card-container>
+
+<app-title text="💳 Transaction History" color="white"></app-title>
+@for (transaction of bankAccount.transactions; track transaction.id) {
+  <app-bank-account-transaction-card [transaction]="transaction"></app-bank-account-transaction-card>
+}

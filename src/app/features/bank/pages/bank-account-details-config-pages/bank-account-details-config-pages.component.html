@@ -1,0 +1,8 @@
+@if(bankDashboard && bankAccount) {
+  <app-account-details-config-templates
+    [bankDashboard]="bankDashboard"
+    [bankAccount]="bankAccount"
+    [updateError]="updateError"
+    (onUpdateBankAccountConfig)="updateBankAccountConfig($event)"
+  ></app-account-details-config-templates>
+}

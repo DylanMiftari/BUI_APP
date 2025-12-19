@@ -39,4 +39,18 @@ export class BankOwnerService {
   getBankAccounts(bankId: number) {
     return this.http.get<BankAccount[]>(`${this.baseUrl}/${bankId}/owner/accounts`);
   }
+
+  getBankAccountDetails(bankId: number, bankAccountId: number) {
+    return this.http.get<BankAccount>(`${this.baseUrl}/${bankId}/owner/accounts/${bankAccountId}`);
+  }
+
+  updateBankAccountConfig(bankId: number, bankAccountId: number, accountMaintenanceCost: number,
+                          transferCost: number, maxMoneyAccount: number, maxResourceAccount: number) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/owner/accounts/${bankAccountId}/`, {
+      accountMaintenanceCost: accountMaintenanceCost,
+      transferCost: transferCost,
+      maxAccountMoney: maxMoneyAccount,
+      maxAccountResource: maxResourceAccount
+    });
+  }
 }
