@@ -38,7 +38,7 @@ export class BankAccountDetailsConfigPagesComponent implements OnInit {
 
       forkJoin({
         bankDashboard: this.bankService.getDashboardData(bankId),
-        bankAccount: this.bankService.getBankAccountDetails(bankId, bankAccountId)
+        bankAccount: this.bankService.getBankAccountDetailsWithResources(bankId, bankAccountId)
       }).subscribe({
         next: (result) => {
           this.bankDashboard = result.bankDashboard;

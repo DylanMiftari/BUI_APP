@@ -1,0 +1,22 @@
+<app-page-title title="Resources Safe"></app-page-title>
+<app-simple-text text="Manage your resources safe" textAlign="center" [isLight]="true"></app-simple-text>
+
+<app-bank-account-card [bankAccount]="bankAccount" [interactable]="false"></app-bank-account-card>
+
+<app-card color="bank" [interactable]="false" alignItems="center">
+  <app-themed-title color="bank" title="Resources Safe"></app-themed-title>
+  @if (formGroupIsCreated) {
+    <app-resource-list [resources]="bankAccount.resources!" [formGroup]="formGroup"></app-resource-list>
+  }
+  <app-error-text [text]="withdrawError"></app-error-text>
+  <app-button color="bank" label="Withdraw Selected Quantity" (clicked)="onWithdrawResources()"></app-button>
+</app-card>
+
+<app-card color="bank" [interactable]="false" alignItems="center">
+  <app-themed-title color="bank" title="Resource on User"></app-themed-title>
+  @if (formGroupIsCreated) {
+    <app-resource-list [resources]="userResources!" [formGroup]="depositFormGroup"></app-resource-list>
+  }
+  <app-error-text [text]="depositError"></app-error-text>
+  <app-button color="bank" label="Deposit Selected Quantity" (clicked)="onDepositResources()"></app-button>
+</app-card>

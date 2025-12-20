@@ -1,0 +1,20 @@
+<app-simple-card
+  [color]="theme"
+  [paddingPx]="10"
+  [paddingYPx]="10"
+  [gapPx]="10"
+  justifyContent="space-between"
+>
+  <app-icon [icon]="resourceConfig.emojiResource[resource.resource.id]"></app-icon>
+  <app-data-with-text
+    [text]="resource.quantity.toLocaleString()+'kg available'"
+    [data]="resource.resource.name"
+    [color]="theme"
+  ></app-data-with-text>
+  @if (formControl) {
+    <app-input
+      [color]="theme" placeholder="Quantity in kg" type="number" [control]="formControl"
+      [min]="0" [max]="resource.quantity"
+    ></app-input>
+  }
+</app-simple-card>

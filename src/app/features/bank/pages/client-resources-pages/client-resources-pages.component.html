@@ -1,0 +1,10 @@
+@if (bankAccount && userResources != null) {
+  <app-client-resources-safe-templates
+    [bankAccount]="bankAccount"
+    [withdrawError]="withdrawError"
+    [userResources]="userResources"
+    [depositError]="depositError"
+    (withdrawResources)="withdraw($event)"
+    (depositResources)="deposit($event)"
+  ></app-client-resources-safe-templates>
+}

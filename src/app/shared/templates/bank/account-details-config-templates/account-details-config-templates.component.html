@@ -46,6 +46,11 @@
       <app-simple-text text="Resource Limit"></app-simple-text>
       <app-simple-text [text]="bankAccount.maxResource.toLocaleString()+'kg'" color="bank" [bold]="true"></app-simple-text>
     </app-row>
+    <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+
+    <app-themed-title color="bank" title="📦 Resource Inventory"></app-themed-title>
+    <app-simple-text [text]="'Total : '+bankAccount.resource+'kg'" [paddingXPx]="10"></app-simple-text>
+    <app-resource-list [resources]="bankAccount.resources!"></app-resource-list>
   </app-card>
 
   <app-card color="bank" [interactable]="false" [marginXPx]="0">

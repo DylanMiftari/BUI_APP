@@ -19,6 +19,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {InputComponent} from "../../../atoms/input/input.component";
 import {ButtonComponent} from "../../../atoms/button/button.component";
 import {ErrorTextComponent} from "../../../atoms/error-text/error-text.component";
+import {ResourceListComponent} from "../../../organisms/resource-list/resource-list.component";
 
 @Component({
   selector: 'app-account-details-config-templates',
@@ -38,7 +39,8 @@ import {ErrorTextComponent} from "../../../atoms/error-text/error-text.component
     BankAccountTransactionCardComponent,
     InputComponent,
     ButtonComponent,
-    ErrorTextComponent
+    ErrorTextComponent,
+    ResourceListComponent
   ],
   templateUrl: './account-details-config-templates.component.html',
   styleUrl: './account-details-config-templates.component.css'

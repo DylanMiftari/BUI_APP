@@ -1,0 +1,8 @@
+<app-card-container [cardBaseSizePx]="250">
+  @for (resource of resources; track resource.resource.id) {
+    <app-resource-card
+      [resource]="resource" [theme]="theme"
+      [formControl]="formGroup ? getFormControl(resource.resource.id) : null"
+    ></app-resource-card>
+  }
+</app-card-container>

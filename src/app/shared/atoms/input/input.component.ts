@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ThemeColor } from '../../../core/themeColor/theme-color-type';
 import { ThemeColorService } from '../../../core/themeColor/theme-color.service';
-import {OptionList} from "../../../core/types/option-list-type";
+import { OptionList } from "../../../core/types/option-list-type";
 
 @Component({
   selector: 'app-input',
@@ -31,5 +31,5 @@ export class InputComponent {
   @Input() fontSizePx: number = 16;
   @Input() isBold: boolean = false;
 
-  constructor(public themeColorService: ThemeColorService) {}
+  constructor(public themeColorService: ThemeColorService) { }
 }

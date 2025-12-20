@@ -26,6 +26,10 @@ export class BankService {
     return this.http.get<BankAccount>(`${this.baseUrl}/${bankId}/account`);
   }
 
+  getBankAccountWithResources(bankId: number) {
+    return this.http.get<BankAccount>(`${this.baseUrl}/${bankId}/account?with=resources`);
+  }
+
   createBankAccount(bankId: number) {
     return this.http.post(`${this.baseUrl}/${bankId}/create-account`, {});
   }
@@ -89,5 +93,17 @@ export class BankService {
 
   getTransactions(bankId: number) {
     return this.http.get<BankAccountTransaction[]>(`${this.baseUrl}/${bankId}/account/transactions`);
+  }
+
+  withDrawResource(bankId: number, data: {resourceId: number, quantity: number}[]) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/account/resource/withdraw`, {
+      resources: data
+    });
+  }
+
+  depositResource(bankId: number, data: {resourceId: number, quantity: number}[]) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/account/resource/deposit`, {
+      resources: data
+    });
   }
 }
