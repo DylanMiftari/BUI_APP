@@ -51,7 +51,7 @@ export class BankOwnerService {
 
   updateBankAccountConfig(bankId: number, bankAccountId: number, accountMaintenanceCost: number,
                           transferCost: number, maxMoneyAccount: number, maxResourceAccount: number) {
-    return this.http.patch(`${this.baseUrl}/${bankId}/owner/accounts/${bankAccountId}/`, {
+    return this.http.patch(`${this.baseUrl}/${bankId}/owner/accounts/${bankAccountId}`, {
       accountMaintenanceCost: accountMaintenanceCost,
       transferCost: transferCost,
       maxAccountMoney: maxMoneyAccount,
