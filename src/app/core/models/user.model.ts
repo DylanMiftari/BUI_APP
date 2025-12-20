@@ -8,4 +8,5 @@ export interface User {
   cityName: string | null;
   casinoTicketsCount: number | null;
   activeAccount: number | null;
+  homeCount: number | null;
 }

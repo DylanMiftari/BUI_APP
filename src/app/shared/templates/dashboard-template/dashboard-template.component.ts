@@ -20,6 +20,7 @@ export class DashboardTemplateComponent {
   @Input() cityName: string = "";
   @Input() casinoTicketsCount: number = 0;
   @Input() activeBankAccount: number = 0;
+  @Input() homeCount: number = 0;
 
   constructor(private router: Router) {}
 
