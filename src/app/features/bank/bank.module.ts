@@ -34,6 +34,7 @@ import {AccountListOwnerPagesComponent} from "./pages/account-list-owner-pages/a
 import {
   BankAccountDetailsConfigPagesComponent
 } from "./pages/bank-account-details-config-pages/bank-account-details-config-pages.component";
+import {BankLoansListPagesComponent} from "./pages/bank-loans-list-pages/bank-loans-list-pages.component";
 
 const routes: Routes = [
   {
@@ -49,6 +50,7 @@ const routes: Routes = [
             {path: "owner-dashboard", component: BankDashboardPagesComponent},
             {path: "config", component: BankConfigDashboardPagesComponent},
             {path: "accounts", component: AccountListOwnerPagesComponent},
+            {path: "loans", component: BankLoansListPagesComponent},
             {path: "accounts/:bankAccount", component: BankAccountDetailsConfigPagesComponent}
           ]
         }

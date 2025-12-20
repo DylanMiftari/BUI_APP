@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import {BankDashboard} from "../models/bank-dashboard.model";
 import {BankAccount} from "../models/bank-account.model";
+import {LoanRequest} from "../models/loan-request.model";
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,30 @@ export class BankOwnerService {
       maxAccountMoney: maxMoneyAccount,
       maxAccountResource: maxResourceAccount
     });
+  }
+
+  getLoansRequest(bankId: number) {
+    return this.http.get<LoanRequest[]>(`${this.baseUrl}/${bankId}/owner/loans`);
+  }
+
+  denyLoanRequest(bankId: number, loanRequestId: number) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/owner/loans/${loanRequestId}/deny`, {});
+  }
+
+  approveLoanRequest(bankId: number, loanRequestId: number) {
+    return this.http.patch(`${this.baseUrl}/${bankId}/owner/loans/${loanRequestId}/approve`, {});
+  }
+
+  updateLoanRequest(bankId: number, loanRequestId: number, money: number, weeklyPayment: number,
+                    rate: number, description: string|null) {
+    let data: any = {
+      money: money,
+      weeklyPayment: weeklyPayment,
+      rate: rate,
+    };
+    if(description && description != '') {
+      data["description"] = description;
+    }
+    return this.http.patch(`${this.baseUrl}/${bankId}/owner/loans/${loanRequestId}`, data);
   }
 }

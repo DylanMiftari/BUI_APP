@@ -1,6 +1,11 @@
 <app-card color="bank" [interactable]="false" [marginYPx]="15">
   <app-row justifyContent="space-between">
-    <app-simple-text [text]="'Loan ID : '+loanRequest.id" color="bank" [bold]="true"></app-simple-text>
+    <div>
+      <app-simple-text [text]="'Loan ID : '+loanRequest.id" color="bank" [bold]="true"></app-simple-text>
+      @if (viewFromBank) {
+        <app-simple-text [text]="'User : '+loanRequest.user!.pseudo" color="bank" [bold]="true"></app-simple-text>
+      }
+    </div>
     <app-status-indicator [color]="statusColor" [text]="statusText"></app-status-indicator>
   </app-row>
 
@@ -98,11 +103,14 @@
 
   <app-row justifyContent="space-around">
     @if (isWaitingForClient) {
-      <app-button label="Cancel Loan" color="casino" (clicked)="cancelLoanRequest()"></app-button>
+      <app-button [label]="viewFromBank ? 'Deny Loan' : 'Cancel Loan'" color="casino" (clicked)="cancelLoanRequest()"></app-button>
       <app-button label="Update Loan" color="bank" (clicked)="updateLoanRequest()"></app-button>
     }
-    @if(loanRequest.status == 'approved') {
+    @if(loanRequest.status == 'approved' && !viewFromBank) {
       <app-button label="Accept Loan" color="green" (clicked)="acceptLoanRequest()"></app-button>
+    }
+    @if(loanRequest.status == 'wait on bank' && viewFromBank && loanRequest.rate != null) {
+      <app-button label="Approve Loan" color="green" (clicked)="approveLoanRequest()"></app-button>
     }
   </app-row>
 </app-card>

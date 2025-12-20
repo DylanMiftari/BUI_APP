@@ -7,4 +7,5 @@ export interface LoanRequest {
   rate: number;
   bankId: number;
   description: string;
+  user: {pseudo: string} | null;
 }

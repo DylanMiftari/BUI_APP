@@ -38,6 +38,7 @@ export class BankAccountListTemplatesComponent implements OnInit {
     this.buttonLinks = [
       {'label': 'Bank Dashboard', 'link': '/bank/'+this.bankDashboard.bank.id+'/owner-dashboard'},
       {'label': 'Bank Settings', 'link': '/bank/'+this.bankDashboard.bank.id+'/config'},
+      {'label': 'Loans Requests', 'link': '/bank/'+this.bankDashboard.bank.id+'/loans'},
     ];
   }
 

@@ -1,0 +1,26 @@
+<app-card [color]="'bank'" [interactable]="false" [bordered]="false" alignItems="center">
+  <app-themed-title [title]="'Loans Requests'" color="bank"></app-themed-title>
+  <app-simple-text text="Loans Requests of your bank" [fontSizePx]="16" textAlign="center"></app-simple-text>
+
+  <app-row [marginPx]="15" [gapPx]="10">
+    @for(buttonLink of buttonLinks; track $index) {
+      <app-button [label]="buttonLink.label" [color]="'bank'" [routerLink]="[buttonLink.link]"></app-button>
+    }
+  </app-row>
+</app-card>
+
+@if (bankDashboard.bank.level < bankConfig.levelForLoanRequest) {
+  <app-card color="bank">
+    <app-error-text [text]="'Your bank need to be at level '+bankConfig.levelForLoanRequest+' to unlock loan system'"
+    [fontSizePx]="32" textAlign="center"></app-error-text>
+  </app-card>
+} @else {
+  <app-simple-text [text]="'Loans Requests : '+loansRequest.length" [paddingXPx]="10" [isLight]="true"></app-simple-text>
+
+  @for (loanRequest of loansRequest; track loanRequest.id) {
+    <app-loan-request-card
+      [loanRequest]="loanRequest"
+      [viewFromBank]="true"
+    ></app-loan-request-card>
+  }
+}

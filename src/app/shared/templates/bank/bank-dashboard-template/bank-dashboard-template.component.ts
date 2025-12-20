@@ -54,6 +54,7 @@ export class BankDashboardTemplateComponent implements OnInit {
     this.buttonLinks = [
       {'label': 'Bank Settings', 'link': '/bank/'+this.bankDashboard.bank.id+'/config'},
       {'label': 'Accounts List', 'link': '/bank/'+this.bankDashboard.bank.id+'/accounts'},
+      {'label': 'Loans Requests', 'link': '/bank/'+this.bankDashboard.bank.id+'/loans'},
     ]
     this.levelBenefits = [
       [

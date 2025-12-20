@@ -19,6 +19,7 @@ import {ErrorTextComponent} from "../../../atoms/error-text/error-text.component
 import {BankService} from "../../../../features/bank/services/bank.service";
 import {UserService} from "../../../../features/general/services/user.service";
 import {DataUserService} from "../../../../core/services/data-user.service";
+import {BankOwnerService} from "../../../../features/bank/services/bank-owner.service";
 
 @Component({
   selector: 'app-loan-request-card',
@@ -45,6 +46,7 @@ import {DataUserService} from "../../../../core/services/data-user.service";
 })
 export class LoanRequestCardComponent implements OnInit {
   @Input() loanRequest!: LoanRequest;
+  @Input() viewFromBank = false;
   actionError: string = "";
 
   editLoanRequestForm: FormGroup = new FormGroup({});
@@ -52,6 +54,7 @@ export class LoanRequestCardComponent implements OnInit {
   constructor(
     private bankService: BankService,
     private userService: DataUserService,
+    private bankOwnerService: BankOwnerService,
   ) {
   }
 
@@ -104,13 +107,30 @@ export class LoanRequestCardComponent implements OnInit {
   }
 
   get isWaitingForClient() {
+    if (this.viewFromBank) {
+      return this.loanRequest.status === "wait on bank";
+    }
     return this.loanRequest.status === "wait on client";
   }
 
   cancelLoanRequest() {
+    if(this.viewFromBank) {
+      this.denyLoanRequest();
+      return;
+    }
     this.bankService.cancelLoanRequest(this.loanRequest.bankId, this.loanRequest.id).subscribe({
       next: () => {
         this.loanRequest.status = "canceled";
+      },
+      error: err => {
+        this.actionError = err.error.message;
+      }
+    });
+  }
+  denyLoanRequest() {
+    this.bankOwnerService.denyLoanRequest(this.loanRequest.bankId, this.loanRequest.id).subscribe({
+      next: () => {
+        this.loanRequest.status = "deny";
       },
       error: err => {
         this.actionError = err.error.message;
@@ -130,7 +150,22 @@ export class LoanRequestCardComponent implements OnInit {
     })
   }
 
+  approveLoanRequest() {
+    this.bankOwnerService.approveLoanRequest(this.loanRequest.bankId, this.loanRequest.id).subscribe({
+      next: () => {
+        this.loanRequest.status = "approved";
+      },
+      error: err => {
+        this.actionError = err.error.message;
+      }
+    })
+  }
+
   updateLoanRequest() {
+    if(this.viewFromBank) {
+      this.updateLoanRequestFromBank();
+      return;
+    }
     let money = this.editLoanRequestForm.value.money;
     let weeklyPayment = this.editLoanRequestForm.value.weeklyPayment;
     let rate = this.editLoanRequestForm.value.rate;
@@ -142,6 +177,24 @@ export class LoanRequestCardComponent implements OnInit {
         this.loanRequest.rate = rate;
         this.loanRequest.description += "\n---\n"+description;
         this.loanRequest.status = "wait on bank";
+      },
+      error: err => {
+        this.actionError = err.error.message;
+      }
+    });
+  }
+  updateLoanRequestFromBank() {
+    let money = this.editLoanRequestForm.value.money;
+    let weeklyPayment = this.editLoanRequestForm.value.weeklyPayment;
+    let rate = this.editLoanRequestForm.value.rate;
+    let description = this.editLoanRequestForm.value.description;
+    this.bankOwnerService.updateLoanRequest(this.loanRequest.bankId, this.loanRequest.id, money, weeklyPayment, rate, description).subscribe({
+      next: () => {
+        this.loanRequest.money = money;
+        this.loanRequest.weeklypayment = weeklyPayment;
+        this.loanRequest.rate = rate;
+        this.loanRequest.description += "\n---\n"+description;
+        this.loanRequest.status = "wait on client";
       },
       error: err => {
         this.actionError = err.error.message;
