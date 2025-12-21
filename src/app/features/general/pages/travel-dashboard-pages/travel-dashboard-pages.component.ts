@@ -5,6 +5,10 @@ import {TravelData} from "../../models/travel-data.model";
 import {
   TravelDashboardTemplatesComponent
 } from "../../../../shared/templates/travel-dashboard-templates/travel-dashboard-templates.component";
+import {City} from "../../models/city.model";
+import {Router} from "@angular/router";
+import {UserService} from "../../services/user.service";
+import {DataUserService} from "../../../../core/services/data-user.service";
 
 @Component({
   selector: 'app-travel-dashboard-pages',
@@ -21,6 +25,8 @@ export class TravelDashboardPagesComponent implements OnInit {
   constructor(
     private headerButton: HeaderReturnButtonService,
     private cityService: CityService,
+    private router: Router,
+    private userService: DataUserService,
   ) {
     headerButton.updateButton("🏙️ Back to City", "/city");
   }
@@ -29,6 +35,18 @@ export class TravelDashboardPagesComponent implements OnInit {
     this.cityService.getTravelData().subscribe({
       next: data => {
         this.travelData = data;
+      }
+    })
+  }
+
+  onTravel(city: City) {
+    this.cityService.makeTravel(city.id).subscribe({
+      next: data => {
+        this.userService.fetchUser().subscribe({
+          next: _ => {
+            this.router.navigate(['/city/in-travel']);
+          }
+        });
       }
     })
   }

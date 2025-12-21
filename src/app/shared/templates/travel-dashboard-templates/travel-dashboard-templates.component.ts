@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TravelData} from "../../../features/general/models/travel-data.model";
 import {PageTitleComponent} from "../../atoms/page-title/page-title.component";
 import {TitleComponent} from "../../atoms/title/title.component";
@@ -9,6 +9,7 @@ import {CityFlagComponent} from "../../atoms/city-flag/city-flag.component";
 import {PinComponent} from "../../atoms/pin/pin.component";
 import {CardContainerComponent} from "../../atoms/card-container/card-container.component";
 import {TravelCityCardComponent} from "../../organisms/travel-city-card/travel-city-card.component";
+import {City} from "../../../features/general/models/city.model";
 
 @Component({
   selector: 'app-travel-dashboard-templates',
@@ -29,4 +30,9 @@ import {TravelCityCardComponent} from "../../organisms/travel-city-card/travel-c
 })
 export class TravelDashboardTemplatesComponent {
   @Input() travelData!: TravelData;
+  @Output() travel = new EventEmitter<City>();
+
+  clickOnCityCard(city: City) {
+    this.travel.emit(city);
+  }
 }

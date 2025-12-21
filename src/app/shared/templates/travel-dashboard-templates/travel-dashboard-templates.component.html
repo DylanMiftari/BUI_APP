@@ -19,6 +19,6 @@
 <app-title text="Other Cities" color="white"></app-title>
 <app-card-container [paddingXPx]="10" [gapPx]="10">
   @for (city of travelData.otherCities; track city.id) {
-    <app-travel-city-card [city]="city"></app-travel-city-card>
+    <app-travel-city-card [city]="city" (travel)="clickOnCityCard($event)"></app-travel-city-card>
   }
 </app-card-container>

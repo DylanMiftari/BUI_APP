@@ -1,3 +1,3 @@
 @if (travelData) {
-  <app-travel-dashboard-templates [travelData]="travelData"></app-travel-dashboard-templates>
+  <app-travel-dashboard-templates [travelData]="travelData" (travel)="onTravel($event)"></app-travel-dashboard-templates>
 }

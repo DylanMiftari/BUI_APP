@@ -1,0 +1,18 @@
+<app-page-title title="You are in travel"></app-page-title>
+<app-simple-text
+  text="You won't be able to do anything during your travel"
+  textAlign="center"
+  [isLight]="true"
+></app-simple-text>
+
+@if (user) {
+  <app-card color="purple" [interactable]="false" alignItems="center">
+    <app-data-with-text
+      color="purple"
+      [data]="user.endTravel | date:'MMMM d, y \'at\' HH:mm'"
+      text="End of your Travel"
+      textAlign="center"
+      dataTextAlign="center"
+    ></app-data-with-text>
+  </app-card>
+}

@@ -38,4 +38,10 @@ export class CityService {
   getTravelData() {
     return this.http.get<TravelData>(`${this.baseUrl}/travel`);
   }
+
+  makeTravel(cityId: number) {
+    return this.http.post(`${this.baseUrl}/travel`, {
+      destination: cityId,
+    });
+  }
 }

@@ -13,6 +13,7 @@ import {CompanyDashboardPageComponent} from "./pages/company-dashboard-page/comp
 import {CreateCompanyPageComponent} from "./pages/create-company-page/create-company-page.component";
 import {HomesListPagesComponent} from "./pages/homes-list-pages/homes-list-pages.component";
 import {TravelDashboardPagesComponent} from "./pages/travel-dashboard-pages/travel-dashboard-pages.component";
+import {InTravelPagesComponent} from "./pages/in-travel-pages/in-travel-pages.component";
 
 const routes: Routes = [
   { path: "register", component: RegisterPageComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: "mine/:id", component: MineDetailsPageComponent },
     { path: "city", component: CityDashboardPageComponent },
       {path: "city/travel", component: TravelDashboardPagesComponent},
+      {path: "city/in-travel", component: InTravelPagesComponent},
     { path: "market", component: MarketPageComponent },
     { path: "company", component: CompanyDashboardPageComponent },
     { path: "company/create", component: CreateCompanyPageComponent },
