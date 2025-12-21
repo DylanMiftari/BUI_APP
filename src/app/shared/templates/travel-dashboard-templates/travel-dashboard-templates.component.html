@@ -1,0 +1,24 @@
+<app-page-title title="✈️ Travel to Another City"></app-page-title>
+<app-simple-text
+  text="During your travel you won't be able to do anything"
+  textAlign="center" [isLight]="true"
+></app-simple-text>
+
+<app-title text="Your Current City" color="white"></app-title>
+<app-card color="purple" [interactable]="false">
+  <app-simple-text text="You are currently in"></app-simple-text>
+  <app-row justifyContent="space-between" alignItems="center">
+    <app-row alignItems="center" [gapPx]="10" [style.max-width]="'70%'">
+      <app-city-flag [city]="travelData.currentCity" [fontSize]="3"></app-city-flag>
+      <app-simple-text [text]="travelData.currentCity.name" [bold]="true" [fontSizePx]="24"></app-simple-text>
+    </app-row>
+    <app-pin color="purple" [text]="'Tier '+travelData.currentCity.rank" [upperText]="false"></app-pin>
+  </app-row>
+</app-card>
+
+<app-title text="Other Cities" color="white"></app-title>
+<app-card-container [paddingXPx]="10" [gapPx]="10">
+  @for (city of travelData.otherCities; track city.id) {
+    <app-travel-city-card [city]="city"></app-travel-city-card>
+  }
+</app-card-container>

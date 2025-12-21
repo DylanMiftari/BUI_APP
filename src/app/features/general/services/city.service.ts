@@ -4,6 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import { City } from '../models/city.model';
 import {Company} from "../models/company.model";
 import {PaginateData} from "../../../core/models/paginate-data.model";
+import {TravelData} from "../models/travel-data.model";
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,9 @@ export class CityService {
     return this.http.get<PaginateData<Company>>(`${this.baseUrl}/my/company`, {
       params: params
     });
+  }
+
+  getTravelData() {
+    return this.http.get<TravelData>(`${this.baseUrl}/travel`);
   }
 }

@@ -5,5 +5,8 @@ export interface City {
     maxLevelOfCorp: number,
     weeklyTaxes: number,
     weeklyCompanyTaxes: number,
-    rank: number
+    rank: number,
+    travelDuration: number |null,
+    travelPrice: number |null,
+    companyCount: number |null,
 }

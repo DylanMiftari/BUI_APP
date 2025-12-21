@@ -14,11 +14,12 @@ import {Company} from "../../../features/general/models/company.model";
 import {CompanyListComponent} from "../../organisms/company-list/company-list.component";
 import {PageButtonComponent} from "../../moleculs/page-button/page-button.component";
 import {PaginateData} from "../../../core/models/paginate-data.model";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-city-dashboard-template',
   standalone: true,
-  imports: [PageTitleComponent, CardComponent, RowComponent, SubtitleWithIconComponent, ButtonComponent, CardContainerComponent, SimpleCardComponent, DataWithTextComponent, InputComponent, CompanyFilterFormComponent, CompanyListComponent, PageButtonComponent],
+  imports: [PageTitleComponent, CardComponent, RowComponent, SubtitleWithIconComponent, ButtonComponent, CardContainerComponent, SimpleCardComponent, DataWithTextComponent, InputComponent, CompanyFilterFormComponent, CompanyListComponent, PageButtonComponent, RouterLink],
   templateUrl: './city-dashboard-template.component.html',
   styleUrl: './city-dashboard-template.component.css'
 })

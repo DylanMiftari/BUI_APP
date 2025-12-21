@@ -1,0 +1,87 @@
+<app-card color="purple" [interactable]="false">
+  <app-row alignItems="center" justifyContent="space-between">
+    <app-simple-text [text]="city.name" [bold]="true" [fontSizePx]="24"></app-simple-text>
+    <app-pin color="purple" [text]="'Tier '+city.rank" [upperText]="false"></app-pin>
+  </app-row>
+  <app-row alignItems="center" [gapPx]="5">
+    <app-city-flag [city]="city" [fontSize]="1"></app-city-flag>
+    <app-simple-text [text]="city.country"></app-simple-text>
+  </app-row>
+
+  <app-card-container [paddingXPx]="5" [paddingYPx]="5" [gapPx]="10" [cardBaseSizePx]="150">
+    <app-simple-card color="purple" direction="column" alignItems="center">
+      <app-data-with-text
+        [data]="city.maxLevelOfCorp"
+        [dataIsNumber]="true"
+        text="Max Business Level"
+        color="purple"
+        dataTextAlign="center"
+        textAlign="center"
+      ></app-data-with-text>
+    </app-simple-card>
+
+    <app-simple-card color="purple" direction="column" alignItems="center">
+      <app-data-with-text
+        [data]="city.weeklyTaxes"
+        [dataIsNumber]="true"
+        text="Weekly Taxes"
+        color="purple"
+        dataTextAlign="center"
+        textAlign="center"
+        unit="€"
+      ></app-data-with-text>
+    </app-simple-card>
+
+    <app-simple-card color="purple" direction="column" alignItems="center">
+      <app-data-with-text
+        [data]="city.weeklyCompanyTaxes"
+        [dataIsNumber]="true"
+        text="Weekly Company Taxes"
+        color="purple"
+        dataTextAlign="center"
+        textAlign="center"
+        unit="€"
+      ></app-data-with-text>
+    </app-simple-card>
+
+    <app-simple-card color="purple" direction="column" alignItems="center">
+      <app-data-with-text
+        [data]="city.companyCount!"
+        [dataIsNumber]="true"
+        text="Companies Count"
+        color="purple"
+        dataTextAlign="center"
+        textAlign="center"
+      ></app-data-with-text>
+    </app-simple-card>
+  </app-card-container>
+
+
+  <app-simple-card direction="column" color="purple" [style.width]="'-webkit-fill-available'" [paddingYPx]="5" [paddingPx]="5"
+  [marginXPx]="6" [marginPx]="10">
+    <app-simple-text text="🚀 Travel Informations" color="purple" [bold]="true" [style.margin-bottom]="'10px'"></app-simple-text>
+    <app-row alignItems="center" justifyContent="space-around">
+      <app-data-with-text
+        [data]="city.travelPrice!"
+        [dataIsNumber]="true"
+        unit="€"
+        text="Travel Price"
+        dataTextAlign="center"
+        textAlign="center"
+        color="black"
+      ></app-data-with-text>
+      <app-data-with-text
+        [data]="city.travelDuration!"
+        [dataIsNumber]="true"
+        unit=" days"
+        text="Travel Duration"
+        dataTextAlign="center"
+        textAlign="center"
+        color="black"
+      ></app-data-with-text>
+    </app-row>
+  </app-simple-card>
+
+  <app-button color="purple" label="Travel to this City" [style.width]="'-webkit-fill-available'" (clicked)="onClickOnButton()"></app-button>
+
+</app-card>

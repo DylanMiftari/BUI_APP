@@ -21,4 +21,5 @@ export class DataWithTextComponent {
   @Input() lightText: boolean = false;
   @Input() textIsBig: boolean = false;
   @Input() fontSizePx: number = 19;
+  @Input() textAlign: string = "left";
 }
