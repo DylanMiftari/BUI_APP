@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     "company": "--blue-gradient",
     "casino": "--casino-gradient",
     "bank": "--bank-gradient",
+    "home": "--home-gradient",
   };
 
   background: string = "";

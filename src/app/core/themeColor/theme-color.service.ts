@@ -26,6 +26,8 @@ export class ThemeColorService {
         return "--casino-vip-gradient";
       case "bank":
         return "--bank-gradient";
+      case "home":
+        return "--home-gradient";
       default:
         return "--green-gradiant";
     }
@@ -49,6 +51,8 @@ export class ThemeColorService {
         return "rgba(147, 112, 219, 0.3)";
       case "bank":
         return "rgba(30, 58, 138, 0.3)";
+      case "home":
+        return "rgba(0, 0, 0, 0.3)";
       default:
         return "rgba(34, 197, 94, 0.3)";
     }
@@ -68,6 +72,8 @@ export class ThemeColorService {
         return "rgba(255, 215, 0, 1)";
       case "casino-vip":
         return "rgba(147, 112, 219, 1)";
+      case "home":
+        return "rgba(0, 0, 0, 0.3)";
       default:
         return "rgba(34, 197, 94, 1)";
     }
@@ -94,6 +100,8 @@ export class ThemeColorService {
         return "#E0B0FF";
       case "bank":
         return "#1e3a8a";
+      case "home":
+        return "#d97706";
       default:
         return "#22c55e";
     }

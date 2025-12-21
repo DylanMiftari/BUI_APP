@@ -37,12 +37,13 @@
 
     <app-dashboard-card
         icon="🏠"
-        cardTitle="My House"
-        text="Manage your home, upgrade your living space, and access your personal storage. You also can expose your best
+        cardTitle="My Houses"
+        text="Manage your homes, upgrade your living space, and access your personal storage. You also can expose your best
 trophies."
         [datas]="[
                 {data: homeCount, text: 'Home Count', unit: '', dataIsNumber: true},
             ]"
+        (clicked)="clickOnHomeCard()"
     ></app-dashboard-card>
 
     <app-dashboard-card

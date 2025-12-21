@@ -1,0 +1,18 @@
+<app-card color="home" (clicked)="onClickOnCard()">
+  <app-row justifyContent="space-between" alignItems="center">
+    <app-home-emoji [home]="home" [fontSize]="3"></app-home-emoji>
+    <app-level-pin [level]="home.house.level"></app-level-pin>
+  </app-row>
+  <app-simple-text [text]="home.house.type" [bold]="true"
+                   [fontSizePx]="24" [paddingXPx]="10"></app-simple-text>
+
+  <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+
+  <app-row justifyContent="space-between">
+    <app-simple-text text="Weekly Maintenance Cost"></app-simple-text>
+    <app-simple-text
+      [text]="home.house.maintenanceCost.toLocaleString()+'€'" color="home"
+      [bold]="true"
+    ></app-simple-text>
+  </app-row>
+</app-card>

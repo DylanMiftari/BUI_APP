@@ -47,4 +47,8 @@ export class DashboardTemplateComponent {
   public clickOnBankAccounts() {
     this.router.navigate(["/bank/my-accounts"]);
   }
+
+  public clickOnHomeCard() {
+    this.router.navigate(["/home"]);
+  }
 }

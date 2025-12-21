@@ -1,0 +1,5 @@
+<app-card-container>
+  @for (home of homes; track home.id) {
+    <app-home-card [home]="home" (clickOnHomeCard)="onClickOnAnHomeCard($event)"></app-home-card>
+  }
+</app-card-container>
