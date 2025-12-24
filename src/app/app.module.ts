@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptor
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import {CasinoModule} from "./features/casino/casino.module";
 import {BankModule} from "./features/bank/bank.module";
+import {errorInterceptor} from "./core/interceptors/error.interceptor";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {BankModule} from "./features/bank/bank.module";
     BankModule
   ],
   providers: [
-    provideHttpClient(withInterceptors([authInterceptor]))
+    provideHttpClient(withInterceptors([authInterceptor, errorInterceptor]))
   ],
   bootstrap: [AppComponent]
 })
