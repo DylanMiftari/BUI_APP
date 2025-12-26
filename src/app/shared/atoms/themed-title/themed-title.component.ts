@@ -13,6 +13,8 @@ export class ThemedTitleComponent {
   @Input() color: ThemeColor = "green";
   @Input() title!: string;
   @Input() fontSizePx: number = 24;
+  @Input() textAlign: string = "left";
+  @Input() marginYPx: number = 0;
 
   constructor(public themeColorService: ThemeColorService) {
   }

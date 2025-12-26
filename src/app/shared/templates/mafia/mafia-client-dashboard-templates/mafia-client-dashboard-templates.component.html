@@ -1,0 +1,120 @@
+<app-page-title title="Mafia Dashboard"></app-page-title>
+
+<app-card
+  color="mafia" [glassCard]="true" glassColor="mafia"
+  border="none" [interactable]="false" alignItems="center"
+  [gapPx]="20"
+>
+  <app-icon icon="🎭" [fontSize]="5"></app-icon>
+  <app-themed-title [title]="mafia.name" color="mafia" textAlign="center"></app-themed-title>
+
+  <app-simple-card color="mafia" [paddingPx]="30" [paddingYPx]="10">
+    <app-simple-text [text]="'Level '+mafia.level+' company'" [isLight]="true"
+    [fontSizePx]="20" [bold]="true"></app-simple-text>
+  </app-simple-card>
+
+  <app-simple-text text="Professional underground services with guaranteed discretion.
+  We handle sensitive operations with precision and expertise. All contracts are
+  processed with complete confidentiality." [isLight]="true" textAlign="center"></app-simple-text>
+</app-card>
+
+
+<app-simple-card color="black" justifyContent="space-around" alignItems="center"
+[marginXPx]="10" [gapPx]="20">
+  <app-icon icon="⚠️" [fontSize]="2"></app-icon>
+  <app-simple-text text="All transactions are final. Payment is required upfront and non-refundable regardless of operation outcome. Physical presence required for contract requests."
+                   color="yellow"></app-simple-text>
+</app-simple-card>
+
+
+<app-themed-title
+  title="Available Services" color="mafia" textAlign="center"
+  [marginYPx]="10"
+></app-themed-title>
+
+<app-card-container>
+  <app-rob-stat-card
+    robType="player"
+    [successRate]="mafiaRobService.playerRobSuccessRate(mafia.level)"
+    [minStealAmount]="mafiaRobService.playerRobMinStealAmount(mafia.level)"
+    [maxStealAmount]="mafiaRobService.playerRobMaxStealAmount(mafia.level)"
+  ></app-rob-stat-card>
+
+  <app-rob-stat-card
+    robType="company"
+    [successRate]="mafiaRobService.companyRobSuccessRate(mafia.level, mafia.level)"
+    [minStealAmount]="mafiaRobService.companyMinStealAmount(mafia.level, mafia.level)"
+    [maxStealAmount]="mafiaRobService.companyMaxStealAmount(mafia.level, mafia.level)"
+    [maximumValue]="mafiaRobService.companyMaxValue(mafia.level)"
+    [cooldownInDays]="mafiaRobService.companyCooldown()"
+  ></app-rob-stat-card>
+
+  <app-rob-stat-card
+    robType="bankAccount"
+    [successRate]="mafiaRobService.bankAccountRobSuccessRate(mafia.level, mafia.level)"
+    [minStealAmount]="mafiaRobService.bankAccountMinStealAmount(mafia.level, mafia.level)"
+    [maxStealAmount]="mafiaRobService.bankAccountMaxStealAmount(mafia.level, mafia.level)"
+    [maximumValue]="mafiaRobService.bankAccountMaxValue(mafia.level)"
+    [cooldownInDays]="mafiaRobService.bankAccountCooldown()"
+  ></app-rob-stat-card>
+
+  <app-rob-stat-card
+    robType="house"
+    [successRate]="mafiaRobService.houseRobSuccessRate(mafia.level, mafia.level)"
+    [minStealAmount]="mafiaRobService.houseMinStealAmount(mafia.level, mafia.level)"
+    [maxStealAmount]="mafiaRobService.houseMaxStealAmount(mafia.level, mafia.level)"
+  ></app-rob-stat-card>
+
+  @if (mafia.level >= mafiaConfig.rob.cyberattack.minLevelOfMafia) {
+    <app-rob-stat-card
+      robType="cyberattack"
+      [successRate]="mafiaRobService.cyberAttackSuccessRate()"
+      [fixedStealAmount]="mafiaRobService.cyberAttackStealAmount()"
+      [stealAmountUnit]="'€'"
+      [cooldownInDays]="mafiaRobService.cyberAttackCooldown()"
+      [targetDescription]="mafiaRobService.cyberAttackTargetDescription()"
+    ></app-rob-stat-card>
+  }
+
+  @if (mafia.level >= mafiaConfig.rob.aiDronePlayer.minLevelOfMafia) {
+    <app-rob-stat-card
+      robType="aiDronePlayer"
+      [successRate]="mafiaRobService.aiDronePlayerSuccessRate()"
+      [minStealAmount]="mafiaRobService.aiDronePlayerMinStealAmount()"
+      [maxStealAmount]="mafiaRobService.aiDronePlayerMaxStealAmount()"
+      [targetDescription]="mafiaRobService.aiDronePlayerTargetDescription()"
+    ></app-rob-stat-card>
+  }
+
+  @if (mafia.level >= mafiaConfig.rob.aiDroneHouse.minLevelOfMafia) {
+    <app-rob-stat-card
+      robType="aiDroneHouse"
+      [successRate]="mafiaRobService.aiDroneHouseSuccessRate()"
+      [minStealAmount]="mafiaRobService.aiDroneHouseMinStealAmount()"
+      [maxStealAmount]="mafiaRobService.aiDroneHouseMaxStealAmount()"
+      [targetDescription]="mafiaRobService.aiDroneHouseTargetDescription()"
+    ></app-rob-stat-card>
+  }
+
+  @if (mafia.level >= mafiaConfig.rob.shoplifting.minLevelOfMafia) {
+    <app-rob-stat-card
+      robType="shoplifting"
+      [successRate]="mafiaRobService.shopliftingSuccessRate()"
+      [stealAmountUnit]="'€'"
+      [minStealAmount]="mafiaRobService.shopliftingMinStealAmount(mafia.level)"
+      [maxStealAmount]="mafiaRobService.shopliftingMaxStealAmount(mafia.level)"
+      [targetDescription]="mafiaRobService.shopliftingTargetDescription()"
+    ></app-rob-stat-card>
+  }
+
+  @if (mafia.level >= mafiaConfig.rob.phishing.minLevelOfMafia) {
+    <app-rob-stat-card
+      robType="phishing"
+      [successRate]="mafiaRobService.phishingSuccessRate()"
+      [fixedStealAmount]="mafiaRobService.phishingStealAmount()"
+      [targetDescription]="mafiaRobService.phishingTargetDescription()"
+      [cooldownInDays]="mafiaRobService.phishingCooldown()"
+      [stealAmountUnit]="'%'"
+    ></app-rob-stat-card>
+  }
+</app-card-container>

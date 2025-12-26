@@ -11,6 +11,7 @@ import { ThemeColor } from '../../../core/themeColor/theme-color-type';
   host: {
     '[style.--color]': 'this.colorService.simpleColor(color)',
     '[style.min-width]': 'this.minWidthPx+"px"',
+    '[style.max-width]': 'this.maxWidthPx+"px"',
     '[style.background-color]': 'this.darkBackGroundColor ? "rgba(30, 58, 138, 0.2)" : "rgba(255, 255, 255, 0.1)"'
   }
 })
@@ -19,6 +20,7 @@ export class ProgressBarComponent {
   @Input() value: number = 45;
   @Input() color: ThemeColor = "green";
   @Input() minWidthPx: number | null = null;
+  @Input() maxWidthPx: number | null = null;
   @Input() darkBackGroundColor: boolean = false;
 
   constructor(public colorService: ThemeColorService) {}

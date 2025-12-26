@@ -10,6 +10,7 @@
   --casino-vip-gradient: linear-gradient(135deg, #9370DB, #8B008B);
   --bank-gradient: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
   --home-gradient: linear-gradient(135deg, #d97706 0%, #92400e 100%);
+  --mafia-gradient: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #262626 100%);
 }
 
 * {

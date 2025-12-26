@@ -9,6 +9,7 @@ import { authInterceptor } from './core/interceptors/auth.interceptor';
 import {CasinoModule} from "./features/casino/casino.module";
 import {BankModule} from "./features/bank/bank.module";
 import {errorInterceptor} from "./core/interceptors/error.interceptor";
+import {MafiaModule} from "./features/mafia/mafia.module";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {errorInterceptor} from "./core/interceptors/error.interceptor";
     GeneralModule,
     CasinoModule,
     HttpClientModule,
-    BankModule
+    BankModule,
+    MafiaModule
   ],
   providers: [
     provideHttpClient(withInterceptors([authInterceptor, errorInterceptor]))

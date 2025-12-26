@@ -28,6 +28,8 @@ export class ThemeColorService {
         return "--bank-gradient";
       case "home":
         return "--home-gradient";
+      case "mafia":
+        return "--mafia-gradient";
       default:
         return "--green-gradiant";
     }
@@ -53,6 +55,8 @@ export class ThemeColorService {
         return "rgba(30, 58, 138, 0.3)";
       case "home":
         return "rgba(0, 0, 0, 0.3)";
+      case "mafia":
+        return "rgba(0, 0, 0, 0.7)";
       default:
         return "rgba(34, 197, 94, 0.3)";
     }
@@ -74,6 +78,8 @@ export class ThemeColorService {
         return "rgba(147, 112, 219, 1)";
       case "home":
         return "rgba(0, 0, 0, 0.3)";
+      case "mafia":
+        return "rgba(200, 200, 200, 0.2)";
       default:
         return "rgba(34, 197, 94, 1)";
     }
@@ -102,6 +108,8 @@ export class ThemeColorService {
         return "#1e3a8a";
       case "home":
         return "#d97706";
+      case "mafia":
+        return "#d0d0d0";
       default:
         return "#22c55e";
     }
@@ -115,6 +123,8 @@ export class ThemeColorService {
         return "rgba(0, 0, 0, 0.4)";
       case "bank":
         return "rgba(255, 255, 255, 0.1)";
+      case "mafia":
+        return "rgba(35, 35, 35, 0.95)";
       default:
         return "rgba(34, 197, 94, 0.15)";
     }
@@ -138,6 +148,8 @@ export class ThemeColorService {
         return "rgba(30, 58, 138, 0.1)";
       case "black":
         return "rgba(245, 158, 11, 0.1)";
+      case "mafia":
+        return "rgba(50, 50, 50, 0.5)";
       default:
         return "white";
     }
@@ -161,6 +173,8 @@ export class ThemeColorService {
         return "rgba(30, 58, 138, 0.2)";
       case "black":
         return "rgba(245, 158, 11, 0.3)";
+      case "mafia":
+        return "rgba(80, 80, 80, 0.3)";
       default:
         return "white";
     }

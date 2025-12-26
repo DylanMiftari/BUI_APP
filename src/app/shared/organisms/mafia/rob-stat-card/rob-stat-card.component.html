@@ -1,0 +1,47 @@
+<app-card
+ color="mafia" [glassCard]="true" glassColor="mafia" [interactable]="false"
+ border="none"
+>
+  <app-row alignItems="center" [gapPx]="10">
+    <app-icon [icon]="robTypeIcon" [fontSize]="2"></app-icon>
+    <app-themed-title [title]="robTitle" color="mafia"></app-themed-title>
+  </app-row>
+
+  <app-seperator-with-text [marginPx]="20"></app-seperator-with-text>
+
+  <app-row alignItems="center" justifyContent="space-between">
+    <app-simple-text text="Success Rate" [isLight]="true"></app-simple-text>
+    <app-row [style.max-width]="'300px'" alignItems="center" justifyContent="flex-end" [gapPx]="10">
+      <app-simple-text [text]="successRate+'%'" [isLight]="true"></app-simple-text>
+      <app-progress-bar [value]="successRate" [maxValue]="100" [maxWidthPx]="200"></app-progress-bar>
+    </app-row>
+  </app-row>
+  <app-seperator-with-text [marginPx]="10" [style.opacity]="'0.4'"></app-seperator-with-text>
+  <app-row alignItems="center" justifyContent="space-between">
+    <app-simple-text text="Steal Amount" [isLight]="true"></app-simple-text>
+    @if (fixedStealAmount) {
+      <app-simple-text [text]="fixedStealAmount.toLocaleString() + stealAmountUnit" [isLight]="true"></app-simple-text>
+    } @else {
+      <app-simple-text [text]="minStealAmount+'-'+maxStealAmount+stealAmountUnit" [isLight]="true"></app-simple-text>
+    }
+  </app-row>
+  <app-seperator-with-text [marginPx]="10" [style.opacity]="'0.4'"></app-seperator-with-text>
+  @if (stealAmountUnit == '%') {
+    <app-row alignItems="center" justifyContent="space-between">
+      <app-simple-text text="Maximum" [isLight]="true"></app-simple-text>
+      <app-simple-text [text]="maximumValue ? maximumValue.toLocaleString()+'€' : 'No Limit'" [isLight]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10" [style.opacity]="'0.4'"></app-seperator-with-text>
+  }
+  @if (targetDescription) {
+    <app-row alignItems="center" justifyContent="space-between">
+      <app-simple-text text="Target" [isLight]="true"></app-simple-text>
+      <app-simple-text [text]="targetDescription" [isLight]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10" [style.opacity]="'0.4'"></app-seperator-with-text>
+  }
+  <app-row alignItems="center" justifyContent="space-between">
+    <app-simple-text text="Cooldown" [isLight]="true"></app-simple-text>
+    <app-simple-text [text]="cooldownInDays ? cooldownInDays.toLocaleString()+' days' : 'None'" [isLight]="true"></app-simple-text>
+  </app-row>
+</app-card>
