@@ -1,0 +1,62 @@
+<app-page-title title="Select Target"></app-page-title>
+<app-simple-text
+  text="Choose your target carefully and review all details before creating a contract"
+  [isLight]="true"
+  textAlign="center"
+></app-simple-text>
+
+<app-simple-card
+  color="black"
+  [gapPx]="10"
+  [marginXPx]="20"
+  [marginPx]="10"
+>
+  <app-icon icon="⚠️"></app-icon>
+  <app-simple-text
+    text="Success rates shown are base rates and do not account for security systems that may be installed on the target. Actual success rates may be lower."
+    color="yellow"
+  ></app-simple-text>
+</app-simple-card>
+
+@for (targetType of Object.keys(targets); track targetType) {
+  <app-row alignItems="center" justifyContent="space-between" [style.margin-left]="'20px'" [style.margin-right]="'20px'">
+    <app-row [style.max-width]="'350px'" [gapPx]="10">
+      <app-icon [icon]="robTypeIcon(targetType)"></app-icon>
+      <app-title [text]="getTargetTitle(targetType)" color="white"></app-title>
+    </app-row>
+    <app-simple-text [text]="getTargetsByType(targetType)?.length+' targets available'"
+    [isLight]="true"></app-simple-text>
+  </app-row>
+  <app-seperator-with-text [marginPx]="10" [marginXPx]="20" [opacity]="0.4"></app-seperator-with-text>
+
+  <app-card-container>
+    @for (target of getTargetsByType(targetType); track $index) {
+      @if (targetType == "cyberattack" || targetType == "phishing") {
+        <app-rob-stat-card
+          [robType]="castInMafiaRobType(targetType)"
+          [successRate]="getRobSuccessRate(target, targetType)"
+          [fixedStealAmount]="getRobMinStealAmount(target, targetType)"
+          [stealAmountUnit]="getRobUnit(targetType)"
+          [maximumValue]="getRobMaxValue(targetType)"
+          [cooldownInDays]="getRobCooldown(targetType)"
+          [title]="getTitle(target, targetType)"
+          [targetLevel]="getLevel(target, targetType)"
+          [showButton]="true"
+        ></app-rob-stat-card>
+      } @else {
+        <app-rob-stat-card
+          [robType]="castInMafiaRobType(targetType)"
+          [successRate]="getRobSuccessRate(target, targetType)"
+          [minStealAmount]="getRobMinStealAmount(target, targetType)"
+          [maxStealAmount]="getRobMaxStealAmount(target, targetType)"
+          [stealAmountUnit]="getRobUnit(targetType)"
+          [maximumValue]="getRobMaxValue(targetType)"
+          [cooldownInDays]="getRobCooldown(targetType)"
+          [title]="getTitle(target, targetType)"
+          [targetLevel]="getLevel(target, targetType)"
+          [showButton]="true"
+        ></app-rob-stat-card>
+      }
+    }
+  </app-card-container>
+}

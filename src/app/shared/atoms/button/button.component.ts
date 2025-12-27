@@ -22,6 +22,8 @@ export class ButtonComponent {
   @Input() paddingXPx: number = 32;
   @Input() paddingYPx: number = 16;
   @Input() fontSizePx: number = 16;
+  @Input() marginXPx: number = 0;
+  @Input() marginYPx: number = 0;
   @Output() clicked = new EventEmitter<void>();
 
   constructor(public themeColorService: ThemeColorService) {}

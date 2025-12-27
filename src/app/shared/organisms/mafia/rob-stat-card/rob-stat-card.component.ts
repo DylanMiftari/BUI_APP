@@ -6,6 +6,9 @@ import {ThemedTitleComponent} from "../../../atoms/themed-title/themed-title.com
 import {SeperatorWithTextComponent} from "../../../atoms/seperator-with-text/seperator-with-text.component";
 import {SimpleTextComponent} from "../../../atoms/simple-text/simple-text.component";
 import {ProgressBarComponent} from "../../../atoms/progress-bar/progress-bar.component";
+import {MafiaRobType} from "../../../../core/types/mafia-rob.type";
+import {LevelPinComponent} from "../../../atoms/level-pin/level-pin.component";
+import {ButtonComponent} from "../../../atoms/button/button.component";
 
 @Component({
   selector: 'app-rob-stat-card',
@@ -17,13 +20,16 @@ import {ProgressBarComponent} from "../../../atoms/progress-bar/progress-bar.com
     ThemedTitleComponent,
     SeperatorWithTextComponent,
     SimpleTextComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    LevelPinComponent,
+    ButtonComponent
   ],
   templateUrl: './rob-stat-card.component.html',
   styleUrl: './rob-stat-card.component.css'
 })
 export class RobStatCardComponent {
-  @Input() robType: "player"|"company"|"bankAccount"|"house"|"cyberattack"|"aiDronePlayer"|"aiDroneHouse"|"shoplifting"|"phishing" = "player";
+  @Input() robType: MafiaRobType = "player";
+  @Input() title: string | null = null;
   @Input() successRate: number = 65;
   @Input() minStealAmount: number = 70;
   @Input() maxStealAmount: number = 90;
@@ -32,6 +38,8 @@ export class RobStatCardComponent {
   @Input() cooldownInDays: number | null = null;
   @Input() targetDescription: string | null = null;
   @Input() stealAmountUnit: '%'|'€' = "%";
+  @Input() targetLevel: number | null = null;
+  @Input() showButton: boolean = false;
 
 
   get robTypeIcon() {

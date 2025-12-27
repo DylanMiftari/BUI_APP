@@ -17,10 +17,12 @@ import {DashboardPageComponent} from "../general/pages/dashboard-page/dashboard-
 import {
   MafiaClientDashboardPagesComponent
 } from "./pages/mafia-client-dashboard-pages/mafia-client-dashboard-pages.component";
+import {MafiaTargetSelectionComponent} from "./pages/mafia-target-selection/mafia-target-selection.component";
 
 const routes: Routes = [
   {path: "mafia", canActivateChild: [authGuardChild], children: [
-      {path: ":mafia", component: MafiaClientDashboardPagesComponent}
+      {path: ":mafia", component: MafiaClientDashboardPagesComponent},
+      {path: ":mafia/targets", component: MafiaTargetSelectionComponent}
     ]}
 ]
 

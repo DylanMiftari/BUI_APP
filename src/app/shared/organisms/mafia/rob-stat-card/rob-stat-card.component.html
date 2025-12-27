@@ -2,9 +2,14 @@
  color="mafia" [glassCard]="true" glassColor="mafia" [interactable]="false"
  border="none"
 >
-  <app-row alignItems="center" [gapPx]="10">
-    <app-icon [icon]="robTypeIcon" [fontSize]="2"></app-icon>
-    <app-themed-title [title]="robTitle" color="mafia"></app-themed-title>
+  <app-row justifyContent="space-between" alignItems="center">
+    <app-row alignItems="center" [gapPx]="10" [style.max-width]="'250px'">
+      <app-icon [icon]="robTypeIcon" [fontSize]="2"></app-icon>
+      <app-themed-title [title]="title ?? robTitle" color="mafia" [fontSizePx]="20"></app-themed-title>
+    </app-row>
+    @if (targetLevel) {
+      <app-level-pin [level]="targetLevel" color="mafia"></app-level-pin>
+    }
   </app-row>
 
   <app-seperator-with-text [marginPx]="20"></app-seperator-with-text>
@@ -44,4 +49,9 @@
     <app-simple-text text="Cooldown" [isLight]="true"></app-simple-text>
     <app-simple-text [text]="cooldownInDays ? cooldownInDays.toLocaleString()+' days' : 'None'" [isLight]="true"></app-simple-text>
   </app-row>
+
+  @if (showButton) {
+    <app-seperator-with-text [marginPx]="10" [style.opacity]="'0.4'"></app-seperator-with-text>
+    <app-button label="Select Target" color="mafia" [style.width]="'-webkit-fill-available'"></app-button>
+  }
 </app-card>

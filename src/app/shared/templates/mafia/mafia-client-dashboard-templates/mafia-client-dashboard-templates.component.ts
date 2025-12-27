@@ -12,6 +12,8 @@ import {RobStatCardComponent} from "../../../organisms/mafia/rob-stat-card/rob-s
 import {MafiaRobService} from "../../../../features/mafia/services/mafia-rob.service";
 import {CardContainerComponent} from "../../../atoms/card-container/card-container.component";
 import {mafiaConfig} from "../../../../core/config/mafia.config";
+import {ButtonComponent} from "../../../atoms/button/button.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-mafia-client-dashboard-templates',
@@ -26,7 +28,9 @@ import {mafiaConfig} from "../../../../core/config/mafia.config";
     SimpleCardComponent,
     SimpleTextComponent,
     RobStatCardComponent,
-    CardContainerComponent
+    CardContainerComponent,
+    ButtonComponent,
+    RouterLink
   ],
   templateUrl: './mafia-client-dashboard-templates.component.html',
   styleUrl: './mafia-client-dashboard-templates.component.css'

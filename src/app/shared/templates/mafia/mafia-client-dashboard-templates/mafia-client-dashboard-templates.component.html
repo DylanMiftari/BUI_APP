@@ -32,6 +32,11 @@
   [marginYPx]="10"
 ></app-themed-title>
 
+<app-simple-card color="mafia" direction="column" [marginXPx]="25">
+  <app-button label="Request Contract" color="mafia"
+              [routerLink]="['/mafia/'+mafia.id+'/targets']"></app-button>
+</app-simple-card>
+
 <app-card-container>
   <app-rob-stat-card
     robType="player"

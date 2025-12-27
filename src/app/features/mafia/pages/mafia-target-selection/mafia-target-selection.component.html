@@ -1,0 +1,8 @@
+@if (!targets || !mafia) {
+  <app-page-title title="Targets Loading..."></app-page-title>
+} @else {
+  <app-mafia-target-selection-template
+    [targets]="targets"
+    [mafia]="mafia"
+  ></app-mafia-target-selection-template>
+}

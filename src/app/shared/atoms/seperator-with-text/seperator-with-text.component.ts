@@ -9,4 +9,6 @@ import { Component, Input } from '@angular/core';
 })
 export class SeperatorWithTextComponent {
   @Input() marginPx: number = 0;
+  @Input() marginXPx: number = 0;
+  @Input() opacity: number = 1;
 }
