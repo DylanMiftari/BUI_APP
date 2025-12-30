@@ -18,11 +18,15 @@ import {
   MafiaClientDashboardPagesComponent
 } from "./pages/mafia-client-dashboard-pages/mafia-client-dashboard-pages.component";
 import {MafiaTargetSelectionComponent} from "./pages/mafia-target-selection/mafia-target-selection.component";
+import {
+  ClientMafiaContractPagesComponent
+} from "./pages/client-mafia-contract-pages/client-mafia-contract-pages.component";
 
 const routes: Routes = [
   {path: "mafia", canActivateChild: [authGuardChild], children: [
       {path: ":mafia", component: MafiaClientDashboardPagesComponent},
-      {path: ":mafia/targets", component: MafiaTargetSelectionComponent}
+      {path: ":mafia/targets", component: MafiaTargetSelectionComponent},
+      {path: ":mafia/contracts", component: ClientMafiaContractPagesComponent},
     ]}
 ]
 

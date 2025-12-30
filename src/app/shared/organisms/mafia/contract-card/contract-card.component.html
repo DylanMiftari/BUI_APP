@@ -1,0 +1,29 @@
+<app-card
+  color="mafia" [interactable]="false" border="none" [glassCard]="true" glassColor="mafia"
+>
+  <app-row alignItems="center" [gapPx]="20">
+    <app-icon [icon]="robTypeIcon" [fontSize]="3"></app-icon>
+    <div>
+      <app-title [text]="targetName" color="white"></app-title>
+      <app-simple-text [text]="robTitle" [isLight]="true"></app-simple-text>
+    </div>
+  </app-row>
+  <app-status-indicator [text]="statusText" [color]="statusColor" textColor="white"
+  [style.margin-left]="'10px'" [style.margin-top]="'5px'"></app-status-indicator>
+
+  <app-seperator-with-text [marginPx]="20" [opacity]="0.4"></app-seperator-with-text>
+
+  <app-simple-card color="mafia" direction="column" [paddingYPx]="10" [paddingPx]="10" [gapPx]="10">
+    <app-row alignItems="center" [gapPx]="10">
+      <app-icon icon="📊" [fontSize]="1"></app-icon>
+      <app-simple-text text="Success Rate" [isLight]="true"></app-simple-text>
+    </app-row>
+
+    <app-row alignItems="center" [gapPx]="10" [style.margin-left]="'20px'">
+      <app-simple-text [text]="successRate+'%'" [isLight]="true" [bold]="true"></app-simple-text>
+      <app-progress-bar [maxValue]="100" [value]="successRate" [minWidthPx]="250"></app-progress-bar>
+    </app-row>
+
+    <app-simple-text text="Base rate • Excludes security system" [isLight]="true" [style.margin-left]="'20px'"></app-simple-text>
+  </app-simple-card>
+</app-card>
