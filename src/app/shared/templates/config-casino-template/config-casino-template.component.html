@@ -7,7 +7,7 @@
     <div>
       <app-input label="Ticket Price" type="number" color="casino"
         [control]="getFormControl('ticketPrice')"></app-input>
-      <app-simple-text [text]="'Max price : '+(casinoLevel.maxTicketPrice ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max price : '+(casinoLevel.maxTicketPrice).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -50,7 +50,7 @@
     <div>
       <app-input label="Maximum bet for roulette" type="number" color="casino"
         [control]="getRouletteFormControl('rouletteMaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.rouletteMaxBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.rouletteMaxBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -77,7 +77,7 @@
     <div>
       <app-input label="Maximum bet for roulette for VIP" type="number" color="casino-vip"
         [control]="getRouletteFormControl('rouletteMaxVIPBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.rouletteMaxVIPBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.rouletteMaxVIPBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -107,7 +107,7 @@
     <div>
       <app-input label="Maximum bet for dice" type="number" color="casino"
         [control]="getDiceFormControl('diceMaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.diceMaxBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.diceMaxBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -126,7 +126,7 @@
     <div>
       <app-input label="Maximum bet for dice for VIP" type="number" color="casino-vip"
         [control]="getDiceFormControl('diceVIPMaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.diceMaxVIPBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.diceMaxVIPBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -197,7 +197,7 @@
     <div>
       <app-input label="Maximum bet for poker" type="number" color="casino"
         [control]="getPokerFormControl('pokerMaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.pokerMaxBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.pokerMaxBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -255,7 +255,7 @@
     <div>
       <app-input label="Maximum bet for poker for VIP" type="number" color="casino-vip"
         [control]="getPokerFormControl('pokerMaxVIPBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.pokerMaxVIPBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.pokerMaxVIPBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -286,7 +286,7 @@
     <div>
       <app-input label="Maximum bet for blackjack" type="number" color="casino"
         [control]="getBlackjackFormControl('blackJackMaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.blackJackMaxBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.blackJackMaxBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -315,7 +315,7 @@
     <div>
       <app-input label="Maximum bet for blackjack" type="number" color="casino"
         [control]="getBlackjackFormControl('blackJackMaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.blackJackMaxBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.blackJackMaxBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -333,7 +333,7 @@
     <div>
       <app-input label="Maximum bet for blackjack for VIP" type="number" color="casino-vip"
         [control]="getBlackjackFormControl('blackJackVIPMaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.blackJackMaxVIPBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.blackJackMaxVIPBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -404,7 +404,7 @@
     <div>
       <app-input label="Maximum bet for roulette" type="number" color="casino"
         [control]="getRoulette2FormControl('roulette2MaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.roulette2MaxBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.roulette2MaxBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
@@ -462,7 +462,7 @@
     <div>
       <app-input label="Maximum bet for roulette for VIP" type="number" color="casino-vip"
         [control]="getRoulette2FormControl('roulette2VIPMaxBet')"></app-input>
-      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.roulette2MaxVIPBet ?? 0).toLocaleString()+'€'"
+      <app-simple-text [text]="'Max you can set is : '+(casinoLevel.roulette2MaxVIPBet).toLocaleString()+'€'"
         [isLight]="true"></app-simple-text>
     </div>
 
