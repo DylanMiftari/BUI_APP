@@ -23,10 +23,13 @@ import {forkJoin} from "rxjs";
 export class MafiaTargetSelectionComponent implements OnInit {
   targets: TargetResult |null = null;
   mafia: Mafia | null = null;
+
+  targetSelectionError: string = "";
+
   constructor(
     private headerButton: HeaderReturnButtonService,
     private route: ActivatedRoute,
-    private mafiaService: MafiaService
+    private mafiaService: MafiaService,
   ) {
   }
 
@@ -50,6 +53,9 @@ export class MafiaTargetSelectionComponent implements OnInit {
     this.mafiaService.createContract(this.mafia!.id, data.targetType, data.targetId).subscribe({
       next: _ => {
         window.location.href = "/";
+      },
+      error: err => {
+        this.targetSelectionError = err.error.message;
       }
     });
   }

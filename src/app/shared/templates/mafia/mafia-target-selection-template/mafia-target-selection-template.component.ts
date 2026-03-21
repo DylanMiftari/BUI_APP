@@ -20,6 +20,7 @@ import {Home} from "../../../../features/general/models/home.model";
 import {User} from "../../../../core/models/user.model";
 import {MafiaUtilsService} from "../../../../features/mafia/services/mafia-utils.service";
 import {MafiaTargetType} from "../../../../features/mafia/types/mafia-target-type.type";
+import {ErrorTextComponent} from "../../../atoms/error-text/error-text.component";
 
 @Component({
   selector: 'app-mafia-target-selection-template',
@@ -34,7 +35,8 @@ import {MafiaTargetType} from "../../../../features/mafia/types/mafia-target-typ
     SeperatorWithTextComponent,
     CardContainerComponent,
     CardComponent,
-    RobStatCardComponent
+    RobStatCardComponent,
+    ErrorTextComponent
   ],
   templateUrl: './mafia-target-selection-template.component.html',
   styleUrl: './mafia-target-selection-template.component.css'
@@ -42,6 +44,7 @@ import {MafiaTargetType} from "../../../../features/mafia/types/mafia-target-typ
 export class MafiaTargetSelectionTemplateComponent {
   @Input() targets!: TargetResult;
   @Input() mafia!: Mafia;
+  @Input() targetSelectionError: string = "";
 
   @Output() selectTarget = new EventEmitter<{targetType: MafiaTargetType, targetId: number}>();
 

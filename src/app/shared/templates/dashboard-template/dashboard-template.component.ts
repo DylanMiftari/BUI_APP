@@ -49,6 +49,10 @@ export class DashboardTemplateComponent {
     this.router.navigate(["/bank/my-accounts"]);
   }
 
+  public clickOnMafiaContracts() {
+    this.router.navigate(["/mafia/my-contracts"]);
+  }
+
   public clickOnHomeCard() {
     this.router.navigate(["/home"]);
   }

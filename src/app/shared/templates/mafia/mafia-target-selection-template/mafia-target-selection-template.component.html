@@ -1,4 +1,4 @@
-<app-page-title title="Select Target"></app-page-title>
+<app-page-title title="Select Target" id="error"></app-page-title>
 <app-simple-text
   text="Choose your target carefully and review all details before creating a contract. Targets are updated everyday"
   [isLight]="true"
@@ -17,6 +17,8 @@
     color="yellow"
   ></app-simple-text>
 </app-simple-card>
+
+<app-error-text [text]="targetSelectionError" textAlign="center"></app-error-text>
 
 @for (targetType of Object.keys(targets); track targetType) {
   <app-row alignItems="center" justifyContent="space-between" [style.margin-left]="'20px'" [style.margin-right]="'20px'">
