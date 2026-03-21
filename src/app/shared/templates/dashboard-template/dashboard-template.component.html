@@ -77,5 +77,15 @@ trophies."
       (clicked)="clickOnBankAccounts()"
     ></app-dashboard-card>
 
+    <app-dashboard-card
+      icon="🎭"
+      cardTitle="Your Mafia Contract"
+      text="Track your ongoing contracts, manage your targets, and collect your rewards. Keep an eye on the status of your underground operations."
+      [datas]="[
+                      {data: activeMafiaContract, text: 'Active Mafia Contract', unit: '', dataIsNumber: true},
+                  ]"
+      (clicked)="clickOnBankAccounts()"
+    ></app-dashboard-card>
+
 
 </app-card-container>

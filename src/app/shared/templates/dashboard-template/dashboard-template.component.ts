@@ -21,6 +21,7 @@ export class DashboardTemplateComponent {
   @Input() casinoTicketsCount: number = 0;
   @Input() activeBankAccount: number = 0;
   @Input() homeCount: number = 0;
+  @Input() activeMafiaContract: number = 0;
 
   constructor(private router: Router) {}
 

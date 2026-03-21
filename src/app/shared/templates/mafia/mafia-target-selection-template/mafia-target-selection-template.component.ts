@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TargetResult} from "../../../../features/mafia/models/targets-result.model";
 import {PageTitleComponent} from "../../../atoms/page-title/page-title.component";
 import {SimpleTextComponent} from "../../../atoms/simple-text/simple-text.component";
@@ -18,6 +18,8 @@ import {BankAccount} from "../../../../features/bank/models/bank-account.model";
 import {House} from "../../../../features/general/models/house.model";
 import {Home} from "../../../../features/general/models/home.model";
 import {User} from "../../../../core/models/user.model";
+import {MafiaUtilsService} from "../../../../features/mafia/services/mafia-utils.service";
+import {MafiaTargetType} from "../../../../features/mafia/types/mafia-target-type.type";
 
 @Component({
   selector: 'app-mafia-target-selection-template',
@@ -40,11 +42,18 @@ import {User} from "../../../../core/models/user.model";
 export class MafiaTargetSelectionTemplateComponent {
   @Input() targets!: TargetResult;
   @Input() mafia!: Mafia;
+
+  @Output() selectTarget = new EventEmitter<{targetType: MafiaTargetType, targetId: number}>();
+
   protected readonly Object = Object;
 
   constructor(
-    public mafiaRobService: MafiaRobService
+    public mafiaUtils: MafiaUtilsService
   ) {}
+
+  onSelectTarget(data: any) {
+    this.selectTarget.emit(data);
+  }
 
   getTargetsByType(type: string) {
     return this.targets[type as keyof TargetResult];
@@ -56,173 +65,42 @@ export class MafiaTargetSelectionTemplateComponent {
 
   getRobSuccessRate(target: any, targetType: string) {
     let castedTargetType = targetType as MafiaRobType;
-    switch (castedTargetType) {
-      case "player":
-        return this.mafiaRobService.playerRobSuccessRate(this.mafia.level);
-      case "company":
-        let company = target as Company;
-        return this.mafiaRobService.companyRobSuccessRate(this.mafia.level, company.level);
-      case "bankAccount":
-        let bankAccount = target as BankAccount;
-        return this.mafiaRobService.bankAccountRobSuccessRate(this.mafia.level, bankAccount.company.level);
-      case "house":
-        let house = target as Home;
-        return this.mafiaRobService.houseRobSuccessRate(this.mafia.level, house.house.level);
-      case "cyberattack":
-        return this.mafiaRobService.cyberAttackSuccessRate();
-      case "aiDronePlayer":
-        return this.mafiaRobService.aiDronePlayerSuccessRate();
-      case "aiDroneHouse":
-        return this.mafiaRobService.aiDroneHouseSuccessRate();
-      case "shoplifting":
-        return this.mafiaRobService.shopliftingSuccessRate();
-      case "phishing":
-        return this.mafiaRobService.phishingSuccessRate();
-    }
+    return this.mafiaUtils.robSuccessRate(castedTargetType, this.mafia, target);
   }
 
   getRobMinStealAmount(target: any, targetType: string) {
     let castedTargetType = targetType as MafiaRobType;
-    switch (castedTargetType) {
-      case "player":
-        return this.mafiaRobService.playerRobMinStealAmount(this.mafia.level);
-      case "company":
-        let company = target as Company;
-        return this.mafiaRobService.companyMinStealAmount(this.mafia.level, company.level);
-      case "bankAccount":
-        let bankAccount = target as BankAccount;
-        return this.mafiaRobService.bankAccountMinStealAmount(this.mafia.level, bankAccount.company.level);
-      case "house":
-        let house = target as Home;
-        return this.mafiaRobService.houseMinStealAmount(this.mafia.level, house.house.level);
-      case "cyberattack":
-        return this.mafiaRobService.cyberAttackStealAmount();
-      case "aiDronePlayer":
-        return this.mafiaRobService.aiDronePlayerMinStealAmount();
-      case "aiDroneHouse":
-        return this.mafiaRobService.aiDroneHouseMinStealAmount();
-      case "shoplifting":
-        let companyS = target as Company;
-        return this.mafiaRobService.shopliftingMinStealAmount(companyS.level);
-      case "phishing":
-        return this.mafiaRobService.phishingStealAmount();
-    }
+    return this.mafiaUtils.getRobMinStealAmount(castedTargetType, this.mafia, target);
   }
 
   getRobMaxStealAmount(target: any, targetType: string) {
     let castedTargetType = targetType as MafiaRobType;
-    switch (castedTargetType) {
-      case "player":
-        return this.mafiaRobService.playerRobMaxStealAmount(this.mafia.level);
-      case "company":
-        let company = target as Company;
-        return this.mafiaRobService.companyMaxStealAmount(this.mafia.level, company.level);
-      case "bankAccount":
-        let bankAccount = target as BankAccount;
-        return this.mafiaRobService.bankAccountMaxStealAmount(this.mafia.level, bankAccount.company.level);
-      case "house":
-        let house = target as Home;
-        return this.mafiaRobService.houseMaxStealAmount(this.mafia.level, house.house.level);
-      case "cyberattack":
-        return this.mafiaRobService.cyberAttackStealAmount();
-      case "aiDronePlayer":
-        return this.mafiaRobService.aiDronePlayerMaxStealAmount();
-      case "aiDroneHouse":
-        return this.mafiaRobService.aiDroneHouseMaxStealAmount();
-      case "shoplifting":
-        let companyS = target as Company;
-        return this.mafiaRobService.shopliftingMaxStealAmount(companyS.level);
-      case "phishing":
-        return this.mafiaRobService.phishingStealAmount();
-    }
+    return this.mafiaUtils.getRobMaxStealAmount(castedTargetType, this.mafia, target);
   }
 
   getRobMaxValue(targetType: string) {
     let castedTargetType = targetType as MafiaRobType;
-    switch (castedTargetType) {
-      case "company":
-        return this.mafiaRobService.companyMaxValue(this.mafia.level);
-      case "bankAccount":
-        return this.mafiaRobService.bankAccountMaxValue(this.mafia.level);
-      default:
-        return null;
-    }
+    return this.mafiaUtils.getRobMaxValue(castedTargetType, this.mafia);
   }
 
   getRobCooldown(targetType: string) {
     let castedTargetType = targetType as MafiaRobType;
-    switch (castedTargetType) {
-      case "company":
-        return this.mafiaRobService.companyCooldown();
-      case "bankAccount":
-        return this.mafiaRobService.bankAccountCooldown();
-      case "cyberattack":
-        return this.mafiaRobService.cyberAttackCooldown();
-      case "phishing":
-        return this.mafiaRobService.phishingCooldown();
-      default:
-        return null;
-    }
+    return this.mafiaUtils.getRobCooldown(castedTargetType);
   }
 
   getTitle(target: any, targetType: string) {
     let castedTargetType = targetType as MafiaRobType;
-    switch (castedTargetType) {
-      case "player":
-      case "aiDronePlayer":
-        let user = target as User;
-        return user.pseudo;
-      case "company":
-      case "cyberattack":
-      case "shoplifting":
-        let company = target as Company;
-        return company.name;
-      case "bankAccount":
-      case "phishing":
-        let bankAccount = target as BankAccount;
-        return "Bank Account No."+bankAccount.id;
-      case "house":
-      case "aiDroneHouse":
-        let home = target as Home;
-        return "House No."+home.id;
-      default:
-        return null;
-    }
+    return this.mafiaUtils.getTargetTitle(castedTargetType, target);
   }
 
   getLevel(target: any, targetType: string) {
     let castedTargetType = targetType as MafiaRobType;
-    switch (castedTargetType) {
-      case "player":
-      case "aiDronePlayer":
-        return null;
-      case "company":
-      case "cyberattack":
-      case "shoplifting":
-        let company = target as Company;
-        return company.level;
-      case "bankAccount":
-      case "phishing":
-        let bankAccount = target as BankAccount;
-        return bankAccount.company.level;
-      case "house":
-      case "aiDroneHouse":
-        let home = target as Home;
-        return home.house.level;
-      default:
-        return null;
-    }
+    return this.mafiaUtils.getTargetLevel(castedTargetType, target);
   }
 
   getRobUnit(targetType: string) {
     let castedTargetType = targetType as MafiaRobType;
-    switch (castedTargetType) {
-      case "cyberattack":
-      case "shoplifting":
-        return "€";
-      default:
-        return "%";
-    }
+    return this.mafiaUtils.getRobAmountUnit(castedTargetType);
   }
 
   getTargetTitle(targetType: string) {
@@ -251,26 +129,10 @@ export class MafiaTargetSelectionTemplateComponent {
   }
 
   robTypeIcon(targetType: string) {
-    switch (targetType) {
-      case "player":
-      case "aiDronePlayer":
-        return "👤";
-      case "company":
-        return "🏢";
-      case "bankAccount":
-        return "🏦";
-      case "house":
-        return "🏠";
-      case "cyberattack":
-        return "💻";
-      case "aiDroneHouse":
-        return "🏠";
-      case "shoplifting":
-        return "🥷";
-      case "phishing":
-        return "🎣";
-      default:
-        return "👤";
-    }
+    return this.mafiaUtils.robTypeIcon(targetType as MafiaRobType);
+  }
+
+  targetId(targetType: string, target: any) {
+    return this.mafiaUtils.getTargetId(targetType as MafiaRobType, target);
   }
 }

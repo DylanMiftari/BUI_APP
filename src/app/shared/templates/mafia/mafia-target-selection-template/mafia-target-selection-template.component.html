@@ -33,6 +33,8 @@
     @for (target of getTargetsByType(targetType); track $index) {
       @if (targetType == "cyberattack" || targetType == "phishing") {
         <app-rob-stat-card
+          [targetId]="targetId(targetType, target)"
+          [targetType]="targetType"
           [robType]="castInMafiaRobType(targetType)"
           [successRate]="getRobSuccessRate(target, targetType)"
           [fixedStealAmount]="getRobMinStealAmount(target, targetType)"
@@ -42,9 +44,12 @@
           [title]="getTitle(target, targetType)"
           [targetLevel]="getLevel(target, targetType)"
           [showButton]="true"
+          (selectTarget)="onSelectTarget($event)"
         ></app-rob-stat-card>
       } @else {
         <app-rob-stat-card
+          [targetId]="targetId(targetType, target)"
+          [targetType]="targetType"
           [robType]="castInMafiaRobType(targetType)"
           [successRate]="getRobSuccessRate(target, targetType)"
           [minStealAmount]="getRobMinStealAmount(target, targetType)"
@@ -55,6 +60,7 @@
           [title]="getTitle(target, targetType)"
           [targetLevel]="getLevel(target, targetType)"
           [showButton]="true"
+          (selectTarget)="onSelectTarget($event)"
         ></app-rob-stat-card>
       }
     }

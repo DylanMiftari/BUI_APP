@@ -4,5 +4,6 @@
   <app-mafia-target-selection-template
     [targets]="targets"
     [mafia]="mafia"
+    (selectTarget)="onSelectTarget($event)"
   ></app-mafia-target-selection-template>
 }

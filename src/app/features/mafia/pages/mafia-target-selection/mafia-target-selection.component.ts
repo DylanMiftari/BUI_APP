@@ -45,4 +45,12 @@ export class MafiaTargetSelectionComponent implements OnInit {
       })
     })
   }
+
+  onSelectTarget(data: any) {
+    this.mafiaService.createContract(this.mafia!.id, data.targetType, data.targetId).subscribe({
+      next: _ => {
+        window.location.href = "/";
+      }
+    });
+  }
 }

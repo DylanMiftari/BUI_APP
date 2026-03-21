@@ -11,4 +11,5 @@ export interface User {
   casinoTicketsCount: number | null;
   activeAccount: number | null;
   homeCount: number | null;
+  activeMafiaContract: number | null;
 }

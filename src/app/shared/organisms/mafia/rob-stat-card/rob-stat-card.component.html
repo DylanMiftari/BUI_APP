@@ -52,6 +52,7 @@
 
   @if (showButton) {
     <app-seperator-with-text [marginPx]="10" [style.opacity]="'0.4'"></app-seperator-with-text>
-    <app-button label="Select Target" color="mafia" [style.width]="'-webkit-fill-available'"></app-button>
+    <app-button label="Select Target" color="mafia" [style.width]="'-webkit-fill-available'"
+    (click)="onClickSelectTarget(getTargetType(), targetId)"></app-button>
   }
 </app-card>

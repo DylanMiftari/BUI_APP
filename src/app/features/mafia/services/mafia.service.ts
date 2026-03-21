@@ -24,4 +24,11 @@ export class MafiaService {
   getContract(mafiaId: number) {
     return this.http.get<MafiaContract>(`${this.baseUrl}/${mafiaId}/contract`);
   }
+
+  createContract(mafiaId: number, targetType: string, targetId: number) {
+    return this.http.post(`${this.baseUrl}/${mafiaId}/contract`, {
+      targetType: targetType,
+      targetId: targetId
+    });
+  }
 }
