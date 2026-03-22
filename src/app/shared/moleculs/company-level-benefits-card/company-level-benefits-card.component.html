@@ -6,7 +6,7 @@
     }
   </app-row>
 
-  <app-card-container [gapPx]="5" [paddingXPx]="0" [cardBaseSizePx]="250">
+  <app-card-container [gapPx]="5" [paddingXPx]="0" [cardBaseSizePx]="250" gridAutoRows="0fr">
     @for (levelBenefit of levelBenefits; track $index) {
       <app-card [interactable]="false" [bordered]="false" [color]="theme == 'casino' ? 'casino-regular' : theme"
                 [glassCard]="true" [glassColor]="theme == 'casino' ? 'casino-regular' : theme" [border]="'none'"

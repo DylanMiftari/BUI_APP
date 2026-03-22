@@ -1,0 +1,52 @@
+<app-card
+  color="mafia" [glassCard]="true" glassColor="mafia" border="none" [interactable]="false"
+>
+  <app-themed-title color="mafia" title="Mafia Management" textAlign="center"></app-themed-title>
+</app-card>
+
+<app-card
+  color="mafia" [glassCard]="true" glassColor="mafia" border="none" [interactable]="false"
+>
+  <app-simple-card color="mafia" style="width: -webkit-fill-available" [gapPx]="10" alignItems="center">
+    <app-row [gapPx]="10">
+      <app-icon icon="🎭" [fontSize]="3"></app-icon>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <app-simple-text color="mafia" [text]="mafia.name" [bold]="true" [fontSizePx]="18"></app-simple-text>
+        <app-level-pin color="mafia" [level]="mafia.level"></app-level-pin>
+      </div>
+    </app-row>
+  </app-simple-card>
+
+  <app-simple-card color="mafia" style="width: -webkit-fill-available" [marginPx]="10" direction="column">
+    <app-row justifyContent="space-between">
+      <app-simple-text text="Money in safe" [isLight]="true"></app-simple-text>
+      <app-simple-text color="mafia" [text]="mafia.moneyInSafe!.toLocaleString()+'€'" [bold]="true"></app-simple-text>
+    </app-row>
+    <app-seperator-with-text [marginPx]="10"></app-seperator-with-text>
+    <app-row justifyContent="space-between">
+      <app-simple-text text="Current Contract" [isLight]="true"></app-simple-text>
+      <app-simple-text color="mafia" [text]="mafia.contracts!.length.toLocaleString()" [bold]="true"></app-simple-text>
+    </app-row>
+  </app-simple-card>
+
+  <app-upgrade-company-card
+    theme="mafia"
+    companyType="Mafia"
+    [currentLevel]="mafia.level"
+    [companyId]="mafia.companyId!"
+    style="width: -webkit-fill-available;"
+  ></app-upgrade-company-card>
+</app-card>
+
+<app-card [interactable]="false" [bordered]="false" color="mafia" glassColor="mafia" [glassCard]="true" border="none">
+  <app-simple-text text="Level Benefits Overview" color="mafia" [fontSizePx]="20" textAlign="center" [bold]="true"></app-simple-text>
+  <app-card-container [paddingXPx]="0" [paddingYPx]="5" [cardBaseSizePx]="250">
+    @for (companyLevel of companyLevels; track $index) {
+      <app-company-level-benefits-card [level]="companyLevel"
+                                       [levelBenefits]="levelBenefits[companyLevel-1]"
+                                       [isCurrent]="companyLevel == mafia.level"
+                                       theme="mafia"
+      ></app-company-level-benefits-card>
+    }
+  </app-card-container>
+</app-card>

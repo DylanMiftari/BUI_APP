@@ -15,4 +15,5 @@ export class CardContainerComponent {
   @Input() paddingYPx: number = 20;
   @Input() gapPx: number = 20;
   @Input() cardBaseSizePx: number = 300;
+  @Input() gridAutoRows: string = "1fr";
 }

@@ -35,4 +35,11 @@ export class MafiaService {
       targetId: targetId
     });
   }
+
+  getMafiaForOwner(id: number) {
+    return this.http.get<Mafia>(`${this.baseUrl}/${id}/owner`);
+  }
+  getMafiaForOwnerWithLevels(id: number) {
+    return this.http.get<Mafia>(`${this.baseUrl}/${id}/owner?with=levels`);
+  }
 }

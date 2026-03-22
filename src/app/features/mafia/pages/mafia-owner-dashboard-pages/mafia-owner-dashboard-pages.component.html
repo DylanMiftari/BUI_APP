@@ -1,0 +1,7 @@
+@if (mafia == null) {
+  <app-page-title title="Loading..."></app-page-title>
+} @else {
+  <app-mafia-owner-dashboard-templates
+    [mafia]="mafia"
+  ></app-mafia-owner-dashboard-templates>
+}
