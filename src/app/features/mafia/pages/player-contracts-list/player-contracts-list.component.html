@@ -1,0 +1,7 @@
+@if (contracts == null) {
+  <app-page-title title="Loading..."></app-page-title>
+} @else {
+  <app-player-contracts-list-templates
+    [contracts]="contracts"
+  ></app-player-contracts-list-templates>
+}

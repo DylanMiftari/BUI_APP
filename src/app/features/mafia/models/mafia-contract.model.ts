@@ -10,5 +10,8 @@ export interface MafiaContract {
   targetType: MafiaTargetType;
   targetId: number;
   robState: MafiaRobState,
+  clientPrice: number;
+  secondPrice: number|null;
+  mafiaLevel: number;
   target: User | Company | MinimalBankAccount | Home;
 }

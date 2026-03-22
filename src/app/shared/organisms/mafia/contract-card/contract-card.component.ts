@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MafiaContract} from "../../../../features/mafia/models/mafia-contract.model";
 import {CardComponent} from "../../card/card.component";
 import {RowComponent} from "../../../atoms/row/row.component";
@@ -16,6 +16,8 @@ import {SimpleCardComponent} from "../../../atoms/simple-card/simple-card.compon
 import {MafiaRobService} from "../../../../features/mafia/services/mafia-rob.service";
 import {MinimalBankAccount} from "../../../../features/bank/models/minimal-bank-account.model";
 import {ProgressBarComponent} from "../../../atoms/progress-bar/progress-bar.component";
+import {MafiaUtilsService} from "../../../../features/mafia/services/mafia-utils.service";
+import {MafiaRobType} from "../../../../core/types/mafia-rob.type";
 
 @Component({
   selector: 'app-contract-card',
@@ -35,76 +37,31 @@ import {ProgressBarComponent} from "../../../atoms/progress-bar/progress-bar.com
   templateUrl: './contract-card.component.html',
   styleUrl: './contract-card.component.css'
 })
-export class ContractCardComponent {
+export class ContractCardComponent implements OnInit {
   @Input() mafiaContract!: MafiaContract;
   @Input() mafiaLevel!: number;
+  robType: MafiaRobType|null = null;
 
   constructor(
-    private mafiaService: MafiaRobService
+    private mafiaService: MafiaRobService,
+    private mafiaUtils: MafiaUtilsService
   ) {
   }
 
+  ngOnInit() {
+    this.robType = this.mafiaUtils.getRobTypeWithTargetType(this.mafiaContract.targetType);
+  }
+
   get robTypeIcon() {
-    switch (this.mafiaContract.targetType) {
-      case "user":
-      case "userDrone":
-        return "👤";
-      case "company":
-        return "🏢";
-      case "bankAccount":
-        return "🏦";
-      case "home":
-        return "🏠";
-      case "cyberattack":
-        return "💻";
-      case "homeDrone":
-        return "🏠";
-      case "shoplifting":
-        return "🥷";
-      case "phishing":
-        return "🎣";
-    }
+    return this.mafiaUtils.robTypeIcon(this.robType!)
   }
 
   get robTitle() {
-    switch (this.mafiaContract.targetType) {
-      case "user":
-        return "Player Theft";
-      case "company":
-        return "Business Vault";
-      case "bankAccount":
-        return "Bank Account";
-      case "home":
-        return "House Safe";
-      case "cyberattack":
-        return "Cyber Attack";
-      case "userDrone":
-        return "AI Drone";
-      case "homeDrone":
-        return "AI Drone";
-      case "shoplifting":
-        return "Shoplifting"
-      case "phishing":
-        return "Targeted phishing";
-    }
+    return this.mafiaUtils.robTitle(this.robType!);
   }
 
   get targetName() {
-    switch (this.mafiaContract.targetType) {
-      case "user":
-      case "userDrone":
-        return (this.mafiaContract.target as User).pseudo;
-      case "company":
-      case "cyberattack":
-      case "shoplifting":
-        return (this.mafiaContract.target as Company).name;
-      case "bankAccount":
-      case "phishing":
-        return "Bank Account No."+(this.mafiaContract.target as BankAccount).id;
-      case "home":
-      case "homeDrone":
-        return "House No."+(this.mafiaContract.target as Home).id;
-    }
+    return this.mafiaUtils.getTargetTitle(this.robType!, this.mafiaContract.target)
   }
 
   get statusText() {
@@ -122,28 +79,19 @@ export class ContractCardComponent {
   }
 
   get successRate() {
-    switch (this.mafiaContract.targetType) {
-      case "user":
-        return this.mafiaService.playerRobSuccessRate(this.mafiaLevel);
-      case "company":
-        let company = this.mafiaContract.target as Company;
-        return this.mafiaService.companyRobSuccessRate(this.mafiaLevel, company.level);
-      case "bankAccount":
-        let bankAccount = this.mafiaContract.target as MinimalBankAccount;
-        return this.mafiaService.bankAccountRobSuccessRate(this.mafiaLevel, bankAccount.company.level);
-      case "home":
-        let home = this.mafiaContract.target as Home;
-        return this.mafiaService.houseRobSuccessRate(this.mafiaLevel, home.house.level);
-      case "cyberattack":
-        return this.mafiaService.cyberAttackSuccessRate();
-      case "userDrone":
-        return this.mafiaService.aiDronePlayerSuccessRate();
-      case "homeDrone":
-        return this.mafiaService.aiDroneHouseSuccessRate();
-      case "shoplifting":
-        return this.mafiaService.shopliftingSuccessRate();
-      case "phishing":
-        return this.mafiaService.phishingSuccessRate();
-    }
+    return this.mafiaUtils.robSuccessRateLevel(this.robType!, this.mafiaContract.mafiaLevel, this.mafiaContract.target);
+  }
+
+  get minStealAmount() {
+    return this.mafiaUtils.getRobMinStealAmountLevel(this.robType!, this.mafiaContract.mafiaLevel, this.mafiaContract.target);
+  }
+  get maxStealAmount() {
+    return this.mafiaUtils.getRobMaxStealAmountLevel(this.robType!, this.mafiaContract.mafiaLevel, this.mafiaContract.target);
+  }
+  get stealAmountUnit() {
+    return this.mafiaUtils.getRobAmountUnit(this.robType!);
+  }
+  get maxValue() {
+    return this.mafiaUtils.getRobMaxValueLevel(this.robType!, this.mafiaContract.mafiaLevel);
   }
 }

@@ -1,0 +1,10 @@
+<app-page-title title="Your Mafia Contracts"></app-page-title>
+
+<app-card-container>
+  @for (contract of contracts; track contract.id) {
+    <app-contract-card
+      [mafiaContract]="contract"
+      [mafiaLevel]="contract.mafiaLevel"
+    ></app-contract-card>
+  }
+</app-card-container>

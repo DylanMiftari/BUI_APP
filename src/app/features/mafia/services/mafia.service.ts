@@ -13,6 +13,10 @@ export class MafiaService {
 
   constructor(private http: HttpClient) { }
 
+  getContractsOfPlayer() {
+    return this.http.get<MafiaContract[]>(`${this.baseUrl}/contracts`);
+  }
+
   getMafia(id: number) {
     return this.http.get<Mafia>(`${this.baseUrl}/${id}`);
   }

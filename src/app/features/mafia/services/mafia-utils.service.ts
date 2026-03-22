@@ -63,18 +63,21 @@ export class MafiaUtilsService {
   }
 
   robSuccessRate(robType: MafiaRobType, mafia: Mafia, target: any) {
+    return this.robSuccessRateLevel(robType, mafia.level, target);
+  }
+  robSuccessRateLevel(robType: MafiaRobType, mafiaLevel: number, target: any) {
     switch (robType) {
       case "player":
-        return this.mafiaRobService.playerRobSuccessRate(mafia.level);
+        return this.mafiaRobService.playerRobSuccessRate(mafiaLevel);
       case "company":
         let company = target as Company;
-        return this.mafiaRobService.companyRobSuccessRate(mafia.level, company.level);
+        return this.mafiaRobService.companyRobSuccessRate(mafiaLevel, company.level);
       case "bankAccount":
         let bankAccount = target as BankAccount;
-        return this.mafiaRobService.bankAccountRobSuccessRate(mafia.level, bankAccount.company.level);
+        return this.mafiaRobService.bankAccountRobSuccessRate(mafiaLevel, bankAccount.company.level);
       case "house":
         let house = target as Home;
-        return this.mafiaRobService.houseRobSuccessRate(mafia.level, house.house.level);
+        return this.mafiaRobService.houseRobSuccessRate(mafiaLevel, house.house.level);
       case "cyberattack":
         return this.mafiaRobService.cyberAttackSuccessRate();
       case "aiDronePlayer":
@@ -89,18 +92,21 @@ export class MafiaUtilsService {
   }
 
   getRobMinStealAmount(robType: MafiaRobType, mafia: Mafia, target: any) {
+    return this.getRobMinStealAmountLevel(robType, mafia.level, target)
+  }
+  getRobMinStealAmountLevel(robType: MafiaRobType, mafiaLevel: number, target: any) {
     switch (robType) {
       case "player":
-        return this.mafiaRobService.playerRobMinStealAmount(mafia.level);
+        return this.mafiaRobService.playerRobMinStealAmount(mafiaLevel);
       case "company":
         let company = target as Company;
-        return this.mafiaRobService.companyMinStealAmount(mafia.level, company.level);
+        return this.mafiaRobService.companyMinStealAmount(mafiaLevel, company.level);
       case "bankAccount":
         let bankAccount = target as BankAccount;
-        return this.mafiaRobService.bankAccountMinStealAmount(mafia.level, bankAccount.company.level);
+        return this.mafiaRobService.bankAccountMinStealAmount(mafiaLevel, bankAccount.company.level);
       case "house":
         let house = target as Home;
-        return this.mafiaRobService.houseMinStealAmount(mafia.level, house.house.level);
+        return this.mafiaRobService.houseMinStealAmount(mafiaLevel, house.house.level);
       case "cyberattack":
         return this.mafiaRobService.cyberAttackStealAmount();
       case "aiDronePlayer":
@@ -115,19 +121,23 @@ export class MafiaUtilsService {
     }
   }
 
+
   getRobMaxStealAmount(robType: MafiaRobType, mafia: Mafia, target: any) {
+    return this.getRobMaxStealAmountLevel(robType, mafia.level, target);
+  }
+  getRobMaxStealAmountLevel(robType: MafiaRobType, mafiaLevel: number, target: any) {
     switch (robType) {
       case "player":
-        return this.mafiaRobService.playerRobMaxStealAmount(mafia.level);
+        return this.mafiaRobService.playerRobMaxStealAmount(mafiaLevel);
       case "company":
         let company = target as Company;
-        return this.mafiaRobService.companyMaxStealAmount(mafia.level, company.level);
+        return this.mafiaRobService.companyMaxStealAmount(mafiaLevel, company.level);
       case "bankAccount":
         let bankAccount = target as BankAccount;
-        return this.mafiaRobService.bankAccountMaxStealAmount(mafia.level, bankAccount.company.level);
+        return this.mafiaRobService.bankAccountMaxStealAmount(mafiaLevel, bankAccount.company.level);
       case "house":
         let house = target as Home;
-        return this.mafiaRobService.houseMaxStealAmount(mafia.level, house.house.level);
+        return this.mafiaRobService.houseMaxStealAmount(mafiaLevel, house.house.level);
       case "cyberattack":
         return this.mafiaRobService.cyberAttackStealAmount();
       case "aiDronePlayer":
@@ -143,11 +153,14 @@ export class MafiaUtilsService {
   }
 
   getRobMaxValue(robType: MafiaRobType, mafia: Mafia) {
+    return this.getRobMaxValueLevel(robType, mafia.level);
+  }
+  getRobMaxValueLevel(robType: MafiaRobType, mafiaLevel: number) {
     switch (robType) {
       case "company":
-        return this.mafiaRobService.companyMaxValue(mafia.level);
+        return this.mafiaRobService.companyMaxValue(mafiaLevel);
       case "bankAccount":
-        return this.mafiaRobService.bankAccountMaxValue(mafia.level);
+        return this.mafiaRobService.bankAccountMaxValue(mafiaLevel);
       default:
         return null;
     }
@@ -188,7 +201,7 @@ export class MafiaUtilsService {
         let home = target as Home;
         return "House No."+home.id;
       default:
-        return null;
+        return "";
     }
   }
 
@@ -261,6 +274,21 @@ export class MafiaUtilsService {
         return "homeDrone";
       default:
         return robType;
+    }
+  }
+
+  getRobTypeWithTargetType(targetType: MafiaTargetType) {
+    switch (targetType) {
+      case "user":
+        return "player";
+      case "home":
+        return "house";
+      case "userDrone":
+        return "aiDronePlayer";
+      case "homeDrone":
+        return "aiDroneHouse";
+      default:
+        return targetType;
     }
   }
 

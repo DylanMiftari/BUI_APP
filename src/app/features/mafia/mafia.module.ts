@@ -21,9 +21,11 @@ import {MafiaTargetSelectionComponent} from "./pages/mafia-target-selection/mafi
 import {
   ClientMafiaContractPagesComponent
 } from "./pages/client-mafia-contract-pages/client-mafia-contract-pages.component";
+import {PlayerContractsListComponent} from "./pages/player-contracts-list/player-contracts-list.component";
 
 const routes: Routes = [
   {path: "mafia", canActivateChild: [authGuardChild], children: [
+      {path: "my-contracts", component: PlayerContractsListComponent},
       {path: ":mafia", component: MafiaClientDashboardPagesComponent},
       {path: ":mafia/targets", component: MafiaTargetSelectionComponent},
       {path: ":mafia/contracts", component: ClientMafiaContractPagesComponent},

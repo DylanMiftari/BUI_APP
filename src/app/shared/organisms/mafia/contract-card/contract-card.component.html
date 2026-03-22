@@ -21,9 +21,41 @@
 
     <app-row alignItems="center" [gapPx]="10" [style.margin-left]="'20px'">
       <app-simple-text [text]="successRate+'%'" [isLight]="true" [bold]="true"></app-simple-text>
-      <app-progress-bar [maxValue]="100" [value]="successRate" [minWidthPx]="250"></app-progress-bar>
+      <app-progress-bar [maxValue]="100" [value]="successRate"></app-progress-bar>
+    </app-row>
+    <app-simple-text text="Base rate • Excludes security system" [isLight]="true" [style.margin-left]="'20px'"></app-simple-text>
+
+
+    <app-row alignItems="center" [gapPx]="10" [wrap]="true">
+      <app-row alignItems="center" [gapPx]="10">
+        <app-icon icon="💰" [fontSize]="1"></app-icon>
+        <app-simple-text text="Steal Amount" [isLight]="true"></app-simple-text>
+      </app-row>
+      <app-row alignItems="center" [gapPx]="10" [style.margin-left]="'20px'">
+        @if (minStealAmount != maxStealAmount) {
+          <app-simple-text [text]="minStealAmount+'-'+maxStealAmount+' '+stealAmountUnit" [isLight]="true" [bold]="true"></app-simple-text>
+        } @else {
+          <app-simple-text [text]="minStealAmount+' '+stealAmountUnit" [isLight]="true" [bold]="true"></app-simple-text>
+        }
+      </app-row>
+
+      <app-row alignItems="center" [gapPx]="10">
+        <app-icon icon="🔝" [fontSize]="1"></app-icon>
+        <app-simple-text text="Maximum" [isLight]="true"></app-simple-text>
+      </app-row>
+      <app-row alignItems="center" [gapPx]="10" [style.margin-left]="'20px'">
+        <app-simple-text [text]="maxValue == null ? 'No Limit' : maxValue.toLocaleString()+'€'" [isLight]="true" [bold]="true"></app-simple-text>
+      </app-row>
     </app-row>
 
-    <app-simple-text text="Base rate • Excludes security system" [isLight]="true" [style.margin-left]="'20px'"></app-simple-text>
+    <app-row alignItems="alignItems" [gapPx]="10">
+      <app-icon icon="💵" [fontSize]="1"></app-icon>
+      <app-simple-text text="Price" [isLight]="true"></app-simple-text>
+      <app-row alignItems="center" [gapPx]="10" [style.margin-left]="'20px'">
+        <app-simple-text
+          [text]="mafiaContract.clientPrice == -1 ? 'Price not yet determined' : mafiaContract.clientPrice.toLocaleString()+'€'"
+          [isLight]="true" [bold]="true"></app-simple-text>
+      </app-row>
+    </app-row>
   </app-simple-card>
 </app-card>

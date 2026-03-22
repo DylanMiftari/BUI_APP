@@ -1,3 +1,7 @@
+app-card {
+  height: 100%;
+}
+
 app-simple-card {
   width: -webkit-fill-available;
 }
