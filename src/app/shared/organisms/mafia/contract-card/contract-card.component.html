@@ -1,12 +1,15 @@
 <app-card
   color="mafia" [interactable]="false" border="none" [glassCard]="true" glassColor="mafia"
 >
-  <app-row alignItems="center" [gapPx]="20">
+  <app-row alignItems="center" [gapPx]="20" [wrap]="true">
     <app-icon [icon]="robTypeIcon" [fontSize]="3"></app-icon>
     <div>
-      <app-title [text]="targetName" color="white"></app-title>
+      <app-simple-text [text]="targetName" color="white" [bold]="true" [fontSizePx]="18"></app-simple-text>
       <app-simple-text [text]="robTitle" [isLight]="true"></app-simple-text>
     </div>
+    @if (targetLevel) {
+      <app-level-pin [level]="targetLevel" color="mafia"></app-level-pin>
+    }
   </app-row>
   <app-status-indicator [text]="statusText" [color]="statusColor" textColor="white"
   [style.margin-left]="'10px'" [style.margin-top]="'5px'"></app-status-indicator>
@@ -27,35 +30,65 @@
 
 
     <app-row alignItems="center" [gapPx]="10" [wrap]="true">
-      <app-row alignItems="center" [gapPx]="10">
-        <app-icon icon="💰" [fontSize]="1"></app-icon>
-        <app-simple-text text="Steal Amount" [isLight]="true"></app-simple-text>
-      </app-row>
-      <app-row alignItems="center" [gapPx]="10" [style.margin-left]="'20px'">
-        @if (minStealAmount != maxStealAmount) {
-          <app-simple-text [text]="minStealAmount+'-'+maxStealAmount+' '+stealAmountUnit" [isLight]="true" [bold]="true"></app-simple-text>
-        } @else {
-          <app-simple-text [text]="minStealAmount+' '+stealAmountUnit" [isLight]="true" [bold]="true"></app-simple-text>
-        }
-      </app-row>
+      <div>
+        <app-row alignItems="center" [gapPx]="10" width="auto">
+          <app-icon icon="💰" [fontSize]="1"></app-icon>
+          <app-simple-text text="Steal Amount" [isLight]="true"></app-simple-text>
+        </app-row>
+        <app-row alignItems="center" [gapPx]="10" width="auto">
+          @if (minStealAmount != maxStealAmount) {
+            <app-simple-text [text]="minStealAmount.toLocaleString()+'-'+maxStealAmount.toLocaleString()+' '+stealAmountUnit" [isLight]="true" [bold]="true"></app-simple-text>
+          } @else {
+            <app-simple-text [text]="minStealAmount.toLocaleString()+' '+stealAmountUnit" [isLight]="true" [bold]="true"></app-simple-text>
+          }
+        </app-row>
+      </div>
 
-      <app-row alignItems="center" [gapPx]="10">
-        <app-icon icon="🔝" [fontSize]="1"></app-icon>
-        <app-simple-text text="Maximum" [isLight]="true"></app-simple-text>
-      </app-row>
-      <app-row alignItems="center" [gapPx]="10" [style.margin-left]="'20px'">
-        <app-simple-text [text]="maxValue == null ? 'No Limit' : maxValue.toLocaleString()+'€'" [isLight]="true" [bold]="true"></app-simple-text>
-      </app-row>
+      <div>
+        <app-row alignItems="center" [gapPx]="10" width="auto">
+          <app-icon icon="🔝" [fontSize]="1"></app-icon>
+          <app-simple-text text="Maximum" [isLight]="true"></app-simple-text>
+        </app-row>
+        <app-row alignItems="center" width="auto">
+          <app-simple-text [text]="maxValue == null ? 'No Limit' : maxValue.toLocaleString()+'€'" [isLight]="true" [bold]="true"></app-simple-text>
+        </app-row>
+      </div>
     </app-row>
 
     <app-row alignItems="alignItems" [gapPx]="10">
-      <app-icon icon="💵" [fontSize]="1"></app-icon>
-      <app-simple-text text="Price" [isLight]="true"></app-simple-text>
-      <app-row alignItems="center" [gapPx]="10" [style.margin-left]="'20px'">
-        <app-simple-text
-          [text]="mafiaContract.clientPrice == -1 ? 'Price not yet determined' : mafiaContract.clientPrice.toLocaleString()+'€'"
-          [isLight]="true" [bold]="true"></app-simple-text>
-      </app-row>
+      <div>
+        <app-row alignItems="center" [gapPx]="10" width="auto">
+          <app-icon icon="💵" [fontSize]="1"></app-icon>
+          <app-simple-text text="Price" [isLight]="true"></app-simple-text>
+        </app-row>
+        <app-row alignItems="center" width="auto">
+          <app-simple-text
+            [text]="mafiaContract.clientPrice == -1 ? 'Price not yet determined' : mafiaContract.clientPrice.toLocaleString()+'€'"
+            [isLight]="true" [bold]="true"></app-simple-text>
+        </app-row>
+      </div>
+
+      @if (forOwner) {
+        <div>
+          <app-row alignItems="center" [gapPx]="10" width="auto">
+            <app-icon icon="🏷️" [fontSize]="1"></app-icon>
+            <app-simple-text text="Rob Cost" [isLight]="true"></app-simple-text>
+          </app-row>
+          <app-row alignItems="center" width="auto">
+            <app-simple-text
+              [text]="robCosts.toLocaleString()+'€'"
+              [isLight]="true" [bold]="true"></app-simple-text>
+          </app-row>
+        </div>
+      }
     </app-row>
   </app-simple-card>
+
+  @if (
+    forOwner && mafiaContract.robState == "wait_on_mafia"
+    ) {
+    <app-seperator-with-text [marginPx]="20" [opacity]="0.4"></app-seperator-with-text>
+    <app-input color="mafia" label="💵 Propose new price (€)" [control]="newPriceControl" type="number"
+    [min]="0"></app-input>
+  }
 </app-card>

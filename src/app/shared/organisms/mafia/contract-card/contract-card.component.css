@@ -5,3 +5,13 @@ app-card {
 app-simple-card {
   width: -webkit-fill-available;
 }
+
+div {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+app-input {
+  width: -webkit-fill-available;
+}

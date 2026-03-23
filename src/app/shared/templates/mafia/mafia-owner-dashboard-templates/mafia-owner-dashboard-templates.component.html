@@ -2,6 +2,9 @@
   color="mafia" [glassCard]="true" glassColor="mafia" border="none" [interactable]="false"
 >
   <app-themed-title color="mafia" title="Mafia Management" textAlign="center"></app-themed-title>
+  <app-row>
+    <app-button color="mafia" label="Your Contracts" (clicked)="onClickOnYourContracts()"></app-button>
+  </app-row>
 </app-card>
 
 <app-card

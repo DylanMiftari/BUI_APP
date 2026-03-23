@@ -195,6 +195,8 @@ export class ThemeColorService {
       case "casino-vip":
       case "casino":
         return "black";
+      case "mafia":
+        return "rgba(35, 35, 35, 0.95)";
       default:
         return "white";
     }
@@ -207,8 +209,19 @@ export class ThemeColorService {
         return "#FFD700"
       case "casino-vip":
         return "#9370DB";
+      case "mafia":
+        return "#d0d0d0";
       default:
         return "black";
+    }
+  }
+
+  public inputBorderColor(color: ThemeColor) {
+    switch(color) {
+      case "mafia":
+        return "rgba(50, 50, 50, 0.5)";
+      default:
+        return "#e5e7eb";
     }
   }
 }

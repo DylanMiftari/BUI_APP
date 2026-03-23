@@ -7,6 +7,7 @@ import {Home} from "../../general/models/home.model";
 import {MafiaTargetType} from "../types/mafia-target-type.type";
 import {Mafia} from "../models/mafia.model";
 import {User} from "../../../core/models/user.model";
+import {mafiaConfig} from "../../../core/config/mafia.config";
 
 @Injectable({
   providedIn: 'root'
@@ -292,4 +293,26 @@ export class MafiaUtilsService {
     }
   }
 
+  getRobCosts(robType: MafiaRobType, mafiaLevel: number) {
+    switch (robType) {
+      case "player":
+        return mafiaConfig.rob.player.costByLevel[mafiaLevel];
+      case "company":
+        return mafiaConfig.rob.company.costByLevel[mafiaLevel];
+      case "bankAccount":
+        return mafiaConfig.rob.bankAccount.costByLevel[mafiaLevel];
+      case "house":
+        return mafiaConfig.rob.house.costByLevel[mafiaLevel];
+      case "cyberattack":
+        return mafiaConfig.rob.cyberattack.cost;
+      case "aiDronePlayer":
+        return mafiaConfig.rob.aiDronePlayer.cost;
+      case "aiDroneHouse":
+        return mafiaConfig.rob.aiDroneHouse.cost;
+      case "shoplifting":
+        return mafiaConfig.rob.shoplifting.cost;
+      case "phishing":
+        return mafiaConfig.rob.phishing.cost;
+    }
+  }
 }

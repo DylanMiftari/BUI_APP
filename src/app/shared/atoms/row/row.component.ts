@@ -5,7 +5,10 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './row.component.html',
-  styleUrl: './row.component.css'
+  styleUrl: './row.component.css',
+  host: {
+    '[style.width]': 'this.width'
+  }
 })
 export class RowComponent {
   @Input() justifyContent: string = "flex-start";
@@ -13,4 +16,5 @@ export class RowComponent {
   @Input() gapPx: number = 0;
   @Input() wrap: boolean = false;
   @Input() marginPx: number = 0;
+  @Input() width: string = "-webkit-fill-available";
 }

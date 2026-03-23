@@ -14,6 +14,8 @@ import {
   CompanyLevelBenefitsCardComponent
 } from "../../../moleculs/company-level-benefits-card/company-level-benefits-card.component";
 import {mafiaConfig} from "../../../../core/config/mafia.config";
+import {ButtonComponent} from "../../../atoms/button/button.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-mafia-owner-dashboard-templates',
@@ -29,7 +31,8 @@ import {mafiaConfig} from "../../../../core/config/mafia.config";
     SeperatorWithTextComponent,
     UpgradeCompanyCardComponent,
     CardContainerComponent,
-    CompanyLevelBenefitsCardComponent
+    CompanyLevelBenefitsCardComponent,
+    ButtonComponent
   ],
   templateUrl: './mafia-owner-dashboard-templates.component.html',
   styleUrl: './mafia-owner-dashboard-templates.component.css'
@@ -39,7 +42,13 @@ export class MafiaOwnerDashboardTemplatesComponent implements OnInit {
   public levelBenefits: string[][] = [];
   public companyLevels: number[] = [1, 2, 3, 4, 5, 6];
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
+  }
+
+  onClickOnYourContracts() {
+    this.router.navigate([`/mafia/${this.mafia.id}/owner-contracts`]);
   }
 
   ngOnInit() {

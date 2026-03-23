@@ -18,6 +18,9 @@ import {MinimalBankAccount} from "../../../../features/bank/models/minimal-bank-
 import {ProgressBarComponent} from "../../../atoms/progress-bar/progress-bar.component";
 import {MafiaUtilsService} from "../../../../features/mafia/services/mafia-utils.service";
 import {MafiaRobType} from "../../../../core/types/mafia-rob.type";
+import {LevelPinComponent} from "../../../atoms/level-pin/level-pin.component";
+import {FormControl, FormGroup} from "@angular/forms";
+import {InputComponent} from "../../../atoms/input/input.component";
 
 @Component({
   selector: 'app-contract-card',
@@ -32,7 +35,9 @@ import {MafiaRobType} from "../../../../core/types/mafia-rob.type";
     PinComponent,
     SeperatorWithTextComponent,
     SimpleCardComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    LevelPinComponent,
+    InputComponent
   ],
   templateUrl: './contract-card.component.html',
   styleUrl: './contract-card.component.css'
@@ -40,16 +45,25 @@ import {MafiaRobType} from "../../../../core/types/mafia-rob.type";
 export class ContractCardComponent implements OnInit {
   @Input() mafiaContract!: MafiaContract;
   @Input() mafiaLevel!: number;
+  @Input() forOwner: boolean = false;
   robType: MafiaRobType|null = null;
 
+  formGroup: FormGroup = new FormGroup({});
+
   constructor(
-    private mafiaService: MafiaRobService,
     private mafiaUtils: MafiaUtilsService
   ) {
   }
 
   ngOnInit() {
     this.robType = this.mafiaUtils.getRobTypeWithTargetType(this.mafiaContract.targetType);
+    this.formGroup = new FormGroup({
+      newPrice: new FormControl(this.mafiaContract.clientPrice == -1 ? null : this.mafiaContract.clientPrice)
+    });
+  }
+
+  get newPriceControl(): FormControl {
+    return this.formGroup.get("newPrice") as FormControl;
   }
 
   get robTypeIcon() {
@@ -62,6 +76,10 @@ export class ContractCardComponent implements OnInit {
 
   get targetName() {
     return this.mafiaUtils.getTargetTitle(this.robType!, this.mafiaContract.target)
+  }
+
+  get targetLevel() {
+    return this.mafiaUtils.getTargetLevel(this.robType!, this.mafiaContract.target);
   }
 
   get statusText() {
@@ -93,5 +111,9 @@ export class ContractCardComponent implements OnInit {
   }
   get maxValue() {
     return this.mafiaUtils.getRobMaxValueLevel(this.robType!, this.mafiaContract.mafiaLevel);
+  }
+
+  get robCosts() {
+    return this.mafiaUtils.getRobCosts(this.robType!, this.mafiaContract.mafiaLevel);
   }
 }

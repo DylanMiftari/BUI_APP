@@ -25,6 +25,9 @@ import {PlayerContractsListComponent} from "./pages/player-contracts-list/player
 import {
   MafiaOwnerDashboardPagesComponent
 } from "./pages/mafia-owner-dashboard-pages/mafia-owner-dashboard-pages.component";
+import {
+  MafiaContractListOwnerPagesComponent
+} from "./pages/mafia-contract-list-owner-pages/mafia-contract-list-owner-pages.component";
 
 const routes: Routes = [
   {path: "mafia", canActivateChild: [authGuardChild], children: [
@@ -33,6 +36,7 @@ const routes: Routes = [
       {path: ":mafia/targets", component: MafiaTargetSelectionComponent},
       {path: ":mafia/contracts", component: ClientMafiaContractPagesComponent},
       {path: ":mafia/owner-dashboard", component: MafiaOwnerDashboardPagesComponent},
+      {path: ":mafia/owner-contracts", component: MafiaContractListOwnerPagesComponent}
     ]}
 ]
 

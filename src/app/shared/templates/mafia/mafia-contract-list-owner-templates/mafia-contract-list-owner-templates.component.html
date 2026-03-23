@@ -1,0 +1,16 @@
+<app-card
+  color="mafia" [glassCard]="true" glassColor="mafia" border="none" [interactable]="false"
+>
+  <app-themed-title color="mafia" title="Mafia Management" textAlign="center"></app-themed-title>
+  <app-row>
+    <app-button color="mafia" label="Dashboard" (clicked)="onClickOnDashboard()"></app-button>
+  </app-row>
+</app-card>
+
+<app-simple-text [text]="mafia.contracts!.length+' Contracts'" [isLight]="true"></app-simple-text>
+
+<app-card-container>
+  @for (contract of mafia.contracts; track contract.id) {
+    <app-contract-card [mafiaContract]="contract" [mafiaLevel]="mafia.level" [forOwner]="true"></app-contract-card>
+  }
+</app-card-container>
