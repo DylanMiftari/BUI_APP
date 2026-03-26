@@ -6,6 +6,7 @@ import {MafiaService} from "../../services/mafia.service";
 import {
   MafiaContractListOwnerTemplatesComponent
 } from "../../../../shared/templates/mafia/mafia-contract-list-owner-templates/mafia-contract-list-owner-templates.component";
+import {HeaderReturnButtonService} from "../../../../core/services/header-return-button.service";
 
 @Component({
   selector: 'app-mafia-contract-list-owner-pages',
@@ -21,9 +22,11 @@ export class MafiaContractListOwnerPagesComponent implements OnInit {
   mafia: Mafia | null = null;
 
   constructor(
+    private headerButton: HeaderReturnButtonService,
     private route: ActivatedRoute,
     private mafiaService: MafiaService
   ) {
+    headerButton.updateButton("🏢 Back to Businesses", "/company");
   }
 
   ngOnInit() {

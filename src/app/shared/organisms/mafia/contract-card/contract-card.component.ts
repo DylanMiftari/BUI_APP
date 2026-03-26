@@ -86,12 +86,16 @@ export class ContractCardComponent implements OnInit {
     switch (this.mafiaContract.robState) {
       case "wait_on_mafia":
         return "Wait on Mafia";
+      case "wait_on_client":
+        return "Wait on Client";
     }
   }
 
   get statusColor() {
     switch (this.mafiaContract.robState) {
       case "wait_on_mafia":
+        return "#a69003";
+      case "wait_on_client":
         return "#a69003";
     }
   }

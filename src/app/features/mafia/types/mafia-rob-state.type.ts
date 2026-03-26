@@ -1,2 +1,2 @@
 
-export type MafiaRobState = "wait_on_mafia"
+export type MafiaRobState = "wait_on_mafia" | "wait_on_client"

@@ -26,7 +26,7 @@ export class MafiaOwnerDashboardPagesComponent implements OnInit {
     private route: ActivatedRoute,
     private mafiaService: MafiaService
   ) {
-    headerButton.updateButton("🏢 Back to Businesses", "/company")
+    headerButton.updateButton("🏢 Back to Businesses", "/company");
   }
 
   ngOnInit() {
