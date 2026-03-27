@@ -42,4 +42,16 @@ export class MafiaService {
   getMafiaForOwnerWithLevels(id: number) {
     return this.http.get<Mafia>(`${this.baseUrl}/${id}/owner?with=levels`);
   }
+
+  updatePriceForOwner(mafiaId: number, contractId: number, price: number) {
+    return this.http.patch(`${this.baseUrl}/${mafiaId}/owner/contract/${contractId}/updatePrice`, {
+      price: price,
+    });
+  }
+
+  updatePriceForClient(mafiaId: number, contractId: number, price: number) {
+    return this.http.patch(`${this.baseUrl}/${mafiaId}/contract/${contractId}/updatePrice`, {
+      price: price,
+    });
+  }
 }

@@ -55,7 +55,7 @@
       </div>
     </app-row>
 
-    <app-row alignItems="alignItems" [gapPx]="10">
+    <app-row alignItems="alignItems" [gapPx]="10" [wrap]="true">
       <div>
         <app-row alignItems="center" [gapPx]="10" width="auto">
           <app-icon icon="💵" [fontSize]="1"></app-icon>
@@ -87,8 +87,19 @@
   @if (
     forOwner && mafiaContract.robState == "wait_on_mafia"
     ) {
-    <app-seperator-with-text [marginPx]="20" [opacity]="0.4"></app-seperator-with-text>
+    <app-seperator-with-text [marginPx]="10" [opacity]="0.4"></app-seperator-with-text>
     <app-input color="mafia" label="💵 Propose new price (€)" [control]="newPriceControl" type="number"
     [min]="0" placeholder="10000"></app-input>
+    <app-error-text [text]="actionError"></app-error-text>
+    <app-button color="mafia" label="Update Price" (clicked)="onUpdateContractPrice()"></app-button>
+    @if (mafiaContract.clientPrice != -1) {
+      <app-button color="mafia" label="Start Robbing"></app-button>
+    }
+  } @else if (!forOwner && mafiaContract.robState == "wait_on_client") {
+    <app-seperator-with-text [marginPx]="10" [opacity]="0.4"></app-seperator-with-text>
+    <app-input color="mafia" label="💵 Propose new price (€)" [control]="newPriceControl" type="number"
+               [min]="0" placeholder="10000"></app-input>
+    <app-error-text [text]="actionError"></app-error-text>
+    <app-button color="mafia" label="Update Price" (clicked)="onUpdateContractPriceForClient()"></app-button>
   }
 </app-card>

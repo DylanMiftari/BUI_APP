@@ -14,4 +14,5 @@ export interface MafiaContract {
   secondPrice: number|null;
   mafiaLevel: number;
   target: User | Company | MinimalBankAccount | Home;
+  mafiaId: number;
 }

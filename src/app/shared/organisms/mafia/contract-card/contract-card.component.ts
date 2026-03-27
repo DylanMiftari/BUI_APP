@@ -21,6 +21,9 @@ import {MafiaRobType} from "../../../../core/types/mafia-rob.type";
 import {LevelPinComponent} from "../../../atoms/level-pin/level-pin.component";
 import {FormControl, FormGroup} from "@angular/forms";
 import {InputComponent} from "../../../atoms/input/input.component";
+import {ButtonComponent} from "../../../atoms/button/button.component";
+import {MafiaService} from "../../../../features/mafia/services/mafia.service";
+import {ErrorTextComponent} from "../../../atoms/error-text/error-text.component";
 
 @Component({
   selector: 'app-contract-card',
@@ -37,7 +40,9 @@ import {InputComponent} from "../../../atoms/input/input.component";
     SimpleCardComponent,
     ProgressBarComponent,
     LevelPinComponent,
-    InputComponent
+    InputComponent,
+    ButtonComponent,
+    ErrorTextComponent
   ],
   templateUrl: './contract-card.component.html',
   styleUrl: './contract-card.component.css'
@@ -48,10 +53,13 @@ export class ContractCardComponent implements OnInit {
   @Input() forOwner: boolean = false;
   robType: MafiaRobType|null = null;
 
+  actionError: string = "";
+
   formGroup: FormGroup = new FormGroup({});
 
   constructor(
-    private mafiaUtils: MafiaUtilsService
+    private mafiaUtils: MafiaUtilsService,
+    private mafiaService: MafiaService
   ) {
   }
 
@@ -59,6 +67,30 @@ export class ContractCardComponent implements OnInit {
     this.robType = this.mafiaUtils.getRobTypeWithTargetType(this.mafiaContract.targetType);
     this.formGroup = new FormGroup({
       newPrice: new FormControl(this.mafiaContract.clientPrice == -1 ? null : this.mafiaContract.clientPrice)
+    });
+  }
+
+  onUpdateContractPrice() {
+    let newPrice = this.formGroup.value.newPrice;
+    this.mafiaService.updatePriceForOwner(this.mafiaContract.mafiaId, this.mafiaContract.id, newPrice).subscribe({
+      next: _ => {
+        window.location.reload();
+      },
+      error: err => {
+        this.actionError = err.error.message;
+      }
+    });
+  }
+
+  onUpdateContractPriceForClient() {
+    let newPrice = this.formGroup.value.newPrice;
+    this.mafiaService.updatePriceForClient(this.mafiaContract.mafiaId, this.mafiaContract.id, newPrice).subscribe({
+      next: _ => {
+        window.location.reload();
+      },
+      error: err => {
+        this.actionError = err.error.message;
+      }
     });
   }
 
