@@ -54,4 +54,16 @@ export class MafiaService {
       price: price,
     });
   }
+
+  acceptContract(mafiaId: number, contractId: number) {
+    return this.http.patch(`${this.baseUrl}/${mafiaId}/contract/${contractId}/accept`, {});
+  }
+
+  claimContract(mafiaId: number, contractId: number) {
+    return this.http.patch(`${this.baseUrl}/${mafiaId}/contract/${contractId}/claim`, {});
+  }
+
+  robTarget(mafiaId: number, contractId: number) {
+    return this.http.patch(`${this.baseUrl}/${mafiaId}/owner/contract/${contractId}/rob`, {});
+  }
 }

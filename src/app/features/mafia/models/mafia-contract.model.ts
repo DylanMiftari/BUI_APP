@@ -15,4 +15,7 @@ export interface MafiaContract {
   mafiaLevel: number;
   target: User | Company | MinimalBankAccount | Home;
   mafiaId: number;
+  robSuccess: boolean|null;
+  robCost: number|null;
+  robWinnings: number|null;
 }

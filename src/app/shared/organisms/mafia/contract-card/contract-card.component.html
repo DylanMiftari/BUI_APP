@@ -72,11 +72,51 @@
         <div>
           <app-row alignItems="center" [gapPx]="10" width="auto">
             <app-icon icon="🏷️" [fontSize]="1"></app-icon>
-            <app-simple-text text="Rob Cost" [isLight]="true"></app-simple-text>
+            <app-simple-text text="Rob Base Cost" [isLight]="true"></app-simple-text>
           </app-row>
           <app-row alignItems="center" width="auto">
             <app-simple-text
               [text]="robCosts.toLocaleString()+'€'"
+              [isLight]="true" [bold]="true"></app-simple-text>
+          </app-row>
+        </div>
+      }
+    </app-row>
+
+    <app-row [gapPx]="10" [wrap]="true">
+      @if (mafiaContract.robState == "robed") {
+        <div>
+          <app-row alignItems="center" [gapPx]="10" width="auto">
+            <app-icon icon="🏆" [fontSize]="1"></app-icon>
+            <app-simple-text text="Rob Result" [isLight]="true"></app-simple-text>
+          </app-row>
+          <app-row alignItems="center" width="auto">
+            <app-simple-text
+              [text]="mafiaContract.robSuccess ? 'Success' : 'Fail'"
+              [isLight]="true" [bold]="true"></app-simple-text>
+          </app-row>
+        </div>
+
+        <div *ngIf="forOwner">
+          <app-row alignItems="center" [gapPx]="10" width="auto">
+            <app-icon icon="🏷️" [fontSize]="1"></app-icon>
+            <app-simple-text text="Rob Final Cost" [isLight]="true"></app-simple-text>
+          </app-row>
+          <app-row alignItems="center" width="auto">
+            <app-simple-text
+              [text]="mafiaContract.robCost!.toLocaleString()+'€'"
+              [isLight]="true" [bold]="true"></app-simple-text>
+          </app-row>
+        </div>
+
+        <div>
+          <app-row alignItems="center" [gapPx]="10" width="auto">
+            <app-icon icon="💵" [fontSize]="1"></app-icon>
+            <app-simple-text text="Rob Winnings" [isLight]="true"></app-simple-text>
+          </app-row>
+          <app-row alignItems="center" width="auto">
+            <app-simple-text
+              [text]="mafiaContract.robWinnings!.toLocaleString()+'€'"
               [isLight]="true" [bold]="true"></app-simple-text>
           </app-row>
         </div>
@@ -101,5 +141,14 @@
                [min]="0" placeholder="10000"></app-input>
     <app-error-text [text]="actionError"></app-error-text>
     <app-button color="mafia" label="Update Price" (clicked)="onUpdateContractPriceForClient()"></app-button>
+    <app-button color="mafia" label="Accept and Pay Contract" (clicked)="onAcceptContract()"></app-button>
+  } @else if (forOwner && mafiaContract.robState == "payed") {
+    <app-seperator-with-text [marginPx]="10" [opacity]="0.4"></app-seperator-with-text>
+    <app-error-text [text]="actionError"></app-error-text>
+    <app-button color="mafia" label="Rob the target" (clicked)="onRobTheTarget()"></app-button>
+  } @else if (!forOwner && mafiaContract.robState == "robed") {
+    <app-seperator-with-text [marginPx]="10" [opacity]="0.4"></app-seperator-with-text>
+    <app-error-text [text]="actionError"></app-error-text>
+    <app-button color="mafia" [label]="mafiaContract.robSuccess ? 'Claim Contract' : 'Close Contract'" (clicked)="onClaimContract()"></app-button>
   }
 </app-card>

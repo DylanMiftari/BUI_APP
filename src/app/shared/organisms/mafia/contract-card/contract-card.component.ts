@@ -24,6 +24,7 @@ import {InputComponent} from "../../../atoms/input/input.component";
 import {ButtonComponent} from "../../../atoms/button/button.component";
 import {MafiaService} from "../../../../features/mafia/services/mafia.service";
 import {ErrorTextComponent} from "../../../atoms/error-text/error-text.component";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-contract-card',
@@ -42,7 +43,8 @@ import {ErrorTextComponent} from "../../../atoms/error-text/error-text.component
     LevelPinComponent,
     InputComponent,
     ButtonComponent,
-    ErrorTextComponent
+    ErrorTextComponent,
+    NgIf
   ],
   templateUrl: './contract-card.component.html',
   styleUrl: './contract-card.component.css'
@@ -94,6 +96,39 @@ export class ContractCardComponent implements OnInit {
     });
   }
 
+  onAcceptContract() {
+    this.mafiaService.acceptContract(this.mafiaContract.mafiaId, this.mafiaContract.id).subscribe({
+      next: _ => {
+        window.location.reload();
+      },
+      error: err => {
+        this.actionError = err.error.message;
+      }
+    });
+  }
+
+  onClaimContract() {
+    this.mafiaService.claimContract(this.mafiaContract.mafiaId, this.mafiaContract.id).subscribe({
+      next: _ => {
+        window.location.reload();
+      },
+      error: err => {
+        this.actionError = err.error.message;
+      }
+    });
+  }
+
+  onRobTheTarget() {
+    this.mafiaService.robTarget(this.mafiaContract.mafiaId, this.mafiaContract.id).subscribe({
+      next: _ => {
+        window.location.reload();
+      },
+      error: err => {
+        this.actionError = err.error.message;
+      }
+    });
+  }
+
   get newPriceControl(): FormControl {
     return this.formGroup.get("newPrice") as FormControl;
   }
@@ -120,6 +155,12 @@ export class ContractCardComponent implements OnInit {
         return "Wait on Mafia";
       case "wait_on_client":
         return "Wait on Client";
+      case "payed":
+        return "Payed";
+      case "robed":
+        return "Robed";
+      case "finished":
+        return "Finished";
     }
   }
 
@@ -129,6 +170,11 @@ export class ContractCardComponent implements OnInit {
         return "#a69003";
       case "wait_on_client":
         return "#a69003";
+      case "payed":
+        return "#0355a6";
+      case "robed":
+      case "finished":
+        return "#03a619";
     }
   }
 
